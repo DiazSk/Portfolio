@@ -231,7 +231,7 @@ export const mySocials = [
   },
   {
     name: "Linkedin",
-    href: "https://www.linkedin.com/in/ali-sanati/",
+    href: "https://www.linkedin.com/in/zaidshaikhscientist/",
     icon: "/assets/socials/linkedIn.svg",
   },
   {
