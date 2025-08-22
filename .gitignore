@@ -28,3 +28,4 @@ coverage/
 *.local
 *.cache
 *.swp
+.vercel
