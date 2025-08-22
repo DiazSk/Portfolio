@@ -91,7 +91,7 @@ const Contact = () => {
         <div className="flex flex-col items-start w-full gap-5 mb-10">
           <h2 className="text-heading">Let&apos;s Talk</h2>
           <p className="font-normal text-neutral-400">
-            Looking for a Data Scientist or ML Engineer? I build production ML systems 
+            Looking for a Data Analyst or Data Scientist? I build production ML systems 
             that deliver measurable business impact. Let's discuss your project!
           </p>
         </div>
