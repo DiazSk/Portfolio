@@ -15,7 +15,7 @@ export const myProjects = [
     github: "https://github.com/DiazSk/credit-card-fraud-detection-system",
     apiDocs: "https://fraud-api-production.up.railway.app/docs",
     logo: "",
-    image: "/assets/projects/fraud-detection.jpg",
+    image: "/assets/projects/fraud-detection.png",
     metrics: {
       accuracy: "99.2%",
       savings: "$1.6M+/year",
@@ -69,10 +69,10 @@ export const myProjects = [
       "Created tiered SaaS pricing model ($10K-$200K+ plans) with complete CRM and sales pipeline infrastructure",
       "Developed comprehensive backtesting framework with Monte Carlo simulations and walk-forward analysis",
     ],
-    href: "https://share.streamlit.io/diazsk/quantum-portfolio-optimizer/main/run_portfolio_system.py",
+    href: "https://quantum-portfolio-optimizer.streamlit.app/",
     github: "https://github.com/DiazSk/quantum-portfolio-optimizer",
     logo: "",
-    image: "/assets/projects/portfolio-optimizer.jpg",
+    image: "/assets/projects/portfolio-optimizer.png",
     metrics: {
       arrCapability: "$5M+",
       returnImprovement: "30%",
@@ -129,7 +129,7 @@ export const myProjects = [
     href: "https://telco-customer-intelligence.streamlit.app",
     github: "https://github.com/DiazSk/telco-customer-intelligence",
     logo: "",
-    image: "/assets/projects/customer-intelligence.jpg",
+    image: "/assets/projects/customer-intelligence.png",
     metrics: {
       accuracy: "84%",
       savings: "$487K/year",
