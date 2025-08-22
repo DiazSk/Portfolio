@@ -1,10 +1,10 @@
-// api/contact.js - Vercel API endpoint using Resend
-const { Resend } = require('resend');
+// api/contact-resend.js - Alternative using Resend (Modern email API)
+import { Resend } from 'resend';
 
 // Initialize Resend with your API key
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-// Email templates
+// Use the same templates from above (notificationTemplate and autoReplyTemplate)
 const notificationTemplate = (name, email, message) => `
 <!DOCTYPE html>
 <html>
@@ -87,17 +87,7 @@ const autoReplyTemplate = (name) => `
 </html>
 `;
 
-module.exports = async function handler(req, res) {
-  // Set CORS headers
-  res.setHeader('Access-Control-Allow-Credentials', true);
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
-  res.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version');
-
-  if (req.method === 'OPTIONS') {
-    return res.status(200).end();
-  }
-
+export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
@@ -107,18 +97,6 @@ module.exports = async function handler(req, res) {
   // Validate input
   if (!name || !email || !message) {
     return res.status(400).json({ error: 'Missing required fields' });
-  }
-
-  // Basic email validation
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email)) {
-    return res.status(400).json({ error: 'Invalid email address' });
-  }
-
-  // Check if API key is available
-  if (!process.env.RESEND_API_KEY) {
-    console.error('RESEND_API_KEY not found in environment variables');
-    return res.status(500).json({ error: 'Email service configuration error' });
   }
 
   try {
@@ -140,36 +118,19 @@ module.exports = async function handler(req, res) {
       html: autoReplyTemplate(name),
     });
 
-    console.log('Emails sent successfully:', { 
-      notification: notificationData.data?.id, 
-      autoReply: autoReplyData.data?.id 
-    });
+    console.log('Emails sent:', { notificationData, autoReplyData });
 
     res.status(200).json({ 
       success: true, 
       message: 'Emails sent successfully',
-      data: { 
-        notificationId: notificationData.data?.id,
-        autoReplyId: autoReplyData.data?.id
-      }
+      data: { notificationData, autoReplyData }
     });
 
   } catch (error) {
     console.error('Resend Error:', error);
-    
-    // Provide more specific error messages
-    let errorMessage = 'Failed to send email';
-    if (error.message?.includes('API key')) {
-      errorMessage = 'Email service authentication failed';
-    } else if (error.message?.includes('from')) {
-      errorMessage = 'Email sender configuration error';
-    } else if (error.message?.includes('to')) {
-      errorMessage = 'Invalid recipient email';
-    }
-    
     res.status(500).json({ 
-      error: errorMessage, 
-      details: process.env.NODE_ENV === 'development' ? error.message : undefined
+      error: 'Failed to send email', 
+      details: error.message 
     });
   }
-};
+}
