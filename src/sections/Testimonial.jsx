@@ -1,9 +1,11 @@
-// Updated Testimonial.jsx - Replace your existing file with this
+// Testimonial.jsx - Replace your entire file with this
+// This showcases your actual project achievements instead of fake testimonials
+
 import { twMerge } from "tailwind-merge";
 import Marquee from "../components/Marquee";
 import PropTypes from "prop-types";
 
-// Replace reviews with project achievements
+// Your actual project achievements with real metrics
 const projectAchievements = [
   {
     title: "Fraud Detection Excellence",
@@ -61,7 +63,7 @@ const AchievementCard = ({ title, metric, subtitle, description, gradient, icon 
       className={twMerge(
         "relative h-full w-80 cursor-pointer overflow-hidden rounded-xl border p-6",
         "border-gray-50/[.1] bg-gradient-to-br from-indigo/20 to-storm/30",
-        "hover:from-indigo/30 hover:to-storm/40 transition-all duration-300"
+        "hover:from-indigo/30 hover:to-storm/40 hover:scale-105 transition-all duration-300"
       )}
     >
       <div className="flex items-start justify-between mb-4">
@@ -96,7 +98,7 @@ export default function Testimonial() {
     <div className="items-start mt-25 md:mt-35 c-space">
       <h2 className="text-heading">Proven Impact & Results</h2>
       <p className="text-lg text-gray-400 mt-3 mb-8 max-w-3xl">
-        Building production ML systems that deliver measurable business value
+        Real metrics from production ML systems demonstrating measurable business value
       </p>
       <div className="relative flex flex-col items-center justify-center w-full mt-12 overflow-hidden">
         <Marquee pauseOnHover className="[--duration:30s] mb-6">
