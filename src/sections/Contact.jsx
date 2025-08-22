@@ -28,9 +28,13 @@ const Contact = () => {
     setIsLoading(true);
 
     try {
-      console.log("From submitted:", formData);
-      await emailjs.send(
-        "service_79b0nyj",
+      console.log("Form submitted:", formData);
+      
+      // Initialize EmailJS with your public key
+      emailjs.init("xglg_xmYtxPft2iAJ");
+      
+      const result = await emailjs.send(
+        "service_v0juo3f",
         "template_17us8im",
         {
           from_name: formData.name,
@@ -38,16 +42,28 @@ const Contact = () => {
           from_email: formData.email,
           to_email: "zaid07sk@gmail.com",
           message: formData.message,
-        },
-        "pn-Bw_mS1_QQdofuV"
+        }
       );
+      
+      console.log("EmailJS Success:", result);
       setIsLoading(false);
       setFormData({ name: "", email: "", message: "" });
       showAlertMessage("success", "Your message has been sent!");
     } catch (error) {
       setIsLoading(false);
-      console.log(error);
-      showAlertMessage("danger", "Something went wrong!");
+      console.error("EmailJS Error:", error);
+      
+      // Provide more specific error messages
+      let errorMessage = "Something went wrong!";
+      if (error.status === 404) {
+        errorMessage = "Email service not configured. Please contact directly at zaid07sk@gmail.com";
+      } else if (error.status === 400) {
+        errorMessage = "Invalid form data. Please check your inputs.";
+      } else if (error.text) {
+        errorMessage = `Error: ${error.text}`;
+      }
+      
+      showAlertMessage("danger", errorMessage);
     }
   };
   return (
@@ -118,12 +134,20 @@ const Contact = () => {
               required
             />
           </div>
-          <button
-            type="submit"
-            className="w-full px-1 py-3 text-lg text-center rounded-md cursor-pointer bg-radial from-lavender to-royal hover-animation"
-          >
-            {!isLoading ? "Send" : "Sending..."}
-          </button>
+          <div className="flex gap-3">
+            <button
+              type="submit"
+              className="flex-1 px-1 py-3 text-lg text-center rounded-md cursor-pointer bg-radial from-lavender to-royal hover-animation"
+            >
+              {!isLoading ? "Send" : "Sending..."}
+            </button>
+            <a
+              href={`mailto:zaid07sk@gmail.com?subject=Contact from ${formData.name}&body=${encodeURIComponent(formData.message)}`}
+              className="px-4 py-3 text-lg text-center rounded-md cursor-pointer bg-gradient-to-r from-navy to-midnight hover-animation text-white"
+            >
+              Direct Email
+            </a>
+          </div>
         </form>
       </div>
     </section>
