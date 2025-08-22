@@ -194,7 +194,7 @@ export const experiences = [
   {
     title: "Data Scientist & ML Engineer",
     job: "Portfolio Projects",
-    date: "2024-Present",
+    date: "2025-Portfolio Development",
     contents: [
       "Developed 3 production-ready ML systems with measurable business impact totaling $2M+ in annual savings",
       "Achieved exceptional model performance: 99.2% fraud detection accuracy, 84% churn prediction AUC-ROC, 78% portfolio optimization accuracy",
@@ -207,7 +207,7 @@ export const experiences = [
   {
     title: "Machine Learning Projects",
     job: "Technical Implementation",
-    date: "2023-2024",
+    date: "Recent-ML Projects",
     contents: [
       "Credit Card Fraud Detection: Built ensemble ML model preventing $1.6M annual fraud losses with 0.1% false positive rate",
       "Portfolio Optimization: Engineered institutional-grade platform with 6 ML algorithms achieving 30% return improvement",
@@ -219,14 +219,14 @@ export const experiences = [
   {
     title: "Technical Skills Development",
     job: "Continuous Learning",
-    date: "2022-Present",
+    date: "2025-Self-Directed Learning",
     contents: [
       "Machine Learning: XGBoost, LightGBM, Random Forest, Ensemble Methods, Deep Learning with TensorFlow/PyTorch",
-      "Data Engineering: ETL pipelines, Apache Airflow, DVC, Feature Stores, Real-time stream processing",
-      "Backend Development: FastAPI, Django, RESTful APIs, Microservices architecture, GraphQL",
-      "Cloud & DevOps: Docker, Kubernetes, CI/CD with GitHub Actions, AWS/GCP/Azure deployment",
+      "Data Engineering: ETL pipelines, DVC, Feature Stores, Real-time stream processing",
+      "Backend Development: FastAPI, Django, APIs",
+      "Cloud & DevOps: Docker, Kubernetes, CI/CD with GitHub Actions, AWS/Railway deployment",
       "Databases: PostgreSQL, MongoDB, Redis, SQLite, Time-series databases for financial data",
-      "Visualization: Streamlit, Plotly, D3.js, Tableau, Power BI for business intelligence dashboards",
+      "Visualization: Streamlit, Plotly, Tableau, Power BI for business intelligence dashboards",
     ],
   },
 ];
@@ -271,14 +271,14 @@ export const reviews = [
 ];
 
 export const skills = {
-  languages: ["Python", "SQL", "JavaScript", "R", "Java"],
-  machineLearning: ["XGBoost", "LightGBM", "Random Forest", "Deep Learning", "NLP", "Computer Vision"],
-  dataEngineering: ["Pandas", "NumPy", "Apache Airflow", "Spark", "ETL Pipelines", "Feature Engineering"],
+  languages: ["Python", "SQL"],
+  machineLearning: ["XGBoost", "LightGBM", "Random Forest", "NLP"],
+  dataEngineering: ["Pandas", "NumPy", "ETL Pipelines", "Feature Engineering"],
   frameworks: ["FastAPI", "Streamlit", "Django", "Flask", "React", "TensorFlow", "PyTorch"],
-  databases: ["PostgreSQL", "MongoDB", "Redis", "MySQL", "SQLite", "Elasticsearch"],
-  cloud: ["AWS", "GCP", "Azure", "Docker", "Kubernetes", "Railway", "Heroku"],
+  databases: ["PostgreSQL", "MongoDB", "Redis", "MySQL", "SQLite"],
+  cloud: ["AWS", "Docker", "Kubernetes", "Railway", "Heroku"],
   tools: ["Git", "MLflow", "DVC", "Jupyter", "VS Code", "Linux", "CI/CD"],
-  visualization: ["Plotly", "Seaborn", "Matplotlib", "D3.js", "Tableau", "Power BI"],
+  visualization: ["Plotly", "Seaborn", "Matplotlib", "Tableau", "Power BI"],
 };
 
 export const certifications = [

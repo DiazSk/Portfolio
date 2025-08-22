@@ -1,7 +1,36 @@
 "use client";
-import { useScroll, useTransform, motion } from "framer-motion";
+import { useScroll, useTransform, motion, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
+
+// Component for animated content items
+const AnimatedContent = ({ children }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { 
+    once: true, 
+    margin: "-100px",
+    amount: 0.3 
+  });
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 50 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+      transition={{ 
+        duration: 0.6, 
+        ease: "easeOut",
+        delay: 0.1 
+      }}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
+AnimatedContent.propTypes = {
+  children: PropTypes.node.isRequired
+};
 
 export const Timeline = ({ data }) => {
   const ref = useRef(null);
@@ -25,37 +54,112 @@ export const Timeline = ({ data }) => {
 
   return (
     <div className="c-space section-spacing" ref={containerRef}>
-      <h2 className="text-heading">My Work Experience</h2>
+      <motion.h2 
+        className="text-heading"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+      >
+        My Project Experience
+      </motion.h2>
+      
       <div ref={ref} className="relative pb-20">
         {data.map((item, index) => (
           <div
             key={index}
             className="flex justify-start pt-10 md:pt-40 md:gap-10"
           >
-            <div className="sticky z-40 flex flex-col items-center self-start max-w-xs md:flex-row top-40 lg:max-w-sm md:w-full">
-              <div className="absolute flex items-center justify-center w-10 h-10 rounded-full -left-[15px] bg-midnight">
+            {/* Left side - Timeline */}
+            <motion.div 
+              className="sticky z-40 flex flex-col items-center self-start max-w-xs md:flex-row top-40 lg:max-w-sm md:w-full"
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ 
+                duration: 0.6, 
+                delay: index * 0.1,
+                ease: "easeOut" 
+              }}
+            >
+              <motion.div 
+                className="absolute flex items-center justify-center w-10 h-10 rounded-full -left-[15px] bg-midnight"
+                initial={{ scale: 0 }}
+                whileInView={{ scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ 
+                  duration: 0.4, 
+                  delay: index * 0.1 + 0.2,
+                  type: "spring",
+                  stiffness: 200
+                }}
+              >
                 <div className="w-4 h-4 p-2 border rounded-full bg-neutral-800 border-neutral-700" />
-              </div>
-              <div className="flex-col hidden gap-2 text-xl font-bold md:flex md:pl-20 md:text-4xl text-neutral-300">
+              </motion.div>
+              
+              <motion.div 
+                className="flex-col hidden gap-2 text-xl font-bold md:flex md:pl-20 md:text-4xl text-neutral-300"
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ 
+                  duration: 0.6, 
+                  delay: index * 0.1 + 0.3,
+                  ease: "easeOut"
+                }}
+              >
                 <h3>{item.date}</h3>
                 <h3 className="text-3xl text-neutral-400">{item.title}</h3>
                 <h3 className="text-3xl text-neutral-500">{item.job}</h3>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
 
+            {/* Right side - Content with animations */}
             <div className="relative w-full pl-20 pr-4 md:pl-4">
-              <div className="block mb-4 text-2xl font-bold text-left text-neutral-300 md:hidden ">
+              {/* Mobile date/title */}
+              <motion.div 
+                className="block mb-4 text-2xl font-bold text-left text-neutral-300 md:hidden"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ 
+                  duration: 0.5,
+                  delay: index * 0.1
+                }}
+              >
                 <h3>{item.date}</h3>
                 <h3>{item.job}</h3>
-              </div>
-              {item.contents.map((content, index) => (
-                <p className="mb-3 font-normal text-neutral-400" key={index}>
+              </motion.div>
+              
+              {/* Content items with staggered animation */}
+              {item.contents.map((content, contentIndex) => (
+                <motion.p 
+                  className="mb-3 font-normal text-neutral-400" 
+                  key={contentIndex}
+                  initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
+                  whileInView={{ 
+                    opacity: 1, 
+                    y: 0,
+                    filter: "blur(0px)"
+                  }}
+                  viewport={{ 
+                    once: true, 
+                    margin: "-50px",
+                    amount: 0.3
+                  }}
+                  transition={{ 
+                    duration: 0.5,
+                    delay: index * 0.1 + contentIndex * 0.08,
+                    ease: "easeOut"
+                  }}
+                >
                   {content}
-                </p>
+                </motion.p>
               ))}
             </div>
           </div>
         ))}
+        
+        {/* Animated timeline line */}
         <div
           style={{
             height: height + "px",
