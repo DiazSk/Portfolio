@@ -2,24 +2,26 @@ import { OrbitingCircles } from "./OrbitingCircles";
 import PropTypes from "prop-types";
 
 export function Frameworks() {
+  // ML/Data Science tech stack based on your actual projects
   const skills = [
-    "auth0",
-    "blazor",
-    "cplusplus",
-    "csharp",
-    "css3",
-    "dotnet",
-    "dotnetcore",
-    "git",
-    "html5",
-    "javascript",
-    "microsoft",
-    "react",
-    "sqlite",
-    "tailwindcss",
-    "vitejs",
-    "wordpress",
+    "python",           // Core language
+    "xgboost",         // ML library (fraud detection, churn prediction)
+    "sklearn",         // ML library
+    "fastapi",         // API framework
+    "streamlit",       // Dashboard framework
+    "pandas",          // Data processing
+    "numpy",           // Numerical computing
+    "docker",          // Containerization
+    "postgresql",      // Database
+    "tensorflow",      // Deep learning
+    "pytorch",         // Deep learning
+    "matplotlib",      // Visualization
+    "github",         // Version control
+    "amazonwebservices", // Cloud platform
+    "railway",        // Deployment platform
+    "jupyter",       // Development environment
   ];
+  
   return (
     <div className="relative flex h-[15rem] w-full flex-col items-center justify-center">
       <OrbitingCircles iconSize={40}>
