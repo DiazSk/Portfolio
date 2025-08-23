@@ -21,7 +21,7 @@ const About = () => {
             <p className="subtext">
               Data Scientist & ML Engineer with proven impact delivering $2M+ in annual savings through 
               production ML systems. Built fraud detection achieving 99.2% accuracy, portfolio optimizer 
-              with $5M ARR capability, and churn prediction reducing attrition 40%. Expert in end-to-end 
+              with $5M ARR capability, and churn prediction reducing attrition 40%. Assembled end-to-end 
               pipelines processing 100K+ daily predictions at sub-100ms latency.
             </p>
           </div>
