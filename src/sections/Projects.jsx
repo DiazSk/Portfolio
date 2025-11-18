@@ -1,49 +1,49 @@
-import SpotlightCard from "../components/SpotlightCard";
-import TiltCard from "../components/TiltCard";
-import ScrollReveal from "../components/ScrollReveal";
 import { myProjects } from "../constants";
 import { motion } from "framer-motion";
+import SpotlightCard from "../components/SpotlightCard";
+import TiltCard from "../components/TiltCard";
 
 const Projects = () => {
   return (
     <section id="work" className="relative c-space section-spacing">
-      <ScrollReveal direction="up" duration={0.8}>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
         <h2 className="text-heading mb-4">Featured Projects</h2>
         <p className="text-lg text-gray-400 mb-12 max-w-3xl">
           Production-grade data engineering systems with measurable impact
         </p>
-      </ScrollReveal>
+      </motion.div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-12">
         {myProjects.map((project, index) => (
-          <ScrollReveal 
-            key={project.id} 
-            direction={index % 2 === 0 ? "left" : "right"}
-            delay={index * 0.2}
+          <motion.div
+            key={project.id}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.2, duration: 0.6 }}
           >
             <SpotlightCard className="h-full">
               <TiltCard className="p-6 h-full">
                 {/* Project Header */}
-                <div className="flex items-start justify-between mb-4">
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-bold text-white mb-2">
-                      {project.title}
-                    </h3>
-                    <p className="text-gray-400 text-sm mb-4">
-                      {project.description}
-                    </p>
-                  </div>
-                </div>
+                <h3 className="text-2xl font-bold text-white mb-2">
+                  {project.title}
+                </h3>
+                <p className="text-gray-400 text-sm mb-4">
+                  {project.description}
+                </p>
 
                 {/* Architecture Preview */}
                 {project.architecture && (
-                  <div className="mb-6">
-                    <div className="bg-black/40 border border-cyan-500/20 rounded-lg p-4 overflow-x-auto">
-                      <pre className="text-xs text-cyan-400/80 font-mono leading-relaxed whitespace-pre">
-                        {project.architecture.split('\n').slice(0, 8).join('\n')}
-                      </pre>
-                      <p className="text-xs text-gray-500 mt-2">+ More in details...</p>
-                    </div>
+                  <div className="mb-6 bg-black/40 border border-cyan-500/20 rounded-lg p-4 overflow-x-auto">
+                    <pre className="text-xs text-cyan-400/80 font-mono leading-relaxed whitespace-pre">
+                      {project.architecture.split('\n').slice(0, 8).join('\n')}
+                    </pre>
+                    <p className="text-xs text-gray-500 mt-2">+ More in details...</p>
                   </div>
                 )}
 
@@ -114,7 +114,7 @@ const Projects = () => {
                 </div>
               </TiltCard>
             </SpotlightCard>
-          </ScrollReveal>
+          </motion.div>
         ))}
       </div>
     </section>

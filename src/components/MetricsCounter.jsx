@@ -66,16 +66,18 @@ const MetricsCounter = () => {
   return (
     <motion.div 
       initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 2, duration: 0.6 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
       className="grid grid-cols-2 lg:grid-cols-4 gap-3 mt-8 max-w-4xl"
     >
       {metrics.map((metric, idx) => (
         <motion.div
           key={idx}
           initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 2.2 + idx * 0.1, duration: 0.4 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: idx * 0.1, duration: 0.4 }}
           whileHover={{ scale: 1.05, y: -5 }}
           className="relative group"
         >

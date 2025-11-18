@@ -1,49 +1,48 @@
+import { Canvas, useFrame } from "@react-three/fiber";
 import HeroText from "../components/HeroText";
-import Hyperspeed from "../components/Hyperspeed";
-import { motion } from "framer-motion";
+import ParallaxBackground from "../components/parallaxBackground";
+import { Astronaut } from "../components/Astronaut";
+import { Float } from "@react-three/drei";
+import { useMediaQuery } from "react-responsive";
+import { easing } from "maath";
+import { Suspense } from "react";
+import Loader from "../components/Loader";
 
 const Hero = () => {
+  const isMobile = useMediaQuery({ maxWidth: 853 });
   return (
-    <section id="home" className="relative flex items-center justify-center min-h-screen overflow-hidden">
-      {/* Hyperspeed Background */}
-      <Hyperspeed />
-      
-      {/* Gradient Overlay for depth */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/50 pointer-events-none" />
-      
-      {/* Hero Content */}
-      <div className="relative z-20 w-full">
-        <HeroText />
-      </div>
-
-      {/* Floating Particles Accent */}
-      <motion.div
-        className="absolute top-20 right-20 w-4 h-4 bg-cyan-500 rounded-full blur-sm"
-        animate={{
-          y: [0, -20, 0],
-          opacity: [0.3, 1, 0.3],
-        }}
-        transition={{
-          duration: 3,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
-      <motion.div
-        className="absolute bottom-40 left-20 w-3 h-3 bg-purple-500 rounded-full blur-sm"
-        animate={{
-          y: [0, 20, 0],
-          opacity: [0.3, 1, 0.3],
-        }}
-        transition={{
-          duration: 4,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 1,
-        }}
-      />
+    <section id="home" className="flex items-start justify-center min-h-screen overflow-hidden md:items-start md:justify-start c-space">
+      <HeroText />
+      <ParallaxBackground />
+      <figure
+        className="absolute inset-0"
+        style={{ width: "100vw", height: "100vh" }}
+      >
+        <Canvas camera={{ position: [0, 1, 3] }}>
+          <Suspense fallback={<Loader />}>
+            <Float>
+              <Astronaut
+                scale={isMobile && 0.23}
+                position={isMobile && [0, -1.5, 0]}
+              />
+            </Float>
+            <Rig />
+          </Suspense>
+        </Canvas>
+      </figure>
     </section>
   );
 };
+
+function Rig() {
+  return useFrame((state, delta) => {
+    easing.damp3(
+      state.camera.position,
+      [state.mouse.x / 10, 1 + state.mouse.y / 10, 3],
+      0.5,
+      delta
+    );
+  });
+}
 
 export default Hero;

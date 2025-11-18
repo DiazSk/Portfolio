@@ -1,5 +1,5 @@
 import { useRef, useMemo } from 'react';
-import { motion, useMotionValue, useSpring, useTransform } from 'motion/react';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import PropTypes from 'prop-types';
 
 const FloatingDock = ({

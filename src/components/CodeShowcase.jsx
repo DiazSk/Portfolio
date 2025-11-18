@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import PropTypes from 'prop-types';
-import ScrollReveal from './ScrollReveal';
 import SpotlightCard from './SpotlightCard';
 import Magnet from './Magnet';
 
@@ -120,19 +119,13 @@ const CodeSnippet = ({ snippet, isActive }) => {
           initial={{ opacity: 0, x: 100 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -100 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
+          transition={{ duration: 0.5 }}
         >
           <SpotlightCard>
             <div className="bg-black/60 border border-cyan-500/20 rounded-xl p-6 backdrop-blur-sm">
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-3">
-                  <motion.span 
-                    className="text-4xl"
-                    animate={{ rotate: [0, 10, -10, 0] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                  >
-                    {snippet.icon}
-                  </motion.span>
+                  <span className="text-3xl">{snippet.icon}</span>
                   <div>
                     <h4 className="text-lg font-semibold text-white">{snippet.title}</h4>
                     <span className={`text-sm bg-gradient-to-r ${snippet.gradient} bg-clip-text text-transparent font-semibold`}>
@@ -165,34 +158,42 @@ const CodeShowcase = () => {
   return (
     <section className="c-space section-spacing">
       <div className="max-w-6xl mx-auto">
-        <ScrollReveal direction="up">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
           <h2 className="text-heading mb-4">Production Code Samples</h2>
           <p className="text-lg text-gray-400 mb-8 max-w-3xl">
             Real code from production data engineering systems - Airflow orchestration, 
             Flink stream processing, dbt transformations, and Terraform IaC
           </p>
-        </ScrollReveal>
+        </motion.div>
 
         {/* Tab Navigation */}
-        <ScrollReveal direction="up" delay={0.2}>
-          <div className="flex gap-2 mb-8 overflow-x-auto pb-2">
-            {codeSnippets.map((snippet, idx) => (
-              <Magnet key={snippet.id} strength={0.2}>
-                <button
-                  onClick={() => setActiveTab(idx)}
-                  className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 whitespace-nowrap ${
-                    activeTab === idx
-                      ? `bg-gradient-to-r ${snippet.gradient} text-white shadow-lg`
-                      : 'bg-gray-800/50 text-gray-400 hover:bg-gray-800 border border-gray-700/50'
-                  }`}
-                >
-                  <span className="mr-2">{snippet.icon}</span>
-                  {snippet.language}
-                </button>
-              </Magnet>
-            ))}
-          </div>
-        </ScrollReveal>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="flex gap-2 mb-8 overflow-x-auto pb-2"
+        >
+          {codeSnippets.map((snippet, idx) => (
+            <Magnet key={snippet.id} strength={0.2}>
+              <button
+                onClick={() => setActiveTab(idx)}
+                className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 whitespace-nowrap ${
+                  activeTab === idx
+                    ? `bg-gradient-to-r ${snippet.gradient} text-white shadow-lg`
+                    : 'bg-gray-800/50 text-gray-400 hover:bg-gray-800 border border-gray-700/50'
+                }`}
+              >
+                <span className="mr-2">{snippet.icon}</span>
+                {snippet.language}
+              </button>
+            </Magnet>
+          ))}
+        </motion.div>
 
         {/* Code Display */}
         <div className="min-h-[400px]">
@@ -206,26 +207,30 @@ const CodeShowcase = () => {
         </div>
 
         {/* Navigation Arrows */}
-        <ScrollReveal direction="up" delay={0.4}>
-          <div className="flex justify-center gap-4 mt-8">
-            <Magnet>
-              <button
-                onClick={() => setActiveTab((prev) => (prev - 1 + codeSnippets.length) % codeSnippets.length)}
-                className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 rounded-lg font-medium transition-all duration-300 flex items-center gap-2 shadow-lg shadow-cyan-500/20"
-              >
-                <span>←</span> Previous
-              </button>
-            </Magnet>
-            <Magnet>
-              <button
-                onClick={() => setActiveTab((prev) => (prev + 1) % codeSnippets.length)}
-                className="px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-400 hover:to-pink-500 rounded-lg font-medium transition-all duration-300 flex items-center gap-2 shadow-lg shadow-purple-500/20"
-              >
-                Next <span>→</span>
-              </button>
-            </Magnet>
-          </div>
-        </ScrollReveal>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4 }}
+          className="flex justify-center gap-4 mt-8"
+        >
+          <Magnet>
+            <button
+              onClick={() => setActiveTab((prev) => (prev - 1 + codeSnippets.length) % codeSnippets.length)}
+              className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 rounded-lg font-medium transition-all duration-300 flex items-center gap-2 shadow-lg shadow-cyan-500/20"
+            >
+              <span>←</span> Previous
+            </button>
+          </Magnet>
+          <Magnet>
+            <button
+              onClick={() => setActiveTab((prev) => (prev + 1) % codeSnippets.length)}
+              className="px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-400 hover:to-pink-500 rounded-lg font-medium transition-all duration-300 flex items-center gap-2 shadow-lg shadow-purple-500/20"
+            >
+              Next <span>→</span>
+            </button>
+          </Magnet>
+        </motion.div>
       </div>
     </section>
   );
