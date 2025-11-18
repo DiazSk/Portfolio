@@ -1,35 +1,122 @@
-import { useState } from "react";
-import Project from "../components/Project";
+import SpotlightCard from "../components/SpotlightCard";
+import TiltCard from "../components/TiltCard";
+import ScrollReveal from "../components/ScrollReveal";
 import { myProjects } from "../constants";
-import { motion, useMotionValue, useSpring } from "motion/react";
+import { motion } from "framer-motion";
+
 const Projects = () => {
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const springX = useSpring(x, { damping: 10, stiffness: 50 });
-  const springY = useSpring(y, { damping: 10, stiffness: 50 });
-  const handleMouseMove = (e) => {
-    x.set(e.clientX + 20);
-    y.set(e.clientY + 20);
-  };
-  const [preview, setPreview] = useState(null);
   return (
-    <section
-      id="work"
-      onMouseMove={handleMouseMove}
-      className="relative c-space section-spacing"
-    >
-      <h2 className="text-heading">My Selected Projects</h2>
-      <div className="bg-gradient-to-r from-transparent via-neutral-700 to-transparent mt-12 h-[1px] w-full" />
-      {myProjects.map((project) => (
-        <Project key={project.id} {...project} setPreview={setPreview} />
-      ))}
-      {preview && (
-        <motion.img
-          className="fixed top-0 left-0 z-50 object-cover h-56 rounded-lg shadow-lg pointer-events-none w-80"
-          src={preview}
-          style={{ x: springX, y: springY }}
-        />
-      )}
+    <section id="work" className="relative c-space section-spacing">
+      <ScrollReveal direction="up" duration={0.8}>
+        <h2 className="text-heading mb-4">Featured Projects</h2>
+        <p className="text-lg text-gray-400 mb-12 max-w-3xl">
+          Production-grade data engineering systems with measurable impact
+        </p>
+      </ScrollReveal>
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-12">
+        {myProjects.map((project, index) => (
+          <ScrollReveal 
+            key={project.id} 
+            direction={index % 2 === 0 ? "left" : "right"}
+            delay={index * 0.2}
+          >
+            <SpotlightCard className="h-full">
+              <TiltCard className="p-6 h-full">
+                {/* Project Header */}
+                <div className="flex items-start justify-between mb-4">
+                  <div className="flex-1">
+                    <h3 className="text-2xl font-bold text-white mb-2">
+                      {project.title}
+                    </h3>
+                    <p className="text-gray-400 text-sm mb-4">
+                      {project.description}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Architecture Preview */}
+                {project.architecture && (
+                  <div className="mb-6">
+                    <div className="bg-black/40 border border-cyan-500/20 rounded-lg p-4 overflow-x-auto">
+                      <pre className="text-xs text-cyan-400/80 font-mono leading-relaxed whitespace-pre">
+                        {project.architecture.split('\n').slice(0, 8).join('\n')}
+                      </pre>
+                      <p className="text-xs text-gray-500 mt-2">+ More in details...</p>
+                    </div>
+                  </div>
+                )}
+
+                {/* Metrics Grid */}
+                <div className="grid grid-cols-2 gap-3 mb-6">
+                  {Object.entries(project.metrics).slice(0, 4).map(([key, value]) => (
+                    <motion.div
+                      key={key}
+                      whileHover={{ scale: 1.05 }}
+                      className="bg-gradient-to-br from-cyan-500/10 to-purple-500/10 border border-cyan-500/20 rounded-lg p-3"
+                    >
+                      <div className="text-2xl font-bold text-cyan-400">
+                        {value}
+                      </div>
+                      <div className="text-xs text-gray-400 capitalize">
+                        {key.replace(/([A-Z])/g, ' $1').trim()}
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+
+                {/* Tech Stack */}
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {project.tags.slice(0, 6).map((tag) => (
+                    <motion.div
+                      key={tag.id}
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      className="flex items-center gap-2 bg-gray-800/50 border border-gray-700/50 rounded-lg px-3 py-1.5"
+                    >
+                      <img 
+                        src={tag.path} 
+                        alt={tag.name} 
+                        className="w-4 h-4"
+                      />
+                      <span className="text-xs text-gray-300">{tag.name}</span>
+                    </motion.div>
+                  ))}
+                </div>
+
+                {/* Action Links */}
+                <div className="flex gap-3">
+                  <motion.a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="flex-1 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-medium py-3 px-6 rounded-lg text-center transition-all duration-300 shadow-lg shadow-cyan-500/20"
+                  >
+                    View Code
+                  </motion.a>
+                  
+                  {project.href !== "#" && (
+                    <motion.a
+                      href={project.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="flex items-center gap-2 bg-gray-800 hover:bg-gray-700 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 border border-gray-700"
+                    >
+                      Details
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </motion.a>
+                  )}
+                </div>
+              </TiltCard>
+            </SpotlightCard>
+          </ScrollReveal>
+        ))}
+      </div>
     </section>
   );
 };

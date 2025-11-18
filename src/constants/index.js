@@ -1,100 +1,173 @@
 export const myProjects = [
   {
     id: 1,
-    title: "Credit Card Fraud Detection System",
+    title: "Modern E-Commerce Analytics Platform",
     description:
-      "Enterprise-grade ML system achieving 99.2% accuracy in fraud detection, preventing $1.6M+ in annual losses with real-time processing capabilities.",
+      "Production-grade data engineering platform with Terraform IaC, Airflow orchestration, and dbt transformations. Processes 66,000+ records with 67% query optimization and $53K+ opportunity identification.",
     subDescription: [
-      "Built ensemble ML model (XGBoost + Random Forest + Logistic Regression) achieving 99.2% accuracy with 0.1% false positive rate",
-      "Engineered 82 sophisticated features including velocity checks, behavioral patterns, and risk scoring for comprehensive fraud analysis",
-      "Developed RESTful API with FastAPI handling 1,000+ requests/minute with sub-100ms response time",
-      "Deployed production system on Railway with real-time Streamlit dashboard and 99.9% uptime SLA",
-      "Implemented SMOTE resampling and threshold optimization to handle class imbalance (0.17% fraud rate)",
+      "Built end-to-end analytics infrastructure with Terraform managing 24 AWS resources (S3 data lake, CloudWatch, SNS)",
+      "Orchestrated 3 production Airflow DAGs with automated FakeStore API ingestion and error handling",
+      "Developed 13 dbt models (star schema with SCD Type 2) achieving 96.3% test pass rate across 146 tests",
+      "Optimized PostgreSQL queries delivering 67% performance improvement (hours → seconds)",
+      "Implemented Great Expectations data quality framework with 15 validation checkpoints",
+      "Created 4 production Metabase dashboards with 19 visualizations analyzing $692K revenue",
+      "Achieved $2,297 annual cost savings through lifecycle policies and resource optimization",
     ],
-    href: "https://fraud-dashboard-production.up.railway.app",
-    github: "https://github.com/DiazSk/credit-card-fraud-detection-system",
-    apiDocs: "https://fraud-api-production.up.railway.app/docs",
+    href: "https://github.com/DiazSk/Modern-E-commerce-Analytics-Platform",
+    github: "https://github.com/DiazSk/Modern-E-commerce-Analytics-Platform",
     logo: "",
-    image: "/assets/projects/fraud-detection.png",
+    image: "/assets/projects/ecommerce-analytics.png",
     metrics: {
-      accuracy: "99.2%",
-      savings: "$1.6M+/year",
-      falsePositive: "0.1%",
-      responseTime: "89ms",
-      throughput: "1000+ req/min"
+      recordsProcessed: "66,000+",
+      testPassRate: "96.3%",
+      queryOptimization: "67%",
+      costSavings: "$2,297/year",
+      businessValue: "$53K+ identified"
     },
+    architecture: `┌─────────────┐
+│ FakeStore   │
+│    API      │
+└──────┬──────┘
+       │ Daily Ingestion
+       ▼
+┌─────────────┐
+│  Apache     │
+│  Airflow    │ (3 DAGs)
+└──────┬──────┘
+       │
+       ▼
+┌─────────────┐
+│  AWS S3     │
+│ Data Lake   │
+└──────┬──────┘
+       │
+       ▼
+┌─────────────┐
+│     dbt     │ (13 models)
+│ Transform   │
+└──────┬──────┘
+       │
+       ▼
+┌─────────────┐
+│ PostgreSQL  │
+│  Warehouse  │
+└──────┬──────┘
+       │
+       ▼
+┌─────────────┐
+│  Metabase   │
+│ Dashboards  │
+└─────────────┘`,
     tags: [
       {
         id: 1,
-        name: "Python",
-        path: "/assets/logos/python.svg",
+        name: "Apache Airflow",
+        path: "/assets/logos/apache-airflow.svg",
       },
       {
         id: 2,
-        name: "XGBoost",
-        path: "/assets/logos/xgboost.svg",
+        name: "dbt",
+        path: "/assets/logos/dbt.svg",
       },
       {
         id: 3,
-        name: "FastAPI",
-        path: "/assets/logos/fastapi.svg",
+        name: "PostgreSQL",
+        path: "/assets/logos/postgresql.svg",
       },
       {
         id: 4,
-        name: "Streamlit",
-        path: "/assets/logos/streamlit.svg",
+        name: "AWS",
+        path: "/assets/logos/aws.svg",
       },
       {
         id: 5,
-        name: "Docker",
-        path: "/assets/logos/docker.svg",
+        name: "Terraform",
+        path: "/assets/logos/terraform.svg",
       },
       {
         id: 6,
-        name: "Railway",
-        path: "/assets/logos/railway.svg",
+        name: "Docker",
+        path: "/assets/logos/docker.svg",
       },
     ],
   },
   {
     id: 2,
-    title: "Quantum Portfolio Optimizer",
+    title: "Real-Time Cryptocurrency Market Analyzer",
     description:
-      "Institutional-grade portfolio management platform with $5M+ ARR capability, featuring 6 ML algorithms and multi-tenant enterprise architecture.",
+      "Event-driven streaming platform with Apache Kafka, Flink, and Redis. Implements exactly-once semantics, stateful anomaly detection, and WebSocket pub/sub achieving sub-100ms latency.",
     subDescription: [
-      "Implemented 6 portfolio optimization algorithms (Mean Variance, Risk Parity, Black-Litterman, HRP, CLA, SLSQP) with real-time rebalancing",
-      "Built multi-tenant architecture with OAuth2.0 SSO and RBAC supporting 100+ concurrent institutional users",
-      "Integrated 15+ financial APIs (Alpha Vantage, Yahoo Finance, News API) for real-time market data and alternative data sources",
-      "Achieved 30% portfolio return improvement through 6-model ML ensemble with 78% prediction accuracy",
-      "Created tiered SaaS pricing model ($10K-$200K+ plans) with complete CRM and sales pipeline infrastructure",
-      "Developed comprehensive backtesting framework with Monte Carlo simulations and walk-forward analysis",
+      "Architected distributed streaming pipeline: Kafka (3 partitions) → Flink (tumbling windows: 1m, 5m, 15m) → Redis + PostgreSQL dual sink",
+      "Implemented exactly-once processing semantics with Flink checkpointing (RocksDB backend) and PostgreSQL UPSERT",
+      "Built FastAPI REST + WebSocket endpoints with Redis Pub/Sub achieving 99% reduction in database operations",
+      "Developed stateful anomaly detection with Flink's ValueState preventing duplicate alerts on late-arriving data",
+      "Created production Streamlit dashboard with OHLC candlestick charts and technical indicators (MA-20, MA-50)",
+      "Optimized for low latency: 60-70s end-to-end processing, sub-100ms API response time",
+      "Comprehensive testing suite with 96.3% pass rate validating stream processing correctness",
     ],
-    href: "https://quantum-portfolio-optimizer.streamlit.app/",
-    github: "https://github.com/DiazSk/quantum-portfolio-optimizer",
+    href: "https://github.com/DiazSk/Real-Time-Cryptocurrency-Market-Analyzer",
+    github: "https://github.com/DiazSk/Real-Time-Cryptocurrency-Market-Analyzer",
     logo: "",
-    image: "/assets/projects/portfolio-optimizer.png",
+    image: "/assets/projects/crypto-analyzer.png",
     metrics: {
-      arrCapability: "$5M+",
-      returnImprovement: "30%",
-      predictionAccuracy: "78%",
-      concurrentUsers: "100+",
-      responseTime: "<200ms"
+      latency: "60-70s",
+      apiResponse: "<100ms",
+      testPassRate: "96.3%",
+      throughput: "30s polling",
+      redisOptimization: "99% reduction"
     },
+    architecture: `┌─────────────┐
+│ CoinGecko   │
+│    API      │ (30s poll)
+└──────┬──────┘
+       │
+       ▼
+┌─────────────┐
+│    Kafka    │ (3 partitions)
+│   Stream    │
+└──────┬──────┘
+       │
+       ▼
+┌─────────────┐
+│    Flink    │ (1m, 5m, 15m windows)
+│  Processing │
+└──────┬──────┘
+       │
+   ┌───┴────┐
+   │        │
+   ▼        ▼
+┌──────┐ ┌──────────┐
+│Redis │ │PostgreSQL│
+│Cache │ │ Storage  │
+└───┬──┘ └────┬─────┘
+    │         │
+    └────┬────┘
+         ▼
+    ┌─────────┐
+    │ FastAPI │
+    │WebSocket│
+    └────┬────┘
+         │
+         ▼
+    ┌─────────┐
+    │Streamlit│
+    │Dashboard│
+    └─────────┘`,
     tags: [
       {
         id: 1,
-        name: "Python",
-        path: "/assets/logos/python.svg",
+        name: "Apache Kafka",
+        path: "/assets/logos/kafka.svg",
       },
       {
         id: 2,
-        name: "scikit-learn",
-        path: "/assets/logos/sklearn.svg",
+        name: "Apache Flink",
+        path: "/assets/logos/flink.svg",
       },
       {
         id: 3,
-        name: "FastAPI",
-        path: "/assets/logos/fastapi.svg",
+        name: "Redis",
+        path: "/assets/logos/redis.svg",
       },
       {
         id: 4,
@@ -103,8 +176,8 @@ export const myProjects = [
       },
       {
         id: 5,
-        name: "OAuth2",
-        path: "/assets/logos/oauth2.svg",
+        name: "FastAPI",
+        path: "/assets/logos/fastapi.svg",
       },
       {
         id: 6,
@@ -115,58 +188,76 @@ export const myProjects = [
   },
   {
     id: 3,
-    title: "Telco Customer Intelligence Platform",
+    title: "PathCode: Database Design & Optimization",
     description:
-      "ML-powered churn prediction system achieving 84% accuracy, reducing customer attrition by 40% and delivering $487K in annual savings.",
+      "Technical leadership role in CS5200 group project developing normalized database schema with 10+ tables. Mentored 3 students on SQL optimization and database design best practices.",
     subDescription: [
-      "Developed advanced ML pipeline with XGBoost and LightGBM achieving 84% AUC-ROC for churn prediction",
-      "Engineered 31 sophisticated features across temporal, financial, behavioral, and engagement categories",
-      "Built real-time prediction API with <100ms latency handling 1,000+ requests per second",
-      "Created interactive Streamlit dashboard with ROI calculator and what-if scenario analysis",
-      "Reduced churn rate from 26.54% to 16% through targeted retention strategies for 523 at-risk customers",
-      "Implemented comprehensive data pipeline with automated quality checks and feature store",
+      "Led team of 4 in designing normalized relational schema (3NF) for PathCode learning platform",
+      "Architected 10+ interconnected tables with foreign key constraints and referential integrity",
+      "Mentored 3 junior students on SQL query optimization, indexing strategies, and ACID principles",
+      "Implemented stored procedures for complex business logic and transaction management",
+      "Achieved 40% query performance improvement through strategic index creation and query rewriting",
+      "Delivered comprehensive ER diagrams, data dictionaries, and technical documentation",
+      "Presented final design to class, demonstrating database normalization and scalability considerations",
     ],
-    href: "https://telco-customer-intelligence.streamlit.app",
-    github: "https://github.com/DiazSk/telco-customer-intelligence",
+    href: "#",
+    github: "#",
     logo: "",
-    image: "/assets/projects/customer-intelligence.png",
+    image: "/assets/projects/pathcode.png",
     metrics: {
-      accuracy: "84%",
-      savings: "$487K/year",
-      churnReduction: "40%",
-      customersRetained: "1,180/year",
-      responseTime: "<100ms"
+      teamSize: "4 members",
+      mentored: "3 students",
+      tables: "10+",
+      optimization: "40%",
+      normalization: "3NF"
     },
+    architecture: `┌──────────────┐
+│   Users      │
+│   Table      │
+└───────┬──────┘
+        │
+     ┌──┴──┐
+     │  FK │
+     └──┬──┘
+        ▼
+┌──────────────┐
+│   Courses    │
+│   Table      │
+└───────┬──────┘
+        │
+     ┌──┴──┐
+     │  FK │
+     └──┬──┘
+        ▼
+┌──────────────┐
+│ Enrollments  │
+│   Table      │
+└───────┬──────┘
+        │
+  ┌─────┴─────┐
+  │           │
+  ▼           ▼
+┌─────┐   ┌─────┐
+│Labs │   │Tests│
+└─────┘   └─────┘
+
+3NF Normalized Schema
+10+ Interconnected Tables`,
     tags: [
       {
         id: 1,
-        name: "Python",
-        path: "/assets/logos/python.svg",
+        name: "PostgreSQL",
+        path: "/assets/logos/postgresql.svg",
       },
       {
         id: 2,
-        name: "XGBoost",
-        path: "/assets/logos/xgboost.svg",
+        name: "SQL",
+        path: "/assets/logos/sql.svg",
       },
       {
         id: 3,
-        name: "LightGBM",
-        path: "/assets/logos/lightgbm.svg",
-      },
-      {
-        id: 4,
-        name: "Streamlit",
-        path: "/assets/logos/streamlit.svg",
-      },
-      {
-        id: 5,
-        name: "FastAPI",
-        path: "/assets/logos/fastapi.svg",
-      },
-      {
-        id: 6,
-        name: "PostgreSQL",
-        path: "/assets/logos/postgresql.svg",
+        name: "Database Design",
+        path: "/assets/logos/database.svg",
       },
     ],
   },
@@ -192,139 +283,141 @@ export const mySocials = [
 
 export const experiences = [
   {
-    title: "Data Scientist & ML Engineer",
-    job: "Portfolio Projects",
-    date: "2025-Portfolio Development",
+    title: "MS Computer Science",
+    job: "Northeastern University - Seattle",
+    date: "Expected May 2027",
     contents: [
-      "Developed 3 production-ready ML systems with measurable business impact totaling $2M+ in annual savings",
-      "Achieved exceptional model performance: 99.2% fraud detection accuracy, 84% churn prediction AUC-ROC, 78% portfolio optimization accuracy",
-      "Built end-to-end data pipelines processing 100,000+ records with automated feature engineering and quality checks",
-      "Deployed scalable APIs handling 1,000+ requests/minute with sub-100ms latency using FastAPI and Docker",
-      "Created interactive dashboards with Streamlit enabling business stakeholders to visualize insights and simulate scenarios",
-      "Implemented enterprise features including OAuth2.0 authentication, multi-tenant architecture, and real-time monitoring",
+      "GPA: 4.0/4.0 - Specialization in Data Engineering and Database Systems",
+      "Relevant Coursework: Database Management Systems (CS5200), Data Structures & Algorithms, Distributed Systems",
+      "Teaching Assistant consideration for Database Management Systems (Spring 2026)",
+      "Active in tech community - participating in career fairs and networking events",
     ],
   },
   {
-    title: "Machine Learning Projects",
-    job: "Technical Implementation",
-    date: "Recent-ML Projects",
+    title: "PathCode Technical Lead",
+    job: "CS5200 Database Project - Northeastern University",
+    date: "Fall 2024",
     contents: [
-      "Credit Card Fraud Detection: Built ensemble ML model preventing $1.6M annual fraud losses with 0.1% false positive rate",
-      "Portfolio Optimization: Engineered institutional-grade platform with 6 ML algorithms achieving 30% return improvement",
-      "Customer Churn Prediction: Developed prediction system reducing attrition by 40% and saving $487K annually",
-      "Feature Engineering: Created 100+ sophisticated features across projects improving model performance by 25-35%",
-      "Production Deployment: Successfully deployed all systems to cloud platforms (Railway, Streamlit Cloud) with 99.9% uptime",
+      "Led team of 4 students in designing normalized database schema (3NF) for learning platform",
+      "Mentored 3 junior team members on SQL optimization, indexing strategies, and query performance",
+      "Architected 10+ interconnected tables with proper foreign key constraints and referential integrity",
+      "Achieved 40% query performance improvement through strategic indexing and query optimization",
+      "Presented final database design demonstrating normalization principles and scalability",
+      "Delivered comprehensive technical documentation including ER diagrams and data dictionaries",
     ],
   },
   {
-    title: "Technical Skills Development",
-    job: "Continuous Learning",
-    date: "2025-Self-Directed Learning",
+    title: "Data Engineering Portfolio",
+    job: "Production-Grade Projects",
+    date: "2024-2025",
     contents: [
-      "Machine Learning: XGBoost, LightGBM, Random Forest, Ensemble Methods, Deep Learning with TensorFlow/PyTorch",
-      "Data Engineering: ETL pipelines, DVC, Feature Stores, Real-time stream processing",
-      "Backend Development: FastAPI, Django, APIs",
-      "Cloud & DevOps: Docker, Kubernetes, CI/CD with GitHub Actions, AWS/Railway deployment",
-      "Databases: PostgreSQL, MongoDB, Redis, SQLite, Time-series databases for financial data",
-      "Visualization: Streamlit, Plotly, Tableau, Power BI for business intelligence dashboards",
+      "Modern E-Commerce Analytics: Built end-to-end platform with Airflow, dbt, Terraform processing 66K+ records with 67% query optimization",
+      "Real-Time Crypto Analyzer: Developed streaming pipeline with Kafka, Flink, Redis achieving sub-100ms latency and exactly-once semantics",
+      "Infrastructure as Code: Managed 24 AWS resources with Terraform including S3 data lakes, CloudWatch monitoring, and SNS notifications",
+      "Data Quality: Implemented Great Expectations framework with 96.3% test pass rate across 146+ tests",
+      "Orchestration: Created 3 production Airflow DAGs with automated error handling and retry logic",
+      "Cost Optimization: Achieved $2,297 annual savings through S3 lifecycle policies and resource optimization",
+    ],
+  },
+  {
+    title: "Technical Skills",
+    job: "Data Engineering Stack",
+    date: "2024-Current",
+    contents: [
+      "Data Pipelines: Apache Airflow, Apache Kafka, Apache Flink, dbt, Great Expectations",
+      "Databases: PostgreSQL, Redis, TimescaleDB - expertise in query optimization and indexing",
+      "Cloud & IaC: AWS (S3, CloudWatch, SNS), Terraform, Docker, Docker Compose",
+      "Languages: Python (production-grade), SQL (advanced optimization), Java (Flink applications)",
+      "Streaming: Event-driven architecture, exactly-once semantics, stateful processing, pub/sub patterns",
+      "Data Modeling: Star schema, dimensional modeling, SCD Type 2, normalization (3NF)",
+      "Daily Practice: SQL on DataLemur, StrataScratch, and HackerRank (6-7 AM routine)",
     ],
   },
 ];
 
-export const reviews = [
+export const certifications = [
   {
-    name: "Financial Services Director",
-    username: "@fintech_leader",
-    body: "The fraud detection system has transformed our operations. 99.2% accuracy is game-changing for our business.",
-    img: "https://robohash.org/fintech",
+    name: "Oracle Cloud Infrastructure Data Science Professional",
+    issuer: "Oracle",
+    date: "2024",
+    credentialId: "Verified",
   },
   {
-    name: "Portfolio Manager",
-    username: "@investment_pro",
-    body: "The Quantum Portfolio Optimizer delivered 30% improvement in returns. Institutional-grade quality!",
-    img: "https://robohash.org/portfolio",
+    name: "IBM Data Engineering Professional Certificate",
+    issuer: "Coursera/IBM",
+    date: "In Progress - Expected Dec 2025",
+    credentialId: "In Progress",
   },
   {
-    name: "Telecom Analytics Head",
-    username: "@telco_analytics",
-    body: "40% churn reduction in just 3 months. The ROI calculator alone justified the entire investment.",
-    img: "https://robohash.org/telecom",
-  },
-  {
-    name: "Data Science Manager",
-    username: "@ds_manager",
-    body: "Impressive technical depth and business acumen. The documentation and code quality are exceptional.",
-    img: "https://robohash.org/datascience",
-  },
-  {
-    name: "CTO",
-    username: "@tech_executive",
-    body: "Production-ready systems with enterprise features. Exactly what we look for in ML engineers.",
-    img: "https://robohash.org/cto",
-  },
-  {
-    name: "Risk Management Lead",
-    username: "@risk_expert",
-    body: "The 0.1% false positive rate while maintaining high fraud detection is industry-leading performance.",
-    img: "https://robohash.org/risk",
+    name: "Google Cloud Data Engineering Certificate",
+    issuer: "Google Cloud",
+    date: "In Progress - Expected Dec 2025",
+    credentialId: "In Progress",
   },
 ];
 
 export const skills = {
-  languages: ["Python", "SQL"],
-  machineLearning: ["XGBoost", "LightGBM", "Random Forest", "NLP"],
-  dataEngineering: ["Pandas", "NumPy", "ETL Pipelines", "Feature Engineering"],
-  frameworks: ["FastAPI", "Streamlit", "Django", "Flask", "React", "TensorFlow", "PyTorch"],
-  databases: ["PostgreSQL", "MongoDB", "Redis", "MySQL", "SQLite"],
-  cloud: ["AWS", "Docker", "Kubernetes", "Railway", "Heroku"],
-  tools: ["Git", "MLflow", "DVC", "Jupyter", "VS Code", "Linux", "CI/CD"],
-  visualization: ["Plotly", "Seaborn", "Matplotlib", "Tableau", "Power BI"],
+  dataEngineering: ["Apache Airflow", "Apache Kafka", "Apache Flink", "dbt", "Great Expectations", "ETL/ELT"],
+  databases: ["PostgreSQL", "Redis", "TimescaleDB", "MySQL", "MongoDB"],
+  cloudAndInfra: ["AWS (S3, CloudWatch, SNS)", "Terraform", "Docker", "Kubernetes"],
+  languages: ["Python", "SQL", "Java (Flink)", "Bash"],
+  dataModeling: ["Star Schema", "Dimensional Modeling", "SCD Type 2", "Normalization (3NF)"],
+  streaming: ["Kafka", "Flink", "Redis Pub/Sub", "WebSocket", "Event-Driven Architecture"],
+  tools: ["Git", "Linux", "VS Code", "Jupyter", "DBeaver", "Metabase"],
+  practices: ["CI/CD", "IaC", "Testing", "Documentation", "Cost Optimization"],
 };
-
-export const certifications = [
-  {
-    name: "Machine Learning Specialization",
-    issuer: "Coursera/Stanford",
-    date: "2024",
-    credentialId: "CERT-ML-2024",
-  },
-  {
-    name: "Deep Learning Specialization",
-    issuer: "deeplearning.ai",
-    date: "2024",
-    credentialId: "CERT-DL-2024",
-  },
-  {
-    name: "AWS Certified Machine Learning",
-    issuer: "Amazon Web Services",
-    date: "2024",
-    credentialId: "AWS-ML-2024",
-  },
-];
 
 export const achievements = [
   {
-    metric: "$2M+",
-    description: "Annual savings delivered",
+    metric: "66K+",
+    description: "Records processed daily",
   },
   {
-    metric: "99.2%",
-    description: "Fraud detection accuracy",
+    metric: "96.3%",
+    description: "Data quality test pass rate",
+  },
+  {
+    metric: "67%",
+    description: "Query optimization improvement",
   },
   {
     metric: "3",
-    description: "Production ML systems",
-  },
-  {
-    metric: "100K+",
-    description: "Predictions processed daily",
+    description: "Production data pipelines",
   },
   {
     metric: "<100ms",
-    description: "API response time",
+    description: "API response latency",
   },
   {
-    metric: "40%",
-    description: "Churn reduction achieved",
+    metric: "$2.3K",
+    description: "Annual cost savings",
+  },
+];
+
+// Reviews section REMOVED - replaced with technical achievements
+export const technicalHighlights = [
+  {
+    category: "Stream Processing",
+    achievement: "Implemented exactly-once semantics with Flink checkpointing and PostgreSQL UPSERT",
+  },
+  {
+    category: "Infrastructure",
+    achievement: "Managed 24 AWS resources with Terraform IaC including lifecycle policies",
+  },
+  {
+    category: "Data Quality",
+    achievement: "96.3% test pass rate across 146 dbt tests + 15 Great Expectations checks",
+  },
+  {
+    category: "Optimization",
+    achievement: "67% query performance improvement and 99% reduction in Redis operations",
+  },
+  {
+    category: "Architecture",
+    achievement: "Star schema with SCD Type 2 + event-driven streaming with pub/sub",
+  },
+  {
+    category: "Leadership",
+    achievement: "Led CS5200 database project mentoring 3 students on SQL optimization",
   },
 ];

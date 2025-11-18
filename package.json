@@ -16,6 +16,7 @@
     "@tailwindcss/vite": "^4.1.11",
     "cobe": "^0.6.4",
     "framer-motion": "^11.18.2",
+    "gsap": "^3.12.5",
     "motion": "^12.23.12",
     "prop-types": "^15.8.1",
     "react": "^19.1.0",

@@ -1,99 +1,103 @@
-import { FlipWords } from "./FlipWords";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
+import GradientText from "./GradientText";
+import MetricsCounter from "./MetricsCounter";
 
 const HeroText = () => {
-  const words = ["Secure", "Modern", "Scalable"];
   const variants = {
-    hidden: { opacity: 0, x: -50 },
-    visible: { opacity: 1, x: 0 },
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0 },
   };
+
   return (
-    <div className="z-10 mt-20 text-center md:mt-40 md:text-left rounded-3xl bg-clip-text">
+    <div className="z-10 mt-20 text-center md:mt-40 md:text-left">
       {/* Desktop View */}
       <div className="flex-col hidden md:flex c-space">
         <motion.h1
-          className="text-4xl font-medium"
+          className="text-4xl font-medium text-white/90"
           variants={variants}
           initial="hidden"
           animate="visible"
-          transition={{ delay: 1 }}
+          transition={{ delay: 0.5, duration: 0.8 }}
         >
           Hi I&apos;m Zaid
         </motion.h1>
-        <div className="flex flex-col items-start">
-          <motion.p
-            className="text-5xl font-medium text-neutral-300"
-            variants={variants}
-            initial="hidden"
-            animate="visible"
-            transition={{ delay: 1.2 }}
-          >
-            A Data Scientist <br /> Dedicated to Crafting
-          </motion.p>
-          <motion.div
-            variants={variants}
-            initial="hidden"
-            animate="visible"
-            transition={{ delay: 1.5 }}
-          >
-            <FlipWords
-              words={words}
-              className="font-black text-white text-8xl"
-            />
-          </motion.div>
-          <motion.p
-            className="text-4xl font-medium text-neutral-300"
-            variants={variants}
-            initial="hidden"
-            animate="visible"
-            transition={{ delay: 1.8 }}
-          >
-            Data Solutions
-          </motion.p>
-        </div>
-      </div>
-      {/* Mobile View */}
-      <div className="flex- flex-col space-y-6 md:hidden">
-        <motion.p
-          className="text-4xl font-medium"
+        
+        <motion.div
+          className="mt-4"
           variants={variants}
           initial="hidden"
           animate="visible"
-          transition={{ delay: 1 }}
+          transition={{ delay: 0.8, duration: 0.8 }}
         >
-          Hi,I&apos;m Zaid
-        </motion.p>
-        <div>
-          <motion.p
-            className="text-5xl font-black text-neutral-300"
-            variants={variants}
-            initial="hidden"
-            animate="visible"
-            transition={{ delay: 1.2 }}
-          >
+          <p className="text-5xl font-medium text-neutral-200 mb-2">
+            Data Engineer
+          </p>
+          <p className="text-5xl font-medium text-neutral-200 mb-4">
             Building
-          </motion.p>
-          <motion.div
-            variants={variants}
-            initial="hidden"
-            animate="visible"
-            transition={{ delay: 1.5 }}
-          >
-            <FlipWords
-              words={words}
-              className="font-bold text-white text-7xl"
-            />
-          </motion.div>
-          <motion.p
-            className="text-4xl font-black text-neutral300"
-            variants={variants}
-            initial="hidden"
-            animate="visible"
-            transition={{ delay: 1.8 }}
-          >
-            Web Applications
-          </motion.p>
-        </div>
+          </p>
+          
+          <div className="text-8xl font-black mb-4">
+            <GradientText>
+              Scalable
+            </GradientText>
+          </div>
+          
+          <p className="text-4xl font-medium text-neutral-200">
+            Data Pipelines
+          </p>
+        </motion.div>
+
+        {/* Metrics Counter - Desktop */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.2, duration: 0.8 }}
+        >
+          <MetricsCounter />
+        </motion.div>
+      </div>
+
+      {/* Mobile View */}
+      <div className="flex flex-col space-y-6 md:hidden">
+        <motion.p
+          className="text-4xl font-medium text-white/90"
+          variants={variants}
+          initial="hidden"
+          animate="visible"
+          transition={{ delay: 0.5 }}
+        >
+          Hi, I&apos;m Zaid
+        </motion.p>
+        
+        <motion.div
+          variants={variants}
+          initial="hidden"
+          animate="visible"
+          transition={{ delay: 0.8 }}
+        >
+          <p className="text-4xl font-black text-neutral-200 mb-4">
+            Building
+          </p>
+          
+          <div className="text-6xl font-bold mb-4">
+            <GradientText>
+              Scalable
+            </GradientText>
+          </div>
+          
+          <p className="text-4xl font-black text-neutral-200">
+            Data Pipelines
+          </p>
+        </motion.div>
+
+        {/* Metrics Counter - Mobile */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.2 }}
+        >
+          <MetricsCounter />
+        </motion.div>
       </div>
     </div>
   );

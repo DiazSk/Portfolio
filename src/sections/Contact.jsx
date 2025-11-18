@@ -2,6 +2,11 @@
 import { useState } from "react";
 import Alert from "../components/Alert";
 import { Particles } from "../components/Particles";
+import GradientText from "../components/GradientText";
+import ShinyText from "../components/ShinyText";
+import GlitchText from "../components/GlitchText";
+import MagneticButton from "../components/MagneticButton";
+import AnimatedGridPattern from "../components/AnimatedGridPattern";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -79,6 +84,13 @@ const Contact = () => {
 
   return (
     <section id="contact" className="relative flex items-center c-space section-spacing">
+      <AnimatedGridPattern 
+        width={50}
+        height={50}
+        numSquares={30}
+        maxOpacity={0.2}
+        className="absolute inset-0 -z-40"
+      />
       <Particles
         className="absolute inset-0 -z-50"
         quantity={100}
@@ -89,7 +101,15 @@ const Contact = () => {
       {showAlert && <Alert type={alertType} text={alertMessage} />}
       <div className="flex flex-col items-center justify-center max-w-md p-5 mx-auto border border-white/10 rounded-2xl bg-primary">
         <div className="flex flex-col items-start w-full gap-5 mb-10">
-          <h2 className="text-heading">Let&apos;s Talk</h2>
+          <h2 className="text-heading">
+            <GradientText 
+              colors={['#40ffaa', '#4079ff', '#ff6b6b', '#4079ff', '#40ffaa']}
+              animationSpeed={5}
+              className="text-5xl"
+            >
+              Let&apos;s Talk
+            </GradientText>
+          </h2>
           <p className="font-normal text-neutral-400">
             Looking for a Data Analyst or Data Scientist? I build production ML systems 
             that deliver measurable business impact. Let's discuss your project!
@@ -153,12 +173,11 @@ const Contact = () => {
             </p>
           </div>
           <div className="flex gap-3">
-            <button
+            <MagneticButton
               type="submit"
               disabled={isLoading}
-              className={`flex-1 px-1 py-3 text-lg text-center rounded-md cursor-pointer bg-radial from-lavender to-royal hover-animation ${
-                isLoading ? 'opacity-50 cursor-not-allowed' : ''
-              }`}
+              strength={0.3}
+              className={`flex-1 ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
             >
               {isLoading ? (
                 <span className="flex items-center justify-center">
@@ -166,12 +185,14 @@ const Contact = () => {
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                   </svg>
-                  Sending...
+                  <ShinyText text="Sending..." speed={2} />
                 </span>
               ) : (
-                "Send Message"
+                <GlitchText speed={0.8} enableOnHover={true}>
+                  Send Message
+                </GlitchText>
               )}
-            </button>
+            </MagneticButton>
             <a
               href={`mailto:zaid07sk@gmail.com?subject=Portfolio Inquiry from ${formData.name || 'Your Website'}&body=${encodeURIComponent(formData.message || 'Hi Zaid, I saw your ML/Data Science portfolio and would like to discuss...')}`}
               className="px-4 py-3 text-lg text-center rounded-md cursor-pointer bg-gradient-to-r from-navy to-midnight hover-animation text-white flex items-center"

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "motion/react";
+import GradientText from "../components/GradientText";
 function Navigation() {
   return (
     <ul className="nav-ul">
@@ -34,9 +35,15 @@ const Navbar = () => {
         <div className="flex items-center justify-between py-2 sm:py-0">
           <a
             href="/"
-            className="text-xl font-bold transition-colors text-neutral-400 hover:text-white"
+            className="text-xl font-bold transition-colors"
           >
-            Zaid
+            <GradientText 
+              colors={['#40ffaa', '#4079ff', '#40ffaa']}
+              animationSpeed={4}
+              className="text-xl"
+            >
+              Zaid
+            </GradientText>
           </a>
           <button
             onClick={() => setIsOpen(!isOpen)}
