@@ -41,7 +41,7 @@ const About = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="flex items-end grid-default-color grid-1"
+          className="flex items-end grid-default-color grid-1 p-6"
         >
           <img
             src="assets/coding-pov.png"
@@ -65,7 +65,7 @@ const About = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="grid-default-color grid-2"
+          className="grid-default-color grid-2 p-6"
         >
           <div
             ref={grid2Container}
@@ -123,7 +123,7 @@ const About = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
-          className="grid-black-color grid-3"
+          className="grid-black-color grid-3 p-6 flex flex-col justify-center"
         >
           <div className="z-10 w-[50%]">
             <p className="headtext">Location</p>
@@ -144,7 +144,7 @@ const About = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
-          className="grid-special-color grid-4"
+          className="grid-special-color grid-4 p-6"
         >
           <div className="flex flex-col items-center justify-center gap-4 size-full">
             <p className="text-center headtext">
@@ -165,7 +165,7 @@ const About = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.5 }}
-          className="grid-default-color grid-5"
+          className="grid-default-color grid-5 p-6 flex flex-col justify-center"
         >
           <div className="z-10 w-[50%]">
             <p className="headText">Tech Stack</p>
