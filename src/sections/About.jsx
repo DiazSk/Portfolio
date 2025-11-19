@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { motion } from "framer-motion";
 import Card from "../components/Card";
-import { Globe } from "../components/globe";
+import { Globe } from "../components/Globe";
 import CopyEmailButton from "../components/CopyEmailButton";
 import { Frameworks } from "../components/Frameworks";
 import PipelineFlow from "../components/PipelineFlow";
@@ -9,7 +9,7 @@ import Magnet from "../components/Magnet";
 
 const About = () => {
   const grid2Container = useRef();
-  
+
   return (
     <section className="c-space section-spacing" id="about">
       <motion.div
@@ -19,7 +19,7 @@ const About = () => {
       >
         <h2 className="text-heading">About Me</h2>
       </motion.div>
-      
+
       {/* Data Pipeline Flow Visualization */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -51,14 +51,14 @@ const About = () => {
           <div className="z-10">
             <p className="headtext">Hi, I&apos;m Zaid</p>
             <p className="subtext">
-              MS Computer Science student at Northeastern University (4.0 GPA) specializing in Data Engineering. 
-              Built production pipelines processing 66K+ records with Airflow, Kafka, Flink, and dbt. Achieved 
+              MS Computer Science student at Northeastern University (4.0 GPA) specializing in Data Engineering.
+              Built production pipelines processing 66K+ records with Airflow, Kafka, Flink, and dbt. Achieved
               67% query optimization and 96.3% test pass rate. Oracle Cloud Infrastructure Data Science Professional certified.
             </p>
           </div>
           <div className="absolute inset-x-0 pointer-events-none -bottom-4 h-1/2 sm:h-1/3 bg-gradient-to-t from-indigo" />
         </motion.div>
-        
+
         {/* Grid 2 - Data Engineering Concepts */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -116,7 +116,7 @@ const About = () => {
             />
           </div>
         </motion.div>
-        
+
         {/* Grid 3 - Location/Time Zone */}
         <motion.div
           initial={{ opacity: 0, x: 50 }}
@@ -128,8 +128,8 @@ const About = () => {
           <div className="z-10 w-[50%]">
             <p className="headtext">Location</p>
             <p className="subtext">
-              Based in Seattle, WA (Northeastern University campus). 
-              Open to remote internships and co-ops nationwide. 
+              Based in Seattle, WA (Northeastern University campus).
+              Open to remote internships and co-ops nationwide.
               Targeting Summer 2026 Data Engineering internships.
             </p>
           </div>
@@ -137,7 +137,7 @@ const About = () => {
             <Globe />
           </figure>
         </motion.div>
-        
+
         {/* Grid 4 - Contact CTA */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -158,7 +158,7 @@ const About = () => {
             </Magnet>
           </div>
         </motion.div>
-        
+
         {/* Grid 5 - Tech Stack */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
@@ -170,8 +170,8 @@ const About = () => {
           <div className="z-10 w-[50%]">
             <p className="headText">Tech Stack</p>
             <p className="subtext">
-              Specialized in building production-grade data pipelines with Airflow orchestration, 
-              stream processing with Kafka/Flink, and infrastructure as code with Terraform. 
+              Specialized in building production-grade data pipelines with Airflow orchestration,
+              stream processing with Kafka/Flink, and infrastructure as code with Terraform.
               Strong SQL optimization and dimensional modeling expertise.
             </p>
           </div>

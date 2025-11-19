@@ -52,7 +52,7 @@ export default function DecryptedText({
             return text
               .split('')
               .map((char, index) => {
-                const iterationsForChar = Math.floor(currentIteration / text.length);
+
                 const currentRevealIndex = sequential
                   ? Math.min(Math.floor(currentIteration / maxIterations), text.length - 1)
                   : revealOrder.findIndex((i) => i === index);
@@ -115,11 +115,12 @@ export default function DecryptedText({
         { threshold: 0.1 }
       );
 
-      observer.observe(containerRef.current);
+      const currentContainer = containerRef.current;
+      observer.observe(currentContainer);
 
       return () => {
-        if (containerRef.current) {
-          observer.unobserve(containerRef.current);
+        if (currentContainer) {
+          observer.unobserve(currentContainer);
         }
       };
     }

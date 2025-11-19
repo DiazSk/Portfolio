@@ -16,14 +16,12 @@ const Alert = ({ type, text }) => {
         transition={{ duration: 0.3, ease: "easeInOut" }}
       >
         <div
-          className={`p-2 ${
-            type === "danger" ? "bg-red-800" : "bg-royal"
-          } items-center text-indigo-100 leading-none lg:rounded-full flex lg:inline-flex rounded-md p-5`}
+          className={`p-2 ${type === "danger" ? "bg-red-800" : "bg-royal"
+            } items-center text-indigo-100 leading-none lg:rounded-full flex lg:inline-flex rounded-md p-5`}
         >
           <p
-            className={`flex rounded-full ${
-              type === "danger" ? "bg-red-500" : "bg-lavender"
-            } uppercase px-2 py-1 text-xs font-semibold mr-3`}
+            className={`flex rounded-full ${type === "danger" ? "bg-red-500" : "bg-lavender"
+              } uppercase px-2 py-1 text-xs font-semibold mr-3`}
           >
             {type === "danger" ? "Failed" : "Success"}
           </p>

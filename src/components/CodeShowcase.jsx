@@ -136,7 +136,7 @@ const CodeSnippet = ({ snippet, isActive }) => {
               </div>
               <pre className="overflow-x-auto">
                 <code className="text-sm text-cyan-400 font-mono leading-relaxed">
-{snippet.code}
+                  {snippet.code}
                 </code>
               </pre>
             </div>
@@ -165,7 +165,7 @@ const CodeShowcase = () => {
         >
           <h2 className="text-heading mb-4">Production Code Samples</h2>
           <p className="text-lg text-gray-400 mb-8 max-w-3xl">
-            Real code from production data engineering systems - Airflow orchestration, 
+            Real code from production data engineering systems - Airflow orchestration,
             Flink stream processing, dbt transformations, and Terraform IaC
           </p>
         </motion.div>
@@ -182,11 +182,10 @@ const CodeShowcase = () => {
             <Magnet key={snippet.id} strength={0.2}>
               <button
                 onClick={() => setActiveTab(idx)}
-                className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 whitespace-nowrap ${
-                  activeTab === idx
-                    ? `bg-gradient-to-r ${snippet.gradient} text-white shadow-lg`
-                    : 'bg-gray-800/50 text-gray-400 hover:bg-gray-800 border border-gray-700/50'
-                }`}
+                className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 whitespace-nowrap ${activeTab === idx
+                  ? `bg-gradient-to-r ${snippet.gradient} text-white shadow-lg`
+                  : 'bg-gray-800/50 text-gray-400 hover:bg-gray-800 border border-gray-700/50'
+                  }`}
               >
                 <span className="mr-2">{snippet.icon}</span>
                 {snippet.language}
@@ -198,10 +197,10 @@ const CodeShowcase = () => {
         {/* Code Display */}
         <div className="min-h-[400px]">
           {codeSnippets.map((snippet, idx) => (
-            <CodeSnippet 
-              key={snippet.id} 
-              snippet={snippet} 
-              isActive={activeTab === idx} 
+            <CodeSnippet
+              key={snippet.id}
+              snippet={snippet}
+              isActive={activeTab === idx}
             />
           ))}
         </div>
