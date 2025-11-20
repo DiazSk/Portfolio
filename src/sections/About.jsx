@@ -4,7 +4,7 @@ import Card from "../components/Card";
 import { Globe } from "../components/Globe";
 import CopyEmailButton from "../components/CopyEmailButton";
 import { Frameworks } from "../components/Frameworks";
-import PipelineFlow from "../components/PipelineFlow";
+
 import Magnet from "../components/Magnet";
 import MagicBento from "../components/MagicBento";
 
@@ -141,7 +141,7 @@ const About = () => {
   ];
 
   return (
-    <section className="c-space section-spacing" id="about">
+    <section className="c-space section-spacing flex flex-col justify-center" id="about">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -150,19 +150,7 @@ const About = () => {
         <h2 className="text-heading">About Me</h2>
       </motion.div>
 
-      {/* Data Pipeline Flow Visualization */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.2 }}
-        className="mt-8 mb-12"
-      >
-        <h3 className="text-2xl font-semibold text-white mb-4">
-          End-to-End Data Pipeline Architecture
-        </h3>
-        <PipelineFlow />
-      </motion.div>
+
 
       <div className="mt-12">
         <MagicBento

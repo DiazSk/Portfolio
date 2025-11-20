@@ -1,121 +1,145 @@
+import { useState } from "react";
 import { myProjects } from "../constants";
-import { motion } from "framer-motion";
-import SpotlightCard from "../components/SpotlightCard";
-import TiltCard from "../components/TiltCard";
+import { motion, AnimatePresence } from "framer-motion";
+import TerminalList from "../components/TerminalList";
 
 const Projects = () => {
+  const [selectedProject, setSelectedProject] = useState(myProjects[0]);
+
   return (
-    <section id="work" className="relative c-space section-spacing">
+    <section id="work" className="c-space section-spacing min-h-screen flex flex-col justify-center">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
+        className="mb-12"
       >
-        <h2 className="text-heading mb-4">Featured Projects</h2>
-        <p className="text-lg text-gray-400 mb-12 max-w-3xl">
-          Production-grade data engineering systems with measurable impact
-        </p>
+        <h2 className="text-heading mb-4">Selected Work</h2>
+        <div className="text-lg text-gray-400 max-w-3xl font-mono">
+          <p className="mb-2">{">"} Accessing project archives...</p>
+          <p className="text-white">{">"} displaying_production_grade_systems.log</p>
+        </div>
       </motion.div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-12">
-        {myProjects.map((project, index) => (
-          <motion.div
-            key={project.id}
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.2, duration: 0.6 }}
-          >
-            <SpotlightCard className="h-full">
-              <TiltCard className="p-6 h-full">
-                {/* Project Header */}
-                <h3 className="text-2xl font-bold text-white mb-2">
-                  {project.title}
-                </h3>
-                <p className="text-gray-400 text-sm mb-4">
-                  {project.description}
-                </p>
+      <div className="flex flex-col lg:flex-row gap-8 h-[800px] w-full">
+        {/* Left Panel: Terminal List */}
+        <TerminalList
+          projects={myProjects}
+          activeId={selectedProject.id}
+          onSelect={setSelectedProject}
+        />
 
-                {/* Architecture Preview */}
-                {project.architecture && (
-                  <div className="mb-6 bg-black/40 border border-cyan-500/20 rounded-lg p-4 overflow-x-auto">
-                    <pre className="text-xs text-cyan-400/80 font-mono leading-relaxed whitespace-pre">
-                      {project.architecture.split('\n').slice(0, 8).join('\n')}
-                    </pre>
-                    <p className="text-xs text-gray-500 mt-2">+ More in details...</p>
-                  </div>
-                )}
+        {/* Right Panel: The Viewport */}
+        <div className="flex-1 relative bg-black/40 border border-white/10 rounded-2xl overflow-hidden backdrop-blur-sm flex flex-col">
+          {/* Glass Reflection Effect */}
+          <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none z-10" />
 
-                {/* Metrics Grid */}
-                <div className="grid grid-cols-2 gap-3 mb-6">
-                  {Object.entries(project.metrics).slice(0, 4).map(([key, value]) => (
-                    <motion.div
-                      key={key}
-                      whileHover={{ scale: 1.05 }}
-                      className="bg-gradient-to-br from-cyan-500/10 to-purple-500/10 border border-cyan-500/20 rounded-lg p-3"
-                    >
-                      <div className="text-2xl font-bold text-cyan-400">
-                        {value}
-                      </div>
-                      <div className="text-xs text-gray-400 capitalize">
-                        {key.replace(/([A-Z])/g, ' $1').trim()}
-                      </div>
-                    </motion.div>
-                  ))}
+          {/* Scanline Effect */}
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] z-20 bg-[length:100%_4px,3px_100%] pointer-events-none opacity-20" />
+
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={selectedProject.id}
+              initial={{ opacity: 0, scale: 0.98 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.98 }}
+              transition={{ duration: 0.3 }}
+              className="flex flex-col h-full p-6 relative z-30 overflow-y-auto custom-scrollbar"
+            >
+              {/* Header */}
+              <div className="flex flex-col md:flex-row justify-between items-start mb-6 border-b border-white/10 pb-6 gap-6">
+                <div className="flex-1">
+                  <h3 className="text-3xl font-bold text-white mb-2">
+                    {selectedProject.title}
+                  </h3>
+                  <p className="text-gray-400">
+                    {selectedProject.description}
+                  </p>
                 </div>
 
-                {/* Tech Stack */}
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.tags.slice(0, 6).map((tag) => (
-                    <motion.div
-                      key={tag.id}
-                      whileHover={{ scale: 1.1, rotate: 5 }}
-                      className="flex items-center gap-2 bg-gray-800/50 border border-gray-700/50 rounded-lg px-3 py-1.5"
-                    >
-                      <img 
-                        src={tag.path} 
-                        alt={tag.name} 
-                        className="w-4 h-4"
-                      />
-                      <span className="text-xs text-gray-300">{tag.name}</span>
-                    </motion.div>
-                  ))}
-                </div>
-
-                {/* Action Links */}
-                <div className="flex gap-3">
-                  <motion.a
-                    href={project.github}
+                <div className="flex flex-col items-end gap-3 min-w-fit">
+                  <a
+                    href={selectedProject.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="flex-1 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-medium py-3 px-6 rounded-lg text-center transition-all duration-300 shadow-lg shadow-cyan-500/20"
+                    className="px-4 py-2 bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 rounded text-xs font-mono text-cyan-400 transition-all hover:scale-105 active:scale-95 flex items-center gap-2"
                   >
-                    View Code
-                  </motion.a>
-                  
-                  {project.href !== "#" && (
-                    <motion.a
-                      href={project.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="flex items-center gap-2 bg-gray-800 hover:bg-gray-700 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 border border-gray-700"
-                    >
-                      Details
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                      </svg>
-                    </motion.a>
+                    <span>[VIEW_SOURCE]</span>
+                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                  </a>
+
+                  <div className="text-right font-mono text-xs text-gray-500 space-y-1 bg-black/40 p-3 rounded border border-white/5">
+                    <div className="flex items-center justify-end gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+                      <p>STATUS: DEPLOYED</p>
+                    </div>
+                    <p>UPTIME: 99.9%</p>
+                    <p>REGION: US-EAST-1</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Architecture Blueprint */}
+              <div className="relative mb-8 group">
+                <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-lg blur opacity-20 group-hover:opacity-40 transition duration-500" />
+                <div className="relative bg-black/60 border border-white/10 rounded-lg p-4 overflow-hidden">
+                  <div className="absolute top-2 right-2 text-[10px] font-mono text-cyan-500/50 border border-cyan-500/30 px-2 py-1 rounded">
+                    SYSTEM_ARCHITECTURE_V1.0
+                  </div>
+
+                  {selectedProject.architectureImage ? (
+                    <img
+                      src={selectedProject.architectureImage}
+                      alt="Architecture Diagram"
+                      className="w-full h-auto object-contain rounded shadow-2xl"
+                    />
+                  ) : (
+                    <pre className="text-xs text-cyan-400/80 font-mono leading-relaxed whitespace-pre overflow-x-auto">
+                      {selectedProject.architecture}
+                    </pre>
                   )}
                 </div>
-              </TiltCard>
-            </SpotlightCard>
-          </motion.div>
-        ))}
+              </div>
+
+              {/* System Stats Grid */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                {Object.entries(selectedProject.metrics).map(([key, value]) => (
+                  <div
+                    key={key}
+                    className="bg-white/5 border border-white/5 p-4 rounded-lg hover:border-cyan-500/30 transition-colors group"
+                  >
+                    <p className="text-xs text-gray-500 font-mono uppercase mb-1 group-hover:text-cyan-400 transition-colors">
+                      {key.replace(/([A-Z])/g, " $1").trim()}
+                    </p>
+                    <p className="text-xl font-bold text-white">{value}</p>
+                  </div>
+                ))}
+              </div>
+
+              {/* Tech Stack Modules */}
+              <div>
+                <h4 className="text-sm font-mono text-gray-500 mb-4 uppercase">
+                  // Loaded Modules
+                </h4>
+                <div className="flex flex-wrap gap-3">
+                  {selectedProject.tags.map((tag) => (
+                    <div
+                      key={tag.id}
+                      className="flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-2 rounded-full hover:bg-white/10 transition-colors"
+                    >
+                      <img
+                        src={tag.path}
+                        alt={tag.name}
+                        className="w-4 h-4"
+                      />
+                      <span className="text-sm text-gray-300">{tag.name}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
       </div>
     </section>
   );

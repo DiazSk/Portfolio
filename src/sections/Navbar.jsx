@@ -1,34 +1,38 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import GradientText from "../components/GradientText";
+import ShinyText from "../components/ShinyText";
+
 function Navigation() {
   return (
     <ul className="nav-ul">
       <li className="nav-li">
         <a className="nav-link" href="#home">
-          Home
+          <ShinyText text="Home" disabled={false} speed={3} className="hover:text-white hover:scale-110 transition-all duration-300" />
         </a>
       </li>
       <li className="nav-li">
         <a className="nav-link" href="#about">
-          About
+          <ShinyText text="About" disabled={false} speed={3} className="hover:text-white hover:scale-110 transition-all duration-300" />
         </a>
       </li>
       <li className="nav-li">
         <a className="nav-link" href="#work">
-          Work
+          <ShinyText text="Work" disabled={false} speed={3} className="hover:text-white hover:scale-110 transition-all duration-300" />
         </a>
       </li>
       <li className="nav-li">
         <a className="nav-link" href="#contact">
-          Contact
+          <ShinyText text="Contact" disabled={false} speed={3} className="hover:text-white hover:scale-110 transition-all duration-300" />
         </a>
       </li>
     </ul>
   );
 }
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+
   return (
     <div className="fixed inset-x-0 z-20 w-full backdrop-blur-lg bg-primary/40">
       <div className="mx-auto c-space max-w-7xl">
@@ -37,7 +41,7 @@ const Navbar = () => {
             href="/"
             className="text-xl font-bold transition-colors"
           >
-            <GradientText 
+            <GradientText
               colors={['#40ffaa', '#4079ff', '#40ffaa']}
               animationSpeed={4}
               className="text-xl"

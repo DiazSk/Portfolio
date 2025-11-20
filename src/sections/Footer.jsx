@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { mySocials } from "../constants";
 import ShinyText from "../components/ShinyText";
 

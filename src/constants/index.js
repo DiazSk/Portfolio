@@ -17,6 +17,7 @@ export const myProjects = [
     github: "https://github.com/DiazSk/Modern-E-commerce-Analytics-Platform",
     logo: "",
     image: "/assets/projects/ecommerce-analytics.png",
+    architectureImage: "/assets/projects/ecommerce-architecture.png",
     metrics: {
       recordsProcessed: "66,000+",
       testPassRate: "96.3%",
@@ -109,6 +110,7 @@ export const myProjects = [
     github: "https://github.com/DiazSk/Real-Time-Cryptocurrency-Market-Analyzer",
     logo: "",
     image: "/assets/projects/crypto-analyzer.png",
+    architectureImage: "/assets/projects/crypto-architecture.png",
     metrics: {
       latency: "60-70s",
       apiResponse: "<100ms",
@@ -186,81 +188,7 @@ export const myProjects = [
       },
     ],
   },
-  {
-    id: 3,
-    title: "PathCode: Database Design & Optimization",
-    description:
-      "Technical leadership role in CS5200 group project developing normalized database schema with 10+ tables. Mentored 3 students on SQL optimization and database design best practices.",
-    subDescription: [
-      "Led team of 4 in designing normalized relational schema (3NF) for PathCode learning platform",
-      "Architected 10+ interconnected tables with foreign key constraints and referential integrity",
-      "Mentored 3 junior students on SQL query optimization, indexing strategies, and ACID principles",
-      "Implemented stored procedures for complex business logic and transaction management",
-      "Achieved 40% query performance improvement through strategic index creation and query rewriting",
-      "Delivered comprehensive ER diagrams, data dictionaries, and technical documentation",
-      "Presented final design to class, demonstrating database normalization and scalability considerations",
-    ],
-    href: "#",
-    github: "#",
-    logo: "",
-    image: "/assets/projects/pathcode.png",
-    metrics: {
-      teamSize: "4 members",
-      mentored: "3 students",
-      tables: "10+",
-      optimization: "40%",
-      normalization: "3NF"
-    },
-    architecture: `┌──────────────┐
-│   Users      │
-│   Table      │
-└───────┬──────┘
-        │
-     ┌──┴──┐
-     │  FK │
-     └──┬──┘
-        ▼
-┌──────────────┐
-│   Courses    │
-│   Table      │
-└───────┬──────┘
-        │
-     ┌──┴──┐
-     │  FK │
-     └──┬──┘
-        ▼
-┌──────────────┐
-│ Enrollments  │
-│   Table      │
-└───────┬──────┘
-        │
-  ┌─────┴─────┐
-  │           │
-  ▼           ▼
-┌─────┐   ┌─────┐
-│Labs │   │Tests│
-└─────┘   └─────┘
 
-3NF Normalized Schema
-10+ Interconnected Tables`,
-    tags: [
-      {
-        id: 1,
-        name: "PostgreSQL",
-        path: "/assets/logos/postgresql.svg",
-      },
-      {
-        id: 2,
-        name: "SQL",
-        path: "/assets/logos/sql.svg",
-      },
-      {
-        id: 3,
-        name: "Database Design",
-        path: "/assets/logos/database.svg",
-      },
-    ],
-  },
 ];
 
 export const mySocials = [

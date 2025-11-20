@@ -95,11 +95,11 @@ TechnicalCard.propTypes = {
 export default function Testimonial() {
   const firstRow = technicalHighlights.slice(0, 3);
   const secondRow = technicalHighlights.slice(3, 6);
-  
+
   return (
-    <div className="items-start mt-25 md:mt-35 c-space">
+    <div className="items-start mt-25 md:mt-35 c-space pb-20">
       <h2 className="text-heading">
-        <GradientText 
+        <GradientText
           colors={['#40ffaa', '#4079ff', '#ff6b6b', '#4079ff', '#40ffaa']}
           animationSpeed={6}
           className="text-5xl"
@@ -108,13 +108,7 @@ export default function Testimonial() {
         </GradientText>
       </h2>
       <p className="text-lg text-gray-400 mt-3 mb-8 max-w-3xl">
-        <DecryptedText 
-          text="Real metrics from production data engineering systems with measurable impact"
-          speed={30}
-          maxIterations={8}
-          animateOn="view"
-          className="text-gray-400 text-lg"
-        />
+        Real metrics from production data engineering systems with measurable impact
       </p>
       <div className="relative flex flex-col items-center justify-center w-full mt-12 overflow-hidden">
         <Marquee pauseOnHover className="[--duration:30s] mb-6">

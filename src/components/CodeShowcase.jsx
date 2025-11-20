@@ -1,16 +1,14 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import PropTypes from 'prop-types';
-import SpotlightCard from './SpotlightCard';
-import Magnet from './Magnet';
+import { useState, useEffect, useRef } from 'react';
+import { motion, useMotionValue, useTransform, useSpring, AnimatePresence } from 'framer-motion';
 
 const codeSnippets = [
   {
     id: 1,
-    title: "Airflow DAG - Daily E-commerce Pipeline",
+    title: "ecommerce_pipeline.py",
     language: "Python",
-    icon: "🔄",
-    gradient: "from-blue-500 to-cyan-500",
+    icon: "🐍",
+    color: "text-blue-400",
+    glow: "shadow-blue-500/20",
     code: `@dag(
     dag_id='ecommerce_analytics_pipeline',
     schedule_interval='@daily',
@@ -27,10 +25,11 @@ def ecommerce_pipeline():
   },
   {
     id: 2,
-    title: "Flink Stream Processing - Crypto Aggregation",
+    title: "CryptoAggregator.java",
     language: "Java",
-    icon: "⚡",
-    gradient: "from-purple-500 to-pink-500",
+    icon: "☕",
+    color: "text-orange-400",
+    glow: "shadow-orange-500/20",
     code: `public class CryptoAggregator 
     extends ProcessWindowFunction<CryptoEvent, CryptoMetrics, 
                                    String, TimeWindow> {
@@ -55,10 +54,11 @@ def ecommerce_pipeline():
   },
   {
     id: 3,
-    title: "dbt SQL - Star Schema Transformation",
+    title: "fact_orders.sql",
     language: "SQL",
     icon: "🗄️",
-    gradient: "from-green-500 to-emerald-500",
+    color: "text-green-400",
+    glow: "shadow-green-500/20",
     code: `-- models/marts/fact_orders.sql
 WITH orders AS (
     SELECT * FROM {{ ref('stg_orders') }}
@@ -81,10 +81,11 @@ LEFT JOIN products p ON o.product_id = p.product_id`
   },
   {
     id: 4,
-    title: "Terraform IaC - AWS S3 Data Lake",
+    title: "main.tf",
     language: "HCL",
     icon: "🏗️",
-    gradient: "from-orange-500 to-red-500",
+    color: "text-purple-400",
+    glow: "shadow-purple-500/20",
     code: `resource "aws_s3_bucket" "data_lake" {
   bucket = "ecommerce-analytics-datalake"
   
@@ -110,126 +111,204 @@ LEFT JOIN products p ON o.product_id = p.product_id`
   }
 ];
 
-const CodeSnippet = ({ snippet, isActive }) => {
+const SyntaxHighlighter = ({ code, language }) => {
+  const highlight = (text) => {
+    if (!text) return text;
+
+    const tokens = [];
+    const saveToken = (content, className) => {
+      const id = `__TOKEN_${tokens.length}__`;
+      tokens.push({ id, content: `<span class="${className}">${content}</span>` });
+      return id;
+    };
+
+    // 1. Protect Strings and Comments first
+    // Matches: Strings ("..." or '...') OR Comments (//..., #..., --...)
+    text = text.replace(/((['"])(?:(?!\2).)*\2)|(\/\/.*$|#.*$|--.*$)/gm, (match, stringGroup, quote, commentGroup) => {
+      if (stringGroup) {
+        return saveToken(match, 'text-green-400');
+      }
+      if (commentGroup) {
+        return saveToken(match, 'text-gray-500 italic');
+      }
+      return match;
+    });
+
+    // 2. Keywords (now safe from strings and comments)
+    text = text.replace(/\b(def|class|import|from|return|if|else|for|while|public|void|extends|implements|new|resource|variable|output|module|provider|data|select|from|where|join|on|group|by|having|order|limit|with|as)\b/gi, '<span class="text-pink-400 font-bold">$1</span>');
+
+    // 3. Functions/Decorators
+    text = text.replace(/(@\w+)/g, '<span class="text-yellow-400">$1</span>');
+    text = text.replace(/(\w+)\(/g, '<span class="text-blue-400">$1</span>(');
+
+    // 4. Restore tokens
+    tokens.forEach(token => {
+      text = text.replace(token.id, token.content);
+    });
+
+    return text;
+  };
+
   return (
-    <AnimatePresence mode="wait">
-      {isActive && (
-        <motion.div
-          key={snippet.id}
-          initial={{ opacity: 0, x: 100 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -100 }}
-          transition={{ duration: 0.5 }}
-        >
-          <SpotlightCard>
-            <div className="bg-black/60 border border-cyan-500/20 rounded-xl p-6 backdrop-blur-sm">
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center gap-3">
-                  <span className="text-3xl">{snippet.icon}</span>
-                  <div>
-                    <h4 className="text-lg font-semibold text-white">{snippet.title}</h4>
-                    <span className={`text-sm bg-gradient-to-r ${snippet.gradient} bg-clip-text text-transparent font-semibold`}>
-                      {snippet.language}
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <pre className="overflow-x-auto">
-                <code className="text-sm text-cyan-400 font-mono leading-relaxed">
-                  {snippet.code}
-                </code>
-              </pre>
-            </div>
-          </SpotlightCard>
-        </motion.div>
-      )}
-    </AnimatePresence>
+    <div dangerouslySetInnerHTML={{ __html: highlight(code) }} />
   );
 };
 
-CodeSnippet.propTypes = {
-  snippet: PropTypes.object.isRequired,
-  isActive: PropTypes.bool.isRequired
+const TypingCode = ({ code, language }) => {
+  const [displayedCode, setDisplayedCode] = useState('');
+
+  useEffect(() => {
+    setDisplayedCode('');
+    let i = 0;
+    const interval = setInterval(() => {
+      if (i < code.length) {
+        setDisplayedCode(prev => prev + code.charAt(i));
+        i++;
+      } else {
+        clearInterval(interval);
+      }
+    }, 2); // Typing speed
+
+    return () => clearInterval(interval);
+  }, [code]);
+
+  return (
+    <pre className="font-mono text-sm md:text-base leading-relaxed overflow-x-auto p-4">
+      <code className="language-javascript">
+        <SyntaxHighlighter code={displayedCode} language={language} />
+      </code>
+    </pre>
+  );
+};
+
+const TerminalWindow = ({ activeTab, setActiveTab }) => {
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const rotateX = useTransform(y, [-300, 300], [10, -10]);
+  const rotateY = useTransform(x, [-300, 300], [-10, 10]);
+
+  // Smooth out the rotation
+  const springConfig = { damping: 20, stiffness: 100 };
+  const rotateXSpring = useSpring(rotateX, springConfig);
+  const rotateYSpring = useSpring(rotateY, springConfig);
+
+  const handleMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+
+    x.set(e.clientX - centerX);
+    y.set(e.clientY - centerY);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
+  const activeSnippet = codeSnippets[activeTab];
+
+  return (
+    <motion.div
+      style={{
+        rotateX: rotateXSpring,
+        rotateY: rotateYSpring,
+        transformStyle: "preserve-3d",
+      }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className="relative w-full max-w-5xl mx-auto perspective-1000"
+    >
+      {/* Glow Effect behind the terminal */}
+      <div
+        className={`absolute -inset-4 bg-gradient-to-r ${activeSnippet.glow.replace('shadow-', 'from-').replace('/20', '/30')} to-transparent blur-3xl opacity-40 transition-colors duration-500 -z-10`}
+      />
+
+      <div className="relative bg-[#0c0c1d]/60 backdrop-blur-xl border border-white/10 rounded-xl overflow-hidden shadow-2xl">
+        {/* Window Header */}
+        <div className="flex items-center justify-between px-4 py-3 bg-white/5 border-b border-white/5">
+          <div className="flex gap-2">
+            <div className="w-3 h-3 rounded-full bg-red-500/80" />
+            <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
+            <div className="w-3 h-3 rounded-full bg-green-500/80" />
+          </div>
+          <div className="text-xs text-gray-400 font-mono flex items-center gap-2">
+            <span className="opacity-50">~/projects/production/</span>
+            <span className="text-white">{activeSnippet.title}</span>
+          </div>
+          <div className="w-16" /> {/* Spacer for centering */}
+        </div>
+
+        {/* Main Content Area */}
+        <div className="flex flex-col md:flex-row min-h-[500px]">
+          {/* Sidebar / Tabs */}
+          <div className="w-full md:w-64 bg-black/20 border-r border-white/5 flex flex-row md:flex-col overflow-x-auto md:overflow-visible">
+            {codeSnippets.map((snippet, idx) => (
+              <button
+                key={snippet.id}
+                onClick={() => setActiveTab(idx)}
+                className={`flex items-center gap-3 px-4 py-3 text-sm font-medium transition-all duration-200 w-full text-left border-l-2 whitespace-nowrap
+                  ${activeTab === idx
+                    ? `bg-white/5 text-white border-${snippet.color.split('-')[1]}-400`
+                    : 'text-gray-500 border-transparent hover:bg-white/5 hover:text-gray-300'
+                  }`}
+              >
+                <span className="text-lg">{snippet.icon}</span>
+                <span>{snippet.title}</span>
+              </button>
+            ))}
+          </div>
+
+          {/* Code Area */}
+          <div className="flex-1 relative bg-[#0c0c1d]/50">
+            {/* Line Numbers Background */}
+            <div className="absolute left-0 top-0 bottom-0 w-12 bg-white/5 border-r border-white/5 hidden md:block" />
+
+            <div className="relative z-10 pl-0 md:pl-14">
+              <TypingCode code={activeSnippet.code} language={activeSnippet.language} />
+            </div>
+          </div>
+        </div>
+
+        {/* Footer Status Bar */}
+        <div className="px-4 py-2 bg-white/5 border-t border-white/5 flex justify-between items-center text-xs text-gray-500 font-mono">
+          <div className="flex gap-4">
+            <span>NORMAL</span>
+            <span>{activeSnippet.language}</span>
+            <span>UTF-8</span>
+          </div>
+          <div className="flex gap-4">
+            <span>Ln 1, Col 1</span>
+            <span>100%</span>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
 };
 
 const CodeShowcase = () => {
   const [activeTab, setActiveTab] = useState(0);
 
   return (
-    <section className="c-space section-spacing">
-      <div className="max-w-6xl mx-auto">
+    <section className="c-space section-spacing overflow-hidden">
+      <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          className="text-center mb-12"
         >
           <h2 className="text-heading mb-4">Production Code Samples</h2>
-          <p className="text-lg text-gray-400 mb-8 max-w-3xl">
-            Real code from production data engineering systems - Airflow orchestration,
-            Flink stream processing, dbt transformations, and Terraform IaC
+          <p className="text-lg text-gray-400 max-w-3xl mx-auto">
+            Explore the architecture of my production systems through this interactive terminal.
           </p>
         </motion.div>
 
-        {/* Tab Navigation */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
-          className="flex gap-2 mb-8 overflow-x-auto pb-2"
-        >
-          {codeSnippets.map((snippet, idx) => (
-            <Magnet key={snippet.id} strength={0.2}>
-              <button
-                onClick={() => setActiveTab(idx)}
-                className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 whitespace-nowrap ${activeTab === idx
-                  ? `bg-gradient-to-r ${snippet.gradient} text-white shadow-lg`
-                  : 'bg-gray-800/50 text-gray-400 hover:bg-gray-800 border border-gray-700/50'
-                  }`}
-              >
-                <span className="mr-2">{snippet.icon}</span>
-                {snippet.language}
-              </button>
-            </Magnet>
-          ))}
-        </motion.div>
-
-        {/* Code Display */}
-        <div className="min-h-[400px]">
-          {codeSnippets.map((snippet, idx) => (
-            <CodeSnippet
-              key={snippet.id}
-              snippet={snippet}
-              isActive={activeTab === idx}
-            />
-          ))}
+        <div className="py-10 px-4">
+          <TerminalWindow activeTab={activeTab} setActiveTab={setActiveTab} />
         </div>
-
-        {/* Navigation Arrows */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4 }}
-          className="flex justify-center gap-4 mt-8"
-        >
-          <Magnet>
-            <button
-              onClick={() => setActiveTab((prev) => (prev - 1 + codeSnippets.length) % codeSnippets.length)}
-              className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 rounded-lg font-medium transition-all duration-300 flex items-center gap-2 shadow-lg shadow-cyan-500/20"
-            >
-              <span>←</span> Previous
-            </button>
-          </Magnet>
-          <Magnet>
-            <button
-              onClick={() => setActiveTab((prev) => (prev + 1) % codeSnippets.length)}
-              className="px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-400 hover:to-pink-500 rounded-lg font-medium transition-all duration-300 flex items-center gap-2 shadow-lg shadow-purple-500/20"
-            >
-              Next <span>→</span>
-            </button>
-          </Magnet>
-        </motion.div>
       </div>
     </section>
   );
