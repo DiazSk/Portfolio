@@ -188,7 +188,92 @@ export const myProjects = [
       },
     ],
   },
-
+  {
+    id: 3,
+    title: "Real-Time NYC Taxi Data Platform",
+    description:
+      "End-to-end ELT pipeline with batch and streaming components processing 100GB+ of NYC taxi data. Features Terraform IaC, Airflow orchestration, and Spark Streaming for real-time analytics.",
+    subDescription: [
+      "Architected hybrid data platform handling 100GB+ dataset with batch (Spark/EMR) and streaming (Kafka/Spark Streaming) layers",
+      "Implemented Infrastructure as Code using Terraform to provision S3 buckets and EMR clusters, ensuring reproducibility",
+      "Orchestrated complex batch workflows with Apache Airflow, managing dependencies between ingestion, processing, and dbt transformations",
+      "Optimized Spark jobs by diagnosing data skew and implementing salting, reducing execution time by 35%",
+      "Developed real-time analytics pipeline calculating 15-minute rolling window metrics for trip costs using Spark Streaming",
+      "Built comprehensive dbt models (fact/dimensions) with automated data quality testing (not_null, unique) via dbt test",
+    ],
+    href: "https://github.com/DiazSk/real-time-NYC-taxi-data-platform",
+    github: "https://github.com/DiazSk/real-time-NYC-taxi-data-platform",
+    logo: "",
+    image: "/assets/projects/taxi-platform.png", // Placeholder, will need to check if image exists or generate one
+    architectureImage: "/assets/projects/taxi-architecture.png", // Placeholder
+    metrics: {
+      dataVolume: "100GB+",
+      optimization: "35% faster",
+      latency: "Real-time",
+      aggregation: "15m windows",
+      infrastructure: "Terraform IaC"
+    },
+    architecture: `┌─────────────┐
+│  NYC Taxi   │
+│   Data      │
+└──────┬──────┘
+       │ Batch & Stream
+       ▼
+┌─────────────┐   ┌─────────────┐
+│  Kafka      │   │  AWS S3     │
+│  Producer   │   │  Raw Data   │
+└──────┬──────┘   └──────┬──────┘
+       │                 │
+       ▼                 ▼
+┌─────────────┐   ┌─────────────┐
+│ Spark       │   │  AWS EMR    │
+│ Streaming   │   │  Spark Job  │
+└──────┬──────┘   └──────┬──────┘
+       │                 │
+       ▼                 ▼
+┌─────────────┐   ┌─────────────┐
+│ Real-time   │   │  AWS S3     │
+│ Metrics     │   │  Processed  │
+└─────────────┘   └──────┬──────┘
+                         │
+                         ▼
+                  ┌─────────────┐
+                  │     dbt     │
+                  │  Modeling   │
+                  └─────────────┘`,
+    tags: [
+      {
+        id: 1,
+        name: "Apache Spark",
+        path: "/assets/logos/spark.svg", // Need to verify if this exists
+      },
+      {
+        id: 2,
+        name: "Apache Kafka",
+        path: "/assets/logos/kafka.svg",
+      },
+      {
+        id: 3,
+        name: "AWS",
+        path: "/assets/logos/aws.svg",
+      },
+      {
+        id: 4,
+        name: "Terraform",
+        path: "/assets/logos/terraform.svg",
+      },
+      {
+        id: 5,
+        name: "Apache Airflow",
+        path: "/assets/logos/apache-airflow.svg",
+      },
+      {
+        id: 6,
+        name: "dbt",
+        path: "/assets/logos/dbt.svg",
+      },
+    ],
+  },
 ];
 
 export const mySocials = [
