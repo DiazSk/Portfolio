@@ -2,10 +2,7 @@ import React from "react";
 import Navbar from "./sections/Navbar";
 import Hero from "./sections/Hero";
 import About from "./sections/About";
-import Projects from "./sections/Projects";
-import CodeShowcase from "./components/CodeShowcase";
 import Experiences from "./sections/Experiences";
-import Testimonial from "./sections/Testimonial";
 import Contact from "./sections/Contact";
 import Footer from './sections/Footer';
 
@@ -16,10 +13,7 @@ const App = () => {
         <Navbar />
         <Hero />
         <About />
-        <Projects />
-        <CodeShowcase />
         <Experiences />
-        <Testimonial />
       </div>
       <Contact />
       <div className="container mx-auto max-w-7xl">

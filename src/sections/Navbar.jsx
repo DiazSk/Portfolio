@@ -17,11 +17,6 @@ function Navigation() {
         </a>
       </li>
       <li className="nav-li">
-        <a className="nav-link" href="#work">
-          <ShinyText text="Work" disabled={false} speed={3} className="hover:text-white hover:scale-110 transition-all duration-300" />
-        </a>
-      </li>
-      <li className="nav-li">
         <a className="nav-link" href="#contact">
           <ShinyText text="Contact" disabled={false} speed={3} className="hover:text-white hover:scale-110 transition-all duration-300" />
         </a>
