@@ -6,6 +6,8 @@
 
 Personal portfolio website for Zaid Shaikh - MS Computer Science student at Northeastern University (Seattle) specializing in Data Engineering. Targeting Summer 2026 Data Engineering internships at FAANG and fintech companies.
 
+Now includes an AI Resume Chat section where recruiters can ask targeted questions about experience, projects, and role fit.
+
 **Live Site:** [zaidshaikh.dev](https://zaidshaikh.dev) *(Update with your actual domain)*
 
 ## 🏗️ Featured Projects
@@ -40,6 +42,9 @@ Personal portfolio website for Zaid Shaikh - MS Computer Science student at Nort
 - 3D interactive elements
 - Fast load times with Vite
 - Production-optimized build
+- AI Resume Chat with streaming responses
+- Suggested recruiter prompts and markdown answers
+- Guardrails for safe, professional conversation flow
 
 ## 🚀 Quick Start
 
@@ -65,6 +70,22 @@ npm run build
 # Preview production build
 npm run preview
 ```
+
+### Environment Variables
+
+Create a `.env.local` file for API routes:
+
+```bash
+OPENAI_API_KEY=your_openai_key_here
+RESEND_API_KEY=your_resend_key_here
+```
+
+### Running with API Routes Locally
+
+The project uses Vercel-style serverless APIs in `api/` (including `api/chat.js` and `api/contact.js`).
+
+- Frontend only: `npm run dev`
+- Frontend + API routes: `npx vercel dev`
 
 ## 📁 Project Structure
 

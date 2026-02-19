@@ -1,22 +1,31 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import Navbar from "./sections/Navbar";
-import Hero from "./sections/Hero";
-import About from "./sections/About";
-import Contact from "./sections/Contact";
-import Footer from './sections/Footer';
+
+const Hero = lazy(() => import("./sections/Hero"));
+const Projects = lazy(() => import("./sections/Projects"));
+const Skills = lazy(() => import("./sections/Skills"));
+const AIResumeChat = lazy(() => import("./sections/AIResumeChat"));
+const Contact = lazy(() => import("./sections/Contact"));
+
+const SectionFallback = () => (
+  <div className="c-space py-12 text-sm text-neutral-500">Loading section...</div>
+);
 
 const App = () => {
   return (
     <>
       <div className="container mx-auto max-w-7xl">
         <Navbar />
-        <Hero />
-        <About />
+        <Suspense fallback={<SectionFallback />}>
+          <Hero />
+          <AIResumeChat />
+          <Projects />
+          <Skills />
+        </Suspense>
       </div>
-      <Contact />
-      <div className="container mx-auto max-w-7xl">
-        <Footer />
-      </div>
+      <Suspense fallback={<SectionFallback />}>
+        <Contact />
+      </Suspense>
     </>
   );
 };

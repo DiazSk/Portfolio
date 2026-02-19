@@ -5,9 +5,6 @@ import { Globe } from "../components/Globe";
 import CopyEmailButton from "../components/CopyEmailButton";
 import { Frameworks } from "../components/Frameworks";
 
-import Magnet from "../components/Magnet";
-import MagicBento from "../components/MagicBento";
-
 const About = () => {
   const grid2Container = useRef();
 
@@ -114,9 +111,7 @@ const About = () => {
           <p className="text-center text-sm text-neutral-400">
             Summer 2026 Internship • Available for Co-op
           </p>
-          <Magnet strength={0.4}>
-            <CopyEmailButton />
-          </Magnet>
+          <CopyEmailButton />
         </div>
       )
     },
@@ -153,15 +148,13 @@ const About = () => {
 
 
       <div className="mt-12">
-        <MagicBento
-          items={bentoItems}
-          textAutoHide={false}
-          enableStars={true}
-          enableSpotlight={true}
-          enableBorderGlow={true}
-          enableTilt={false}
-          enableMagnetism={true}
-        />
+        <div className="magic-bento-container">
+          {bentoItems.map((item, index) => (
+            <div key={index} className={item.className}>
+              {item.content}
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

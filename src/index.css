@@ -298,3 +298,36 @@ html {
 .shiny-text.disabled {
   animation: none;
 }
+
+.chat-shell {
+  position: relative;
+  isolation: isolate;
+}
+
+.chat-shell::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 1rem;
+  background: linear-gradient(120deg, rgba(202, 47, 140, 0.28), rgba(92, 51, 204, 0.2), rgba(51, 194, 204, 0.24));
+  z-index: -1;
+  filter: blur(10px);
+  opacity: 0.8;
+}
+
+.chat-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.chat-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.chat-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(122, 87, 219, 0.4);
+  border-radius: 999px;
+}
+
+.chat-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(122, 87, 219, 0.7);
+}
