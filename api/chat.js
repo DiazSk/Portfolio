@@ -1,7 +1,10 @@
 import OpenAI from "openai";
 import { buildSystemPrompt } from "../src/lib/buildSystemPrompt.js";
 
-const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+const client = new OpenAI({
+  apiKey: process.env.GEMINI_API_KEY,
+  baseURL: "https://generativelanguage.googleapis.com/v1beta/openai/",
+});
 const MAX_MESSAGES = 14;
 const MAX_USER_MESSAGE_CHARS = 700;
 
@@ -35,9 +38,9 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  if (!process.env.OPENAI_API_KEY) {
+  if (!process.env.GEMINI_API_KEY) {
     return res.status(500).json({
-      error: "Missing OPENAI_API_KEY environment variable",
+      error: "Missing GEMINI_API_KEY environment variable",
     });
   }
 
@@ -80,7 +83,7 @@ export default async function handler(req, res) {
     }
 
     const completion = await client.chat.completions.create({
-      model: "gpt-4o-mini",
+      model: "gemini-2.5-flash",
       temperature: 0.35,
       max_tokens: 500,
       stream: true,
@@ -101,17 +104,19 @@ export default async function handler(req, res) {
     return res.end();
   } catch (error) {
     console.error("/api/chat error:", error);
+
+    const isRateLimit = error?.status === 429;
+    const friendlyMessage = isRateLimit
+      ? "I'm getting a lot of questions right now! Please wait a moment and try again."
+      : "Failed to get AI response";
+
     if (!res.headersSent) {
-      return res.status(500).json({
-        error: "Failed to get AI response",
-        details: error?.message || "Unknown error",
+      return res.status(isRateLimit ? 429 : 500).json({
+        error: friendlyMessage,
       });
     }
 
-    writeSse(res, {
-      type: "error",
-      message: "Failed to stream AI response",
-    });
+    writeSse(res, { type: "error", message: friendlyMessage });
     return res.end();
   }
 }

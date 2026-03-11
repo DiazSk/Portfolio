@@ -1,4 +1,4 @@
-import { resumeData } from "../constants/resumeData";
+import { resumeData } from "../constants/resumeData.js";
 
 export function buildSystemPrompt() {
   const { personal, experience, skills, projects, targetRole } = resumeData;

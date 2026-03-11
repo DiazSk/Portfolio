@@ -76,7 +76,7 @@ npm run preview
 Create a `.env.local` file for API routes:
 
 ```bash
-OPENAI_API_KEY=your_openai_key_here
+GEMINI_API_KEY=your_gemini_key_here
 RESEND_API_KEY=your_resend_key_here
 ```
 

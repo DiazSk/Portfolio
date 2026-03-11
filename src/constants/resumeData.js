@@ -120,7 +120,7 @@ export const resumeData = {
         "PostgreSQL",
         "TimescaleDB",
         "DuckDB",
-        "Snowflake (transferable)",
+        "Snowflake",
         "Redis",
         "AWS S3",
       ],
