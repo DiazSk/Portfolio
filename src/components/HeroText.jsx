@@ -14,7 +14,7 @@ const HeroText = () => {
       {/* Desktop View */}
       <div className="hidden flex-col md:-ml-8 md:flex md:max-w-[640px] lg:max-w-[720px]">
         <motion.h1
-          className="text-sm font-semibold uppercase tracking-[0.22em] text-neutral-400"
+          className="text-base font-semibold uppercase tracking-[0.22em] text-neutral-300"
           variants={variants}
           initial="hidden"
           animate="visible"
