@@ -6,7 +6,7 @@ export const mySocials = [
   },
   {
     name: "LinkedIn",
-    href: "https://www.linkedin.com/in/zaidshaikhscientist/",
+    href: "https://www.linkedin.com/in/zaidshaikhengineer/",
     icon: "/assets/socials/linkedIn.svg",
   },
   {
