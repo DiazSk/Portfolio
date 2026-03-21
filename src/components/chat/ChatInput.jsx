@@ -41,8 +41,8 @@ const ChatInput = ({
             value={input}
             onChange={(event) => setInput(event.target.value.slice(0, 700))}
             onKeyDown={handleKeyDown}
-            placeholder="Ask me anything about my data engineering experience..."
-            rows={1}
+            placeholder="Ask about my data engineering experience..."
+            rows={2}
             disabled={loading}
             className="field-input field-input-focus mt-0 min-h-11 resize-none border-white/10 bg-white/5 text-white placeholder:text-neutral-500"
           />
