@@ -4,14 +4,14 @@ export const resumeData = {
     title: "Data Engineer",
     location: "Seattle, WA",
     email: "zaid07sk@gmail.com",
-    linkedin: "https://www.linkedin.com/in/zaidshaikhscientist/",
+    linkedin: "https://www.linkedin.com/in/zaidshaikhengineer/",
     github: "https://github.com/DiazSk",
     tagline:
-      "I build production-grade data platforms — batch pipelines with Airflow & dbt, streaming systems with Kafka & Flink, and cloud infrastructure with Terraform & AWS.",
+      "Architecting resilient data ecosystems and scalable software systems. Committed to building robust underlying architectures that drive real-time stream processing and high-throughput backend platforms.",
     summary:
-      "MS Computer Science student at Northeastern University (4.0 GPA) specializing in Data Engineering. I design scalable batch and streaming pipelines, build cloud-native data lakehouses, and ship production-ready platforms with automated testing, infrastructure as code, and measurable business impact. My projects process millions of records across real-time and batch workloads using modern data stack tools.",
-    yearsOfExperience: 3,
-    availability: "Summer 2026 (April - September)",
+      "MS Computer Science student at Northeastern University (4.0 GPA) graduating in December 2026. I specialize in designing scalable distributed systems, cloud-native lakehouses, and production-grade pipelines. Beyond simply connecting modern tools, I am deeply committed to building and understanding the foundational architecture of the systems I engineer—whether optimizing low-latency messaging queues, creating multi-hop text generation evaluation harnesses, or deploying exactly-once streaming pipelines. Actively seeking Summer and Fall 2026 Internships, Co-ops, and Full-Time opportunities.",
+    yearsOfExperience: 0,
+    availability: "Summer & Fall 2026 | Full-Time",
     phone: "+1(206) 843-6128",
     universityEmail: "shaikh.zaid@northeastern.edu",
   },
@@ -28,7 +28,10 @@ export const resumeData = {
       relevantCourses: [
         "Database Management Systems",
         "Algorithms",
-        "Distributed Systems",
+        "Building Scalable Distributed Systems",
+        "Machine Learning",
+        "Natural Language Processing",
+        "Programming Design Paradigms",
       ],
     },
     {
@@ -47,6 +50,29 @@ export const resumeData = {
   ],
 
   experience: [
+    {
+      company: "Northeastern University, Khoury College of Computer Sciences",
+      role: "NLP Research Assistant",
+      location: "Seattle, WA",
+      startDate: "Jan 2026",
+      endDate: "Present",
+      description:
+        "Conducting NLP research on semantic drift in multi-hop text generation, building evaluation harnesses and statistical validation pipelines for a co-authored COLM 2026 paper.",
+      achievements: [
+        "Designed an end-to-end evaluation harness in Python for 4,817 source-paraphrase pairs, utilizing Claude Code to accelerate script refactoring and achieving a 0.92 composite correlation across drift dimensions",
+        "Engineered a Composite Semantic Drift Score for a co-authored COLM 2026 paper, leveraging Gemini for research synthesis, technical documentation, and cross-functional communication; integrated SBERT, METEOR, and ROUGE-L signals",
+        "Validated non-linear semantic drift via paired t-test and Wilcoxon signed-rank scripts, managing large-scale data transformation workflows and performing error analysis across multi-hop text generation chains",
+      ],
+      technologies: [
+        "Python",
+        "SBERT",
+        "METEOR",
+        "ROUGE-L",
+        "Claude Code",
+        "Gemini",
+        "Statistical Analysis",
+      ],
+    },
     {
       company: "Northeastern University",
       role: "Data Engineering Graduate Student",
@@ -154,23 +180,18 @@ export const resumeData = {
       description:
         "Production-ready data engineering platform implementing a Lakehouse Architecture on AWS. Processes 100GB+ of NYC TLC trip data through serverless PySpark jobs on AWS Glue, with Terraform-managed infrastructure and dbt analytics models.",
       technologies: [
+        "Terraform",
         "AWS S3",
         "AWS Glue",
-        "PySpark",
-        "Terraform",
         "Apache Airflow",
+        "PySpark",
         "dbt",
-        "DuckDB",
         "Docker",
-        "marimo",
-        "Python",
       ],
       highlights: [
-        "Processed 2.8M+ taxi trip records through serverless PySpark on AWS Glue with only 3.19% data loss from quality filters",
-        "Provisioned all cloud infrastructure (S3, Glue, IAM) via Terraform for reproducible deployments",
-        "Built dbt analytics models (staging → daily/hourly/monthly marts) with DuckDB query engine",
-        "Orchestrated automated daily ETL pipeline via Apache Airflow with retry logic and verbose logging",
-        "Implemented 6-step Spark data quality pipeline: column standardization, null filtering, duration calculation, quality filters, speed derivation, and partitioning",
+        "Provisioned AWS cloud infrastructure (S3 data lake, Glue serverless Spark jobs, IAM roles) using Terraform IaC, enabling reproducible deployments across environments",
+        "Processed 100GB+ (Parquet) NYC taxi trip records through PySpark ETL on AWS Glue with quality filters, achieving 96.8% data retention (2.8M → 2.75M clean records) partitioned by year/month",
+        "Automated daily batch pipeline via Airflow DAG with GlueJobOperator; built dbt analytics layer (staging view + 3 mart tables) with data quality tests on distance, duration, and passenger ranges",
       ],
       github: "https://github.com/DiazSk/nyc-taxi-data-lakehouse",
       category: "Cloud & Batch Processing",
@@ -182,20 +203,17 @@ export const resumeData = {
       description:
         "Full-scale data warehousing solution using Brazilian e-commerce data. Implements Medallion Architecture (Bronze → Silver → Gold) with star schema modeling, Docker containerization, Apache Airflow orchestration, and 3 external API integrations for data enrichment.",
       technologies: [
+        "Python",
         "PostgreSQL",
+        "Snowflake",
         "Apache Airflow",
         "Docker",
-        "Python",
         "marimo",
-        "DuckDB",
-        "SQL",
       ],
       highlights: [
-        "Architected Medallion Architecture integrating 14 data sources (11 CSVs + 3 external APIs) processing 1.6M records into a star schema with 5 dimensions, 2 facts, and 1 bridge table",
-        "Optimized SQL query performance from 5–10 seconds to <1 second (90% improvement) through join refactoring, CTEs, and window functions",
-        "Integrated 3 external APIs (currency rates, holidays, weather) to enrich analytics with R$15.8M (~$4.9M USD) in revenue insights",
-        "Reduced technical debt by refactoring wide tables from 30+ to 13 essential columns (57% reduction) based on downstream query analysis",
-        "Delivered interactive dashboards using marimo with DuckDB queries; containerized full stack with Docker Compose (3 services)",
+        "Designed a Medallion-architecture data warehouse (Bronze → Silver → Gold), centralizing 14 sources (11 CSVs, 3 APIs) for revenue analytics on 1.6M+ records with a star schema design of 5 dimensions, 2 facts, and 1 bridge table",
+        "Reduced SQL query latency by 90% (5–10s to <1s) through query tuning, refactoring joins, and data normalization for wide tables from 30+ to 13 columns",
+        "Migrated the full automated cloud data pipelines from PostgreSQL to Snowflake cloud DWH, leveraged AI-assisted coding tools for rapid development of Python-based data transformations and stored procedures",
       ],
       github: "https://github.com/DiazSk/sql-data-warehouse-project",
       category: "Data Warehousing",
@@ -240,32 +258,48 @@ export const resumeData = {
         "Apache Flink (Java)",
         "Redis",
         "PostgreSQL",
-        "TimescaleDB",
-        "FastAPI",
-        "WebSocket",
         "Docker",
-        "Streamlit",
-        "Python",
       ],
       highlights: [
-        "Built streaming pipeline with Kafka key-based partitioning achieving 99% operation reduction (300 polling → 2 pub/sub events) for 10 connected clients",
-        "Implemented exactly-once semantics using Flink with RocksDB checkpointing and PostgreSQL UPSERT idempotency",
-        "Designed dual-storage architecture: Redis cache (<1ms latency) for real-time serving + TimescaleDB for historical time-series analysis",
-        "Achieved sub-100ms end-to-end latency from Flink window close to dashboard update with WebSocket push",
-        "Orchestrated 8 Docker services with real-time anomaly detection for 5%+ price spikes and OHLC aggregation across 1-min/5-min/15-min windows",
-        "Engineered fault-tolerant recovery with Flink checkpoints (30s intervals), Kafka consumer group rebalancing, and p50/p95/p99 latency tracking",
+        "Achieved 99% polling reduction by engineering a data streaming pipeline with Apache Kafka (Kinesis equivalent) for key-based partitioning and Flink exactly-once processing, replacing 300 REST polls with 2 pub/sub events",
+        "Architected a dual-storage system using Redis (NoSQL) cache (<1ms reads) and PostgreSQL + TimescaleDB for time-series analytics, serving 20+ concurrent users with sub-second response times",
+        "Architected a microservices backend using RESTful APIs and Celery for distributed task orchestration; containerized services for real-time anomaly detection 5%+ price spikes, OHLC aggregation, and real-time dashboards with 2s refresh; implemented Flink checkpoint recovery at 30s intervals",
+        "Implemented system observability by configuring Prometheus and Grafana dashboards to monitor microservice health and pipeline latency",
       ],
       github:
         "https://github.com/DiazSk/Real-Time-Cryptocurrency-Market-Analyzer",
       category: "Stream Processing",
     },
+    {
+      name: "Chatflow-Messaging-System",
+      tagline:
+        "High-throughput messaging architecture handling 21,091 msg/s with CQRS read/write separation",
+      description:
+        "A high-throughput, low-latency messaging architecture handling 21,091 msg/s with CQRS-style read/write separation and write-behind persistence.",
+      technologies: [
+        "Java",
+        "RabbitMQ",
+        "Redis",
+        "MySQL",
+        "WebSockets",
+        "AWS EC2",
+      ],
+      highlights: [
+        "Engineered a write-behind persistence pipeline sustaining throughput of 21,091 msg/s with zero data loss across 1M messages by chaining an in-memory blocking queue to dedicated worker threads with adaptive JDBC batch sizing and multi-value insert rewriting",
+        "Optimized read-path latency to 13ms at 1M-row scale against a 100ms SLO target by implementing a two-tier caching hierarchy (local memory and Redis with active invalidation) and a mutex-based stampede guard to strictly cap concurrent database queries",
+        "Architected a CQRS-style read/write separation that survived a 60-minute endurance test at full load by partitioning HikariCP into isolated reader and writer pools bound to a circuit breaker, preventing write-side failures from starving read queries",
+      ],
+      github: "https://github.com/DiazSk/chatflow-messaging-system",
+      category: "Distributed Systems",
+    },
   ],
 
   targetRole: {
-    title: "Data Engineering Intern / Co-op",
-    type: "Internship / Co-op",
+    title: "Data Engineer | SWE/SDE Backend | Analytics Engineer | BI Engineer",
+    type: "Internship / Co-op / Full-Time",
     location: "Remote or Seattle, WA",
-    availability: "Summer 2026 (April – September)",
+    availability:
+      "Summer & Fall 2026 (Internship/Co-op) | Full-Time (Post-Graduation)",
     industries: [
       "FinTech",
       "E-Commerce",
@@ -273,7 +307,7 @@ export const resumeData = {
       "Big Tech",
     ],
     pitch:
-      "I am looking for Summer 2026 internship or co-op opportunities where I can contribute to high-impact data platforms, real-time analytics systems, and cloud-native data infrastructure. I bring hands-on experience building batch and streaming pipelines that process millions of records with production-grade testing and infrastructure as code.",
+      "I am actively seeking Summer/Fall 2026 internships and co-ops, as well as Full-Time opportunities, where I can contribute to high-impact distributed systems and cloud-native infrastructure. I bring hands-on experience building both scalable software backends and complex data platforms, always prioritizing clean architecture, automated testing, and infrastructure as code.",
     strengths: [
       "End-to-end pipeline development (ingestion → transformation → serving)",
       "Both batch (Airflow + dbt) and streaming (Kafka + Flink) architectures",
