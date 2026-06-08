@@ -2,42 +2,39 @@ import { motion } from "framer-motion";
 
 const SKILLS = [
   {
-    category: "Data Orchestration",
+    category: "Data Platforms & Pipelines",
     items: [
-      "Apache Airflow", "Apache Kafka", "Apache Flink", "dbt",
-      "Azure Data Factory", "ETL/ELT Pipelines", "Medallion Architecture",
+      "Apache Spark (PySpark)", "Apache Airflow", "Apache Kafka", "Apache Flink", "dbt", "Azure Data Factory", "ETL/ELT Pipelines",
     ],
   },
   {
     category: "Storage & Databases",
     items: [
-      "PostgreSQL", "TimescaleDB", "Snowflake", "Redis",
-      "Delta Lake", "DuckDB", "AWS S3", "ADLS Gen2",
+      "PostgreSQL", "Snowflake", "TimescaleDB", "Redis", "Delta Lake", "DuckDB",
     ],
   },
   {
     category: "Cloud & Infrastructure",
     items: [
-      "AWS (S3, Glue, Redshift, IAM)",
-      "Azure (ADLS Gen2, Databricks, Data Factory, Key Vault)",
-      "Terraform", "Docker", "GitHub Actions", "CI/CD Pipelines",
+      "AWS S3", "AWS Glue", "AWS Redshift", "Azure ADLS Gen2",
+      "Databricks", "Terraform", "Docker", "GitHub Actions",
     ],
   },
   {
     category: "Languages",
-    items: ["Python", "SQL", "Java"],
+    items: ["Python", "SQL", "Java", "TypeScript", "Bash"],
   },
   {
-    category: "Testing & Quality",
-    items: ["dbt Tests", "Great Expectations", "pytest", "Pre-commit Hooks"],
+    category: "Product & APIs",
+    items: [
+      "FastAPI", "Next.js 16", "React 19", "WebSockets", "Tailwind CSS",
+    ],
   },
   {
-    category: "Visualization & APIs",
-    items: ["Power BI", "Microsoft Fabric", "Metabase", "FastAPI", "Streamlit"],
-  },
-  {
-    category: "Frontend & Full-Stack",
-    items: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS", "shadcn/ui", "Zod", "WebSockets"],
+    category: "Observability & Quality",
+    items: [
+      "Great Expectations", "dbt Tests", "pytest", "Data Lineage", "Data Quality", "Pre-commit Hooks", "Power BI", "Metabase",
+    ],
   },
 ];
 
@@ -60,11 +57,11 @@ const Skills = () => {
           <h2 className="text-heading">Skills &amp; Technologies</h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           {SKILLS.map((group, i) => (
             <motion.div
               key={group.category}
-              className="rounded-xl border p-5"
+              className="rounded-xl border p-5 h-full"
               style={{
                 borderColor: "var(--color-border)",
                 background: "var(--color-surface)",
