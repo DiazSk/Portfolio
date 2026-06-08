@@ -4,20 +4,20 @@ const SKILLS = [
   {
     category: "Data Platforms & Pipelines",
     items: [
-      "Apache Spark (PySpark)", "Apache Airflow", "Apache Kafka", "Apache Flink", "dbt", "Azure Data Factory", "ETL/ELT Pipelines",
+      "Apache Spark (PySpark)", "Apache Airflow", "Apache Kafka", "Apache Flink", "dbt", "Azure Data Factory", "ETL/ELT Pipelines", "RabbitMQ"
     ],
   },
   {
     category: "Storage & Databases",
     items: [
-      "PostgreSQL", "Snowflake", "TimescaleDB", "Redis", "Delta Lake", "DuckDB",
+      "PostgreSQL", "MySQL", "MongoDB", "Snowflake", "TimescaleDB", "Redis", "Delta Lake", "DuckDB",
     ],
   },
   {
     category: "Cloud & Infrastructure",
     items: [
       "AWS S3", "AWS Glue", "AWS Redshift", "Azure ADLS Gen2",
-      "Databricks", "Terraform", "Docker", "GitHub Actions",
+      "Azure Databricks", "Vercel", "Terraform", "Docker", "GitHub Actions", "Jenkins",
     ],
   },
   {
@@ -33,7 +33,7 @@ const SKILLS = [
   {
     category: "Observability & Quality",
     items: [
-      "Great Expectations", "dbt Tests", "pytest", "Data Lineage", "Data Quality", "Pre-commit Hooks", "Power BI", "Metabase",
+      "Great Expectations", "dbt Tests", "pytest", "Data Lineage", "Data Quality", "Pre-commit Hooks", "Power BI", "Metabase", "Streamlit"
     ],
   },
 ];
