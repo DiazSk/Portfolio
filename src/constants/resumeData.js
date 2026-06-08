@@ -3,13 +3,13 @@ export const resumeData = {
     name: "Zaid Shaikh",
     title: "Data Engineer",
     location: "Seattle, WA",
-    email: "zaid07sk@gmail.com",
+    email: "shaikh.zaid@northeastern.edu",
     linkedin: "https://www.linkedin.com/in/zaidshaikhengineer/",
     github: "https://github.com/DiazSk",
     tagline:
       "Architecting resilient data ecosystems and scalable software systems. Committed to building robust underlying architectures that drive real-time stream processing and high-throughput backend platforms.",
     summary:
-      "MS Computer Science student at Northeastern University (4.0 GPA) graduating in December 2026. I specialize in designing scalable distributed systems, cloud-native lakehouses, and production-grade pipelines. Beyond simply connecting modern tools, I am deeply committed to building and understanding the foundational architecture of the systems I engineer—whether optimizing low-latency messaging queues, creating multi-hop text generation evaluation harnesses, or deploying exactly-once streaming pipelines. Actively seeking Summer and Fall 2026 Internships, Co-ops, and Full-Time opportunities.",
+      "MS Computer Science at Northeastern University (4.0 GPA, December 2026), serving as a Graduate Teaching Assistant for the Machine Learning course and co-authoring at COLM 2026 as an NLP Research Assistant. My work spans the full data stack: Medallion lakehouses ingesting 9.6M records on Azure, streaming backends sustaining 21,091 msg/s with exactly-once Flink semantics, and full-stack terminals closing the Kafka-to-browser gap in under 100ms. I build systems where every architectural layer is a deliberate decision, optimized for throughput, correctness, and the engineers who maintain them.",
     yearsOfExperience: 0,
     availability: "Summer & Fall 2026 | Full-Time",
     phone: "+1(206) 843-6128",
@@ -105,7 +105,7 @@ export const resumeData = {
     },
     {
       company: "Northeastern University",
-      role: "Technical Lead — CS5200 Database Management Systems",
+      role: "Technical Lead, CS5200 Database Management Systems",
       location: "Seattle, WA",
       startDate: "Spring 2025",
       endDate: "Spring 2025",
@@ -189,6 +189,16 @@ export const resumeData = {
   projects: [
     {
       name: "Healthcare Data Lakehouse on Azure",
+      category: "Data Engineering",
+      outcomeStatement:
+        "Processed 80GB of Medicare reimbursement data across three quality layers with zero loss during ingestion failures, delivering a 35% reduction in Databricks compute cost.",
+      primaryMetric: { value: "9.6M", label: "records · 80GB · Azure Medallion" },
+      decisionLog: {
+        chose: "Delta Lake with ACID transactions on ADLS Gen2",
+        over: "raw Parquet files in ADLS Gen2",
+        because:
+          "Medicare data required reprocessing capability: schema evolution without rewriting the full pipeline when upstream sources changed, and time-travel semantics for audit compliance.",
+      },
       tagline:
         "Azure-native Medicare reimbursement lakehouse processing 9.6M JSON records and 80GB of raw volume",
       description:
@@ -215,10 +225,18 @@ export const resumeData = {
         "Built ADF Copy Activities and Web Activities (with pagination) for incremental ingestion, landing raw JSON, then materializing curated Parquet/Delta tables for downstream analytics",
       ],
       github: "https://github.com/DiazSk/healthcare-lakehouse-azure",
-      category: "Cloud Lakehouse",
     },
     {
       name: "NYC Taxi Data Lakehouse",
+      category: "Data Engineering",
+      outcomeStatement:
+        "Ingested 100GB+ of NYC taxi trip data through serverless Spark on AWS with 96.8% data retention, fully reproducible across environments via Terraform IaC.",
+      primaryMetric: { value: "2.8M", label: "clean records · 96.8% retention" },
+      decisionLog: {
+        chose: "AWS Glue (serverless managed Spark) for ETL",
+        over: "AWS Athena querying raw S3 Parquet directly with no ETL layer",
+        because: "Athena's $5/TB scan cost compounds across every dbt model run on 100GB+ of raw Parquet; Glue runs deduplication, schema normalization, and null-handling once at ingest, producing the 96.8% retention rate as a durable, guaranteed fact rather than a per-query assumption, at the cost of an explicit ETL step.",
+      },
       tagline: "Cloud-native lakehouse processing 2.8M+ taxi records on AWS",
       description:
         "Production-ready data engineering platform implementing a Lakehouse Architecture on AWS. Processes 100GB+ of NYC TLC trip data through serverless PySpark jobs on AWS Glue, with Terraform-managed infrastructure and dbt analytics models.",
@@ -237,10 +255,18 @@ export const resumeData = {
         "Automated daily batch pipeline via Airflow DAG with GlueJobOperator; built dbt analytics layer (staging view + 3 mart tables) with data quality tests on distance, duration, and passenger ranges",
       ],
       github: "https://github.com/DiazSk/nyc-taxi-data-lakehouse",
-      category: "Cloud & Batch Processing",
     },
     {
       name: "E-Commerce Data Warehouse (Olist)",
+      category: "Analytics Engineering",
+      outcomeStatement:
+        "Centralized 14 heterogeneous sources into a star-schema warehouse, achieving 90% SQL query latency reduction by eliminating 30-column wide-table joins.",
+      primaryMetric: { value: "90%", label: "query latency reduction" },
+      decisionLog: {
+        chose: "A strict star schema with two distinct grain-specific fact tables (orders vs. items)",
+        over: "A fully normalized snowflake schema or a single denormalized wide table",
+        because: "A snowflake schema would introduce excessive join latency for read-heavy OLAP queries, while combining grains into a single fact table would cause double-counting in aggregations. The star schema traded storage redundancy for a 90% query latency reduction.",
+      },
       tagline:
         "Medallion Architecture warehouse integrating 14 data sources with 1.6M records",
       description:
@@ -259,10 +285,18 @@ export const resumeData = {
         "Migrated the full automated cloud data pipelines from PostgreSQL to Snowflake cloud DWH, leveraged AI-assisted coding tools for rapid development of Python-based data transformations and stored procedures",
       ],
       github: "https://github.com/DiazSk/sql-data-warehouse-project",
-      category: "Data Warehousing",
     },
     {
       name: "Scalable E-Commerce Analytics Platform",
+      category: "Analytics Engineering",
+      outcomeStatement:
+        "Built end-to-end pipeline from 3 enterprise sources through a dbt analytics layer with 146 automated tests with SCD Type 2 tracking for full historical accuracy.",
+      primaryMetric: { value: "146", label: "automated dbt tests" },
+      decisionLog: {
+        chose: "SCD Type 2 dimensional modeling for the customer dimension",
+        over: "SCD Type 1 (overwrite current state)",
+        because: "Historical attribution was a hard business requirement for segment-specific customer lifetime value (CLV) analysis; the ability to perform point-in-time querying justified the 2-3x storage footprint increase.",
+      },
       tagline:
         "End-to-end pipeline with Airflow, dbt, AWS S3, and 146 automated tests",
       description:
@@ -282,39 +316,60 @@ export const resumeData = {
         "Built end-to-end pipeline ingesting from 3 enterprise systems (PostgreSQL DB, REST API, clickstream events) processing 66K+ records",
         "Designed ETL/ELT workflows using Airflow (3 DAGs) with incremental extraction patterns and date-partitioned S3 Data Lake landing",
         "Built and validated dimensional models in dbt: 4 staging → 4 dimension tables (including SCD Type 2) → 1 fact table → analytics mart",
-        "Implemented data quality framework with 146 automated dbt tests (96.3% pass rate) and Great Expectations validations",
+        "Implemented data quality framework with 146 automated dbt tests and Great Expectations validations across all pipeline stages",
         "Optimized query performance through B-tree indexing on foreign keys and partial indexes, reducing query time from 4.2s to 1.1s (74% improvement)",
         "Provisioned AWS infrastructure (S3, IAM) with Terraform; CI/CD via GitHub Actions and pre-commit hooks",
       ],
-      github:
-        "https://github.com/DiazSk/Modern-E-commerce-Analytics-Platform",
-      category: "Analytics Engineering",
+      github: "https://github.com/DiazSk/Modern-E-commerce-Analytics-Platform",
     },
     {
       name: "Real-Time Cryptocurrency Market Analyzer",
+      category: "Systems Engineering",
+      outcomeStatement:
+        "Built an end-to-end real-time market analytics platform: a Java/Flink streaming pipeline with exactly-once fault tolerance feeds a dual-path storage layer (sub-1ms Redis hot path + TimescaleDB cold analytics), surfaced through a production-ready Next.js 16 terminal. Closes the loop from Kafka ingestion to rendered browser UI in under 100ms.",
+      primaryMetric: { value: "<100ms", label: "Kafka-to-browser latency · exactly-once · dual-path storage" },
+      decisionLog: {
+        chose: "Redis hot path + PostgreSQL/TimescaleDB cold analytics",
+        over: "single PostgreSQL instance for all read traffic",
+        because:
+          "Redis delivers sub-1ms reads for live WebSocket subscriptions without competing with analytical queries; TimescaleDB's continuous aggregates and time-series compression handle 90-day aggregate retention, matching query latency requirements to storage cost at each tier.",
+      },
       tagline:
-        "Sub-100ms streaming pipeline with Kafka, Flink, and dual-path storage",
+        "Sub-100ms streaming pipeline with Kafka, Flink, and dual-path storage, surfaced through a Next.js 16 terminal",
       description:
-        "Enterprise-grade streaming data pipeline for low-latency financial market analysis. Implements distributed stateful processing with Apache Flink, exactly-once semantics, and a hybrid hot/cold storage architecture using Redis and TimescaleDB. Features real-time anomaly detection, OHLC candlestick generation across parallel time windows, and WebSocket push updates.",
+        "Full-stack real-time market analytics platform. A Java/Apache Flink streaming pipeline with exactly-once semantics aggregates OHLC candlesticks over Kafka topics, persisted via a dual-path storage layer (Redis hot path + PostgreSQL/TimescaleDB cold analytics), and surfaced through a Python/FastAPI backend and a Next.js 16 + TypeScript terminal with WebSocket push updates.",
       technologies: [
         "Apache Kafka",
         "Apache Flink (Java)",
+        "Next.js 16",
+        "TypeScript",
+        "React 19",
+        "FastAPI",
         "Redis",
         "PostgreSQL",
-        "Docker",
+        "TimescaleDB",
+        "Docker Compose",
       ],
       highlights: [
-        "Achieved 99% polling reduction by engineering a data streaming pipeline with Apache Kafka (Kinesis equivalent) for key-based partitioning and Flink exactly-once processing, replacing 300 REST polls with 2 pub/sub events",
-        "Architected a dual-storage system using Redis (NoSQL) cache (<1ms reads) and PostgreSQL + TimescaleDB for time-series analytics, serving 20+ concurrent users with sub-second response times",
-        "Architected a microservices backend using RESTful APIs and Celery for distributed task orchestration; containerized services for real-time anomaly detection 5%+ price spikes, OHLC aggregation, and real-time dashboards with 2s refresh; implemented Flink checkpoint recovery at 30s intervals",
-        "Implemented system observability by configuring Prometheus and Grafana dashboards to monitor microservice health and pipeline latency",
+        "Engineered a Java/Apache Flink streaming pipeline with exactly-once semantics enforced via Chandy-Lamport distributed snapshots (60-second checkpoint interval), aggregating multi-asset OHLC candlesticks across multiple time windows over Kafka topics configured with EXACTLY_ONCE producer delivery; every aggregated tick is fault-tolerant and replayable on failure.",
+        "Implemented a dual-path storage architecture: Redis serving the hot path at sub-1ms read latency for live WebSocket subscriptions, and PostgreSQL/TimescaleDB handling cold analytics with 7-day raw tick retention and 90-day aggregate retention, isolating live query traffic from analytical workloads at each storage tier.",
+        "Built a Python/FastAPI backend with asyncpg connection pooling and redis.asyncio, exposing 7 REST endpoints and a WebSocket endpoint that pushes Flink pipeline output to connected clients, eliminating client-side polling and fitting the full Kafka-to-Flink-to-Redis-to-WebSocket path within the sub-100ms latency budget.",
+        "Shipped a 3-route Next.js 16 terminal (live dashboard, paginated screener, coin detail) with a deliberate Server/Client split: market overview tiles rendered as async Server Components with 60s ISR caching, live price widgets isolated as Client Components with WebSocket subscriptions, reactive state confined to the components that own real-time data.",
+        "Enforced end-to-end type safety across 7 REST endpoints and 5 WebSocket message shapes via Zod-derived TypeScript schemas in strict mode, propagating typed errors through TanStack Query boundaries and a custom WebSocket hook with exponential-backoff reconnect and 25s heartbeat.",
       ],
-      github:
-        "https://github.com/DiazSk/Real-Time-Cryptocurrency-Market-Analyzer",
-      category: "Stream Processing",
+      github: "https://github.com/DiazSk/Real-Time-Cryptocurrency-Market-Analyzer",
     },
     {
-      name: "Chatflow-Messaging-System",
+      name: "Chatflow Messaging System",
+      category: "Backend SWE",
+      outcomeStatement:
+        "Sustained 21,091 msg/s with zero data loss across 1M messages via write-behind persistence; CQRS isolation prevented write-side failures from starving read queries.",
+      primaryMetric: { value: "21,091", label: "msg/s · zero data loss · 1M messages" },
+      decisionLog: {
+        chose: "Write-behind persistence with in-memory batching (2k-5k rows/commit)",
+        over: "Write-through synchronous per-message inserts",
+        because: "Write-through coupled consumption speed to MySQL's 2-5ms insert latency, capping throughput at ~500 msg/s; write-behind decoupled them, unlocking 21,091 msg/s from RabbitMQ while accepting a mitigated crash-loss window.",
+      },
       tagline:
         "High-throughput messaging architecture handling 21,091 msg/s with CQRS read/write separation",
       description:
@@ -333,7 +388,6 @@ export const resumeData = {
         "Architected a CQRS-style read/write separation that survived a 60-minute endurance test at full load by partitioning HikariCP into isolated reader and writer pools bound to a circuit breaker, preventing write-side failures from starving read queries",
       ],
       github: "https://github.com/DiazSk/chatflow-messaging-system",
-      category: "Distributed Systems",
     },
   ],
 
@@ -371,7 +425,7 @@ export const resumeData = {
     "How did you cut Databricks compute costs by 35%?",
     "How did you implement exactly-once semantics in your streaming pipeline?",
     "What is your experience with infrastructure as code (Terraform)?",
-    "How do you handle data modeling — star schema vs medallion architecture?",
+    "How do you handle data modeling: star schema vs medallion architecture?",
     "What tools do you use for data visualization and dashboarding (Power BI, Microsoft Fabric)?",
   ],
 };

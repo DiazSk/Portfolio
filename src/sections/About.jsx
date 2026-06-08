@@ -1,160 +1,128 @@
-import { useRef } from "react";
 import { motion } from "framer-motion";
-import Card from "../components/Card";
-import { Globe } from "../components/Globe";
+import { resumeData } from "../constants/resumeData";
 import CopyEmailButton from "../components/CopyEmailButton";
-import { Frameworks } from "../components/Frameworks";
+
+const CREDENTIALS = [
+  {
+    label: "MS Computer Science",
+    detail: "Northeastern University · 4.0 GPA · Dec 2026",
+  },
+  {
+    label: "Graduate Teaching Assistant",
+    detail: "Graduate Machine Learning · Northeastern University",
+  },
+  {
+    label: "NLP Research Assistant",
+    detail: "COLM 2026 co-author · Semantic Drift in Multi-hop LLMs",
+  },
+  {
+    label: "Oracle Cloud Infrastructure",
+    detail: "Data Science Professional, Certified",
+  },
+];
 
 const About = () => {
-  const grid2Container = useRef();
-
-  const bentoItems = [
-    {
-      className: "row-span-2 md:col-span-3 h-[15rem] md:h-full relative overflow-hidden grid-default-color p-6",
-      content: (
-        <div className="flex items-end h-full w-full">
-          <img
-            src="assets/coding-pov.png"
-            alt="Coding"
-            className="absolute scale-[1.75] -right-[5rem] -top-[1rem] md:scale-[3] md:left-50 md:inset-y-10 lg:scale-[2.5]"
-          />
-          <div className="z-10">
-            <p className="headtext">Hi, I&apos;m Zaid</p>
-            <p className="subtext">
-              MS Computer Science student at Northeastern University (4.0 GPA) specializing in Data Engineering.
-              Built production pipelines processing 66K+ records with Airflow, Kafka, Flink, and dbt. Achieved
-              67% query optimization and 96.3% test pass rate. Oracle Cloud Infrastructure Data Science Professional certified.
-            </p>
-          </div>
-          <div className="absolute inset-x-0 pointer-events-none -bottom-4 h-1/2 sm:h-1/3 bg-gradient-to-t from-indigo" />
-        </div>
-      )
-    },
-    {
-      className: "row-span-1 md:col-span-3 h-[15rem] md:h-full relative overflow-hidden grid-default-color p-6",
-      content: (
-        <div
-          ref={grid2Container}
-          className="flex items-center justify-center w-full h-full"
-        >
-          <p className="flex items-end text-5xl text-gray-500">
-            DATA ENGINEER
-          </p>
-          <Card
-            style={{ rotate: "75deg", top: "30%", left: "20%" }}
-            text="Apache Airflow"
-            containerRef={grid2Container}
-          />
-          <Card
-            style={{ rotate: "-30deg", top: "60%", left: "45%" }}
-            text="Apache Kafka"
-            containerRef={grid2Container}
-          />
-          <Card
-            style={{ rotate: "90deg", bottom: "30%", left: "70%" }}
-            text="Apache Flink"
-            containerRef={grid2Container}
-          />
-          <Card
-            style={{ rotate: "-45deg", top: "55%", left: "0%" }}
-            text="dbt + SQL"
-            containerRef={grid2Container}
-          />
-          <Card
-            style={{ rotate: "20deg", top: "10%", left: "38%" }}
-            text="Terraform IaC"
-            containerRef={grid2Container}
-          />
-          <Card
-            style={{ rotate: "30deg", top: "70%", left: "70%" }}
-            image="assets/logos/python.svg"
-            containerRef={grid2Container}
-          />
-          <Card
-            style={{ rotate: "-45deg", top: "70%", left: "25%" }}
-            image="assets/logos/postgresql.svg"
-            containerRef={grid2Container}
-          />
-          <Card
-            style={{ rotate: "-45deg", top: "5%", left: "10%" }}
-            image="assets/logos/aws.svg"
-            containerRef={grid2Container}
-          />
-        </div>
-      )
-    },
-    {
-      className: "row-span-1 md:col-span-3 h-[15rem] md:h-full relative overflow-hidden grid-black-color p-6 flex flex-col justify-center",
-      content: (
-        <>
-          <div className="z-10 w-[50%]">
-            <p className="headtext">Location</p>
-            <p className="subtext">
-              Based in Seattle, WA (Northeastern University campus).
-              Open to remote internships and co-ops nationwide.
-              Targeting Summer 2026 Data Engineering internships.
-            </p>
-          </div>
-          <figure className="absolute left-[30%] top-[10%]">
-            <Globe />
-          </figure>
-        </>
-      )
-    },
-    {
-      className: "row-span-1 md:col-span-2 h-[15rem] md:h-full relative overflow-hidden grid-special-color p-6",
-      content: (
-        <div className="flex flex-col items-center justify-center gap-4 size-full">
-          <p className="text-center headtext">
-            Looking for a Data Engineer?
-          </p>
-          <p className="text-center text-sm text-neutral-400">
-            Summer 2026 Internship • Available for Co-op
-          </p>
-          <CopyEmailButton />
-        </div>
-      )
-    },
-    {
-      className: "row-span-1 md:col-span-4 h-[15rem] md:h-full relative overflow-hidden grid-default-color p-6 flex flex-col justify-center",
-      content: (
-        <>
-          <div className="z-10 w-[50%]">
-            <p className="headText">Tech Stack</p>
-            <p className="subtext">
-              Specialized in building production-grade data pipelines with Airflow orchestration,
-              stream processing with Kafka/Flink, and infrastructure as code with Terraform.
-              Strong SQL optimization and dimensional modeling expertise.
-            </p>
-          </div>
-          <div className="absolute inset-y-0 md:inset-y-9 w-full h-full start-[50%] md:scale-125">
-            <Frameworks />
-          </div>
-        </>
-      )
-    }
-  ];
+  const { personal } = resumeData;
 
   return (
-    <section className="c-space section-spacing flex flex-col justify-center" id="about">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-      >
-        <h2 className="text-heading">About Me</h2>
-      </motion.div>
+    <section id="about" className="c-space section-spacing border-t" style={{ borderColor: "var(--color-border)" }}>
+      <div className="mx-auto w-full max-w-7xl">
+        <motion.div
+          className="grid grid-cols-1 gap-16 md:grid-cols-[3fr_2fr]"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.45 }}
+        >
+          {/* ── Left column ─────────────────────────────────── */}
+          <div>
+            <p className="text-eyebrow mb-4">About</p>
+            <h2 className="text-heading mb-6">
+              I build the layer between raw data and the millisecond that matters.
+            </h2>
 
+            <p className="text-base leading-relaxed" style={{ color: "var(--color-ink-secondary)" }}>
+              {personal.summary}
+            </p>
 
-
-      <div className="mt-12">
-        <div className="magic-bento-container">
-          {bentoItems.map((item, index) => (
-            <div key={index} className={item.className}>
-              {item.content}
+            {/* Credentials */}
+            <div className="mt-10 flex flex-col">
+              {CREDENTIALS.map(({ label, detail }, i) => (
+                <div
+                  key={label}
+                  className={`flex flex-col gap-0.5 py-4 ${i !== 0 ? "border-t" : ""}`}
+                  style={{ borderColor: "var(--color-border)" }}
+                >
+                  <span className="text-sm font-medium" style={{ color: "var(--color-ink)" }}>
+                    {label}
+                  </span>
+                  <span className="text-sm" style={{ color: "var(--color-ink-muted)" }}>
+                    {detail}
+                  </span>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
+          </div>
+
+          {/* ── Right column ────────────────────────────────── */}
+          <div>
+            {/* Availability card */}
+            <div
+              className="rounded-xl border p-6"
+              style={{
+                background: "var(--color-surface-raised)",
+                borderColor: "var(--color-border)",
+              }}
+            >
+              <p
+                className="mb-1 text-xs font-semibold uppercase tracking-widest"
+                style={{ color: "var(--color-ink-muted)" }}
+              >
+                Availability
+              </p>
+              <p
+                className="mb-4 text-lg font-semibold"
+                style={{ color: "var(--color-ink)" }}
+              >
+                Open to opportunities.
+              </p>
+
+              <div
+                className="mb-6 flex flex-col gap-1 text-sm"
+                style={{ color: "var(--color-ink-secondary)" }}
+              >
+                <span>Summer &amp; Fall 2026: Internship / Co-op</span>
+                <span>Full-Time: Post-graduation, Dec 2026</span>
+                <span>Seattle, WA · Remote</span>
+              </div>
+
+              <CopyEmailButton />
+            </div>
+
+            {/* Role targets */}
+            <div className="mt-6 flex flex-col gap-2">
+              {["Data Engineer", "Analytics Engineer", "Backend SWE / SDE"].map(
+                (role) => (
+                  <div
+                    key={role}
+                    className="flex items-center gap-3 rounded-lg border px-4 py-3 text-sm"
+                    style={{
+                      borderColor: "var(--color-border)",
+                      color: "var(--color-ink-secondary)",
+                    }}
+                  >
+                    <span
+                      className="h-1.5 w-1.5 rounded-full shrink-0"
+                      style={{ background: "var(--color-ink)" }}
+                      aria-hidden="true"
+                    />
+                    {role}
+                  </div>
+                )
+              )}
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

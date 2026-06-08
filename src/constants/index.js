@@ -11,7 +11,7 @@ export const mySocials = [
   },
   {
     name: "Email",
-    href: "mailto:zaid07sk@gmail.com",
+    href: "mailto:shaikh.zaid@northeastern.edu",
     icon: "/assets/socials/email.svg",
   },
 ];

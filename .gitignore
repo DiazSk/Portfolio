@@ -30,3 +30,4 @@ coverage/
 *.swp
 .vercel
 .env*.local
+.claude/

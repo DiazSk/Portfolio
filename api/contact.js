@@ -15,7 +15,7 @@ const notificationTemplate = (name, email, message) => `
 <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
   <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px 10px 0 0; text-align: center;">
     <h1 style="margin: 0;">🚀 New Portfolio Contact</h1>
-    <p style="margin: 10px 0 0 0; opacity: 0.9;">ML/Data Science Opportunity</p>
+    <p style="margin: 10px 0 0 0; opacity: 0.9;">Data Engineering &amp; Backend SWE Opportunity</p>
   </div>
   
   <div style="background: #f7f7f7; padding: 30px; border-radius: 0 0 10px 10px;">
@@ -47,7 +47,7 @@ const autoReplyTemplate = (name) => `
 <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
   <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px 10px 0 0; text-align: center;">
     <h1 style="margin: 0;">Thank You for Reaching Out!</h1>
-    <p style="margin: 10px 0 0 0; opacity: 0.9;">Zaid Shaikh - Data Scientist & ML Engineer</p>
+    <p style="margin: 10px 0 0 0; opacity: 0.9;">Zaid Shaikh - Data Engineer & Backend Systems Engineer</p>
   </div>
   
   <div style="background: #f7f7f7; padding: 30px;">
@@ -65,21 +65,21 @@ const autoReplyTemplate = (name) => `
         </ul>
       </div>
       
-      <h3 style="color: #667eea;">🚀 Explore My Production ML Systems:</h3>
-      
-      <p><strong>🛡️ Fraud Detection:</strong> 99.2% accuracy, $1.6M+ saved<br>
-      <strong>📈 Portfolio Optimizer:</strong> $5M ARR capability<br>
-      <strong>📊 Churn Prediction:</strong> 40% reduction, $487K saved</p>
+      <h3 style="color: #667eea;">🚀 Explore My Production Systems:</h3>
+
+      <p><strong>Healthcare Data Lakehouse:</strong> 9.6M records processed, 80GB, Azure Medallion Architecture<br>
+      <strong>Chatflow Messaging System:</strong> 21,091 msg/s sustained, zero data loss across 1M messages<br>
+      <strong>NYC Taxi Data Lakehouse:</strong> 2.8M clean records, 96.8% retention, AWS Glue + dbt</p>
       
       <div style="margin-top: 25px; padding: 20px; background: #f9f9f9; border-radius: 8px; text-align: center;">
         <a href="https://github.com/DiazSk" style="color: #667eea; text-decoration: none; margin: 0 10px;">GitHub</a> |
-        <a href="https://linkedin.com/in/zaidshaikhscientist" style="color: #667eea; text-decoration: none; margin: 0 10px;">LinkedIn</a>
+        <a href="https://linkedin.com/in/zaidshaikhengineer" style="color: #667eea; text-decoration: none; margin: 0 10px;">LinkedIn</a>
       </div>
       
       <p style="margin-top: 25px;">
         Best regards,<br>
         <strong>Zaid Shaikh</strong><br>
-        Data Scientist & ML Engineer
+        Data Engineer &amp; Backend Systems Engineer
       </p>
     </div>
   </div>
@@ -103,7 +103,7 @@ export default async function handler(req, res) {
     // Send notification email to yourself
     const notificationData = await resend.emails.send({
       from: 'Portfolio <onboarding@resend.dev>', // Use your verified domain
-      to: ['zaid07sk@gmail.com'],
+      to: ['shaikh.zaid@northeastern.edu'],
       reply_to: email,
       subject: `New Portfolio Contact from ${name}`,
       html: notificationTemplate(name, email, message),
@@ -113,7 +113,7 @@ export default async function handler(req, res) {
     const autoReplyData = await resend.emails.send({
       from: 'Zaid Shaikh <onboarding@resend.dev>', // Use your verified domain
       to: [email],
-      reply_to: 'zaid07sk@gmail.com',
+      reply_to: 'shaikh.zaid@northeastern.edu',
       subject: 'Thank you for reaching out - Zaid Shaikh',
       html: autoReplyTemplate(name),
     });

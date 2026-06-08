@@ -1,35 +1,14 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import ShinyText from "../components/ShinyText";
 
 function Navigation() {
   return (
     <ul className="nav-ul">
-      <li className="nav-li">
-        <a className="nav-link" href="#home">
-          <ShinyText text="Home" disabled={false} speed={3} className="hover:text-white hover:scale-110 transition-all duration-300" />
-        </a>
-      </li>
-      <li className="nav-li">
-        <a className="nav-link" href="#chat">
-          <ShinyText text="AI Chat" disabled={false} speed={3} className="hover:text-white hover:scale-110 transition-all duration-300" />
-        </a>
-      </li>
-      <li className="nav-li">
-        <a className="nav-link" href="#projects">
-          <ShinyText text="Projects" disabled={false} speed={3} className="hover:text-white hover:scale-110 transition-all duration-300" />
-        </a>
-      </li>
-      <li className="nav-li">
-        <a className="nav-link" href="#skills">
-          <ShinyText text="Skills" disabled={false} speed={3} className="hover:text-white hover:scale-110 transition-all duration-300" />
-        </a>
-      </li>
-      <li className="nav-li">
-        <a className="nav-link" href="#contact">
-          <ShinyText text="Contact" disabled={false} speed={3} className="hover:text-white hover:scale-110 transition-all duration-300" />
-        </a>
-      </li>
+      <li className="nav-li"><a className="nav-link" href="#home">Home</a></li>
+      <li className="nav-li"><a className="nav-link" href="#about">About</a></li>
+      <li className="nav-li"><a className="nav-link" href="#projects">Projects</a></li>
+      <li className="nav-li"><a className="nav-link" href="#skills">Skills</a></li>
+      <li className="nav-li"><a className="nav-link" href="#contact">Contact</a></li>
     </ul>
   );
 }
@@ -38,49 +17,74 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="fixed inset-x-0 z-20 w-full backdrop-blur-lg bg-primary/40">
-      <div className="mx-auto c-space max-w-7xl">
-        <div className="flex min-h-[72px] items-center justify-between py-3 sm:py-2">
+    <header
+      className="fixed inset-x-0 top-0 z-20 w-full border-b backdrop-blur-sm"
+      style={{
+        background: "rgba(250,250,249,0.85)",
+        borderColor: "var(--color-border)",
+      }}
+    >
+      <div className="c-space mx-auto max-w-7xl">
+        <div className="flex min-h-[64px] items-center justify-between">
           <a
             href="/"
-            className="text-2xl font-semibold tracking-tight text-white transition-colors"
+            className="text-xl font-semibold tracking-tight transition-opacity hover:opacity-70"
+            style={{ color: "var(--color-ink)" }}
           >
-            Zaid
-            <span className="ml-1 text-lavender">.</span>
+            Zaid<span style={{ color: "var(--color-ink-muted)" }}>.</span>
           </a>
 
-          <div className="flex items-center gap-2 sm:gap-3">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="flex cursor-pointer text-neutral-400 hover:text-white focus:outline-none sm:hidden"
-            >
-              <img
-                src={isOpen ? "assets/close.svg" : "assets/menu.svg"}
-                className="h-6 w-6"
-                alt="toggle"
-              />
-            </button>
-          </div>
+          {/* Mobile toggle */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="sm:hidden flex flex-col gap-1.5 p-1"
+            aria-label="Toggle menu"
+          >
+            <span
+              className="block h-px w-5 transition-all duration-200"
+              style={{
+                background: "var(--color-ink)",
+                transform: isOpen ? "translateY(4px) rotate(45deg)" : "none",
+              }}
+            />
+            <span
+              className="block h-px w-5 transition-all duration-200"
+              style={{
+                background: "var(--color-ink)",
+                opacity: isOpen ? 0 : 1,
+              }}
+            />
+            <span
+              className="block h-px w-5 transition-all duration-200"
+              style={{
+                background: "var(--color-ink)",
+                transform: isOpen ? "translateY(-4px) rotate(-45deg)" : "none",
+              }}
+            />
+          </button>
 
+          {/* Desktop nav */}
           <nav className="hidden sm:flex">
             <Navigation />
           </nav>
         </div>
       </div>
+
+      {/* Mobile dropdown */}
       {isOpen && (
         <motion.div
-          className="block overflow-hidden text-center sm:hidden"
-          initial={{ opacity: 0, x: -10 }}
-          animate={{ opacity: 1, x: 0 }}
-          style={{ maxHeight: "100vh" }}
-          transition={{ duration: 1 }}
+          initial={{ opacity: 0, y: -8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.15 }}
+          className="border-t sm:hidden"
+          style={{ borderColor: "var(--color-border)" }}
         >
-          <nav className="pb-5">
+          <nav className="c-space py-4">
             <Navigation />
           </nav>
         </motion.div>
       )}
-    </div>
+    </header>
   );
 };
 

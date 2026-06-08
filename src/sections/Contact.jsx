@@ -1,55 +1,51 @@
 import { resumeData } from "../constants/resumeData";
 import { mySocials } from "../constants";
-import ShinyText from "../components/ShinyText";
 
 const Contact = () => {
   const { personal } = resumeData;
 
-  const labelByName = {
-    Email: personal.email,
-    LinkedIn: "LinkedIn Profile",
-    GitHub: "GitHub Profile",
-  };
-
   return (
-    <section id="contact" className="relative overflow-hidden c-space py-16 md:py-20">
-      <div className="relative z-10 w-full text-center">
-        <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
-          Let&apos;s Connect
-        </h2>
-        <p className="mx-auto mt-3 max-w-2xl text-neutral-300">
-          Interested in data engineering internships, co-op opportunities, or collaboration? I'd love to hear from you.
-        </p>
+    <section id="contact" className="c-space py-20">
+      <div className="mx-auto max-w-7xl">
+        <hr className="section-rule" />
 
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-          {mySocials.map((social) => (
-            <a
-              key={social.name}
-              href={social.href}
-              target={social.href.startsWith("mailto:") ? undefined : "_blank"}
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-5 py-3 text-sm text-neutral-200 transition-all hover:border-purple-400/40 hover:text-white"
-            >
-              <img src={social.icon} className="h-4 w-4" alt={social.name} />
-              <span>{labelByName[social.name]}</span>
-            </a>
-          ))}
-        </div>
-
-        <div className="mt-8">
-          <a
-            href={`mailto:${personal.email}`}
-            className="inline-flex items-center gap-2 rounded-xl bg-royal px-8 py-3.5 text-sm font-medium text-white transition-all hover:bg-lavender hover:shadow-lg hover:shadow-royal/25"
-          >
-            Get in Touch
-          </a>
-        </div>
-
-        <div className="mt-10 border-t border-white/10 pt-6">
-          <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-neutral-400">
-            <ShinyText text="Built with ❤️ by Zaid Shaikh" speed={4} className="text-sm" />
-            <ShinyText text="Powered by AI · 2026" speed={5} className="text-sm" />
+        <div className="flex flex-col items-start justify-between gap-8 md:flex-row md:items-end">
+          {/* Left */}
+          <div>
+            <p className="text-eyebrow mb-3">Contact</p>
+            <h2 className="text-heading mb-2">Let&apos;s connect.</h2>
+            <p className="text-sm" style={{ color: "var(--color-ink-secondary)" }}>
+              Open to Data Engineering internships, co-ops, and full-time roles.<br />
+              Summer &amp; Fall 2026 · Seattle, WA · Remote
+            </p>
           </div>
+
+          {/* Right - links */}
+          <div className="flex flex-wrap gap-3">
+            {mySocials.map((social) => (
+              <a
+                key={social.name}
+                href={social.href}
+                target={social.href.startsWith("mailto:") ? undefined : "_blank"}
+                rel="noopener noreferrer"
+                className="btn-ghost"
+              >
+                <img src={social.icon} className="h-4 w-4" style={{ filter: "invert(1) brightness(0)" }} alt={social.name} />
+                <span>
+                  {social.name === "Email" ? personal.email : social.name}
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-16 flex items-center justify-between border-t pt-6" style={{ borderColor: "var(--color-border)" }}>
+          <p className="text-xs" style={{ color: "var(--color-ink-muted)" }}>
+            © 2026 Zaid Shaikh
+          </p>
+          <p className="text-xs" style={{ color: "var(--color-ink-muted)" }}>
+            Built with React · Deployed on Vercel
+          </p>
         </div>
       </div>
     </section>
