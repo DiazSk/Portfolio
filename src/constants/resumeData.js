@@ -9,7 +9,7 @@ export const resumeData = {
     tagline:
       "Architecting resilient data ecosystems and scalable software systems. Committed to building robust underlying architectures that drive real-time stream processing and high-throughput backend platforms.",
     summary:
-      "MS Computer Science at Northeastern University (4.0 GPA, December 2026), serving as a Graduate Teaching Assistant for the Machine Learning course and co-authoring at COLM 2026 as an NLP Research Assistant. My work spans the full data stack: Medallion lakehouses ingesting 9.6M records on Azure, streaming backends sustaining 21,091 msg/s with exactly-once Flink semantics, and full-stack terminals closing the Kafka-to-browser gap in under 100ms. I build systems where every architectural layer is a deliberate decision, optimized for throughput, correctness, and the engineers who maintain them.",
+      "MS Computer Science at Northeastern University (4.0 GPA, December 2026), serving as a Graduate Teaching Assistant for the Machine Learning course and co-authoring a paper under review at COLM 2026. My work spans the full data stack: Medallion lakehouses ingesting 9.6M records on Azure, streaming backends sustaining 21,091 msg/s with exactly-once Flink semantics, and full-stack terminals closing the Kafka-to-browser gap in under 100ms. I build systems where every architectural layer is a deliberate decision, optimized for throughput, correctness, and the engineers who maintain them.",
     yearsOfExperience: 0,
     availability: "Summer & Fall 2026 | Full-Time",
     phone: "+1(206) 843-6128",
@@ -52,24 +52,24 @@ export const resumeData = {
   experience: [
     {
       company: "Northeastern University, Khoury College of Computer Sciences",
-      role: "NLP Research Assistant",
+      role: "Research Co-author",
       location: "Seattle, WA",
-      startDate: "Jan 2026",
+      startDate: "Fall 2025",
       endDate: "Present",
       description:
-        "Conducting NLP research on semantic drift in multi-hop text generation, building evaluation harnesses and statistical validation pipelines for a co-authored COLM 2026 paper.",
+        "Co-authoring The Laundering Effect (COLM 2026, under review) under faculty advisement, formalizing cumulative semantic erosion under iterative LLM paraphrasing. Extended from an NLP course group project into a full research contribution.",
       achievements: [
-        "Designed an end-to-end evaluation harness in Python for 4,817 source-paraphrase pairs, utilizing Claude Code to accelerate script refactoring and achieving a 0.92 composite correlation across drift dimensions",
-        "Engineered a Composite Semantic Drift Score for a co-authored COLM 2026 paper, leveraging Gemini for research synthesis, technical documentation, and cross-functional communication; integrated SBERT, METEOR, and ROUGE-L signals",
-        "Validated non-linear semantic drift via paired t-test and Wilcoxon signed-rank scripts, managing large-scale data transformation workflows and performing error analysis across multi-hop text generation chains",
+        "Contributed to a 3-phase evaluation pipeline processing 36,800+ records across two corpora (PADBen: 16,232 sentence-level records; Ship of Theseus: 20,595 paragraph-level records, 7 domains) through corpus standardization, multi-hop paraphrasing chains, and composite metric computation",
+        "Implemented the Composite Semantic Drift Score (SDS: weighted SBERT / METEOR / ROUGE-L) across iterative paraphrase trajectories, quantifying a data quality failure mode — the Boiling Frog Effect — where cumulative drift reached 189-331% above the per-hop safety threshold while individual-step signals appeared clean",
+        "Ran statistical analysis (paired t-tests, Wilcoxon signed-rank tests) validating the Distance Effect Gap: SBERT cosine remained high (0.60-0.87) while lexical overlap collapsed to 20-39% word survival across the full paraphrase trajectory",
       ],
       technologies: [
         "Python",
         "SBERT",
         "METEOR",
         "ROUGE-L",
-        "Claude Code",
-        "Gemini",
+        "DIPPER",
+        "GPT-4",
         "Statistical Analysis",
       ],
     },

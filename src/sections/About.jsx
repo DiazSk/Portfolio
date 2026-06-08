@@ -12,8 +12,8 @@ const CREDENTIALS = [
     detail: "Graduate Machine Learning · Northeastern University",
   },
   {
-    label: "NLP Research Assistant",
-    detail: "COLM 2026 co-author · Semantic Drift in Multi-hop LLMs",
+    label: "Research Co-author",
+    detail: "The Laundering Effect · COLM 2026 (under review)",
   },
   {
     label: "Oracle Cloud Infrastructure",
