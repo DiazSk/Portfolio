@@ -4,53 +4,277 @@
   "title": "Design System: Zaid Shaikh — Portfolio",
   "extensions": {
     "colorMeta": {
-      "surface": { "role": "neutral", "displayName": "Void", "canonical": "#08090A", "tonalRamp": ["#08090A", "#0F1011", "#16181A", "#212426", "#33373A", "#575C61", "#8A8F98", "#F7F8F8"] },
-      "surface-raised": { "role": "neutral", "displayName": "Raised Plane", "canonical": "#0F1011", "tonalRamp": ["#08090A", "#0F1011", "#16181A", "#111315", "#212426", "#33373A", "#575C61", "#B4B9C2"] },
-      "surface-overlay": { "role": "neutral", "displayName": "Overlay Plane", "canonical": "#16181A", "tonalRamp": ["#08090A", "#0F1011", "#16181A", "#212426", "#2C3033", "#33373A", "#575C61", "#8A8F98"] },
-      "border": { "role": "neutral", "displayName": "Hairline", "canonical": "rgba(255, 255, 255, 0.08)", "tonalRamp": ["rgba(255,255,255,0.02)", "rgba(255,255,255,0.04)", "rgba(255,255,255,0.06)", "rgba(255,255,255,0.08)", "rgba(255,255,255,0.12)", "rgba(255,255,255,0.16)", "rgba(255,255,255,0.24)", "rgba(255,255,255,0.4)"] },
-      "border-strong": { "role": "neutral", "displayName": "Hairline Strong", "canonical": "rgba(255, 255, 255, 0.16)", "tonalRamp": ["rgba(255,255,255,0.04)", "rgba(255,255,255,0.08)", "rgba(255,255,255,0.12)", "rgba(255,255,255,0.16)", "rgba(255,255,255,0.24)", "rgba(255,255,255,0.32)", "rgba(255,255,255,0.48)", "rgba(255,255,255,0.64)"] },
-      "ink": { "role": "neutral", "displayName": "Primary Ink", "canonical": "#F7F8F8", "contrastOnOverlay": "16.73:1", "tonalRamp": ["#26282B", "#33373A", "#4A4E53", "#676C72", "#8A8F98", "#B4B9C2", "#D9DCE0", "#F7F8F8"] },
-      "ink-secondary": { "role": "neutral", "displayName": "Secondary Ink", "canonical": "#B4B9C2", "contrastOnOverlay": "9.04:1", "tonalRamp": ["#1C1E21", "#2B2E33", "#3F444A", "#575C64", "#727880", "#8A8F98", "#B4B9C2", "#E4E6EA"] },
-      "ink-muted": { "role": "neutral", "displayName": "Muted Ink", "canonical": "#8A8F98", "contrastOnOverlay": "5.48:1", "tonalRamp": ["#17191C", "#232629", "#33373C", "#474C52", "#5D636A", "#757B83", "#8A8F98", "#C3C7CD"] },
-      "accent": { "role": "primary", "displayName": "Signal Amber", "canonical": "#EBA352", "contrastOnSurface": "8.39:1", "tonalRamp": ["#2E1D08", "#4A2F0E", "#6B4415", "#8F5C1D", "#B67826", "#D4913C", "#EBA352", "#F7D3A6"] }
+      "surface": {
+        "role": "neutral",
+        "displayName": "Void",
+        "canonical": "#08090A",
+        "tonalRamp": [
+          "#08090A",
+          "#0F1011",
+          "#16181A",
+          "#212426",
+          "#33373A",
+          "#575C61",
+          "#8A8F98",
+          "#F7F8F8"
+        ]
+      },
+      "surface-raised": {
+        "role": "neutral",
+        "displayName": "Raised Plane",
+        "canonical": "#0F1011",
+        "tonalRamp": [
+          "#08090A",
+          "#0F1011",
+          "#16181A",
+          "#111315",
+          "#212426",
+          "#33373A",
+          "#575C61",
+          "#B4B9C2"
+        ]
+      },
+      "surface-overlay": {
+        "role": "neutral",
+        "displayName": "Overlay Plane",
+        "canonical": "#16181A",
+        "tonalRamp": [
+          "#08090A",
+          "#0F1011",
+          "#16181A",
+          "#212426",
+          "#2C3033",
+          "#33373A",
+          "#575C61",
+          "#8A8F98"
+        ]
+      },
+      "border": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "rgba(255, 255, 255, 0.08)",
+        "tonalRamp": [
+          "rgba(255,255,255,0.02)",
+          "rgba(255,255,255,0.04)",
+          "rgba(255,255,255,0.06)",
+          "rgba(255,255,255,0.08)",
+          "rgba(255,255,255,0.12)",
+          "rgba(255,255,255,0.16)",
+          "rgba(255,255,255,0.24)",
+          "rgba(255,255,255,0.4)"
+        ]
+      },
+      "border-strong": {
+        "role": "neutral",
+        "displayName": "Hairline Strong",
+        "canonical": "rgba(255, 255, 255, 0.16)",
+        "tonalRamp": [
+          "rgba(255,255,255,0.04)",
+          "rgba(255,255,255,0.08)",
+          "rgba(255,255,255,0.12)",
+          "rgba(255,255,255,0.16)",
+          "rgba(255,255,255,0.24)",
+          "rgba(255,255,255,0.32)",
+          "rgba(255,255,255,0.48)",
+          "rgba(255,255,255,0.64)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Primary Ink",
+        "canonical": "#F7F8F8",
+        "contrastOnOverlay": "16.73:1",
+        "tonalRamp": [
+          "#26282B",
+          "#33373A",
+          "#4A4E53",
+          "#676C72",
+          "#8A8F98",
+          "#B4B9C2",
+          "#D9DCE0",
+          "#F7F8F8"
+        ]
+      },
+      "ink-secondary": {
+        "role": "neutral",
+        "displayName": "Secondary Ink",
+        "canonical": "#B4B9C2",
+        "contrastOnOverlay": "9.04:1",
+        "tonalRamp": [
+          "#1C1E21",
+          "#2B2E33",
+          "#3F444A",
+          "#575C64",
+          "#727880",
+          "#8A8F98",
+          "#B4B9C2",
+          "#E4E6EA"
+        ]
+      },
+      "ink-muted": {
+        "role": "neutral",
+        "displayName": "Muted Ink",
+        "canonical": "#8A8F98",
+        "contrastOnOverlay": "5.48:1",
+        "tonalRamp": [
+          "#17191C",
+          "#232629",
+          "#33373C",
+          "#474C52",
+          "#5D636A",
+          "#757B83",
+          "#8A8F98",
+          "#C3C7CD"
+        ]
+      },
+      "accent": {
+        "role": "primary",
+        "displayName": "Signal Amber",
+        "canonical": "#EBA352",
+        "contrastOnSurface": "8.39:1",
+        "tonalRamp": [
+          "#2E1D08",
+          "#4A2F0E",
+          "#6B4415",
+          "#8F5C1D",
+          "#B67826",
+          "#D4913C",
+          "#EBA352",
+          "#F7D3A6"
+        ]
+      }
     },
     "typographyMeta": {
-      "display": { "displayName": "Display", "purpose": "The name in the first viewport and the Contact ask. The only type above 3rem." },
-      "headline": { "displayName": "Headline", "purpose": "Section headings: 'Selected systems', 'Stack', the About claim." },
-      "metric": { "displayName": "Metric", "purpose": "The three hero numbers, in Signal Amber, always tabular." },
-      "title": { "displayName": "Title", "purpose": "Project names inside cards." },
-      "body": { "displayName": "Body", "purpose": "All prose, capped at max-w-2xl (~42rem)." },
-      "label": { "displayName": "Label", "purpose": "Uppercase group indexes, schematic stage names, footer column heads. Never an eyebrow above a heading." }
+      "display": {
+        "displayName": "Display",
+        "purpose": "The name in the first viewport and the Contact ask. The only type above 3rem."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section headings: 'Selected systems', 'Stack', the About claim."
+      },
+      "metric": {
+        "displayName": "Metric",
+        "purpose": "The three hero numbers, in Signal Amber, always tabular."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Project names inside cards."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "All prose, capped at max-w-2xl (~42rem)."
+      },
+      "body-small": {
+        "displayName": "Body Small",
+        "purpose": "The site's dominant reading size: outcome statements, highlights, nav links, buttons, credentials, schematic node labels."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Uppercase group indexes, schematic stage names, footer column heads. Never an eyebrow above a heading."
+      }
     },
     "shadows": [
-      { "name": "card-rest", "value": "inset 0 1px 0 rgba(255,255,255,0.055), 0 1px 2px rgba(0,0,0,0.4), 0 8px 24px -12px rgba(0,0,0,0.7)", "purpose": "Every card and card-like panel at rest: lit top edge plus two-part ambient seating." },
-      { "name": "card-hover", "value": "inset 0 1px 0 rgba(255,255,255,0.09), 0 2px 4px rgba(0,0,0,0.45), 0 14px 34px -14px rgba(0,0,0,0.8)", "purpose": "Card hover, paired with border → strong and fill → #111315." },
-      { "name": "pill-highlight", "value": "inset 0 1px 0 rgba(255,255,255,0.04)", "purpose": "Tech pills: the smallest surfaces are still lit." },
-      { "name": "ghost-highlight", "value": "inset 0 1px 0 rgba(255,255,255,0.045)", "purpose": "Secondary (ghost) buttons." },
-      { "name": "primary-ambient", "value": "0 1px 2px rgba(0,0,0,0.5), 0 8px 20px -10px rgba(0,0,0,0.9)", "purpose": "The light-on-dark primary button, which needs seating rather than lighting." },
-      { "name": "ground-wash", "value": "radial-gradient(120% 70% at 50% 0%, rgba(255,255,255,0.035) 0%, rgba(255,255,255,0) 55%)", "purpose": "Fixed background-image on body: the page's light source, so scrolling moves content through the light." },
-      { "name": "focus-ring", "value": "outline: 2px solid #EBA352; outline-offset: 2px; border-radius: 0.25rem", "purpose": "Global :focus-visible for everything that does not define its own." }
+      {
+        "name": "card-rest",
+        "value": "inset 0 1px 0 rgba(255,255,255,0.055), 0 1px 2px rgba(0,0,0,0.4), 0 8px 24px -12px rgba(0,0,0,0.7)",
+        "purpose": "Every card and card-like panel at rest: lit top edge plus two-part ambient seating."
+      },
+      {
+        "name": "card-hover",
+        "value": "inset 0 1px 0 rgba(255,255,255,0.09), 0 2px 4px rgba(0,0,0,0.45), 0 14px 34px -14px rgba(0,0,0,0.8)",
+        "purpose": "Card hover, paired with border → strong and fill → #111315."
+      },
+      {
+        "name": "pill-highlight",
+        "value": "inset 0 1px 0 rgba(255,255,255,0.04)",
+        "purpose": "Tech pills: the smallest surfaces are still lit."
+      },
+      {
+        "name": "ghost-highlight",
+        "value": "inset 0 1px 0 rgba(255,255,255,0.045)",
+        "purpose": "Secondary (ghost) buttons."
+      },
+      {
+        "name": "primary-ambient",
+        "value": "0 1px 2px rgba(0,0,0,0.5), 0 8px 20px -10px rgba(0,0,0,0.9)",
+        "purpose": "The light-on-dark primary button, which needs seating rather than lighting."
+      },
+      {
+        "name": "ground-wash",
+        "value": "radial-gradient(120% 70% at 50% 0%, rgba(255,255,255,0.035) 0%, rgba(255,255,255,0) 55%)",
+        "purpose": "Fixed background-image on body: the page's light source, so scrolling moves content through the light."
+      },
+      {
+        "name": "focus-ring",
+        "value": "outline: 2px solid #EBA352; outline-offset: 2px; border-radius: 0.25rem",
+        "purpose": "Global :focus-visible for everything that does not define its own."
+      }
     ],
     "motion": [
-      { "name": "state-transition", "value": "150ms", "purpose": "Every hover/colour/shadow state change. Fill, border, highlight and shadow move together." },
-      { "name": "disclosure", "value": "220ms easeInOut", "purpose": "Project card layer-2 height+opacity expand/collapse." },
-      { "name": "ease-settle", "value": "cubic-bezier(0.22, 1, 0.36, 1)", "purpose": "Decelerating curve for the schematic node settle and edge extend." },
-      { "name": "node-settle", "value": "settle 400ms cubic-bezier(0.22,1,0.36,1) forwards — from { opacity:0; translateY(4px) }", "purpose": "A schematic stage node arriving." },
-      { "name": "edge-extend", "value": "extend 320ms cubic-bezier(0.22,1,0.36,1) forwards — scaleY(0)→1 vertical, scaleX(0)→1 horizontal", "purpose": "A schematic connector drawing itself." },
-      { "name": "stagger", "value": "calc(var(--i) * 90ms)", "purpose": "Per-stage delay so the pipeline reads as construction, edges leading nodes by 40ms." },
-      { "name": "reduced-motion", "value": "@media (prefers-reduced-motion: reduce) { .node, .edge { animation: none; opacity: 1; transform: none } html { scroll-behavior: auto } }", "purpose": "All motion is removable with zero loss of information." }
+      {
+        "name": "state-transition",
+        "value": "150ms",
+        "purpose": "Every hover/colour/shadow state change. Fill, border, highlight and shadow move together."
+      },
+      {
+        "name": "disclosure",
+        "value": "220ms easeInOut",
+        "purpose": "Project card layer-2 height+opacity expand/collapse."
+      },
+      {
+        "name": "ease-settle",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "Decelerating curve for the schematic node settle and edge extend."
+      },
+      {
+        "name": "node-settle",
+        "value": "settle 400ms cubic-bezier(0.22,1,0.36,1) forwards — from { opacity:0; translateY(4px) }",
+        "purpose": "A schematic stage node arriving."
+      },
+      {
+        "name": "edge-extend",
+        "value": "extend 320ms cubic-bezier(0.22,1,0.36,1) forwards — scaleY(0)→1 vertical, scaleX(0)→1 horizontal",
+        "purpose": "A schematic connector drawing itself."
+      },
+      {
+        "name": "stagger",
+        "value": "calc(var(--i) * 90ms)",
+        "purpose": "Per-stage delay so the pipeline reads as construction, edges leading nodes by 40ms."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "@media (prefers-reduced-motion: reduce) { .node, .edge { animation: none; opacity: 1; transform: none } html { scroll-behavior: auto } }",
+        "purpose": "All motion is removable with zero loss of information."
+      }
     ],
     "breakpoints": [
-      { "name": "sm", "value": "640px" },
-      { "name": "md", "value": "768px" },
-      { "name": "lg", "value": "1024px" },
-      { "name": "container-schematic", "value": "34rem (container query, not viewport)" }
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "container-schematic",
+        "value": "34rem (container query, not viewport)"
+      }
     ],
     "layout": {
       "container": "max-width 80rem, centred",
       "gutter": "1.25rem → 2.5rem (640px) → 4rem (1024px)",
       "sectionRhythm": "6rem vertical padding, 8rem at ≥768px",
-      "columnModels": ["3fr / 2fr split (About)", "220px fixed label column / 1fr (Skills index)", "3fr / 2fr / 2fr (Contact)"]
+      "columnModels": [
+        "3fr / 2fr split (About)",
+        "220px fixed label column / 1fr (Skills index)",
+        "3fr / 2fr / 2fr (Contact)"
+      ]
     }
   },
   "components": [
@@ -140,21 +364,81 @@
       "One authored motion moment; everything else is a 150ms state transition."
     ],
     "rules": [
-      { "name": "The Worst-Surface Rule", "body": "Every text tone is chosen to clear 4.5:1 against #16181A — the lightest surface in the system — not against the page ground. A tone that passes only on #08090A is not in this palette. Measured: ink 16.73:1, secondary 9.04:1, muted 5.48:1, accent 8.39:1.", "section": "colors" },
-      { "name": "The Reserved Accent Rule", "body": "Amber appears only where something is measured, live, or focused. If you cannot name the number, the status, or the interaction it represents, it does not get the accent. It is never a background fill for a large area, never a heading colour, and never used to make a section \"pop\".", "section": "colors" },
-      { "name": "The Three Steps Rule", "body": "There are exactly three surfaces. Depth beyond the third step is expressed with the inset highlight and ambient shadow, never by inventing a fourth fill. (The card hover fill #111315 is a state of the raised plane, not a step.)", "section": "colors" },
-      { "name": "The Hairline Rule", "body": "Separation is a 1px white-alpha rule at 8%, stepping to 16% for emphasis. No solid grey borders, no 2px rules, no double rules.", "section": "colors" },
-      { "name": "The Tabular Figures Rule", "body": "Every number that a reader might compare or that sits in a ruled row — hero metrics, card metrics, group counts, the copyright year — is set font-variant-numeric: tabular-nums. Proportional figures in a metric row are a defect.", "section": "typography" },
-      { "name": "The Tight-Top Rule", "body": "Tracking tightens as size grows: −0.02em at 24px, −0.03em at section headings, −0.04em at display, −0.055em at the largest setting. Small type never goes negative; uppercase labels always go positive (+0.02em to +0.08em).", "section": "typography" },
-      { "name": "The No-Kicker Rule", "body": "Headings stand alone. Eyebrow kickers and pre-heading labels were eliminated site-wide during the build and must not return. The 12px uppercase label is a group index (a category name with a count, a footer column head) — it never sits above a heading as its introduction.", "section": "typography" },
-      { "name": "The Ruled Row Rule", "body": "Related numbers sit in one row divided by hairlines, not in separate cards. The hero metric row is three equal columns with a left rule and 32px of left padding on each subsequent cell; below 640px those rules rotate to top rules with 24px of padding and margin. Boxing each metric would make three cards where there is one comparison.", "section": "layout" },
-      { "name": "The Open-Card-Takes-the-Row Rule", "body": "At ≥768px, a project card whose toggle is aria-expanded=\"true\" spans both grid columns (:has() selector on the article). An expanded card is a detail view; at half width its schematic container is 518px and five stages crush together.", "section": "layout" },
-      { "name": "The Container-Query Rule", "body": "The architecture schematic responds to its own width, not the viewport's (@container (min-width: 34rem) on an inline-size container). Because cards sit two-up, a 1400px viewport still gives the schematic only 518px. Any component whose layout depends on the box it sits in — not the screen — uses a container query.", "section": "layout" },
-      { "name": "The Lit Surface Rule", "body": "Any element that sits on a step above its parent takes an inset top-edge highlight. Flat fill plus flat border is what makes a dark page look like a template; the highlight is 1px and between 4% and 9% white, never more.", "section": "elevation" },
-      { "name": "The Whole-State Rule", "body": "A hover changes fill, border, highlight, and shadow together, in one 150ms transition. A border-only hover reads as a bug at this craft bar.", "section": "elevation" },
-      { "name": "The One Motion Moment Rule", "body": "The page has exactly one authored animation: the schematic drawing itself. Everything else is a 150ms colour/shadow state transition or a ≤220ms disclosure. No scroll-triggered reveals, no parallax, no entrance animations on load.", "section": "components" },
-      { "name": "The Reduced-Motion-Is-Complete Rule", "body": "Every animated element renders fully legible at rest under prefers-reduced-motion. Motion may sequence information; it may never be the only way to see it.", "section": "components" },
-      { "name": "The Computed-Claim Rule", "body": "Where the copy states a rule about the content, the component computes it. The Skills standfirst claims the highlighted tools are the ones that carried the six systems, so the pill/plain split is derived at render time from those projects' own technologies arrays — not from hand-maintained source order. If the component changes, the claim must stay computed or the standfirst must change.", "section": "components" }
+      {
+        "name": "The Worst-Surface Rule",
+        "body": "Every text tone is chosen to clear 4.5:1 against #16181A — the lightest surface in the system — not against the page ground. A tone that passes only on #08090A is not in this palette. Measured: ink 16.73:1, secondary 9.04:1, muted 5.48:1, accent 8.39:1.",
+        "section": "colors"
+      },
+      {
+        "name": "The Reserved Accent Rule",
+        "body": "Amber appears only where something is measured, live, or focused. If you cannot name the number, the status, or the interaction it represents, it does not get the accent. It is never a background fill for a large area, never a heading colour, and never used to make a section \"pop\".",
+        "section": "colors"
+      },
+      {
+        "name": "The Three Steps Rule",
+        "body": "There are exactly three surfaces. Depth beyond the third step is expressed with the inset highlight and ambient shadow, never by inventing a fourth fill. (The card hover fill #111315 is a state of the raised plane, not a step.)",
+        "section": "colors"
+      },
+      {
+        "name": "The Hairline Rule",
+        "body": "Separation is a 1px white-alpha rule at 8%, stepping to 16% for emphasis. No solid grey borders, no 2px rules, no double rules.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tabular Figures Rule",
+        "body": "Every number that a reader might compare or that sits in a ruled row — hero metrics, card metrics, group counts, the copyright year — is set font-variant-numeric: tabular-nums. Proportional figures in a metric row are a defect.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tight-Top Rule",
+        "body": "Tracking tightens as size grows: −0.02em at 24px, −0.03em at section headings, −0.04em at display, −0.055em at the largest setting. Small type never goes negative; uppercase labels always go positive (+0.02em to +0.08em).",
+        "section": "typography"
+      },
+      {
+        "name": "The No-Kicker Rule",
+        "body": "Headings stand alone. Eyebrow kickers and pre-heading labels were eliminated site-wide during the build and must not return. The 12px uppercase label is a group index (a category name with a count, a footer column head) — it never sits above a heading as its introduction.",
+        "section": "typography"
+      },
+      {
+        "name": "The Ruled Row Rule",
+        "body": "Related numbers sit in one row divided by hairlines, not in separate cards. The hero metric row is three equal columns with a left rule and 32px of left padding on each subsequent cell; below 640px those rules rotate to top rules with 24px of padding and margin. Boxing each metric would make three cards where there is one comparison.",
+        "section": "layout"
+      },
+      {
+        "name": "The Open-Card-Takes-the-Row Rule",
+        "body": "At ≥768px, a project card whose toggle is aria-expanded=\"true\" spans both grid columns (:has() selector on the article). An expanded card is a detail view; at half width its schematic container is 518px and five stages crush together.",
+        "section": "layout"
+      },
+      {
+        "name": "The Container-Query Rule",
+        "body": "The architecture schematic responds to its own width, not the viewport's (@container (min-width: 34rem) on an inline-size container). Because cards sit two-up, a 1400px viewport still gives the schematic only 518px. Any component whose layout depends on the box it sits in — not the screen — uses a container query.",
+        "section": "layout"
+      },
+      {
+        "name": "The Lit Surface Rule",
+        "body": "Any element that sits on a step above its parent takes an inset top-edge highlight. Flat fill plus flat border is what makes a dark page look like a template; the highlight is 1px and between 4% and 9% white, never more.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Whole-State Rule",
+        "body": "A hover changes fill, border, highlight, and shadow together, in one 150ms transition. A border-only hover reads as a bug at this craft bar.",
+        "section": "elevation"
+      },
+      {
+        "name": "The One Motion Moment Rule",
+        "body": "The page has exactly one authored animation: the schematic drawing itself. Everything else is a 150ms colour/shadow state transition or a ≤220ms disclosure. No scroll-triggered reveals, no parallax, no entrance animations on load.",
+        "section": "components"
+      },
+      {
+        "name": "The Reduced-Motion-Is-Complete Rule",
+        "body": "Every animated element renders fully legible at rest under prefers-reduced-motion. Motion may sequence information; it may never be the only way to see it.",
+        "section": "components"
+      },
+      {
+        "name": "The Computed-Claim Rule",
+        "body": "Where the copy states a rule about the content, the component computes it. The Skills standfirst claims the highlighted tools are the ones that carried the six systems, so the pill/plain split is derived at render time from those projects' own technologies arrays — not from hand-maintained source order. If the component changes, the claim must stay computed or the standfirst must change.",
+        "section": "components"
+      }
     ],
     "dos": [
       "Do keep to the three surface steps (#08090A / #0F1011 / #16181A) and express further depth with the inset highlight and ambient shadow.",

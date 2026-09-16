@@ -36,6 +36,12 @@ typography:
     fontWeight: 400
     lineHeight: 1.625
     letterSpacing: "normal"
+  body-small:
+    fontFamily: "Inter, sans-serif"
+    fontSize: "0.875rem"
+    fontWeight: 400
+    lineHeight: 1.625
+    letterSpacing: "normal"
   label:
     fontFamily: "Inter, sans-serif"
     fontSize: "0.75rem"
