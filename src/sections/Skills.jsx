@@ -1,3 +1,4 @@
+import { resumeData } from "../constants/resumeData";
 const SKILLS = [
   {
     category: "Data Platforms & Pipelines",
@@ -36,6 +37,26 @@ const SKILLS = [
   },
 ];
 
+/* The standfirst claims these are weighted by what carried the six systems.
+   That claim has to be true, so the split is computed from those projects'
+   own `technologies` lists rather than from source order. */
+const SHIPPED = resumeData.projects.flatMap((p) => p.technologies);
+
+const norm = (v) => v.toLowerCase().replace(/[()]/g, "").replace(/\s+/g, " ").trim();
+
+const carriedAProject = (skill) => {
+  const a = norm(skill);
+  return SHIPPED.some((tech) => {
+    const b = norm(tech);
+    if (a === b) return true;
+    // substring only for names long enough to be unambiguous, so "SQL"
+    // does not match "PostgreSQL" while "PySpark" still matches
+    // "Apache Spark (PySpark)"
+    const [short, long] = a.length <= b.length ? [a, b] : [b, a];
+    return short.length >= 4 && long.includes(short);
+  });
+};
+
 const Skills = () => {
   return (
     <section
@@ -49,8 +70,8 @@ const Skills = () => {
           className="mb-12 max-w-2xl text-base leading-relaxed"
           style={{ color: "var(--color-ink-secondary)" }}
         >
-          Weighted by what carried the six systems above, not by what I have
-          touched.
+          Highlighted tools are the ones that actually carried the six systems
+          above; the rest of the stack sits alongside them.
         </p>
 
         {/* A ruled index, not a grid of identical cards: the category sits in
@@ -72,15 +93,15 @@ const Skills = () => {
                 {/* The tools actually load-bearing in the shipped projects
                     carry weight; the rest stay true but stop competing. */}
                 <div className="flex flex-wrap gap-1.5">
-                  {group.items.slice(0, 4).map((skill) => (
+                  {group.items.filter(carriedAProject).map((skill) => (
                     <span key={skill} className="tech-pill">
                       {skill}
                     </span>
                   ))}
                 </div>
-                {group.items.length > 4 && (
+                {group.items.some((i) => !carriedAProject(i)) && (
                   <p className="tech-plain leading-relaxed">
-                    {group.items.slice(4).join(" · ")}
+                    {group.items.filter((i) => !carriedAProject(i)).join(" · ")}
                   </p>
                 )}
               </div>

@@ -79,8 +79,8 @@ const Hero = () => {
         </div>
 
         {/* ── Social links ─────────────────────────────────────── */}
-        <div className="mt-12 flex flex-wrap items-center gap-3">
-          <a href={`mailto:${EMAIL}`} className="btn-primary text-sm">
+        <div className="mt-12 flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+          <a href={`mailto:${EMAIL}`} className="btn-primary justify-center text-sm sm:justify-start">
             <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
               <rect x="1" y="3" width="14" height="10" rx="2" stroke="currentColor" strokeWidth="1.4" />
               <path d="M1.8 4.2l5.4 4a1.4 1.4 0 001.6 0l5.4-4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
@@ -95,7 +95,7 @@ const Hero = () => {
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-ghost text-sm"
+                className="btn-ghost justify-center text-sm sm:justify-start"
               >
                 {social.name}
               </a>

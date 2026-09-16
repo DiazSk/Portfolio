@@ -245,7 +245,7 @@ html {
 /* ─── Project grid ───────────────────────────────────────────── */
 /* An open card is a detail view, so it takes the whole row. This is also
    what gives the schematic the width to run left-to-right; at half width
-   its container is ~518px and five stages crush together. */
+   its container is 518px and five stages crush together. */
 @media (min-width: 768px) {
   .project-grid > article:has([aria-expanded="true"]) {
     grid-column: span 2;
@@ -258,7 +258,7 @@ html {
 .schematic {
   margin: 0;
   /* The flow reflows to its own width, not the viewport's: these cards sit
-     two-up, so a 1400px viewport still only gives the schematic ~570px. */
+     two-up, so a 1400px viewport still only gives the schematic 518px. */
   container-type: inline-size;
 }
 

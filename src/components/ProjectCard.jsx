@@ -44,7 +44,7 @@ const ProjectCard = ({ project }) => {
           <div className="flex flex-col items-center gap-2 md:items-start">
             <RoleTag category={category} />
             <h3
-              className="text-center text-lg font-semibold leading-snug md:text-left"
+              className="text-center text-xl font-semibold leading-snug md:text-left"
               style={{ color: "var(--color-ink)" }}
             >
               {name}
@@ -54,7 +54,8 @@ const ProjectCard = ({ project }) => {
           {/* Primary metric - centered on mobile, left on md+ */}
           <div className="flex flex-col items-center md:items-start">
             <p
-              className="metric-value text-2xl font-semibold leading-none"
+              className="tabular text-2xl font-semibold leading-none"
+              style={{ color: "var(--color-ink)" }}
             >
               {primaryMetric.value}
             </p>
