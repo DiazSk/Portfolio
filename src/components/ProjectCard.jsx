@@ -39,12 +39,12 @@ const ProjectCard = ({ project }) => {
       {/* ── Layer 1 ─────────────────────────────────────────── */}
       <div className="flex flex-col gap-4">
         {/* Header row */}
-        <div className="flex w-full flex-col items-center gap-4 overflow-hidden md:items-start">
+        <div className="flex w-full flex-col items-start gap-4 overflow-hidden">
           {/* Title group - centered on mobile, left on md+ */}
-          <div className="flex flex-col items-center gap-2 md:items-start">
+          <div className="flex flex-col items-start gap-2">
             <RoleTag category={category} />
             <h3
-              className="text-center text-xl font-semibold leading-snug md:text-left"
+              className="text-xl font-semibold leading-snug"
               style={{ color: "var(--color-ink)" }}
             >
               {name}
@@ -52,7 +52,7 @@ const ProjectCard = ({ project }) => {
           </div>
 
           {/* Primary metric - centered on mobile, left on md+ */}
-          <div className="flex flex-col items-center md:items-start">
+          <div className="flex flex-col items-start">
             <p
               className="tabular text-2xl font-semibold leading-none"
               style={{ color: "var(--color-ink)" }}
