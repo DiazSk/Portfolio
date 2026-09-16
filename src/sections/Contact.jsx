@@ -96,7 +96,7 @@ const Contact = () => {
                 <a
                   key={link.label}
                   href={link.href}
-                  className="group relative overflow-hidden rounded border px-3 py-0.5 text-xs transition-colors duration-150"
+                  className="group relative overflow-hidden rounded border px-3 py-0.5 text-xs transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                   style={{
                     borderColor: "rgba(255,255,255,0.12)",
                     background: "#FAFAF9",
@@ -104,14 +104,14 @@ const Contact = () => {
                 >
                   {/* Visible text — exits upward on hover */}
                   <span
-                    className="block transition-transform duration-300 ease-out group-hover:-translate-y-full"
+                    className="block transition-transform duration-300 ease-out group-hover:-translate-y-full group-focus-visible:-translate-y-full"
                     style={{ color: "#111111" }}
                   >
                     {link.label}
                   </span>
                   {/* Duplicate — rises up from below on hover */}
                   <span
-                    className="absolute inset-0 flex items-center justify-center translate-y-full transition-transform duration-300 ease-out group-hover:translate-y-0"
+                    className="absolute inset-0 flex items-center justify-center translate-y-full transition-transform duration-300 ease-out group-hover:translate-y-0 group-focus-visible:translate-y-0"
                     style={{ color: "#111111" }}
                   >
                     {link.label}
@@ -131,17 +131,7 @@ const Contact = () => {
             </p>
             <a
               href={`mailto:${personal.email}`}
-              className="block text-sm transition-all duration-150"
-              style={{ color: "rgba(255,255,255,0.65)", textDecorationLine: "none" }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.color = "#fff";
-                e.currentTarget.style.textDecorationLine = "underline";
-                e.currentTarget.style.textUnderlineOffset = "3px";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.color = "rgba(255,255,255,0.65)";
-                e.currentTarget.style.textDecorationLine = "none";
-              }}
+              className="link-void block text-sm"
             >
               {personal.email}
             </a>
@@ -152,17 +142,7 @@ const Contact = () => {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm transition-all duration-150"
-                  style={{ color: "rgba(255,255,255,0.35)", textDecorationLine: "none" }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.color = "#fff";
-                    e.currentTarget.style.textDecorationLine = "underline";
-                    e.currentTarget.style.textUnderlineOffset = "3px";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.color = "rgba(255,255,255,0.35)";
-                    e.currentTarget.style.textDecorationLine = "none";
-                  }}
+                  className="link-void link-void-dim text-sm"
                 >
                   {social.name}
                 </a>

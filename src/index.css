@@ -12,7 +12,7 @@
   /* Typography - ink-only, no color accent */
   --color-ink:              #111111;
   --color-ink-secondary:    #525252;
-  --color-ink-muted:        #A3A3A3;
+  --color-ink-muted:        #6F6F6F;
 }
 
 /* ─── Base ───────────────────────────────────────────────────── */
@@ -159,6 +159,30 @@ html {
 .btn-ghost:hover {
   border-color: var(--color-border-strong);
   color: var(--color-ink);
+}
+
+/* ─── Links on the Void surface (Contact) ────────────────────── */
+.link-void {
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  text-underline-offset: 3px;
+  transition: color 150ms;
+}
+
+.link-void-dim {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.link-void:hover,
+.link-void:focus-visible {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.link-void:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+  border-radius: 0.25rem;
 }
 
 /* ─── Section divider ────────────────────────────────────────── */
