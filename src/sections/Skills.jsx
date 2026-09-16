@@ -1,5 +1,3 @@
-import { motion } from "framer-motion";
-
 const SKILLS = [
   {
     category: "Data Platforms & Pipelines",
@@ -46,37 +44,23 @@ const Skills = () => {
       style={{ borderColor: "var(--color-border)" }}
     >
       <div className="mx-auto w-full max-w-7xl">
-        <motion.div
-          className="mb-12"
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4 }}
-        >
-          <p className="text-eyebrow mb-2">Stack</p>
-          <h2 className="text-heading">Skills &amp; Technologies</h2>
-        </motion.div>
+        <h2 className="text-heading mb-12">Stack</h2>
 
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {SKILLS.map((group, i) => (
-            <motion.div
+        {/* A ruled index, not a grid of identical cards: the category sits in
+            a fixed left column so every row scans on one axis. */}
+        <div className="flex flex-col">
+          {SKILLS.map((group) => (
+            <div
               key={group.category}
-              className="rounded-xl border p-5 h-full"
-              style={{
-                borderColor: "var(--color-border)",
-                background: "var(--color-surface)",
-              }}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.35, delay: i * 0.05 }}
+              className="grid grid-cols-1 gap-3 border-t py-6 md:grid-cols-[220px_1fr] md:gap-8"
+              style={{ borderColor: "var(--color-border)" }}
             >
-              <p
-                className="mb-3 text-xs font-semibold uppercase tracking-widest"
-                style={{ color: "var(--color-ink-muted)" }}
+              <h3
+                className="text-sm font-medium"
+                style={{ color: "var(--color-ink)" }}
               >
                 {group.category}
-              </p>
+              </h3>
               <div className="flex flex-wrap gap-1.5">
                 {group.items.map((skill) => (
                   <span key={skill} className="tech-pill">
@@ -84,7 +68,7 @@ const Skills = () => {
                   </span>
                 ))}
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

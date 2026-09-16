@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import PropTypes from "prop-types";
 import RoleTag from "./RoleTag";
 import DecisionLog from "./DecisionLog";
+import ArchitectureDiagram from "./ArchitectureDiagram";
 
 const VISIBLE_TECH_COUNT = 4;
 
@@ -26,6 +27,7 @@ const ProjectCard = ({ project }) => {
     technologies,
     highlights,
     decisionLog,
+    architecture,
     github,
   } = project;
 
@@ -114,10 +116,14 @@ const ProjectCard = ({ project }) => {
             className="overflow-hidden"
           >
             <div
-              className="mt-5 flex flex-col gap-5 border-t pt-5"
+              className="mt-5 flex flex-col gap-6 border-t pt-5"
               style={{ borderColor: "var(--color-border)" }}
             >
-              {/* Decision log - only for Crypto Analyzer + Healthcare Lakehouse */}
+              {/* Architecture — the pipeline draws itself as the card opens */}
+              {architecture && (
+                <ArchitectureDiagram stages={architecture} projectName={name} />
+              )}
+
               {decisionLog && <DecisionLog decisionLog={decisionLog} />}
 
               {/* Key highlights */}
@@ -192,6 +198,7 @@ ProjectCard.propTypes = {
       over:    PropTypes.string.isRequired,
       because: PropTypes.string.isRequired,
     }),
+    architecture: PropTypes.array,
     github: PropTypes.string,
   }).isRequired,
 };

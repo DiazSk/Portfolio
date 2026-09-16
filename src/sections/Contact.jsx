@@ -1,157 +1,137 @@
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
 import { resumeData } from "../constants/resumeData";
 import { mySocials } from "../constants";
 
 const NAV_LINKS = [
-  { label: "About",    href: "#about"    },
+  { label: "About", href: "#about" },
   { label: "Projects", href: "#projects" },
-  { label: "Skills",   href: "#skills"   },
-  { label: "Contact",  href: "#contact"  },
+  { label: "Skills", href: "#skills" },
 ];
-
-const colVariant = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
-};
 
 const Contact = () => {
   const { personal } = resumeData;
   const socialLinks = mySocials.filter((s) => s.name !== "Email");
-  const sectionRef = useRef(null);
-  const zaidInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
   return (
-    <section
-      ref={sectionRef}
+    <footer
       id="contact"
-      className="c-space relative overflow-hidden py-32 md:py-36"
-      style={{ background: "#141414" }}
+      className="c-space relative overflow-hidden border-t pt-28 pb-16"
+      style={{ borderColor: "var(--color-border)" }}
     >
-      {/* Grain texture overlay */}
+      {/* The close is a held note, not a second theme: the ground deepens
+          below the fold and the name is set once at full width. */}
       <div
-        className="pointer-events-none absolute inset-0 select-none"
+        className="pointer-events-none absolute inset-0"
         aria-hidden="true"
         style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.12'/%3E%3C/svg%3E")`,
-          backgroundSize: "200px 200px",
-          opacity: 0.55,
+          background:
+            "radial-gradient(120% 80% at 50% 100%, rgba(235,163,82,0.07) 0%, rgba(8,9,10,0) 60%)",
         }}
       />
 
-      {/* ZAID watermark — stretched, centered, bottom-clipped, animates up on scroll */}
-      <div
-        className="pointer-events-none absolute inset-x-0 bottom-0 select-none overflow-hidden"
-        aria-hidden="true"
-      >
-        <motion.span
-          className="block text-center font-bold"
-          initial={{ y: "100%", opacity: 0 }}
-          animate={zaidInView ? { y: "15%", opacity: 1 } : { y: "100%", opacity: 0 }}
-          transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
-          style={{
-            fontSize: "clamp(9rem, 28vw, 24rem)",
-            letterSpacing: "0.2em",
-            color: "rgba(255,255,255,0.05)",
-            lineHeight: 0.8,
-          }}
-        >
-          ZAID
-        </motion.span>
-      </div>
-
-      <div className="relative mx-auto max-w-7xl md:-translate-y-10">
-        {/* 3-column editorial grid — staggered whileInView entrance */}
-        <motion.div
-          className="grid grid-cols-1 gap-16 md:-translate-y-8 md:grid-cols-[3fr_2fr_2fr]"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
-          variants={{
-            hidden: {},
-            visible: { transition: { staggerChildren: 0.12 } },
-          }}
-        >
-
-          {/* Left — headline */}
-          <motion.div className="flex items-start md:pt-0" variants={colVariant}>
+      <div className="relative mx-auto w-full max-w-7xl">
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-[3fr_2fr_2fr]">
+          {/* Left — the ask */}
+          <div>
             <h2
-              className="font-semibold leading-tight tracking-tight text-white"
-              style={{ fontSize: "clamp(2rem, 4vw, 3.25rem)" }}
+              className="font-semibold"
+              style={{
+                color: "var(--color-ink)",
+                fontSize: "clamp(2rem, 4vw, 3.25rem)",
+                letterSpacing: "-0.04em",
+                lineHeight: 1.05,
+              }}
             >
-              Open to the<br />right opportunity.
+              Open to the
+              <br />
+              right opportunity.
             </h2>
-          </motion.div>
-
-          {/* Center — Quick links */}
-          <motion.div variants={colVariant}>
             <p
-              className="mb-5 text-xs font-medium uppercase tracking-widest"
-              style={{ color: "rgba(255,255,255,0.35)" }}
+              className="mt-5 max-w-sm text-base leading-relaxed"
+              style={{ color: "var(--color-ink-secondary)" }}
             >
-              /Quick links
+              Full-time Data Engineering roles starting December 2026.
             </p>
-            <div className="flex flex-wrap gap-3">
+          </div>
+
+          {/* Centre — wayfinding */}
+          <div>
+            <h3
+              className="mb-4 text-xs font-medium uppercase"
+              style={{ color: "var(--color-ink-muted)", letterSpacing: "0.08em" }}
+            >
+              Index
+            </h3>
+            <ul className="flex flex-col gap-2.5">
               {NAV_LINKS.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  className="group relative overflow-hidden rounded border px-3 py-0.5 text-xs transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-                  style={{
-                    borderColor: "rgba(255,255,255,0.12)",
-                    background: "#FAFAF9",
-                  }}
-                >
-                  {/* Visible text — exits upward on hover */}
-                  <span
-                    className="block transition-transform duration-300 ease-out group-hover:-translate-y-full group-focus-visible:-translate-y-full"
-                    style={{ color: "#111111" }}
-                  >
+                <li key={link.label}>
+                  <a href={link.href} className="link-void text-sm">
                     {link.label}
-                  </span>
-                  {/* Duplicate — rises up from below on hover */}
-                  <span
-                    className="absolute inset-0 flex items-center justify-center translate-y-full transition-transform duration-300 ease-out group-hover:translate-y-0 group-focus-visible:translate-y-0"
-                    style={{ color: "#111111" }}
-                  >
-                    {link.label}
-                  </span>
-                </a>
+                  </a>
+                </li>
               ))}
-            </div>
-          </motion.div>
+            </ul>
+          </div>
 
-          {/* Right — Contact */}
-          <motion.div variants={colVariant}>
-            <p
-              className="mb-5 text-xs font-medium uppercase tracking-widest"
-              style={{ color: "rgba(255,255,255,0.35)" }}
+          {/* Right — reach him */}
+          <div>
+            <h3
+              className="mb-4 text-xs font-medium uppercase"
+              style={{ color: "var(--color-ink-muted)", letterSpacing: "0.08em" }}
             >
-              /Contact
-            </p>
+              Contact
+            </h3>
             <a
               href={`mailto:${personal.email}`}
               className="link-void block text-sm"
+              style={{ color: "var(--color-ink)" }}
             >
               {personal.email}
             </a>
-            <div className="mt-4 flex gap-4">
+            <ul className="mt-2.5 flex flex-col gap-2.5">
               {socialLinks.map((social) => (
-                <a
-                  key={social.name}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="link-void link-void-dim text-sm"
-                >
-                  {social.name}
-                </a>
+                <li key={social.name}>
+                  <a
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="link-void link-void-dim text-sm"
+                  >
+                    {social.name}
+                  </a>
+                </li>
               ))}
-            </div>
-          </motion.div>
-        </motion.div>
+            </ul>
+          </div>
+        </div>
+
+        {/* The name, set once, at the width of the page */}
+        <div className="mt-24 overflow-hidden">
+          <span
+            className="block w-full select-none font-semibold leading-none"
+            style={{
+              color: "var(--color-ink)",
+              opacity: 0.07,
+              fontSize: "clamp(4rem, 19vw, 17rem)",
+              letterSpacing: "-0.055em",
+            }}
+            aria-hidden="true"
+          >
+            Zaid Shaikh
+          </span>
+        </div>
+
+        <div
+          className="mt-10 flex flex-wrap items-center justify-between gap-3 border-t pt-6 text-xs"
+          style={{
+            borderColor: "var(--color-border)",
+            color: "var(--color-ink-muted)",
+          }}
+        >
+          <span>Seattle, WA</span>
+          <span className="tabular">© {new Date().getFullYear()}</span>
+        </div>
       </div>
-    </section>
+    </footer>
   );
 };
 

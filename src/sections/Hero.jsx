@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import MetricStat from "../components/MetricStat";
 import { mySocials } from "../constants";
 
@@ -24,46 +23,26 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="c-space flex min-h-screen flex-col justify-center pt-24 pb-16"
+      className="c-space flex min-h-screen flex-col justify-center pt-28 pb-20"
     >
-      <motion.div
-        className="mx-auto w-full max-w-7xl"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-      >
-        {/* Eyebrow */}
-        <p className="text-eyebrow mb-6">
-          Zaid Shaikh · Seattle, WA · Northeastern University
-        </p>
-
-        {/* Headline */}
+      <div className="mx-auto w-full max-w-7xl">
+        {/* Name and claim first. */}
         <h1
-          className="max-w-3xl text-4xl font-semibold leading-tight tracking-tight md:text-6xl"
-          style={{ color: "var(--color-ink)" }}
+          className="text-4xl font-semibold md:text-6xl"
+          style={{ color: "var(--color-ink)", letterSpacing: "-0.04em", lineHeight: 1.05 }}
         >
-          Data Engineer &amp;{" "}
-          <br className="hidden md:block" />
-          Backend Systems Engineer.
+          Zaid Shaikh
         </h1>
 
-        {/* Availability pill — answers "are they available?" right after the role claim */}
-        <div className="mt-4">
-          <span
-            className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs"
-            style={{
-              borderColor: "var(--color-border)",
-              color: "var(--color-ink-muted)",
-            }}
-          >
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" aria-hidden="true" />
-            Available Summer & Fall 2026
-          </span>
-        </div>
-
-        {/* Declarative sentence */}
         <p
-          className="mt-6 max-w-2xl text-lg leading-relaxed md:text-xl"
+          className="mt-3 text-xl font-medium md:text-2xl"
+          style={{ color: "var(--color-ink-secondary)", letterSpacing: "-0.02em" }}
+        >
+          Data Engineer &amp; Backend Systems Engineer
+        </p>
+
+        <p
+          className="mt-7 max-w-2xl text-base leading-relaxed md:text-lg"
           style={{ color: "var(--color-ink-secondary)" }}
         >
           I build the infrastructure layer: streaming pipelines, distributed
@@ -71,15 +50,33 @@ const Hero = () => {
           of records reliably.
         </p>
 
+        {/* Availability + location, the two facts a recruiter checks next */}
+        <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
+          <span className="inline-flex items-center gap-2">
+            <span
+              className="h-1.5 w-1.5 rounded-full"
+              style={{ background: "var(--color-accent)" }}
+              aria-hidden="true"
+            />
+            <span style={{ color: "var(--color-ink)" }}>
+              Available full-time from December 2026
+            </span>
+          </span>
+          <span style={{ color: "var(--color-ink-muted)" }}>Seattle, WA</span>
+          <span style={{ color: "var(--color-ink-muted)" }}>
+            MS Computer Science, Northeastern
+          </span>
+        </div>
+
         {/* ── Metrics ─────────────────────────────────────────── */}
-        <div className="metric-grid mt-14 max-w-3xl">
+        <div className="metric-grid mt-16 max-w-3xl">
           {METRICS.map((m) => (
             <MetricStat key={m.value} {...m} />
           ))}
         </div>
 
         {/* ── Social links ─────────────────────────────────────── */}
-        <div className="mt-12 flex flex-wrap items-center gap-4">
+        <div className="mt-12 flex flex-wrap items-center gap-3">
           {mySocials.map((social) => (
             <a
               key={social.name}
@@ -88,17 +85,13 @@ const Hero = () => {
               rel="noopener noreferrer"
               className="btn-ghost text-sm"
             >
-              <img
-                src={social.icon}
-                className="h-4 w-4"
-                style={{ filter: "brightness(0)" }}
-                alt={social.name}
-              />
-              {social.name === "Email" ? "shaikh.zaid@northeastern.edu" : social.name}
+              {social.name === "Email"
+                ? "shaikh.zaid@northeastern.edu"
+                : social.name}
             </a>
           ))}
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 };

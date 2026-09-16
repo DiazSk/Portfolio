@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { resumeData } from "../constants/resumeData";
 import CopyEmailButton from "../components/CopyEmailButton";
 
@@ -25,23 +24,24 @@ const About = () => {
   const { personal } = resumeData;
 
   return (
-    <section id="about" className="c-space section-spacing border-t" style={{ borderColor: "var(--color-border)" }}>
+    <section
+      id="about"
+      className="c-space section-spacing border-t"
+      style={{ borderColor: "var(--color-border)" }}
+    >
       <div className="mx-auto w-full max-w-7xl">
-        <motion.div
-          className="grid grid-cols-1 gap-16 md:grid-cols-[3fr_2fr]"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.45 }}
-        >
+        <div className="grid grid-cols-1 gap-16 md:grid-cols-[3fr_2fr]">
           {/* ── Left column ─────────────────────────────────── */}
           <div>
-            <p className="text-eyebrow mb-4">About</p>
             <h2 className="text-heading mb-6">
-              I build the layer between raw data and the millisecond that matters.
+              I build the layer between raw data and the millisecond that
+              matters.
             </h2>
 
-            <p className="text-base leading-relaxed" style={{ color: "var(--color-ink-secondary)" }}>
+            <p
+              className="max-w-2xl text-base leading-relaxed"
+              style={{ color: "var(--color-ink-secondary)" }}
+            >
               {personal.summary}
             </p>
 
@@ -53,10 +53,16 @@ const About = () => {
                   className={`flex flex-col gap-0.5 py-4 ${i !== 0 ? "border-t" : ""}`}
                   style={{ borderColor: "var(--color-border)" }}
                 >
-                  <span className="text-sm font-medium" style={{ color: "var(--color-ink)" }}>
+                  <span
+                    className="text-sm font-medium"
+                    style={{ color: "var(--color-ink)" }}
+                  >
                     {label}
                   </span>
-                  <span className="text-sm" style={{ color: "var(--color-ink-muted)" }}>
+                  <span
+                    className="text-sm"
+                    style={{ color: "var(--color-ink-muted)" }}
+                  >
                     {detail}
                   </span>
                 </div>
@@ -66,7 +72,6 @@ const About = () => {
 
           {/* ── Right column ────────────────────────────────── */}
           <div>
-            {/* Availability card */}
             <div
               className="rounded-xl border p-6"
               style={{
@@ -74,33 +79,33 @@ const About = () => {
                 borderColor: "var(--color-border)",
               }}
             >
-              <p
-                className="mb-1 text-xs font-semibold uppercase tracking-widest"
-                style={{ color: "var(--color-ink-muted)" }}
-              >
-                Availability
-              </p>
-              <p
-                className="mb-4 text-lg font-semibold"
-                style={{ color: "var(--color-ink)" }}
-              >
-                Open to opportunities.
-              </p>
+              <div className="mb-4 flex items-center gap-2">
+                <span
+                  className="h-1.5 w-1.5 rounded-full"
+                  style={{ background: "var(--color-accent)" }}
+                  aria-hidden="true"
+                />
+                <p
+                  className="text-lg font-semibold"
+                  style={{ color: "var(--color-ink)" }}
+                >
+                  Open to full-time roles
+                </p>
+              </div>
 
               <div
-                className="mb-6 flex flex-col gap-1 text-sm"
+                className="mb-6 flex flex-col gap-1.5 text-sm"
                 style={{ color: "var(--color-ink-secondary)" }}
               >
-                <span>Summer &amp; Fall 2026: Internship / Co-op</span>
-                <span>Full-Time: Post-graduation, Dec 2026</span>
-                <span>Seattle, WA · Remote</span>
+                <span>Starting December 2026, on graduation</span>
+                <span>Seattle, WA · open to remote</span>
               </div>
 
               <CopyEmailButton />
             </div>
 
             {/* Role targets */}
-            <div className="mt-6 flex flex-col gap-2">
+            <div className="mt-4 flex flex-col gap-2">
               {["Data Engineer", "Analytics Engineer", "Backend SWE / SDE"].map(
                 (role) => (
                   <div
@@ -112,8 +117,8 @@ const About = () => {
                     }}
                   >
                     <span
-                      className="h-1.5 w-1.5 rounded-full shrink-0"
-                      style={{ background: "var(--color-ink)" }}
+                      className="h-1 w-1 shrink-0 rounded-full"
+                      style={{ background: "var(--color-ink-muted)" }}
                       aria-hidden="true"
                     />
                     {role}
@@ -122,7 +127,7 @@ const About = () => {
               )}
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

@@ -18,9 +18,9 @@ const Navbar = () => {
 
   return (
     <header
-      className="fixed inset-x-0 top-0 z-20 w-full border-b backdrop-blur-sm"
+      className="fixed inset-x-0 top-0 z-20 w-full border-b backdrop-blur-md"
       style={{
-        background: "rgba(250,250,249,0.85)",
+        background: "rgba(8,9,10,0.72)",
         borderColor: "var(--color-border)",
       }}
     >

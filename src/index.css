@@ -3,16 +3,21 @@
 
 /* ─── Design tokens ──────────────────────────────────────────── */
 @theme {
-  /* Surfaces */
-  --color-surface:          #FAFAF9;
-  --color-surface-raised:   #F4F4F2;
-  --color-border:           #E5E5E2;
-  --color-border-strong:    #C9C9C6;
+  /* Surfaces — three steps, no more */
+  --color-surface:          #08090A;
+  --color-surface-raised:   #0F1011;
+  --color-surface-overlay:  #16181A;
 
-  /* Typography - ink-only, no color accent */
-  --color-ink:              #111111;
-  --color-ink-secondary:    #525252;
-  --color-ink-muted:        #6F6F6F;
+  --color-border:           rgba(255, 255, 255, 0.08);
+  --color-border-strong:    rgba(255, 255, 255, 0.16);
+
+  /* Text — every tone clears 4.5:1 on the overlay surface */
+  --color-ink:              #F7F8F8;
+  --color-ink-secondary:    #B4B9C2;
+  --color-ink-muted:        #8A8F98;
+
+  /* One accent. Live values and focus only. */
+  --color-accent:           #EBA352;
 }
 
 /* ─── Base ───────────────────────────────────────────────────── */
@@ -20,14 +25,29 @@ body {
   background: var(--color-surface);
   font-family: "Inter", sans-serif;
   color: var(--color-ink);
-  scroll-behavior: smooth;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 html {
+  /* Must live on html, not body: on body the browser ignores it for
+     document scrolling, so in-page anchors never animated. */
+  scroll-behavior: smooth;
   scroll-padding-top: 5rem;
+  color-scheme: dark;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: #08090A;
+}
+
+/* One focus treatment for everything that doesn't define its own. */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 0.25rem;
 }
 
 /* ─── Layout utilities ───────────────────────────────────────── */
@@ -43,11 +63,17 @@ html {
 .text-heading {
   @apply text-3xl font-semibold tracking-tight md:text-4xl;
   color: var(--color-ink);
+  letter-spacing: -0.03em;
 }
 
-.text-eyebrow {
-  @apply text-xs font-medium uppercase tracking-widest;
+.text-label {
+  @apply text-xs font-medium;
   color: var(--color-ink-muted);
+  letter-spacing: 0.02em;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
 }
 
 /* ─── Navigation ─────────────────────────────────────────────── */
@@ -61,7 +87,7 @@ html {
 
 .nav-link {
   @apply text-sm transition-colors duration-150;
-  color: var(--color-ink-secondary);
+  color: var(--color-ink-muted);
 }
 
 .nav-link:hover {
@@ -71,7 +97,7 @@ html {
 /* ─── Cards ──────────────────────────────────────────────────── */
 .card-base {
   @apply rounded-xl border p-6 transition-colors duration-150;
-  background: var(--color-surface);
+  background: var(--color-surface-raised);
   border-color: var(--color-border);
 }
 
@@ -79,7 +105,7 @@ html {
   border-color: var(--color-border-strong);
 }
 
-/* ─── Metric separator grid ──────────────────────────────────── */
+/* ─── Metric row ─────────────────────────────────────────────── */
 .metric-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -103,21 +129,16 @@ html {
   }
 }
 
-/* ─── Project card expand animation ─────────────────────────── */
-.project-layer-2 {
-  overflow: hidden;
-}
-
 /* ─── Decision log ───────────────────────────────────────────── */
 .decision-log {
-  border-left: 2px solid var(--color-border-strong);
+  border-left: 1px solid var(--color-border-strong);
   padding-left: 1rem;
 }
 
 /* ─── Tech pill ──────────────────────────────────────────────── */
 .tech-pill {
   @apply inline-block rounded-md border px-2 py-0.5 text-xs;
-  background: var(--color-surface-raised);
+  background: var(--color-surface-overlay);
   border-color: var(--color-border);
   color: var(--color-ink-secondary);
 }
@@ -128,30 +149,32 @@ html {
 }
 
 .role-tag-default {
-  background: var(--color-surface-raised);
+  background: var(--color-surface-overlay);
   border-color: var(--color-border);
   color: var(--color-ink-secondary);
 }
 
-.role-tag-inverted {
-  background: var(--color-ink);
-  border-color: var(--color-ink);
-  color: var(--color-surface);
+/* On a dark ground, emphasis is the accent hairline — not an inversion. */
+.role-tag-accent {
+  background: rgba(235, 163, 82, 0.1);
+  border-color: rgba(235, 163, 82, 0.35);
+  color: var(--color-accent);
 }
 
 /* ─── Buttons ────────────────────────────────────────────────── */
 .btn-primary {
   @apply inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-medium transition-colors duration-150;
   background: var(--color-ink);
-  color: var(--color-surface);
+  color: #08090A;
 }
 
 .btn-primary:hover {
-  background: #2a2a2a;
+  background: #FFFFFF;
 }
 
 .btn-ghost {
   @apply inline-flex items-center gap-2 rounded-lg border px-5 py-2.5 text-sm font-medium transition-colors duration-150;
+  background: var(--color-surface-raised);
   border-color: var(--color-border);
   color: var(--color-ink-secondary);
 }
@@ -159,34 +182,133 @@ html {
 .btn-ghost:hover {
   border-color: var(--color-border-strong);
   color: var(--color-ink);
+  background: var(--color-surface-overlay);
 }
 
-/* ─── Links on the Void surface (Contact) ────────────────────── */
+/* ─── Links ──────────────────────────────────────────────────── */
 .link-void {
-  color: rgba(255, 255, 255, 0.65);
+  color: var(--color-ink-secondary);
   text-decoration: none;
   text-underline-offset: 3px;
   transition: color 150ms;
 }
 
 .link-void-dim {
-  color: rgba(255, 255, 255, 0.35);
+  color: var(--color-ink-muted);
 }
 
 .link-void:hover,
 .link-void:focus-visible {
-  color: #fff;
+  color: var(--color-ink);
   text-decoration: underline;
-}
-
-.link-void:focus-visible {
-  outline: 2px solid #fff;
-  outline-offset: 3px;
-  border-radius: 0.25rem;
 }
 
 /* ─── Section divider ────────────────────────────────────────── */
 .section-rule {
   @apply my-12;
   border-color: var(--color-border);
+}
+
+/* ─── Architecture schematic ─────────────────────────────────── */
+/* The page's one authored motion moment: the pipeline draws itself, stage by
+   stage, when a project card opens. Everything is legible without it. */
+.schematic {
+  margin: 0;
+  /* The flow reflows to its own width, not the viewport's: these cards sit
+     two-up, so a 1400px viewport still only gives the schematic ~570px. */
+  container-type: inline-size;
+}
+
+.schematic-flow {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.node {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  opacity: 0;
+  animation: settle 400ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: calc(var(--i) * 90ms);
+}
+
+.node-stage {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+}
+
+.node-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.node-item {
+  font-size: 0.875rem;
+  line-height: 1.4;
+  color: var(--color-ink-secondary);
+  background: var(--color-surface-overlay);
+  border: 1px solid var(--color-border);
+  border-radius: 0.375rem;
+  padding: 0.3125rem 0.5rem;
+}
+
+/* Two items in one stage = a real branch in the architecture (hot/cold
+   storage, dual sinks), not a layout convenience. */
+.node-items > * + * {
+  position: relative;
+}
+
+.edge {
+  width: 1px;
+  height: 1.25rem;
+  margin-left: 0.75rem;
+  background: var(--color-border-strong);
+  transform-origin: top;
+  transform: scaleY(0);
+  animation: extend 320ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: calc(var(--i) * 90ms - 40ms);
+}
+
+@container (min-width: 38rem) {
+  .schematic-flow {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  .edge {
+    width: auto;
+    flex: 1;
+    min-width: 1rem;
+    height: 1px;
+    margin: 1.375rem 0.5rem 0;
+    transform-origin: left;
+    transform: scaleX(0);
+    animation-name: extend-x;
+  }
+}
+
+@keyframes settle {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes extend   { to { transform: scaleY(1); } }
+@keyframes extend-x { to { transform: scaleX(1); } }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .node,
+  .edge {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
 }

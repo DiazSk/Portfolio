@@ -11,7 +11,7 @@ export const resumeData = {
     summary:
       "MS Computer Science at Northeastern University (4.0 GPA, December 2026), serving as a Graduate Teaching Assistant for the Machine Learning course and co-authoring a paper under review at COLM 2026. My work spans the full data stack: Medallion lakehouses ingesting 9.6M records on Azure, streaming backends sustaining 21,091 msg/s with exactly-once Flink semantics, and full-stack terminals closing the Kafka-to-browser gap in under 100ms. I build systems where every architectural layer is a deliberate decision, optimized for throughput, correctness, and the engineers who maintain them.",
     yearsOfExperience: 0,
-    availability: "Summer & Fall 2026 | Full-Time",
+    availability: "Full-Time from December 2026",
     phone: "+1(206) 843-6128",
     universityEmail: "shaikh.zaid@northeastern.edu",
   },
@@ -190,6 +190,13 @@ export const resumeData = {
     {
       name: "Healthcare Data Lakehouse on Azure",
       category: "Data Engineering",
+      architecture: [
+        { stage: "Ingest", items: ["Azure Data Factory"] },
+        { stage: "Bronze", items: ["ADLS Gen2 · raw JSON"] },
+        { stage: "Silver", items: ["Databricks PySpark", "Delta Lake · ACID"] },
+        { stage: "Gold", items: ["Star schema"] },
+        { stage: "Serve", items: ["Fabric Lakehouse", "Power BI"] },
+      ],
       outcomeStatement:
         "Processed 80GB of Medicare reimbursement data across three quality layers with zero loss during ingestion failures, delivering a 35% reduction in Databricks compute cost.",
       primaryMetric: { value: "9.6M", label: "records · 80GB · Azure Medallion" },
@@ -229,6 +236,12 @@ export const resumeData = {
     {
       name: "NYC Taxi Data Lakehouse",
       category: "Data Engineering",
+      architecture: [
+        { stage: "Land", items: ["S3 · raw Parquet"] },
+        { stage: "ETL", items: ["AWS Glue · PySpark"] },
+        { stage: "Curated", items: ["S3 · partitioned y/m"] },
+        { stage: "Model", items: ["dbt · staging + 3 marts"] },
+      ],
       outcomeStatement:
         "Ingested 100GB+ of NYC taxi trip data through serverless Spark on AWS with 96.8% data retention, fully reproducible across environments via Terraform IaC.",
       primaryMetric: { value: "2.8M", label: "clean records · 96.8% retention" },
@@ -259,6 +272,13 @@ export const resumeData = {
     {
       name: "E-Commerce Data Warehouse (Olist)",
       category: "Analytics Engineering",
+      architecture: [
+        { stage: "Sources", items: ["11 CSV", "3 REST APIs"] },
+        { stage: "Bronze", items: ["Raw load"] },
+        { stage: "Silver", items: ["Cleaned · normalized"] },
+        { stage: "Gold", items: ["Star schema · 5 dim / 2 fact"] },
+        { stage: "Serve", items: ["Snowflake"] },
+      ],
       outcomeStatement:
         "Centralized 14 heterogeneous sources into a star-schema warehouse, achieving 90% SQL query latency reduction by eliminating 30-column wide-table joins.",
       primaryMetric: { value: "90%", label: "query latency reduction" },
@@ -289,6 +309,13 @@ export const resumeData = {
     {
       name: "Scalable E-Commerce Analytics Platform",
       category: "Analytics Engineering",
+      architecture: [
+        { stage: "Sources", items: ["PostgreSQL", "REST API", "Clickstream"] },
+        { stage: "Land", items: ["S3 · date-partitioned"] },
+        { stage: "Transform", items: ["dbt · 4 dim (SCD2) + 1 fact"] },
+        { stage: "Validate", items: ["146 dbt tests", "Great Expectations"] },
+        { stage: "Serve", items: ["Metabase"] },
+      ],
       outcomeStatement:
         "Built end-to-end pipeline from 3 enterprise sources through a dbt analytics layer with 146 automated tests with SCD Type 2 tracking for full historical accuracy.",
       primaryMetric: { value: "146", label: "automated dbt tests" },
@@ -325,6 +352,13 @@ export const resumeData = {
     {
       name: "Real-Time Cryptocurrency Market Analyzer",
       category: "Systems Engineering",
+      architecture: [
+        { stage: "Ingest", items: ["Kafka · exactly-once"] },
+        { stage: "Process", items: ["Flink · OHLC windows"] },
+        { stage: "Store", items: ["Redis · hot, sub-1ms", "TimescaleDB · cold, 90d"] },
+        { stage: "Serve", items: ["FastAPI · WebSocket"] },
+        { stage: "Client", items: ["Next.js 16 terminal"] },
+      ],
       outcomeStatement:
         "Built an end-to-end real-time market analytics platform: a Java/Flink streaming pipeline with exactly-once fault tolerance feeds a dual-path storage layer (sub-1ms Redis hot path + TimescaleDB cold analytics), surfaced through a production-ready Next.js 16 terminal. Closes the loop from Kafka ingestion to rendered browser UI in under 100ms.",
       primaryMetric: { value: "<100ms", label: "Kafka-to-browser latency · exactly-once · dual-path storage" },
@@ -362,6 +396,13 @@ export const resumeData = {
     {
       name: "Chatflow Messaging System",
       category: "Backend SWE",
+      architecture: [
+        { stage: "Ingest", items: ["RabbitMQ"] },
+        { stage: "Buffer", items: ["In-memory queue"] },
+        { stage: "Persist", items: ["Worker threads · JDBC batch"] },
+        { stage: "Store", items: ["MySQL"] },
+        { stage: "Read", items: ["Redis + local cache"] },
+      ],
       outcomeStatement:
         "Sustained 21,091 msg/s with zero data loss across 1M messages via write-behind persistence; CQRS isolation prevented write-side failures from starving read queries.",
       primaryMetric: { value: "21,091", label: "msg/s · zero data loss · 1M messages" },
@@ -393,10 +434,9 @@ export const resumeData = {
 
   targetRole: {
     title: "Data Engineer | SWE/SDE Backend | Analytics Engineer | BI Engineer",
-    type: "Internship / Co-op / Full-Time",
+    type: "Full-Time",
     location: "Remote or Seattle, WA",
-    availability:
-      "Summer & Fall 2026 (Internship/Co-op) | Full-Time (Post-Graduation)",
+    availability: "Full-Time from December 2026",
     industries: [
       "FinTech",
       "E-Commerce",
@@ -404,7 +444,7 @@ export const resumeData = {
       "Big Tech",
     ],
     pitch:
-      "I am actively seeking Summer/Fall 2026 internships and co-ops, as well as Full-Time opportunities, where I can contribute to high-impact distributed systems and cloud-native infrastructure. I bring hands-on experience building both scalable software backends and complex data platforms, always prioritizing clean architecture, automated testing, and infrastructure as code.",
+      "I am seeking Full-Time Data Engineering roles starting December 2026, on teams building high-impact distributed systems and cloud-native data infrastructure. I bring hands-on experience across both scalable software backends and complex data platforms, always prioritizing clean architecture, automated testing, and infrastructure as code.",
     strengths: [
       "End-to-end pipeline development (ingestion → transformation → serving)",
       "Both batch (Airflow + dbt) and streaming (Kafka + Flink) architectures",

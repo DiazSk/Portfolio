@@ -1,33 +1,35 @@
-import React, { Suspense, lazy } from "react";
+import { useEffect } from "react";
 import Navbar from "./sections/Navbar";
+import Hero from "./sections/Hero";
+import About from "./sections/About";
+import Projects from "./sections/Projects";
+import Skills from "./sections/Skills";
+import Contact from "./sections/Contact";
 
-const Hero = lazy(() => import("./sections/Hero"));
-const About = lazy(() => import("./sections/About"));
-const Projects = lazy(() => import("./sections/Projects"));
-const Skills = lazy(() => import("./sections/Skills"));
-const Contact = lazy(() => import("./sections/Contact"));
-
-const SectionFallback = () => (
-  <div className="c-space py-12 text-sm" style={{ color: "var(--color-ink-muted)" }}>
-    Loading…
-  </div>
-);
-
+/* Sections are imported eagerly on purpose. Lazy-splitting them cost ~20kB of
+   a 300kB bundle and broke deep links: #projects could not resolve on load
+   because the section had not mounted yet. */
 const App = () => {
+  /* A hash in the URL resolves before layout settles, so the browser lands
+     short of the target. Re-run the jump once after first paint. */
+  useEffect(() => {
+    const id = decodeURIComponent(window.location.hash.slice(1));
+    if (!id) return;
+    requestAnimationFrame(() => {
+      document.getElementById(id)?.scrollIntoView({ behavior: "instant" });
+    });
+  }, []);
+
   return (
     <>
       <Navbar />
       <div className="mx-auto max-w-7xl">
-        <Suspense fallback={<SectionFallback />}>
-          <Hero />
-          <About />
-          <Projects />
-          <Skills />
-        </Suspense>
+        <Hero />
+        <About />
+        <Projects />
+        <Skills />
       </div>
-      <Suspense fallback={<SectionFallback />}>
-        <Contact />
-      </Suspense>
+      <Contact />
     </>
   );
 };

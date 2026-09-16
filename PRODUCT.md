@@ -8,7 +8,7 @@ web
 
 ## Users
 
-**Primary: technical hiring managers and engineers** evaluating Zaid Shaikh for Data Engineering roles (Summer/Fall 2026 internship or co-op, full-time from Dec 2026). They arrive from a résumé, LinkedIn, or a GitHub link, already skeptical, and are looking for evidence of architectural judgment — not just tool familiarity. They will click through to source code.
+**Primary: technical hiring managers and engineers** evaluating Zaid Shaikh for Data Engineering roles (full-time from December 2026, on graduation). They arrive from a résumé, LinkedIn, or a GitHub link, already skeptical, and are looking for evidence of architectural judgment — not just tool familiarity. They will click through to source code.
 
 **Secondary: non-technical recruiters and sourcers** doing a 5–10 second skim to confirm role fit, location, and availability before passing the profile on. They cannot evaluate architecture and need an outcome and a number they can repeat to someone else.
 
@@ -16,7 +16,7 @@ These two audiences actively distrust content optimized for the other, and both 
 
 ## Product Purpose
 
-A personal portfolio site that converts a cold link into a real conversation about a Data Engineering role. Success is a recruiter or hiring manager reaching out, or a technical reader spending long enough to open a repo. It is not a résumé mirror and not a blog; the résumé data is the substrate, the site is the argument.
+A personal portfolio site that converts a cold link into a real conversation about a Data Engineering role. The live ask is **full-time from December 2026**; the Summer/Fall 2026 internship window has closed and must not reappear in copy. Success is a recruiter or hiring manager reaching out, or a technical reader spending long enough to open a repo. It is not a résumé mirror and not a blog; the résumé data is the substrate, the site is the argument.
 
 ## Positioning
 
@@ -43,6 +43,8 @@ The differentiating claim is **decision quality, not tool inventory**. Hundreds 
 
 **Also retired (prior redesign):** the dark space theme, 3D astronaut, orbiting tech cards, and animated flip words. These are anti-references, not dormant features.
 
+**Architecture schematics:** each project carries an `architecture` array in `src/constants/resumeData.js`, rendered by `src/components/ArchitectureDiagram.jsx` inside the expanded project card. Every stage was derived from that project's own description and highlights. **These are pending Zaid's verification** — he agreed to check each before it ships.
+
 **Open / undecided:** production domain; whether project architecture diagrams are republished (see Evidence); whether a résumé PDF is downloadable from the site.
 
 ## Brand Commitments
@@ -50,6 +52,7 @@ The differentiating claim is **decision quality, not tool inventory**. Hundreds 
 - Name and identity: **Zaid Shaikh**, Seattle, WA. Wordmark is currently the plain text "Zaid."
 - Voice: declarative and specific. States what was built and what it measured; no aspiration language, no superlatives, no "passionate about." First person, past tense, numbers over adjectives.
 - Real links only: GitHub `DiazSk`, LinkedIn `zaidshaikhengineer`, email `shaikh.zaid@northeastern.edu`.
+- **Standing preference: the category standard.** Offered a derived visual world (an engineering-drawing-plate system) against the conventional developer-portfolio canon, Zaid chose the canon, with **linear.app** named as the craft bar. This is a standing preference, not a one-off: future surfaces execute the convention at full fidelity — precise grid, exact spacing, real state detail — rather than reaching for a distinctive world. Recorded 2026-09-16.
 
 ## Evidence on Hand
 
