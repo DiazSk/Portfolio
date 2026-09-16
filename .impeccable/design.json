@@ -1,0 +1,403 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-16T00:00:00.000Z",
+  "title": "Design System: Zaid Shaikh Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "canonical": "#FAFAF9",
+        "tonalRamp": [
+          "#1C1C1B",
+          "#3A3A38",
+          "#585856",
+          "#767674",
+          "#A3A3A0",
+          "#C9C9C6",
+          "#E5E5E2",
+          "#FAFAF9"
+        ]
+      },
+      "paper-raised": {
+        "role": "neutral",
+        "displayName": "Raised Paper",
+        "canonical": "#F4F4F2",
+        "tonalRamp": [
+          "#191918",
+          "#343432",
+          "#4F4F4D",
+          "#6B6B68",
+          "#9A9A97",
+          "#C3C3C0",
+          "#E0E0DD",
+          "#F4F4F2"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Rule",
+        "canonical": "#E5E5E2",
+        "tonalRamp": [
+          "#171716",
+          "#2F2F2E",
+          "#484846",
+          "#61615F",
+          "#8C8C89",
+          "#B5B5B2",
+          "#D3D3D0",
+          "#E5E5E2"
+        ]
+      },
+      "rule-strong": {
+        "role": "neutral",
+        "displayName": "Strong Rule",
+        "canonical": "#C9C9C6",
+        "tonalRamp": [
+          "#141413",
+          "#292928",
+          "#3E3E3C",
+          "#535351",
+          "#7A7A77",
+          "#9F9F9C",
+          "#B7B7B4",
+          "#C9C9C6"
+        ]
+      },
+      "ink": {
+        "role": "primary",
+        "displayName": "Ink",
+        "canonical": "#111111",
+        "tonalRamp": [
+          "#000000",
+          "#111111",
+          "#2A2A2A",
+          "#444444",
+          "#6B6B6B",
+          "#949494",
+          "#C2C2C2",
+          "#EDEDED"
+        ]
+      },
+      "ink-secondary": {
+        "role": "neutral",
+        "displayName": "Secondary Ink",
+        "canonical": "#525252",
+        "tonalRamp": [
+          "#0D0D0D",
+          "#1F1F1F",
+          "#333333",
+          "#525252",
+          "#757575",
+          "#9C9C9C",
+          "#C6C6C6",
+          "#EFEFEF"
+        ]
+      },
+      "ink-muted": {
+        "role": "neutral",
+        "displayName": "Muted Ink",
+        "canonical": "#6F6F6F",
+        "tonalRamp": [
+          "#141414",
+          "#262626",
+          "#3A3A3A",
+          "#525252",
+          "#6F6F6F",
+          "#9A9A9A",
+          "#C4C4C4",
+          "#EAEAEA"
+        ]
+      },
+      "ink-pressed": {
+        "role": "primary",
+        "displayName": "Pressed Ink",
+        "canonical": "#2A2A2A",
+        "tonalRamp": [
+          "#000000",
+          "#0F0F0F",
+          "#1D1D1D",
+          "#2A2A2A",
+          "#555555",
+          "#858585",
+          "#B8B8B8",
+          "#E8E8E8"
+        ]
+      },
+      "void": {
+        "role": "tertiary",
+        "displayName": "Void",
+        "canonical": "#141414",
+        "tonalRamp": [
+          "#000000",
+          "#0A0A0A",
+          "#141414",
+          "#333333",
+          "#5C5C5C",
+          "#8A8A8A",
+          "#BCBCBC",
+          "#EAEAEA"
+        ]
+      },
+      "live-signal": {
+        "role": "tertiary",
+        "displayName": "Live Signal",
+        "canonical": "#10B981",
+        "tonalRamp": [
+          "#032418",
+          "#064E3B",
+          "#065F46",
+          "#047857",
+          "#10B981",
+          "#4ADE9E",
+          "#86EFC4",
+          "#D1FAE5"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The hero H1 only. One per page."
+      },
+      "metric": {
+        "displayName": "Metric",
+        "purpose": "Hero headline numbers. Borderless, tabular, pure type — the loudest element in the system."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section H2s via .text-heading."
+      },
+      "headline-void": {
+        "displayName": "Headline (Void)",
+        "purpose": "The Contact section H2 only. Scales on its own curve against the dark surface."
+      },
+      "watermark": {
+        "displayName": "Watermark",
+        "purpose": "The ZAID texture element in Contact at 5% white. Texture, not type — the only 700 weight in the system."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Project card names and other card-level headings."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Long-form reading copy, capped at max-w-2xl."
+      },
+      "body-small": {
+        "displayName": "Body Small",
+        "purpose": "Outcome statements, highlights, nav links, buttons. The dominant reading size."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Eyebrows, group headers, pills, tags. Uppercase with 0.1em tracking."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "state",
+        "value": "150ms",
+        "purpose": "All hover and color state changes — buttons, links, borders, nav."
+      },
+      {
+        "name": "disclosure",
+        "value": "220ms cubic-bezier(0.4, 0, 0.2, 1)",
+        "purpose": "Project card Layer 2 height + opacity expansion."
+      },
+      {
+        "name": "entrance",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "Scroll-triggered entrances. Contact columns and the ZAID watermark."
+      },
+      {
+        "name": "entrance-duration",
+        "value": "400-500ms",
+        "purpose": "Standard fade-up on whileInView; 1100ms for the watermark reveal only."
+      },
+      {
+        "name": "stagger",
+        "value": "60-120ms",
+        "purpose": "Delay between siblings entering — 60ms for project cards, 120ms for Contact columns."
+      },
+      {
+        "name": "chip-swap",
+        "value": "300ms ease-out",
+        "purpose": "Contact quick-link dual-span vertical text swap on hover."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "container",
+        "value": "80rem"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Full ink inversion. The system's emphasis device, used where another system would use an accent color.",
+      "html": "<button class=\"ds-btn-primary\">Copy email</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--color-ink, #111111); color: var(--color-surface, #FAFAF9); font-family: Inter, sans-serif; font-size: 0.875rem; font-weight: 500; padding: 0.625rem 1.25rem; border: none; border-radius: 0.5rem; cursor: pointer; transition: background 150ms; } .ds-btn-primary:hover { background: #2A2A2A; } .ds-btn-primary:focus-visible { outline: 2px solid #111111; outline-offset: 2px; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Hairline-bordered secondary action. Hover darkens border and text together.",
+      "html": "<a class=\"ds-btn-ghost\" href=\"#\">GitHub</a>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: var(--color-ink-secondary, #525252); font-family: Inter, sans-serif; font-size: 0.875rem; font-weight: 500; padding: 0.625rem 1.25rem; border: 1px solid var(--color-border, #E5E5E2); border-radius: 0.5rem; text-decoration: none; transition: border-color 150ms, color 150ms; } .ds-btn-ghost:hover { border-color: #C9C9C6; color: #111111; } .ds-btn-ghost:focus-visible { outline: 2px solid #111111; outline-offset: 2px; }"
+    },
+    {
+      "name": "Tech Pill",
+      "kind": "chip",
+      "refersTo": "tech-pill",
+      "description": "Technology tag. Four show on a collapsed project card, then a +N overflow pill.",
+      "html": "<span class=\"ds-tech-pill\">Apache Kafka</span><span class=\"ds-tech-pill\">+4</span>",
+      "css": ".ds-tech-pill { display: inline-block; background: var(--color-surface-raised, #F4F4F2); color: var(--color-ink-secondary, #525252); font-family: Inter, sans-serif; font-size: 0.75rem; padding: 0.125rem 0.5rem; margin-right: 0.375rem; border: 1px solid var(--color-border, #E5E5E2); border-radius: 0.375rem; }"
+    },
+    {
+      "name": "Role Tag (inverted)",
+      "kind": "chip",
+      "refersTo": "role-tag-inverted",
+      "description": "Full ink fill marking Backend SWE and Systems Engineering projects as categorically separate from the Data Engineering group. The inversion carries real semantics — it lets an engineering manager self-select a track.",
+      "html": "<span class=\"ds-role-tag-default\">Data Engineering</span><span class=\"ds-role-tag-inverted\">Backend SWE</span>",
+      "css": ".ds-role-tag-default, .ds-role-tag-inverted { display: inline-block; font-family: Inter, sans-serif; font-size: 0.75rem; font-weight: 500; padding: 0.125rem 0.625rem; margin-right: 0.5rem; border-radius: 9999px; border: 1px solid; } .ds-role-tag-default { background: #F4F4F2; border-color: #E5E5E2; color: #525252; } .ds-role-tag-inverted { background: #111111; border-color: #111111; color: #FAFAF9; }"
+    },
+    {
+      "name": "Metric Stat",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "Borderless typographic metric. Tabular numerals so stacked digits align on their stems. The single loudest element in the system.",
+      "html": "<div class=\"ds-metric\"><span class=\"ds-metric-value\">21,091</span><span class=\"ds-metric-label\">msg/s sustained</span><span class=\"ds-metric-context\">Chatflow · Java + RabbitMQ + Redis</span></div>",
+      "css": ".ds-metric { display: flex; flex-direction: column; gap: 0.25rem; font-family: Inter, sans-serif; } .ds-metric-value { font-size: 3rem; font-weight: 600; letter-spacing: -0.025em; line-height: 1; font-variant-numeric: tabular-nums; color: #111111; } .ds-metric-label { font-size: 0.875rem; font-weight: 500; color: #525252; } .ds-metric-context { font-size: 0.75rem; color: #A3A3A3; }"
+    },
+    {
+      "name": "Project Card (collapsed)",
+      "kind": "card",
+      "refersTo": "card-base",
+      "description": "Layer 1 of the dual-layer card: role tag, name, primary metric, plain-English outcome, tech pills, disclosure toggle. Same tone as the page — only the border separates it.",
+      "html": "<article class=\"ds-card\"><span class=\"ds-role-tag-default\">Data Engineering</span><h3 class=\"ds-card-title\">Healthcare Data Lakehouse on Azure</h3><p class=\"ds-card-metric\">9.6M</p><p class=\"ds-card-metric-label\">records processed</p><p class=\"ds-card-outcome\">Processed 9.6M hospital records across three quality layers with zero loss during ingestion failures.</p><button class=\"ds-card-toggle\">Architecture &amp; details <svg width=\"12\" height=\"12\" viewBox=\"0 0 12 12\" fill=\"none\" aria-hidden=\"true\"><path d=\"M2 4l4 4 4-4\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></button></article>",
+      "css": ".ds-card { display: flex; flex-direction: column; gap: 0.75rem; align-items: flex-start; background: #FAFAF9; border: 1px solid #E5E5E2; border-radius: 0.75rem; padding: 1.5rem; font-family: Inter, sans-serif; transition: border-color 150ms; } .ds-card:hover { border-color: #C9C9C6; } .ds-card-title { margin: 0; font-size: 1.125rem; font-weight: 600; line-height: 1.375; color: #111111; } .ds-card-metric { margin: 0; font-size: 1.5rem; font-weight: 600; line-height: 1; font-variant-numeric: tabular-nums; color: #111111; } .ds-card-metric-label { margin: 0.125rem 0 0; font-size: 0.75rem; color: #A3A3A3; } .ds-card-outcome { margin: 0; font-size: 0.875rem; line-height: 1.625; color: #525252; } .ds-card-toggle { display: inline-flex; align-items: center; gap: 0.25rem; background: none; border: none; padding: 0; font-family: inherit; font-size: 0.75rem; color: #525252; cursor: pointer; transition: color 150ms; } .ds-card-toggle:hover { color: #111111; }"
+    },
+    {
+      "name": "Decision Log",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "Chose / Over / Because, behind a 2px left spine. Present on only two projects by design — it is evidence of a hard decision, not a template.",
+      "html": "<div class=\"ds-decision-log\"><p class=\"ds-decision-head\">Architecture Decision</p><div class=\"ds-decision-row\"><span class=\"ds-decision-label\">Chose</span><span class=\"ds-decision-value\">Redis + TimescaleDB dual-path storage</span></div><div class=\"ds-decision-row\"><span class=\"ds-decision-label\">Over</span><span class=\"ds-decision-value\">A single Postgres store</span></div><div class=\"ds-decision-row\"><span class=\"ds-decision-label\">Because</span><span class=\"ds-decision-value\">Hot-path reads need sub-1ms; time-series analytics need retention and continuous aggregates.</span></div></div>",
+      "css": ".ds-decision-log { border-left: 2px solid #C9C9C6; padding-left: 1rem; font-family: Inter, sans-serif; } .ds-decision-head { margin: 0 0 0.75rem; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #A3A3A3; } .ds-decision-row { display: flex; gap: 0.75rem; font-size: 0.875rem; margin-bottom: 0.625rem; } .ds-decision-label { width: 3.5rem; flex-shrink: 0; font-weight: 500; font-variant: small-caps; color: #A3A3A3; } .ds-decision-value { color: #525252; line-height: 1.625; }"
+    },
+    {
+      "name": "Navigation Link",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Fixed navbar link over a blurred translucent paper bar with a bottom hairline.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-wordmark\" href=\"#\">Zaid<span>.</span></a><a class=\"ds-nav-link\" href=\"#about\">About</a><a class=\"ds-nav-link\" href=\"#projects\">Projects</a><a class=\"ds-nav-link\" href=\"#contact\">Contact</a></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; gap: 2rem; min-height: 64px; padding: 0 1.25rem; background: rgba(250,250,249,0.85); backdrop-filter: blur(4px); border-bottom: 1px solid #E5E5E2; font-family: Inter, sans-serif; } .ds-nav-wordmark { margin-right: auto; font-size: 1.25rem; font-weight: 600; letter-spacing: -0.025em; color: #111111; text-decoration: none; transition: opacity 150ms; } .ds-nav-wordmark span { color: #A3A3A3; } .ds-nav-wordmark:hover { opacity: 0.7; } .ds-nav-link { font-size: 0.875rem; color: #525252; text-decoration: none; transition: color 150ms; } .ds-nav-link:hover { color: #111111; } .ds-nav-link:focus-visible { outline: 2px solid #111111; outline-offset: 4px; }"
+    },
+    {
+      "name": "Void Quick-Link Chip",
+      "kind": "chip",
+      "refersTo": null,
+      "description": "Paper chip on the Void surface with a dual-span vertical text swap on hover. The system's one piece of showmanship, confined to the closing section.",
+      "html": "<div class=\"ds-void-strip\"><a class=\"ds-void-chip\" href=\"#about\"><span class=\"ds-void-chip-a\">About</span><span class=\"ds-void-chip-b\">About</span></a><a class=\"ds-void-chip\" href=\"#projects\"><span class=\"ds-void-chip-a\">Projects</span><span class=\"ds-void-chip-b\">Projects</span></a></div>",
+      "css": ".ds-void-strip { display: flex; gap: 0.75rem; background: #141414; padding: 1.5rem; font-family: Inter, sans-serif; } .ds-void-chip { position: relative; overflow: hidden; display: inline-block; background: #FAFAF9; border: 1px solid rgba(255,255,255,0.12); border-radius: 0.25rem; padding: 0.125rem 0.75rem; font-size: 0.75rem; text-decoration: none; } .ds-void-chip-a { display: block; color: #111111; transition: transform 300ms ease-out; } .ds-void-chip:hover .ds-void-chip-a { transform: translateY(-100%); } .ds-void-chip-b { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: #111111; transform: translateY(100%); transition: transform 300ms ease-out; } .ds-void-chip:hover .ds-void-chip-b { transform: translateY(0); }"
+    },
+    {
+      "name": "Availability Pill",
+      "kind": "chip",
+      "refersTo": null,
+      "description": "Carries the only chromatic pixel in the system — a single 6px green dot indicating live availability status.",
+      "html": "<span class=\"ds-availability\"><span class=\"ds-availability-dot\" aria-hidden=\"true\"></span>Available Summer &amp; Fall 2026</span>",
+      "css": ".ds-availability { display: inline-flex; align-items: center; gap: 0.375rem; border: 1px solid #E5E5E2; border-radius: 9999px; padding: 0.25rem 0.75rem; font-family: Inter, sans-serif; font-size: 0.75rem; color: #525252; } .ds-availability-dot { width: 6px; height: 6px; border-radius: 9999px; background: #10B981; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Quiet Ledger",
+    "overview": "Ink on paper, tabular numerals, every claim accounted for. This is a ledger, not a brochure: the numbers are the artifact, and the design's entire job is to make sure nothing decorative ever competes with them. Restraint here is not an aesthetic preference — it is a credibility argument. A page with no gradient, no shadow, and no accent hue has nothing to hide behind, which is exactly the posture a skeptical engineer trusts.\n\nThe system is deliberately austere. A single typeface at three weights. A seven-step neutral ramp from near-white paper to near-black ink. Zero shadows anywhere in the codebase — depth comes from hairline rules and a two-step tonal shift, never from lift. Density is low and whitespace is generous, not for elegance but as a forcing function: when 96px of air separates sections and nothing carries color, the 21,091 set in 48px semibold is unavoidably the loudest thing on the screen.\n\nThe world it replaced is a permanent anti-reference: dark space theme, 3D astronaut, orbiting glassmorphic cards, animated flip words. Those were removed because they signalled junior-level showmanship to exactly the readers this site needs to convince. Nothing from that vocabulary returns — no glass, no glow, no gradient mesh, no floating 3D.",
+    "keyCharacteristics": [
+      "Ink-only palette; emphasis by inversion, never by hue",
+      "Zero box-shadows in the entire system — hairline rules and tonal layering carry all depth",
+      "One typeface (Inter) at three weights (400 / 500 / 600)",
+      "Tabular numerals on every metric so digits align in a column",
+      "Generous section rhythm (96px → 128px) that isolates each claim",
+      "A single dark surface, used exactly once, at the end"
+    ],
+    "rules": [
+      {
+        "name": "The One Green Dot Rule",
+        "body": "#10B981 appears exactly once, as the availability status indicator, and is never used for anything else — not for success states, not for links, not for a second accent. Its entire meaning is \"this status is live.\" A second green pixel destroys the first one's meaning.",
+        "section": "colors"
+      },
+      {
+        "name": "The Inversion-Instead-of-Accent Rule",
+        "body": "[INFERRED] When an element must be emphasized, invert it to full ink fill rather than introducing a color. This is how Systems Engineering role tags separate from Data Engineering ones, and how the primary button separates from the ghost. The palette has no accent slot reserved and no accent is planned — monochrome is the system, not an unfinished state.",
+        "section": "colors"
+      },
+      {
+        "name": "The Single Dark Surface Rule",
+        "body": "[INFERRED] The page is paper that goes dark exactly once, at the close. Contact is the only section permitted to use Void, and the transition happens a single time, at the end of the scroll, as a deliberate final chapter. No other section may go dark, and there is no global dark mode.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tabular Numerals Rule",
+        "body": "Every number that is a claim carries font-variant-numeric: tabular-nums. 21,091 and <100ms must align on their digit stems when stacked in a grid; proportional figures make a metric row look typeset rather than measured.",
+        "section": "typography"
+      },
+      {
+        "name": "The Three Weights Rule",
+        "body": "400 for reading, 500 for labels and links, 600 for anything structural. There is no 300 and no 700 in the running system — the loaded variable range is wider than what gets used, and that restraint is intentional. The one exception is the ZAID watermark at 700, which is texture, not type.",
+        "section": "typography"
+      },
+      {
+        "name": "The Shared Edge Rule",
+        "body": "Every section uses the same max-w-7xl + .c-space container. Nothing breaks the container except the Contact section's full-bleed Void background and its watermark.",
+        "section": "layout"
+      },
+      {
+        "name": "The No-Shadow Rule",
+        "body": "Surfaces never lift. If an element needs to separate from its background, darken its border or step its tone — never add a shadow, glow, or filter: drop-shadow. A shadow anywhere in this system reads as a foreign object.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Hairline Rule",
+        "body": "Every border in the system is 1px except the decision log's 2px spine. Weight is not an emphasis tool; tone is.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "Do lead every project and section with its measured number, set in tabular numerals at 600 weight. The metric outranks the prose.",
+      "Do use inversion (full #111111 fill) when something must stand out. That is the accent.",
+      "Do separate surfaces with a 1px #E5E5E2 hairline and, where containment is needed, one tonal step to #F4F4F2.",
+      "Do keep transitions at 150ms for state changes and 220ms for disclosure. Use cubic-bezier(0.22, 1, 0.36, 1) for anything entering on scroll.",
+      "Do keep body copy inside max-w-2xl and let the max-w-7xl container's left edge align across every section.",
+      "Do write labels in 0.75rem/500 uppercase with 0.1em tracking.",
+      "Do give every interactive element a :focus-visible treatment matching its hover state. On Void, that is a 2px white outline at 3px offset; anything animating on group-hover also needs group-focus-visible."
+    ],
+    "donts": [
+      "Don't add a box-shadow, glow, gradient, or glassmorphic surface. The system has none and reads as tampered-with the moment one appears.",
+      "Don't introduce an accent color. [INFERRED — the code ships zero accent; confirm before treating as permanent]",
+      "Don't lighten --color-ink-muted past #6F6F6F. It carries eyebrows, metric labels, metadata, and the card expand toggle; anything lighter drops the toggle — an interactive control — below AA.",
+      "Don't take a second section dark. Void belongs to Contact alone. [INFERRED]",
+      "Don't add a second typeface or reach outside weights 400/500/600.",
+      "Don't reintroduce the retired vocabulary: 3D models, orbiting cards, animated flip words, glassmorphism, or the dark space theme.",
+      "Don't wire hover state through inline onMouseEnter/onMouseLeave handlers. Use CSS classes so :focus-visible gets the same treatment — .link-void / .link-void-dim cover the Void surface.",
+      "Don't reintroduce a tailwind.config.js. This project is Tailwind v4, CSS-first: tokens live in the @theme block in src/index.css. The old config file was dead (no @config directive loaded it) and has been deleted."
+    ]
+  }
+}
