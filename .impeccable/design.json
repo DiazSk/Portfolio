@@ -1,403 +1,186 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-16T00:00:00.000Z",
-  "title": "Design System: Zaid Shaikh Portfolio",
+  "generatedAt": "2026-09-16T00:00:00Z",
+  "title": "Design System: Zaid Shaikh — Portfolio",
   "extensions": {
     "colorMeta": {
-      "paper": {
-        "role": "neutral",
-        "displayName": "Paper",
-        "canonical": "#FAFAF9",
-        "tonalRamp": [
-          "#1C1C1B",
-          "#3A3A38",
-          "#585856",
-          "#767674",
-          "#A3A3A0",
-          "#C9C9C6",
-          "#E5E5E2",
-          "#FAFAF9"
-        ]
-      },
-      "paper-raised": {
-        "role": "neutral",
-        "displayName": "Raised Paper",
-        "canonical": "#F4F4F2",
-        "tonalRamp": [
-          "#191918",
-          "#343432",
-          "#4F4F4D",
-          "#6B6B68",
-          "#9A9A97",
-          "#C3C3C0",
-          "#E0E0DD",
-          "#F4F4F2"
-        ]
-      },
-      "rule": {
-        "role": "neutral",
-        "displayName": "Rule",
-        "canonical": "#E5E5E2",
-        "tonalRamp": [
-          "#171716",
-          "#2F2F2E",
-          "#484846",
-          "#61615F",
-          "#8C8C89",
-          "#B5B5B2",
-          "#D3D3D0",
-          "#E5E5E2"
-        ]
-      },
-      "rule-strong": {
-        "role": "neutral",
-        "displayName": "Strong Rule",
-        "canonical": "#C9C9C6",
-        "tonalRamp": [
-          "#141413",
-          "#292928",
-          "#3E3E3C",
-          "#535351",
-          "#7A7A77",
-          "#9F9F9C",
-          "#B7B7B4",
-          "#C9C9C6"
-        ]
-      },
-      "ink": {
-        "role": "primary",
-        "displayName": "Ink",
-        "canonical": "#111111",
-        "tonalRamp": [
-          "#000000",
-          "#111111",
-          "#2A2A2A",
-          "#444444",
-          "#6B6B6B",
-          "#949494",
-          "#C2C2C2",
-          "#EDEDED"
-        ]
-      },
-      "ink-secondary": {
-        "role": "neutral",
-        "displayName": "Secondary Ink",
-        "canonical": "#525252",
-        "tonalRamp": [
-          "#0D0D0D",
-          "#1F1F1F",
-          "#333333",
-          "#525252",
-          "#757575",
-          "#9C9C9C",
-          "#C6C6C6",
-          "#EFEFEF"
-        ]
-      },
-      "ink-muted": {
-        "role": "neutral",
-        "displayName": "Muted Ink",
-        "canonical": "#6F6F6F",
-        "tonalRamp": [
-          "#141414",
-          "#262626",
-          "#3A3A3A",
-          "#525252",
-          "#6F6F6F",
-          "#9A9A9A",
-          "#C4C4C4",
-          "#EAEAEA"
-        ]
-      },
-      "ink-pressed": {
-        "role": "primary",
-        "displayName": "Pressed Ink",
-        "canonical": "#2A2A2A",
-        "tonalRamp": [
-          "#000000",
-          "#0F0F0F",
-          "#1D1D1D",
-          "#2A2A2A",
-          "#555555",
-          "#858585",
-          "#B8B8B8",
-          "#E8E8E8"
-        ]
-      },
-      "void": {
-        "role": "tertiary",
-        "displayName": "Void",
-        "canonical": "#141414",
-        "tonalRamp": [
-          "#000000",
-          "#0A0A0A",
-          "#141414",
-          "#333333",
-          "#5C5C5C",
-          "#8A8A8A",
-          "#BCBCBC",
-          "#EAEAEA"
-        ]
-      },
-      "live-signal": {
-        "role": "tertiary",
-        "displayName": "Live Signal",
-        "canonical": "#10B981",
-        "tonalRamp": [
-          "#032418",
-          "#064E3B",
-          "#065F46",
-          "#047857",
-          "#10B981",
-          "#4ADE9E",
-          "#86EFC4",
-          "#D1FAE5"
-        ]
-      }
+      "surface": { "role": "neutral", "displayName": "Void", "canonical": "#08090A", "tonalRamp": ["#08090A", "#0F1011", "#16181A", "#212426", "#33373A", "#575C61", "#8A8F98", "#F7F8F8"] },
+      "surface-raised": { "role": "neutral", "displayName": "Raised Plane", "canonical": "#0F1011", "tonalRamp": ["#08090A", "#0F1011", "#16181A", "#111315", "#212426", "#33373A", "#575C61", "#B4B9C2"] },
+      "surface-overlay": { "role": "neutral", "displayName": "Overlay Plane", "canonical": "#16181A", "tonalRamp": ["#08090A", "#0F1011", "#16181A", "#212426", "#2C3033", "#33373A", "#575C61", "#8A8F98"] },
+      "border": { "role": "neutral", "displayName": "Hairline", "canonical": "rgba(255, 255, 255, 0.08)", "tonalRamp": ["rgba(255,255,255,0.02)", "rgba(255,255,255,0.04)", "rgba(255,255,255,0.06)", "rgba(255,255,255,0.08)", "rgba(255,255,255,0.12)", "rgba(255,255,255,0.16)", "rgba(255,255,255,0.24)", "rgba(255,255,255,0.4)"] },
+      "border-strong": { "role": "neutral", "displayName": "Hairline Strong", "canonical": "rgba(255, 255, 255, 0.16)", "tonalRamp": ["rgba(255,255,255,0.04)", "rgba(255,255,255,0.08)", "rgba(255,255,255,0.12)", "rgba(255,255,255,0.16)", "rgba(255,255,255,0.24)", "rgba(255,255,255,0.32)", "rgba(255,255,255,0.48)", "rgba(255,255,255,0.64)"] },
+      "ink": { "role": "neutral", "displayName": "Primary Ink", "canonical": "#F7F8F8", "contrastOnOverlay": "16.73:1", "tonalRamp": ["#26282B", "#33373A", "#4A4E53", "#676C72", "#8A8F98", "#B4B9C2", "#D9DCE0", "#F7F8F8"] },
+      "ink-secondary": { "role": "neutral", "displayName": "Secondary Ink", "canonical": "#B4B9C2", "contrastOnOverlay": "9.04:1", "tonalRamp": ["#1C1E21", "#2B2E33", "#3F444A", "#575C64", "#727880", "#8A8F98", "#B4B9C2", "#E4E6EA"] },
+      "ink-muted": { "role": "neutral", "displayName": "Muted Ink", "canonical": "#8A8F98", "contrastOnOverlay": "5.48:1", "tonalRamp": ["#17191C", "#232629", "#33373C", "#474C52", "#5D636A", "#757B83", "#8A8F98", "#C3C7CD"] },
+      "accent": { "role": "primary", "displayName": "Signal Amber", "canonical": "#EBA352", "contrastOnSurface": "8.39:1", "tonalRamp": ["#2E1D08", "#4A2F0E", "#6B4415", "#8F5C1D", "#B67826", "#D4913C", "#EBA352", "#F7D3A6"] }
     },
     "typographyMeta": {
-      "display": {
-        "displayName": "Display",
-        "purpose": "The hero H1 only. One per page."
-      },
-      "metric": {
-        "displayName": "Metric",
-        "purpose": "Hero headline numbers. Borderless, tabular, pure type — the loudest element in the system."
-      },
-      "headline": {
-        "displayName": "Headline",
-        "purpose": "Section H2s via .text-heading."
-      },
-      "headline-void": {
-        "displayName": "Headline (Void)",
-        "purpose": "The Contact section H2 only. Scales on its own curve against the dark surface."
-      },
-      "watermark": {
-        "displayName": "Watermark",
-        "purpose": "The ZAID texture element in Contact at 5% white. Texture, not type — the only 700 weight in the system."
-      },
-      "title": {
-        "displayName": "Title",
-        "purpose": "Project card names and other card-level headings."
-      },
-      "body": {
-        "displayName": "Body",
-        "purpose": "Long-form reading copy, capped at max-w-2xl."
-      },
-      "body-small": {
-        "displayName": "Body Small",
-        "purpose": "Outcome statements, highlights, nav links, buttons. The dominant reading size."
-      },
-      "label": {
-        "displayName": "Label",
-        "purpose": "Eyebrows, group headers, pills, tags. Uppercase with 0.1em tracking."
-      }
+      "display": { "displayName": "Display", "purpose": "The name in the first viewport and the Contact ask. The only type above 3rem." },
+      "headline": { "displayName": "Headline", "purpose": "Section headings: 'Selected systems', 'Stack', the About claim." },
+      "metric": { "displayName": "Metric", "purpose": "The three hero numbers, in Signal Amber, always tabular." },
+      "title": { "displayName": "Title", "purpose": "Project names inside cards." },
+      "body": { "displayName": "Body", "purpose": "All prose, capped at max-w-2xl (~42rem)." },
+      "label": { "displayName": "Label", "purpose": "Uppercase group indexes, schematic stage names, footer column heads. Never an eyebrow above a heading." }
     },
-    "shadows": [],
+    "shadows": [
+      { "name": "card-rest", "value": "inset 0 1px 0 rgba(255,255,255,0.055), 0 1px 2px rgba(0,0,0,0.4), 0 8px 24px -12px rgba(0,0,0,0.7)", "purpose": "Every card and card-like panel at rest: lit top edge plus two-part ambient seating." },
+      { "name": "card-hover", "value": "inset 0 1px 0 rgba(255,255,255,0.09), 0 2px 4px rgba(0,0,0,0.45), 0 14px 34px -14px rgba(0,0,0,0.8)", "purpose": "Card hover, paired with border → strong and fill → #111315." },
+      { "name": "pill-highlight", "value": "inset 0 1px 0 rgba(255,255,255,0.04)", "purpose": "Tech pills: the smallest surfaces are still lit." },
+      { "name": "ghost-highlight", "value": "inset 0 1px 0 rgba(255,255,255,0.045)", "purpose": "Secondary (ghost) buttons." },
+      { "name": "primary-ambient", "value": "0 1px 2px rgba(0,0,0,0.5), 0 8px 20px -10px rgba(0,0,0,0.9)", "purpose": "The light-on-dark primary button, which needs seating rather than lighting." },
+      { "name": "ground-wash", "value": "radial-gradient(120% 70% at 50% 0%, rgba(255,255,255,0.035) 0%, rgba(255,255,255,0) 55%)", "purpose": "Fixed background-image on body: the page's light source, so scrolling moves content through the light." },
+      { "name": "focus-ring", "value": "outline: 2px solid #EBA352; outline-offset: 2px; border-radius: 0.25rem", "purpose": "Global :focus-visible for everything that does not define its own." }
+    ],
     "motion": [
-      {
-        "name": "state",
-        "value": "150ms",
-        "purpose": "All hover and color state changes — buttons, links, borders, nav."
-      },
-      {
-        "name": "disclosure",
-        "value": "220ms cubic-bezier(0.4, 0, 0.2, 1)",
-        "purpose": "Project card Layer 2 height + opacity expansion."
-      },
-      {
-        "name": "entrance",
-        "value": "cubic-bezier(0.22, 1, 0.36, 1)",
-        "purpose": "Scroll-triggered entrances. Contact columns and the ZAID watermark."
-      },
-      {
-        "name": "entrance-duration",
-        "value": "400-500ms",
-        "purpose": "Standard fade-up on whileInView; 1100ms for the watermark reveal only."
-      },
-      {
-        "name": "stagger",
-        "value": "60-120ms",
-        "purpose": "Delay between siblings entering — 60ms for project cards, 120ms for Contact columns."
-      },
-      {
-        "name": "chip-swap",
-        "value": "300ms ease-out",
-        "purpose": "Contact quick-link dual-span vertical text swap on hover."
-      }
+      { "name": "state-transition", "value": "150ms", "purpose": "Every hover/colour/shadow state change. Fill, border, highlight and shadow move together." },
+      { "name": "disclosure", "value": "220ms easeInOut", "purpose": "Project card layer-2 height+opacity expand/collapse." },
+      { "name": "ease-settle", "value": "cubic-bezier(0.22, 1, 0.36, 1)", "purpose": "Decelerating curve for the schematic node settle and edge extend." },
+      { "name": "node-settle", "value": "settle 400ms cubic-bezier(0.22,1,0.36,1) forwards — from { opacity:0; translateY(4px) }", "purpose": "A schematic stage node arriving." },
+      { "name": "edge-extend", "value": "extend 320ms cubic-bezier(0.22,1,0.36,1) forwards — scaleY(0)→1 vertical, scaleX(0)→1 horizontal", "purpose": "A schematic connector drawing itself." },
+      { "name": "stagger", "value": "calc(var(--i) * 90ms)", "purpose": "Per-stage delay so the pipeline reads as construction, edges leading nodes by 40ms." },
+      { "name": "reduced-motion", "value": "@media (prefers-reduced-motion: reduce) { .node, .edge { animation: none; opacity: 1; transform: none } html { scroll-behavior: auto } }", "purpose": "All motion is removable with zero loss of information." }
     ],
     "breakpoints": [
-      {
-        "name": "sm",
-        "value": "640px"
-      },
-      {
-        "name": "md",
-        "value": "768px"
-      },
-      {
-        "name": "lg",
-        "value": "1024px"
-      },
-      {
-        "name": "container",
-        "value": "80rem"
-      }
-    ]
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "container-schematic", "value": "34rem (container query, not viewport)" }
+    ],
+    "layout": {
+      "container": "max-width 80rem, centred",
+      "gutter": "1.25rem → 2.5rem (640px) → 4rem (1024px)",
+      "sectionRhythm": "6rem vertical padding, 8rem at ≥768px",
+      "columnModels": ["3fr / 2fr split (About)", "220px fixed label column / 1fr (Skills index)", "3fr / 2fr / 2fr (Contact)"]
+    }
   },
   "components": [
     {
       "name": "Primary Button",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "Full ink inversion. The system's emphasis device, used where another system would use an accent color.",
-      "html": "<button class=\"ds-btn-primary\">Copy email</button>",
-      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--color-ink, #111111); color: var(--color-surface, #FAFAF9); font-family: Inter, sans-serif; font-size: 0.875rem; font-weight: 500; padding: 0.625rem 1.25rem; border: none; border-radius: 0.5rem; cursor: pointer; transition: background 150ms; } .ds-btn-primary:hover { background: #2A2A2A; } .ds-btn-primary:focus-visible { outline: 2px solid #111111; outline-offset: 2px; }"
+      "description": "The one real action per region: mailto, copy email, contact address. Inverted ink fill on near-black text.",
+      "html": "<button class=\"ds-btn-primary\"><svg width=\"15\" height=\"15\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><rect x=\"1\" y=\"3\" width=\"14\" height=\"10\" rx=\"2\" stroke=\"currentColor\" stroke-width=\"1.4\"/><path d=\"M1.8 4.2l5.4 4a1.4 1.4 0 001.6 0l5.4-4\" stroke=\"currentColor\" stroke-width=\"1.4\" stroke-linecap=\"round\"/></svg>shaikh.zaid@northeastern.edu</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; border: none; border-radius: 0.5rem; padding: 0.625rem 1.25rem; font-family: Inter, sans-serif; font-size: 0.875rem; font-weight: 500; background: #F7F8F8; color: #08090A; box-shadow: 0 1px 2px rgba(0,0,0,0.5), 0 8px 20px -10px rgba(0,0,0,0.9); transition: background 150ms; cursor: pointer; } .ds-btn-primary:hover { background: #FFFFFF; } .ds-btn-primary:focus-visible { outline: 2px solid #EBA352; outline-offset: 2px; }"
     },
     {
       "name": "Ghost Button",
       "kind": "button",
       "refersTo": "button-ghost",
-      "description": "Hairline-bordered secondary action. Hover darkens border and text together.",
+      "description": "Secondary actions beside the primary — social links in the hero. Raised plane, hairline border, own inset highlight.",
       "html": "<a class=\"ds-btn-ghost\" href=\"#\">GitHub</a>",
-      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: var(--color-ink-secondary, #525252); font-family: Inter, sans-serif; font-size: 0.875rem; font-weight: 500; padding: 0.625rem 1.25rem; border: 1px solid var(--color-border, #E5E5E2); border-radius: 0.5rem; text-decoration: none; transition: border-color 150ms, color 150ms; } .ds-btn-ghost:hover { border-color: #C9C9C6; color: #111111; } .ds-btn-ghost:focus-visible { outline: 2px solid #111111; outline-offset: 2px; }"
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; gap: 0.5rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 0.5rem; padding: 0.625rem 1.25rem; font-family: Inter, sans-serif; font-size: 0.875rem; font-weight: 500; text-decoration: none; background: #0F1011; color: #B4B9C2; box-shadow: inset 0 1px 0 rgba(255,255,255,0.045); transition: color 150ms, border-color 150ms, background 150ms; } .ds-btn-ghost:hover { border-color: rgba(255,255,255,0.16); background: #16181A; color: #F7F8F8; } .ds-btn-ghost:focus-visible { outline: 2px solid #EBA352; outline-offset: 2px; }"
+    },
+    {
+      "name": "Project Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "The lit surface of the system: inset top-edge highlight plus two-part ambient shadow, all four properties lifting together on hover.",
+      "html": "<article class=\"ds-card\"><span class=\"ds-role-tag ds-role-tag-accent\">Systems Engineering</span><h3 class=\"ds-card-title\">Chatflow</h3><p class=\"ds-card-metric\">21,091</p><p class=\"ds-card-metric-label\">msg/s sustained</p><p class=\"ds-card-body\">A distributed chat backend sustaining twenty-one thousand messages a second.</p></article>",
+      "css": ".ds-card { display: flex; flex-direction: column; gap: 0.5rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 0.75rem; padding: 1.5rem; font-family: Inter, sans-serif; background: #0F1011; box-shadow: inset 0 1px 0 rgba(255,255,255,0.055), 0 1px 2px rgba(0,0,0,0.4), 0 8px 24px -12px rgba(0,0,0,0.7); transition: border-color 150ms, box-shadow 150ms, background 150ms; align-items: flex-start; } .ds-card:hover { border-color: rgba(255,255,255,0.16); background: #111315; box-shadow: inset 0 1px 0 rgba(255,255,255,0.09), 0 2px 4px rgba(0,0,0,0.45), 0 14px 34px -14px rgba(0,0,0,0.8); } .ds-card-title { margin: 0; font-size: 1.25rem; font-weight: 600; line-height: 1.375; color: #F7F8F8; } .ds-card-metric { margin: 0.5rem 0 0; font-size: 1.5rem; font-weight: 600; line-height: 1; font-variant-numeric: tabular-nums; color: #F7F8F8; } .ds-card-metric-label { margin: 0.125rem 0 0; font-size: 0.75rem; color: #8A8F98; } .ds-card-body { margin: 0.5rem 0 0; font-size: 0.875rem; line-height: 1.625; color: #B4B9C2; }"
     },
     {
       "name": "Tech Pill",
       "kind": "chip",
       "refersTo": "tech-pill",
-      "description": "Technology tag. Four show on a collapsed project card, then a +N overflow pill.",
-      "html": "<span class=\"ds-tech-pill\">Apache Kafka</span><span class=\"ds-tech-pill\">+4</span>",
-      "css": ".ds-tech-pill { display: inline-block; background: var(--color-surface-raised, #F4F4F2); color: var(--color-ink-secondary, #525252); font-family: Inter, sans-serif; font-size: 0.75rem; padding: 0.125rem 0.5rem; margin-right: 0.375rem; border: 1px solid var(--color-border, #E5E5E2); border-radius: 0.375rem; }"
+      "description": "Marks a tool that actually carried a shipped system. The long tail renders as muted plain text instead.",
+      "html": "<span class=\"ds-tech-pill\">Apache Kafka</span> <span class=\"ds-tech-pill\">Flink</span> <span class=\"ds-tech-plain\">DuckDB · Metabase · Streamlit</span>",
+      "css": ".ds-tech-pill { display: inline-block; border: 1px solid rgba(255,255,255,0.08); border-radius: 0.375rem; padding: 0.125rem 0.5rem; font-family: Inter, sans-serif; font-size: 0.75rem; background: #16181A; color: #B4B9C2; box-shadow: inset 0 1px 0 rgba(255,255,255,0.04); } .ds-tech-plain { font-family: Inter, sans-serif; font-size: 0.75rem; line-height: 1.625; color: #8A8F98; }"
     },
     {
-      "name": "Role Tag (inverted)",
+      "name": "Role Tag",
       "kind": "chip",
-      "refersTo": "role-tag-inverted",
-      "description": "Full ink fill marking Backend SWE and Systems Engineering projects as categorically separate from the Data Engineering group. The inversion carries real semantics — it lets an engineering manager self-select a track.",
-      "html": "<span class=\"ds-role-tag-default\">Data Engineering</span><span class=\"ds-role-tag-inverted\">Backend SWE</span>",
-      "css": ".ds-role-tag-default, .ds-role-tag-inverted { display: inline-block; font-family: Inter, sans-serif; font-size: 0.75rem; font-weight: 500; padding: 0.125rem 0.625rem; margin-right: 0.5rem; border-radius: 9999px; border: 1px solid; } .ds-role-tag-default { background: #F4F4F2; border-color: #E5E5E2; color: #525252; } .ds-role-tag-inverted { background: #111111; border-color: #111111; color: #FAFAF9; }"
+      "refersTo": "role-tag-accent",
+      "description": "Categorises a project. Systems / Backend work carries the accent — an amber hairline, never an ink inversion.",
+      "html": "<span class=\"ds-role-tag ds-role-tag-default\">Data Engineering</span> <span class=\"ds-role-tag ds-role-tag-accent\">Systems Engineering</span>",
+      "css": ".ds-role-tag { display: inline-block; border: 1px solid transparent; border-radius: 9999px; padding: 0.125rem 0.625rem; font-family: Inter, sans-serif; font-size: 0.75rem; font-weight: 500; } .ds-role-tag-default { background: #16181A; border-color: rgba(255,255,255,0.08); color: #B4B9C2; } .ds-role-tag-accent { background: rgba(235,163,82,0.1); border-color: rgba(235,163,82,0.35); color: #EBA352; }"
     },
     {
-      "name": "Metric Stat",
+      "name": "Navigation Bar",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Fixed 64px header on a 72%-opaque ground with backdrop blur and a hairline bottom border; the page scrolls beneath it.",
+      "html": "<header class=\"ds-nav\"><a class=\"ds-nav-mark\" href=\"/\">Zaid<span>.</span></a><ul class=\"ds-nav-ul\"><li><a class=\"ds-nav-link\" href=\"#about\">About</a></li><li><a class=\"ds-nav-link\" href=\"#projects\">Projects</a></li><li><a class=\"ds-nav-link\" href=\"#contact\">Contact</a></li></ul></header>",
+      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; min-height: 64px; padding: 0 1.25rem; font-family: Inter, sans-serif; background: rgba(8,9,10,0.72); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.08); } .ds-nav-mark { font-size: 1.25rem; font-weight: 600; letter-spacing: -0.02em; color: #F7F8F8; text-decoration: none; transition: opacity 150ms; } .ds-nav-mark span { color: #8A8F98; } .ds-nav-mark:hover { opacity: 0.7; } .ds-nav-ul { display: flex; gap: 2rem; list-style: none; margin: 0; padding: 0; } .ds-nav-link { font-size: 0.875rem; color: #8A8F98; text-decoration: none; transition: color 150ms; } .ds-nav-link:hover { color: #F7F8F8; } .ds-nav-link:focus-visible { outline: 2px solid #EBA352; outline-offset: 2px; border-radius: 0.25rem; }"
+    },
+    {
+      "name": "Metric Row",
       "kind": "custom",
-      "refersTo": null,
-      "description": "Borderless typographic metric. Tabular numerals so stacked digits align on their stems. The single loudest element in the system.",
-      "html": "<div class=\"ds-metric\"><span class=\"ds-metric-value\">21,091</span><span class=\"ds-metric-label\">msg/s sustained</span><span class=\"ds-metric-context\">Chatflow · Java + RabbitMQ + Redis</span></div>",
-      "css": ".ds-metric { display: flex; flex-direction: column; gap: 0.25rem; font-family: Inter, sans-serif; } .ds-metric-value { font-size: 3rem; font-weight: 600; letter-spacing: -0.025em; line-height: 1; font-variant-numeric: tabular-nums; color: #111111; } .ds-metric-label { font-size: 0.875rem; font-weight: 500; color: #525252; } .ds-metric-context { font-size: 0.75rem; color: #A3A3A3; }"
+      "refersTo": "typography.metric",
+      "description": "Three headline numbers in one hairline-ruled row — not three cards. Rules rotate from left to top below 640px.",
+      "html": "<div class=\"ds-metric-grid\"><div class=\"ds-metric\"><span class=\"ds-metric-value\">21,091</span><span class=\"ds-metric-label\">msg/s sustained</span><span class=\"ds-metric-context\">Chatflow · Java + RabbitMQ + Redis</span></div><div class=\"ds-metric\"><span class=\"ds-metric-value\">&lt;100ms</span><span class=\"ds-metric-label\">end-to-end latency</span><span class=\"ds-metric-context\">Crypto Analyzer · Kafka + Flink</span></div><div class=\"ds-metric\"><span class=\"ds-metric-value\">9.6M</span><span class=\"ds-metric-label\">records processed</span><span class=\"ds-metric-context\">Healthcare Lakehouse · Azure Medallion</span></div></div>",
+      "css": ".ds-metric-grid { display: grid; grid-template-columns: repeat(3, 1fr); font-family: Inter, sans-serif; } .ds-metric-grid > * + * { border-left: 1px solid rgba(255,255,255,0.08); padding-left: 2rem; } .ds-metric { display: flex; flex-direction: column; gap: 0.25rem; } .ds-metric-value { font-size: 3rem; font-weight: 600; letter-spacing: -0.025em; line-height: 1.1; font-variant-numeric: tabular-nums; color: #EBA352; } .ds-metric-label { font-size: 0.875rem; font-weight: 500; color: #B4B9C2; } .ds-metric-context { font-size: 0.75rem; color: #8A8F98; } @media (max-width: 640px) { .ds-metric-grid { grid-template-columns: 1fr; } .ds-metric-grid > * + * { border-left: none; border-top: 1px solid rgba(255,255,255,0.08); padding-left: 0; padding-top: 1.5rem; margin-top: 1.5rem; } }"
     },
     {
-      "name": "Project Card (collapsed)",
-      "kind": "card",
-      "refersTo": "card-base",
-      "description": "Layer 1 of the dual-layer card: role tag, name, primary metric, plain-English outcome, tech pills, disclosure toggle. Same tone as the page — only the border separates it.",
-      "html": "<article class=\"ds-card\"><span class=\"ds-role-tag-default\">Data Engineering</span><h3 class=\"ds-card-title\">Healthcare Data Lakehouse on Azure</h3><p class=\"ds-card-metric\">9.6M</p><p class=\"ds-card-metric-label\">records processed</p><p class=\"ds-card-outcome\">Processed 9.6M hospital records across three quality layers with zero loss during ingestion failures.</p><button class=\"ds-card-toggle\">Architecture &amp; details <svg width=\"12\" height=\"12\" viewBox=\"0 0 12 12\" fill=\"none\" aria-hidden=\"true\"><path d=\"M2 4l4 4 4-4\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></button></article>",
-      "css": ".ds-card { display: flex; flex-direction: column; gap: 0.75rem; align-items: flex-start; background: #FAFAF9; border: 1px solid #E5E5E2; border-radius: 0.75rem; padding: 1.5rem; font-family: Inter, sans-serif; transition: border-color 150ms; } .ds-card:hover { border-color: #C9C9C6; } .ds-card-title { margin: 0; font-size: 1.125rem; font-weight: 600; line-height: 1.375; color: #111111; } .ds-card-metric { margin: 0; font-size: 1.5rem; font-weight: 600; line-height: 1; font-variant-numeric: tabular-nums; color: #111111; } .ds-card-metric-label { margin: 0.125rem 0 0; font-size: 0.75rem; color: #A3A3A3; } .ds-card-outcome { margin: 0; font-size: 0.875rem; line-height: 1.625; color: #525252; } .ds-card-toggle { display: inline-flex; align-items: center; gap: 0.25rem; background: none; border: none; padding: 0; font-family: inherit; font-size: 0.75rem; color: #525252; cursor: pointer; transition: color 150ms; } .ds-card-toggle:hover { color: #111111; }"
+      "name": "Architecture Schematic",
+      "kind": "custom",
+      "refersTo": "schematic-node",
+      "description": "The system's one authored motion moment: the pipeline draws itself stage by stage, staggered 90ms, switching axis on a container query at 34rem. Fully legible with motion off.",
+      "html": "<figure class=\"ds-schematic\"><ol class=\"ds-schematic-flow\"><li class=\"ds-node\" style=\"--i:0\"><span class=\"ds-node-stage\">Ingest</span><span class=\"ds-node-items\"><span class=\"ds-node-item\">Kafka</span></span></li><li class=\"ds-edge\" style=\"--i:1\" aria-hidden=\"true\"></li><li class=\"ds-node\" style=\"--i:1\"><span class=\"ds-node-stage\">Process</span><span class=\"ds-node-items\"><span class=\"ds-node-item\">Flink</span></span></li><li class=\"ds-edge\" style=\"--i:2\" aria-hidden=\"true\"></li><li class=\"ds-node\" style=\"--i:2\"><span class=\"ds-node-stage\">Serve</span><span class=\"ds-node-items\"><span class=\"ds-node-item\">Redis</span><span class=\"ds-node-item\">TimescaleDB</span></span></li></ol></figure>",
+      "css": ".ds-schematic { margin: 0; container-type: inline-size; font-family: Inter, sans-serif; } .ds-schematic-flow { display: flex; flex-direction: column; align-items: flex-start; list-style: none; margin: 0; padding: 0; } .ds-node { display: flex; flex-direction: column; gap: 0.375rem; opacity: 0; animation: ds-settle 400ms cubic-bezier(0.22,1,0.36,1) forwards; animation-delay: calc(var(--i) * 90ms); } .ds-node-stage { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #8A8F98; } .ds-node-items { display: flex; flex-direction: column; gap: 0.25rem; } .ds-node-item { font-size: 0.875rem; line-height: 1.4; color: #B4B9C2; background: #16181A; border: 1px solid rgba(255,255,255,0.08); border-radius: 0.375rem; padding: 0.3125rem 0.5rem; } .ds-edge { width: 1px; height: 1.25rem; margin-left: 0.75rem; background: rgba(255,255,255,0.16); transform-origin: top; transform: scaleY(0); animation: ds-extend 320ms cubic-bezier(0.22,1,0.36,1) forwards; animation-delay: calc(var(--i) * 90ms - 40ms); } @container (min-width: 34rem) { .ds-schematic-flow { flex-direction: row; align-items: flex-start; } .ds-edge { width: auto; flex: 1; min-width: 1rem; height: 1px; margin: 1.375rem 0.5rem 0; transform-origin: left; transform: scaleX(0); animation-name: ds-extend-x; } } @keyframes ds-settle { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } } @keyframes ds-extend { to { transform: scaleY(1); } } @keyframes ds-extend-x { to { transform: scaleX(1); } } @media (prefers-reduced-motion: reduce) { .ds-node, .ds-edge { animation: none; opacity: 1; transform: none; } }"
     },
     {
       "name": "Decision Log",
       "kind": "custom",
-      "refersTo": null,
-      "description": "Chose / Over / Because, behind a 2px left spine. Present on only two projects by design — it is evidence of a hard decision, not a template.",
-      "html": "<div class=\"ds-decision-log\"><p class=\"ds-decision-head\">Architecture Decision</p><div class=\"ds-decision-row\"><span class=\"ds-decision-label\">Chose</span><span class=\"ds-decision-value\">Redis + TimescaleDB dual-path storage</span></div><div class=\"ds-decision-row\"><span class=\"ds-decision-label\">Over</span><span class=\"ds-decision-value\">A single Postgres store</span></div><div class=\"ds-decision-row\"><span class=\"ds-decision-label\">Because</span><span class=\"ds-decision-value\">Hot-path reads need sub-1ms; time-series analytics need retention and continuous aggregates.</span></div></div>",
-      "css": ".ds-decision-log { border-left: 2px solid #C9C9C6; padding-left: 1rem; font-family: Inter, sans-serif; } .ds-decision-head { margin: 0 0 0.75rem; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #A3A3A3; } .ds-decision-row { display: flex; gap: 0.75rem; font-size: 0.875rem; margin-bottom: 0.625rem; } .ds-decision-label { width: 3.5rem; flex-shrink: 0; font-weight: 500; font-variant: small-caps; color: #A3A3A3; } .ds-decision-value { color: #525252; line-height: 1.625; }"
-    },
-    {
-      "name": "Navigation Link",
-      "kind": "nav",
-      "refersTo": "nav-link",
-      "description": "Fixed navbar link over a blurred translucent paper bar with a bottom hairline.",
-      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-wordmark\" href=\"#\">Zaid<span>.</span></a><a class=\"ds-nav-link\" href=\"#about\">About</a><a class=\"ds-nav-link\" href=\"#projects\">Projects</a><a class=\"ds-nav-link\" href=\"#contact\">Contact</a></nav>",
-      "css": ".ds-nav { display: flex; align-items: center; gap: 2rem; min-height: 64px; padding: 0 1.25rem; background: rgba(250,250,249,0.85); backdrop-filter: blur(4px); border-bottom: 1px solid #E5E5E2; font-family: Inter, sans-serif; } .ds-nav-wordmark { margin-right: auto; font-size: 1.25rem; font-weight: 600; letter-spacing: -0.025em; color: #111111; text-decoration: none; transition: opacity 150ms; } .ds-nav-wordmark span { color: #A3A3A3; } .ds-nav-wordmark:hover { opacity: 0.7; } .ds-nav-link { font-size: 0.875rem; color: #525252; text-decoration: none; transition: color 150ms; } .ds-nav-link:hover { color: #111111; } .ds-nav-link:focus-visible { outline: 2px solid #111111; outline-offset: 4px; }"
-    },
-    {
-      "name": "Void Quick-Link Chip",
-      "kind": "chip",
-      "refersTo": null,
-      "description": "Paper chip on the Void surface with a dual-span vertical text swap on hover. The system's one piece of showmanship, confined to the closing section.",
-      "html": "<div class=\"ds-void-strip\"><a class=\"ds-void-chip\" href=\"#about\"><span class=\"ds-void-chip-a\">About</span><span class=\"ds-void-chip-b\">About</span></a><a class=\"ds-void-chip\" href=\"#projects\"><span class=\"ds-void-chip-a\">Projects</span><span class=\"ds-void-chip-b\">Projects</span></a></div>",
-      "css": ".ds-void-strip { display: flex; gap: 0.75rem; background: #141414; padding: 1.5rem; font-family: Inter, sans-serif; } .ds-void-chip { position: relative; overflow: hidden; display: inline-block; background: #FAFAF9; border: 1px solid rgba(255,255,255,0.12); border-radius: 0.25rem; padding: 0.125rem 0.75rem; font-size: 0.75rem; text-decoration: none; } .ds-void-chip-a { display: block; color: #111111; transition: transform 300ms ease-out; } .ds-void-chip:hover .ds-void-chip-a { transform: translateY(-100%); } .ds-void-chip-b { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: #111111; transform: translateY(100%); transition: transform 300ms ease-out; } .ds-void-chip:hover .ds-void-chip-b { transform: translateY(0); }"
-    },
-    {
-      "name": "Availability Pill",
-      "kind": "chip",
-      "refersTo": null,
-      "description": "Carries the only chromatic pixel in the system — a single 6px green dot indicating live availability status.",
-      "html": "<span class=\"ds-availability\"><span class=\"ds-availability-dot\" aria-hidden=\"true\"></span>Available Summer &amp; Fall 2026</span>",
-      "css": ".ds-availability { display: inline-flex; align-items: center; gap: 0.375rem; border: 1px solid #E5E5E2; border-radius: 9999px; padding: 0.25rem 0.75rem; font-family: Inter, sans-serif; font-size: 0.75rem; color: #525252; } .ds-availability-dot { width: 6px; height: 6px; border-radius: 9999px; background: #10B981; }"
+      "refersTo": "colors.border-strong",
+      "description": "Chose / Over / Because, set against the system's one asymmetric border — a single left rule at 16% that reads as a margin annotation.",
+      "html": "<div class=\"ds-decision-log\"><p class=\"ds-decision-head\">Architecture Decision</p><div class=\"ds-decision-row\"><span class=\"ds-decision-label\">Chose</span><span class=\"ds-decision-value\">Flink</span></div><div class=\"ds-decision-row\"><span class=\"ds-decision-label\">Over</span><span class=\"ds-decision-value\">Spark Streaming</span></div><div class=\"ds-decision-row\"><span class=\"ds-decision-label\">Because</span><span class=\"ds-decision-value\">Exactly-once semantics hold under network partition.</span></div></div>",
+      "css": ".ds-decision-log { border-left: 1px solid rgba(255,255,255,0.16); padding-left: 1rem; font-family: Inter, sans-serif; } .ds-decision-head { margin: 0 0 0.75rem; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #8A8F98; } .ds-decision-row { display: flex; gap: 0.75rem; font-size: 0.875rem; margin-bottom: 0.625rem; } .ds-decision-label { width: 3.5rem; flex-shrink: 0; font-weight: 500; font-variant: small-caps; color: #8A8F98; } .ds-decision-value { color: #B4B9C2; }"
     }
   ],
   "narrative": {
-    "northStar": "The Quiet Ledger",
-    "overview": "Ink on paper, tabular numerals, every claim accounted for. This is a ledger, not a brochure: the numbers are the artifact, and the design's entire job is to make sure nothing decorative ever competes with them. Restraint here is not an aesthetic preference — it is a credibility argument. A page with no gradient, no shadow, and no accent hue has nothing to hide behind, which is exactly the posture a skeptical engineer trusts.\n\nThe system is deliberately austere. A single typeface at three weights. A seven-step neutral ramp from near-white paper to near-black ink. Zero shadows anywhere in the codebase — depth comes from hairline rules and a two-step tonal shift, never from lift. Density is low and whitespace is generous, not for elegance but as a forcing function: when 96px of air separates sections and nothing carries color, the 21,091 set in 48px semibold is unavoidably the loudest thing on the screen.\n\nThe world it replaced is a permanent anti-reference: dark space theme, 3D astronaut, orbiting glassmorphic cards, animated flip words. Those were removed because they signalled junior-level showmanship to exactly the readers this site needs to convince. Nothing from that vocabulary returns — no glass, no glow, no gradient mesh, no floating 3D.",
+    "northStar": "The Instrument Panel",
+    "overview": "The site is a data engineer's evidence file rendered as lit instrumentation on a near-black ground. Nothing decorates; every surface either carries a measured value, frames one, or gets out of the way. The world is three steps of near-black, hairline rules at 8% white, and a single warm amber that appears only where something is live or measured — the three headline metrics, the availability dots, the systems role tag, and every focus ring.\n\nThe form language is a standing product commitment, not a per-page choice: offered a derived visual world, the owner chose the category standard — the conventional developer-portfolio canon — with linear.app named as the craft bar. That bar is why this system is not a flat dark template. Surfaces are lit: every raised plane carries a 1px inset top-edge highlight so it reads as catching light from above, and the page ground itself is modulated by a fixed radial wash rather than one uniform fill. Precise grid, exact spacing, and real state detail on every interactive element are the price of that bar; a future pass that flattens the highlights or drops the hover states is lowering it, not simplifying it.\n\nDensity is high and text-forward. The page refuses the expanding-accordion résumé that hides its numbers behind a click: the numbers sit at rest at display scale, and only the architecture is behind an interaction. There is exactly one authored motion moment — the pipeline schematic drawing itself, stage by stage, when a project card opens — and it is decoration-free, purely explanatory, and fully removable under reduced motion with no loss of content.",
     "keyCharacteristics": [
-      "Ink-only palette; emphasis by inversion, never by hue",
-      "Zero box-shadows in the entire system — hairline rules and tonal layering carry all depth",
-      "One typeface (Inter) at three weights (400 / 500 / 600)",
-      "Tabular numerals on every metric so digits align in a column",
-      "Generous section rhythm (96px → 128px) that isolates each claim",
-      "A single dark surface, used exactly once, at the end"
+      "Three surface steps only (#08090A page → #0F1011 raised → #16181A overlay); no fourth step exists.",
+      "Hairline borders, always 1px, always white at 8% or 16% — never a solid grey.",
+      "One accent (#EBA352), reserved for measured values, live status, the systems tag, and focus.",
+      "Every text tone clears 4.5:1 against the worst-case surface, not just the page.",
+      "Lit surfaces: inset top-edge highlight plus two-part ambient shadow, both lifting on hover.",
+      "Inter only, tight negative tracking on headings, tabular figures on every number.",
+      "One authored motion moment; everything else is a 150ms state transition."
     ],
     "rules": [
-      {
-        "name": "The One Green Dot Rule",
-        "body": "#10B981 appears exactly once, as the availability status indicator, and is never used for anything else — not for success states, not for links, not for a second accent. Its entire meaning is \"this status is live.\" A second green pixel destroys the first one's meaning.",
-        "section": "colors"
-      },
-      {
-        "name": "The Inversion-Instead-of-Accent Rule",
-        "body": "[INFERRED] When an element must be emphasized, invert it to full ink fill rather than introducing a color. This is how Systems Engineering role tags separate from Data Engineering ones, and how the primary button separates from the ghost. The palette has no accent slot reserved and no accent is planned — monochrome is the system, not an unfinished state.",
-        "section": "colors"
-      },
-      {
-        "name": "The Single Dark Surface Rule",
-        "body": "[INFERRED] The page is paper that goes dark exactly once, at the close. Contact is the only section permitted to use Void, and the transition happens a single time, at the end of the scroll, as a deliberate final chapter. No other section may go dark, and there is no global dark mode.",
-        "section": "colors"
-      },
-      {
-        "name": "The Tabular Numerals Rule",
-        "body": "Every number that is a claim carries font-variant-numeric: tabular-nums. 21,091 and <100ms must align on their digit stems when stacked in a grid; proportional figures make a metric row look typeset rather than measured.",
-        "section": "typography"
-      },
-      {
-        "name": "The Three Weights Rule",
-        "body": "400 for reading, 500 for labels and links, 600 for anything structural. There is no 300 and no 700 in the running system — the loaded variable range is wider than what gets used, and that restraint is intentional. The one exception is the ZAID watermark at 700, which is texture, not type.",
-        "section": "typography"
-      },
-      {
-        "name": "The Shared Edge Rule",
-        "body": "Every section uses the same max-w-7xl + .c-space container. Nothing breaks the container except the Contact section's full-bleed Void background and its watermark.",
-        "section": "layout"
-      },
-      {
-        "name": "The No-Shadow Rule",
-        "body": "Surfaces never lift. If an element needs to separate from its background, darken its border or step its tone — never add a shadow, glow, or filter: drop-shadow. A shadow anywhere in this system reads as a foreign object.",
-        "section": "elevation"
-      },
-      {
-        "name": "The Hairline Rule",
-        "body": "Every border in the system is 1px except the decision log's 2px spine. Weight is not an emphasis tool; tone is.",
-        "section": "shapes"
-      }
+      { "name": "The Worst-Surface Rule", "body": "Every text tone is chosen to clear 4.5:1 against #16181A — the lightest surface in the system — not against the page ground. A tone that passes only on #08090A is not in this palette. Measured: ink 16.73:1, secondary 9.04:1, muted 5.48:1, accent 8.39:1.", "section": "colors" },
+      { "name": "The Reserved Accent Rule", "body": "Amber appears only where something is measured, live, or focused. If you cannot name the number, the status, or the interaction it represents, it does not get the accent. It is never a background fill for a large area, never a heading colour, and never used to make a section \"pop\".", "section": "colors" },
+      { "name": "The Three Steps Rule", "body": "There are exactly three surfaces. Depth beyond the third step is expressed with the inset highlight and ambient shadow, never by inventing a fourth fill. (The card hover fill #111315 is a state of the raised plane, not a step.)", "section": "colors" },
+      { "name": "The Hairline Rule", "body": "Separation is a 1px white-alpha rule at 8%, stepping to 16% for emphasis. No solid grey borders, no 2px rules, no double rules.", "section": "colors" },
+      { "name": "The Tabular Figures Rule", "body": "Every number that a reader might compare or that sits in a ruled row — hero metrics, card metrics, group counts, the copyright year — is set font-variant-numeric: tabular-nums. Proportional figures in a metric row are a defect.", "section": "typography" },
+      { "name": "The Tight-Top Rule", "body": "Tracking tightens as size grows: −0.02em at 24px, −0.03em at section headings, −0.04em at display, −0.055em at the largest setting. Small type never goes negative; uppercase labels always go positive (+0.02em to +0.08em).", "section": "typography" },
+      { "name": "The No-Kicker Rule", "body": "Headings stand alone. Eyebrow kickers and pre-heading labels were eliminated site-wide during the build and must not return. The 12px uppercase label is a group index (a category name with a count, a footer column head) — it never sits above a heading as its introduction.", "section": "typography" },
+      { "name": "The Ruled Row Rule", "body": "Related numbers sit in one row divided by hairlines, not in separate cards. The hero metric row is three equal columns with a left rule and 32px of left padding on each subsequent cell; below 640px those rules rotate to top rules with 24px of padding and margin. Boxing each metric would make three cards where there is one comparison.", "section": "layout" },
+      { "name": "The Open-Card-Takes-the-Row Rule", "body": "At ≥768px, a project card whose toggle is aria-expanded=\"true\" spans both grid columns (:has() selector on the article). An expanded card is a detail view; at half width its schematic container is 518px and five stages crush together.", "section": "layout" },
+      { "name": "The Container-Query Rule", "body": "The architecture schematic responds to its own width, not the viewport's (@container (min-width: 34rem) on an inline-size container). Because cards sit two-up, a 1400px viewport still gives the schematic only 518px. Any component whose layout depends on the box it sits in — not the screen — uses a container query.", "section": "layout" },
+      { "name": "The Lit Surface Rule", "body": "Any element that sits on a step above its parent takes an inset top-edge highlight. Flat fill plus flat border is what makes a dark page look like a template; the highlight is 1px and between 4% and 9% white, never more.", "section": "elevation" },
+      { "name": "The Whole-State Rule", "body": "A hover changes fill, border, highlight, and shadow together, in one 150ms transition. A border-only hover reads as a bug at this craft bar.", "section": "elevation" },
+      { "name": "The One Motion Moment Rule", "body": "The page has exactly one authored animation: the schematic drawing itself. Everything else is a 150ms colour/shadow state transition or a ≤220ms disclosure. No scroll-triggered reveals, no parallax, no entrance animations on load.", "section": "components" },
+      { "name": "The Reduced-Motion-Is-Complete Rule", "body": "Every animated element renders fully legible at rest under prefers-reduced-motion. Motion may sequence information; it may never be the only way to see it.", "section": "components" },
+      { "name": "The Computed-Claim Rule", "body": "Where the copy states a rule about the content, the component computes it. The Skills standfirst claims the highlighted tools are the ones that carried the six systems, so the pill/plain split is derived at render time from those projects' own technologies arrays — not from hand-maintained source order. If the component changes, the claim must stay computed or the standfirst must change.", "section": "components" }
     ],
     "dos": [
-      "Do lead every project and section with its measured number, set in tabular numerals at 600 weight. The metric outranks the prose.",
-      "Do use inversion (full #111111 fill) when something must stand out. That is the accent.",
-      "Do separate surfaces with a 1px #E5E5E2 hairline and, where containment is needed, one tonal step to #F4F4F2.",
-      "Do keep transitions at 150ms for state changes and 220ms for disclosure. Use cubic-bezier(0.22, 1, 0.36, 1) for anything entering on scroll.",
-      "Do keep body copy inside max-w-2xl and let the max-w-7xl container's left edge align across every section.",
-      "Do write labels in 0.75rem/500 uppercase with 0.1em tracking.",
-      "Do give every interactive element a :focus-visible treatment matching its hover state. On Void, that is a 2px white outline at 3px offset; anything animating on group-hover also needs group-focus-visible."
+      "Do keep to the three surface steps (#08090A / #0F1011 / #16181A) and express further depth with the inset highlight and ambient shadow.",
+      "Do give every raised surface a 1px inset top-edge highlight between 4% and 9% white — this is the craft-bar rule that keeps the world off the flat-dark-template floor.",
+      "Do verify new text tones against #16181A, the worst-case surface, at 4.5:1 minimum.",
+      "Do reserve the amber for measured values, live status, the systems role tag, and focus rings.",
+      "Do set every number tabular-nums.",
+      "Do change fill, border, highlight, and shadow together on hover, at 150ms.",
+      "Do use a container query when a component's layout depends on the box it sits in rather than the viewport.",
+      "Do put related numbers in one hairline-ruled row rather than in separate cards.",
+      "Do let every animated element render complete and legible under prefers-reduced-motion."
     ],
     "donts": [
-      "Don't add a box-shadow, glow, gradient, or glassmorphic surface. The system has none and reads as tampered-with the moment one appears.",
-      "Don't introduce an accent color. [INFERRED — the code ships zero accent; confirm before treating as permanent]",
-      "Don't lighten --color-ink-muted past #6F6F6F. It carries eyebrows, metric labels, metadata, and the card expand toggle; anything lighter drops the toggle — an interactive control — below AA.",
-      "Don't take a second section dark. Void belongs to Contact alone. [INFERRED]",
-      "Don't add a second typeface or reach outside weights 400/500/600.",
-      "Don't reintroduce the retired vocabulary: 3D models, orbiting cards, animated flip words, glassmorphism, or the dark space theme.",
-      "Don't wire hover state through inline onMouseEnter/onMouseLeave handlers. Use CSS classes so :focus-visible gets the same treatment — .link-void / .link-void-dim cover the Void surface.",
-      "Don't reintroduce a tailwind.config.js. This project is Tailwind v4, CSS-first: tokens live in the @theme block in src/index.css. The old config file was dead (no @config directive loaded it) and has been deleted."
+      "Don't reintroduce eyebrow kickers or pre-heading labels; they were removed site-wide and headings stand alone.",
+      "Don't invent a fourth surface step or a solid grey border; separation is 1px white-alpha at 8% or 16%.",
+      "Don't use the amber as a background fill, a heading colour, or decoration — if you cannot name the number, status, or interaction it marks, it does not get the accent.",
+      "Don't flatten the surfaces: removing the inset highlights, the ambient shadows, or the fixed radial ground wash lowers the stated craft bar rather than simplifying the code.",
+      "Don't add a second authored animation, a scroll reveal, or a load-in entrance; the schematic is the page's one motion moment.",
+      "Don't emphasise on a dark ground by inverting to an ink fill; emphasis is an accent hairline.",
+      "Don't hide a measured number behind an interaction — architecture is the only thing allowed behind the card toggle.",
+      "Don't add a second typeface; the ramp is carried by weight, size, and tracking within Inter."
+    ],
+    "recordedDecisions": [
+      "Typeface: Inter, kept deliberately. It is the pinned canon's and the craft bar's own face; the owner was shown the 'Inter is overused' trade-off explicitly and kept it. Recorded as a decision, not debt.",
+      "Inter is served from the Google Fonts CDN rather than self-hosted. Known and deprioritised.",
+      "Form language: the category standard, chosen over a derived visual world, with linear.app as the craft bar. Standing preference recorded in PRODUCT.md 2026-09-16 — future surfaces execute the convention at full fidelity rather than reaching for a distinctive world."
     ]
   }
 }
