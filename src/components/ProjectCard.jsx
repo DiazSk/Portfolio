@@ -54,8 +54,7 @@ const ProjectCard = ({ project }) => {
           {/* Primary metric - centered on mobile, left on md+ */}
           <div className="flex flex-col items-center md:items-start">
             <p
-              className="text-2xl font-semibold tabular-nums leading-none"
-              style={{ color: "var(--color-ink)", fontVariantNumeric: "tabular-nums" }}
+              className="metric-value text-2xl font-semibold leading-none"
             >
               {primaryMetric.value}
             </p>

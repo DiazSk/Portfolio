@@ -8,8 +8,7 @@ const MetricStat = ({ value, label, context }) => {
   return (
     <div className="flex flex-col gap-1">
       <span
-        className="text-4xl font-semibold tracking-tight tabular-nums md:text-5xl"
-        style={{ color: "var(--color-ink)", fontVariantNumeric: "tabular-nums" }}
+        className="metric-value text-4xl font-semibold tracking-tight md:text-5xl"
       >
         {value}
       </span>

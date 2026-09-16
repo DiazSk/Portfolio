@@ -53,18 +53,9 @@ const Projects = () => {
           Data Engineering &amp; Analytics
         </GroupLabel>
 
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-          {deProjects.map((project, i) => (
-            <div
-              key={project.name}
-              className={
-                deProjects.length % 2 !== 0 && i === deProjects.length - 1
-                  ? "md:col-span-2 md:max-w-[calc(50%-0.5rem)]"
-                  : ""
-              }
-            >
-              <ProjectCard project={project} />
-            </div>
+        <div className="project-grid grid grid-cols-1 gap-4 md:grid-cols-2">
+          {deProjects.map((project) => (
+            <ProjectCard key={project.name} project={project} />
           ))}
         </div>
 
@@ -75,7 +66,7 @@ const Projects = () => {
           Systems Engineering
         </GroupLabel>
 
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+        <div className="project-grid grid grid-cols-1 gap-4 md:grid-cols-2">
           {systemsProjects.map((project) => (
             <ProjectCard key={project.name} project={project} />
           ))}

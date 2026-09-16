@@ -17,17 +17,6 @@ const Contact = () => {
       className="c-space relative overflow-hidden border-t pt-28 pb-16"
       style={{ borderColor: "var(--color-border)" }}
     >
-      {/* The close is a held note, not a second theme: the ground deepens
-          below the fold and the name is set once at full width. */}
-      <div
-        className="pointer-events-none absolute inset-0"
-        aria-hidden="true"
-        style={{
-          background:
-            "radial-gradient(120% 80% at 50% 100%, rgba(235,163,82,0.07) 0%, rgba(8,9,10,0) 60%)",
-        }}
-      />
-
       <div className="relative mx-auto w-full max-w-7xl">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-[3fr_2fr_2fr]">
           {/* Left — the ask */}
@@ -82,8 +71,7 @@ const Contact = () => {
             </h3>
             <a
               href={`mailto:${personal.email}`}
-              className="link-void block text-sm"
-              style={{ color: "var(--color-ink)" }}
+              className="btn-primary w-full justify-center text-sm"
             >
               {personal.email}
             </a>
@@ -110,7 +98,7 @@ const Contact = () => {
             className="block w-full select-none font-semibold leading-none"
             style={{
               color: "var(--color-ink)",
-              opacity: 0.07,
+              opacity: 0.14,
               fontSize: "clamp(4rem, 19vw, 17rem)",
               letterSpacing: "-0.055em",
             }}

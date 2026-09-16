@@ -44,7 +44,14 @@ const Skills = () => {
       style={{ borderColor: "var(--color-border)" }}
     >
       <div className="mx-auto w-full max-w-7xl">
-        <h2 className="text-heading mb-12">Stack</h2>
+        <h2 className="text-heading mb-4">Stack</h2>
+        <p
+          className="mb-12 max-w-2xl text-base leading-relaxed"
+          style={{ color: "var(--color-ink-secondary)" }}
+        >
+          Weighted by what carried the six systems above, not by what I have
+          touched.
+        </p>
 
         {/* A ruled index, not a grid of identical cards: the category sits in
             a fixed left column so every row scans on one axis. */}
@@ -61,12 +68,21 @@ const Skills = () => {
               >
                 {group.category}
               </h3>
-              <div className="flex flex-wrap gap-1.5">
-                {group.items.map((skill) => (
-                  <span key={skill} className="tech-pill">
-                    {skill}
-                  </span>
-                ))}
+              <div className="flex flex-col gap-2">
+                {/* The tools actually load-bearing in the shipped projects
+                    carry weight; the rest stay true but stop competing. */}
+                <div className="flex flex-wrap gap-1.5">
+                  {group.items.slice(0, 4).map((skill) => (
+                    <span key={skill} className="tech-pill">
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+                {group.items.length > 4 && (
+                  <p className="tech-plain leading-relaxed">
+                    {group.items.slice(4).join(" · ")}
+                  </p>
+                )}
               </div>
             </div>
           ))}

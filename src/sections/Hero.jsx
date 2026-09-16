@@ -1,5 +1,8 @@
 import MetricStat from "../components/MetricStat";
 import { mySocials } from "../constants";
+import { resumeData } from "../constants/resumeData";
+
+const EMAIL = resumeData.personal.email;
 
 const METRICS = [
   {
@@ -77,19 +80,26 @@ const Hero = () => {
 
         {/* ── Social links ─────────────────────────────────────── */}
         <div className="mt-12 flex flex-wrap items-center gap-3">
-          {mySocials.map((social) => (
-            <a
-              key={social.name}
-              href={social.href}
-              target={social.href.startsWith("mailto:") ? undefined : "_blank"}
-              rel="noopener noreferrer"
-              className="btn-ghost text-sm"
-            >
-              {social.name === "Email"
-                ? "shaikh.zaid@northeastern.edu"
-                : social.name}
-            </a>
-          ))}
+          <a href={`mailto:${EMAIL}`} className="btn-primary text-sm">
+            <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <rect x="1" y="3" width="14" height="10" rx="2" stroke="currentColor" strokeWidth="1.4" />
+              <path d="M1.8 4.2l5.4 4a1.4 1.4 0 001.6 0l5.4-4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+            </svg>
+            {EMAIL}
+          </a>
+          {mySocials
+            .filter((s) => s.name !== "Email")
+            .map((social) => (
+              <a
+                key={social.name}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-ghost text-sm"
+              >
+                {social.name}
+              </a>
+            ))}
         </div>
       </div>
     </section>

@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300..700;1,14..32,300..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..700&display=swap");
 @import "tailwindcss";
 
 /* ─── Design tokens ──────────────────────────────────────────── */
@@ -23,9 +23,14 @@
 /* ─── Base ───────────────────────────────────────────────────── */
 body {
   background: var(--color-surface);
+  background-image: radial-gradient(
+    120% 70% at 50% 0%,
+    rgba(255, 255, 255, 0.035) 0%,
+    rgba(255, 255, 255, 0) 55%
+  );
+  background-attachment: fixed;
   font-family: "Inter", sans-serif;
   color: var(--color-ink);
-  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -61,7 +66,7 @@ html {
 
 /* ─── Typography ─────────────────────────────────────────────── */
 .text-heading {
-  @apply text-3xl font-semibold tracking-tight md:text-4xl;
+  @apply text-4xl font-semibold tracking-tight md:text-5xl;
   color: var(--color-ink);
   letter-spacing: -0.03em;
 }
@@ -74,6 +79,12 @@ html {
 
 .tabular {
   font-variant-numeric: tabular-nums;
+}
+
+/* OWN-WORLD: the accent is reserved for measured values and focus. */
+.metric-value {
+  font-variant-numeric: tabular-nums;
+  color: var(--color-accent);
 }
 
 /* ─── Navigation ─────────────────────────────────────────────── */
@@ -96,13 +107,26 @@ html {
 
 /* ─── Cards ──────────────────────────────────────────────────── */
 .card-base {
-  @apply rounded-xl border p-6 transition-colors duration-150;
+  @apply rounded-xl border p-6;
   background: var(--color-surface-raised);
   border-color: var(--color-border);
+  /* Lit surface: a top-edge highlight reads as a raised plane catching
+     light, the ambient shadow seats it. Flat fill + flat border is what
+     makes a dark page look like a template. */
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.055),
+    0 1px 2px rgba(0, 0, 0, 0.4),
+    0 8px 24px -12px rgba(0, 0, 0, 0.7);
+  transition: border-color 150ms, box-shadow 150ms, background 150ms;
 }
 
 .card-base:hover {
   border-color: var(--color-border-strong);
+  background: #111315;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.09),
+    0 2px 4px rgba(0, 0, 0, 0.45),
+    0 14px 34px -14px rgba(0, 0, 0, 0.8);
 }
 
 /* ─── Metric row ─────────────────────────────────────────────── */
@@ -141,6 +165,13 @@ html {
   background: var(--color-surface-overlay);
   border-color: var(--color-border);
   color: var(--color-ink-secondary);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+/* The long tail of a stack list: true, but not the claim. */
+.tech-plain {
+  @apply text-xs;
+  color: var(--color-ink-muted);
 }
 
 /* ─── Role tag ───────────────────────────────────────────────── */
@@ -166,6 +197,7 @@ html {
   @apply inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-medium transition-colors duration-150;
   background: var(--color-ink);
   color: #08090A;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5), 0 8px 20px -10px rgba(0, 0, 0, 0.9);
 }
 
 .btn-primary:hover {
@@ -175,6 +207,7 @@ html {
 .btn-ghost {
   @apply inline-flex items-center gap-2 rounded-lg border px-5 py-2.5 text-sm font-medium transition-colors duration-150;
   background: var(--color-surface-raised);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.045);
   border-color: var(--color-border);
   color: var(--color-ink-secondary);
 }
@@ -207,6 +240,16 @@ html {
 .section-rule {
   @apply my-12;
   border-color: var(--color-border);
+}
+
+/* ─── Project grid ───────────────────────────────────────────── */
+/* An open card is a detail view, so it takes the whole row. This is also
+   what gives the schematic the width to run left-to-right; at half width
+   its container is ~518px and five stages crush together. */
+@media (min-width: 768px) {
+  .project-grid > article:has([aria-expanded="true"]) {
+    grid-column: span 2;
+  }
 }
 
 /* ─── Architecture schematic ─────────────────────────────────── */
@@ -278,7 +321,7 @@ html {
   animation-delay: calc(var(--i) * 90ms - 40ms);
 }
 
-@container (min-width: 38rem) {
+@container (min-width: 34rem) {
   .schematic-flow {
     flex-direction: row;
     align-items: flex-start;
