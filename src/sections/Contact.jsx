@@ -22,17 +22,10 @@ const Contact = () => {
           {/* Left — the ask */}
           <div>
             <h2
-              className="font-semibold"
-              style={{
-                color: "var(--color-ink)",
-                fontSize: "clamp(2rem, 4vw, 3.25rem)",
-                letterSpacing: "-0.04em",
-                lineHeight: 1.05,
-              }}
+              className="text-heading max-w-[12ch] text-balance"
+              style={{ lineHeight: 1.05 }}
             >
-              Open to the
-              <br />
-              right opportunity.
+              Open to the right opportunity.
             </h2>
             <p
               className="mt-5 max-w-sm text-base leading-relaxed"
