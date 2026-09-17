@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
 import PropTypes from "prop-types";
 import RoleTag from "./RoleTag";
 import DecisionLog from "./DecisionLog";
@@ -43,12 +42,12 @@ const ProjectCard = ({ project }) => {
           {/* Title group - centered on mobile, left on md+ */}
           <div className="flex flex-col items-start gap-2">
             <RoleTag category={category} />
-            <h3
+            <h4
               className="text-xl font-semibold leading-snug"
               style={{ color: "var(--color-ink)" }}
             >
               {name}
-            </h3>
+            </h4>
           </div>
 
           {/* Primary metric - centered on mobile, left on md+ */}
@@ -83,7 +82,7 @@ const ProjectCard = ({ project }) => {
 
           <button
             onClick={() => setIsExpanded(!isExpanded)}
-            className="flex items-center gap-1 text-xs transition-colors"
+            className="-my-2 flex items-center gap-1 py-2 text-xs transition-colors"
             style={{ color: "var(--color-ink-muted)" }}
             aria-expanded={isExpanded}
             aria-label={isExpanded ? "Collapse details" : "View architecture & decision log"}
@@ -105,17 +104,9 @@ const ProjectCard = ({ project }) => {
       </div>
 
       {/* ── Layer 2 ─────────────────────────────────────────── */}
-      <AnimatePresence initial={false}>
-        {isExpanded && (
-          <motion.div
-            key="layer2"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.22, ease: "easeInOut" }}
-            className="overflow-hidden"
-          >
-            <div
+      <div className={`layer2 ${isExpanded ? "is-open" : ""}`}>
+        <div className="layer2-inner" inert={!isExpanded || undefined}>
+          <div
               className="mt-5 flex flex-col gap-6 border-t pt-5"
               style={{ borderColor: "var(--color-border)" }}
             >
@@ -165,7 +156,7 @@ const ProjectCard = ({ project }) => {
                   href={github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex w-fit items-center gap-1.5 text-sm font-medium transition-opacity hover:opacity-70"
+                  className="inline-flex w-fit items-center gap-1.5 py-1.5 text-sm font-medium transition-opacity hover:opacity-70"
                   style={{ color: "var(--color-ink)" }}
                 >
                   <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor" aria-hidden="true">
@@ -175,9 +166,8 @@ const ProjectCard = ({ project }) => {
                 </a>
               )}
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+        </div>
+      </div>
     </article>
   );
 };

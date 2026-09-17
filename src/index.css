@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..700&display=swap");
 @import "tailwindcss";
 
 /* ─── Design tokens ──────────────────────────────────────────── */
@@ -18,17 +17,12 @@
 
   /* One accent. Live values and focus only. */
   --color-accent:           #EBA352;
+  --color-surface-hover:    #111315;
 }
 
 /* ─── Base ───────────────────────────────────────────────────── */
 body {
   background: var(--color-surface);
-  background-image: radial-gradient(
-    120% 70% at 50% 0%,
-    rgba(255, 255, 255, 0.035) 0%,
-    rgba(255, 255, 255, 0) 55%
-  );
-  background-attachment: fixed;
   font-family: "Inter", sans-serif;
   color: var(--color-ink);
   -webkit-font-smoothing: antialiased;
@@ -43,9 +37,24 @@ html {
   color-scheme: dark;
 }
 
+/* Ground modulation as its own fixed layer: same light source, but the
+   browser composites it instead of repainting the body on every frame. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(
+    120% 70% at 50% 0%,
+    rgba(255, 255, 255, 0.035) 0%,
+    rgba(255, 255, 255, 0) 55%
+  );
+}
+
 ::selection {
   background: var(--color-accent);
-  color: #08090A;
+  color: var(--color-surface);
 }
 
 /* One focus treatment for everything that doesn't define its own. */
@@ -97,7 +106,8 @@ html {
 }
 
 .nav-link {
-  @apply text-sm transition-colors duration-150;
+  @apply inline-flex items-center text-sm transition-colors duration-150;
+  min-height: 2.75rem;
   color: var(--color-ink-muted);
 }
 
@@ -122,7 +132,7 @@ html {
 
 .card-base:hover {
   border-color: var(--color-border-strong);
-  background: #111315;
+  background: var(--color-surface-hover);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.09),
     0 2px 4px rgba(0, 0, 0, 0.45),
@@ -196,7 +206,7 @@ html {
 .btn-primary {
   @apply inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-medium transition-colors duration-150;
   background: var(--color-ink);
-  color: #08090A;
+  color: var(--color-surface);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px -12px rgba(0, 0, 0, 0.7);
 }
 
@@ -220,6 +230,9 @@ html {
 
 /* ─── Links ──────────────────────────────────────────────────── */
 .link-void {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.75rem;
   color: var(--color-ink-secondary);
   text-decoration: none;
   text-underline-offset: 3px;
@@ -236,10 +249,55 @@ html {
   text-decoration: underline;
 }
 
+/* ─── Mobile menu + label swap (was framer-motion) ───────────── */
+.mobile-menu {
+  /* Opaque on purpose: the header is 72% translucent, so without this the
+     hero headline bleeds through the open menu. */
+  background: var(--color-surface);
+  animation: menu-in 150ms ease-out;
+}
+
+@keyframes menu-in {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.swap {
+  animation: swap-in 150ms ease-out;
+}
+
+@keyframes swap-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-menu,
+  .swap {
+    animation: none;
+  }
+}
+
 /* ─── Section divider ────────────────────────────────────────── */
 .section-rule {
   @apply my-12;
   border-color: var(--color-border);
+}
+
+/* ─── Project card disclosure ────────────────────────────────── */
+.layer2 {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 240ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.layer2.is-open {
+  grid-template-rows: 1fr;
+}
+
+.layer2-inner {
+  overflow: hidden;
+  min-height: 0;
 }
 
 /* ─── Project grid ───────────────────────────────────────────── */
@@ -275,9 +333,27 @@ html {
   display: flex;
   flex-direction: column;
   gap: 0.375rem;
+}
+
+.edge {
+  width: 1px;
+  height: 1.25rem;
+  margin-left: 0.75rem;
+  background: var(--color-border-strong);
+  transform-origin: top;
+}
+
+/* The authored moment replays every time the card opens, never on page load. */
+.layer2.is-open .node {
   opacity: 0;
   animation: settle 400ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
   animation-delay: calc(var(--i) * 90ms);
+}
+
+.layer2.is-open .edge {
+  transform: scaleY(0);
+  animation: extend 320ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: calc(var(--i) * 90ms - 40ms);
 }
 
 .node-stage {
@@ -310,17 +386,6 @@ html {
   position: relative;
 }
 
-.edge {
-  width: 1px;
-  height: 1.25rem;
-  margin-left: 0.75rem;
-  background: var(--color-border-strong);
-  transform-origin: top;
-  transform: scaleY(0);
-  animation: extend 320ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  animation-delay: calc(var(--i) * 90ms - 40ms);
-}
-
 @container (min-width: 34rem) {
   .schematic-flow {
     flex-direction: row;
@@ -333,6 +398,8 @@ html {
     height: 1px;
     margin: 1.375rem 0.5rem 0;
     transform-origin: left;
+  }
+  .layer2.is-open .edge {
     transform: scaleX(0);
     animation-name: extend-x;
   }
@@ -348,8 +415,8 @@ html {
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .node,
-  .edge {
+  .layer2.is-open .node,
+  .layer2.is-open .edge {
     animation: none;
     opacity: 1;
     transform: none;

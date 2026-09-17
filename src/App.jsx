@@ -23,12 +23,12 @@ const App = () => {
   return (
     <>
       <Navbar />
-      <div className="mx-auto max-w-7xl">
+      <main className="mx-auto max-w-7xl">
         <Hero />
         <About />
         <Projects />
         <Skills />
-      </div>
+      </main>
       <Contact />
     </>
   );

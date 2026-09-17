@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
 
 function Navigation() {
   return (
@@ -72,17 +71,14 @@ const Navbar = () => {
 
       {/* Mobile dropdown */}
       {isOpen && (
-        <motion.div
-          initial={{ opacity: 0, y: -8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.15 }}
-          className="border-t sm:hidden"
+        <div
+          className="mobile-menu border-t sm:hidden"
           style={{ borderColor: "var(--color-border)" }}
         >
           <nav className="c-space py-4">
             <Navigation />
           </nav>
-        </motion.div>
+        </div>
       )}
     </header>
   );

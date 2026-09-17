@@ -5,6 +5,7 @@ colors:
   surface: "#08090A"
   surface-raised: "#0F1011"
   surface-overlay: "#16181A"
+  surface-hover: "#111315"
   border: "rgba(255, 255, 255, 0.08)"
   border-strong: "rgba(255, 255, 255, 0.16)"
   ink: "#F7F8F8"
@@ -93,7 +94,7 @@ components:
     rounded: "{rounded.lg}"
     padding: "1.5rem"
   card-hover:
-    backgroundColor: "#111315"
+    backgroundColor: "{colors.surface-hover}"
   tech-pill:
     backgroundColor: "{colors.surface-overlay}"
     textColor: "{colors.ink-secondary}"

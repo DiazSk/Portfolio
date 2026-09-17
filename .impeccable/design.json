@@ -142,6 +142,21 @@
           "#EBA352",
           "#F7D3A6"
         ]
+      },
+      "surface-hover": {
+        "role": "neutral",
+        "displayName": "Surface Hover",
+        "canonical": "#111315",
+        "tonalRamp": [
+          "#0A0B0C",
+          "#111315",
+          "#1B1E21",
+          "#2A2E33",
+          "#474D55",
+          "#6E757F",
+          "#A3AAB4",
+          "#DDE1E6"
+        ]
       }
     },
     "typographyMeta": {
