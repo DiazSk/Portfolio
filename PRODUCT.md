@@ -39,11 +39,13 @@ The differentiating claim is **decision quality, not tool inventory**. Hundreds 
 
 **Contact:** currently `mailto:` and a copy-email button only. **A real contact form is a planned capability** and should re-wire to the existing Resend handler at `api/contact.js`.
 
-**Retired permanently:** the AI Resume Chat. `api/chat.js` is orphaned dead code — it imports a deleted `src/lib/buildSystemPrompt.js` and nothing in `src/` calls it. It is not coming back in any form, including a reframed "architecture explorer." Do not reintroduce a conversational AI surface to this site.
+**Retired permanently:** the AI Resume Chat. `api/chat.js` has been deleted (2026-09-16): it imported both a deleted `src/lib/buildSystemPrompt.js` and an `openai` package that was never in `package.json`, so it would have failed the Vercel function build. It is not coming back in any form, including a reframed "architecture explorer." Do not reintroduce a conversational AI surface to this site.
 
 **Also retired (prior redesign):** the dark space theme, 3D astronaut, orbiting tech cards, and animated flip words. These are anti-references, not dormant features.
 
-**Architecture schematics:** each project carries an `architecture` array in `src/constants/resumeData.js`, rendered by `src/components/ArchitectureDiagram.jsx` inside the expanded project card. Every stage was derived from that project's own description and highlights. **These are pending Zaid's verification** — he agreed to check each before it ships.
+**Architecture schematics:** each project carries an `architecture` array in `src/constants/resumeData.js`, rendered by `src/components/ArchitectureDiagram.jsx` inside the expanded project card. Every stage was derived from that project's own description and highlights. **These are pending Zaid's verification** — he agreed to check each before it ships. They are the site's only architecture visuals now that the unverified PNGs are gone.
+
+**No social preview image.** `index.html` declares no `og:image` or `twitter:image`, so shared links render without a thumbnail. Open decision, not an oversight to fix silently.
 
 **Open / undecided:** production domain; whether project architecture diagrams are republished (see Evidence); whether a résumé PDF is downloadable from the site.
 
@@ -64,7 +66,7 @@ The differentiating claim is **decision quality, not tool inventory**. Hundreds 
 
 **Not confirmed — do not treat as evidence:**
 
-- The architecture PNGs in `public/assets/projects/` were **not** confirmed as accurate or current. Do not publish them as authoritative diagrams without Zaid verifying each one.
+- The architecture PNGs formerly in `public/assets/projects/` were never confirmed as accurate and have been deleted (2026-09-16) along with the rest of the retired space-theme assets — 28MB, of which only the favicon was referenced. They remain in git history if ever needed. The live architecture schematics are now rendered from data, not images.
 - **No live dashboards, screen recordings, or GIFs exist** of these systems running. Do not design a surface that depends on one, and never imply a live feed.
 
 **Must never be fabricated:** testimonials, references, employer names, customer logos, press mentions, user counts, revenue or cost-savings figures beyond those already in resumeData, or any claim of professional industry employment. All experience to date is academic, research, or self-directed project work.
