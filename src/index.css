@@ -442,6 +442,31 @@ body::after {
   to { transform: translateY(calc(-1 * var(--hero-lift))); }
 }
 
+/* ─── Track controls ─────────────────────────────────────────
+   The pinned track is driven by page scroll, which leaves a keyboard user
+   no way to bring an off-screen panel into view. These step the page by
+   exactly one panel, which the 1:1 pin mapping turns into one panel of
+   horizontal travel. Square, hairline, 28px — over the 24px target floor. */
+.track-nav {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 0;
+  color: var(--color-ink-muted);
+  transition: color 150ms ease, border-color 150ms ease;
+}
+
+.track-nav:hover:not(:disabled) {
+  color: var(--color-ink);
+}
+
+.track-nav:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
 /* ─── Horizontal project track ───────────────────────────────
    The track is a native horizontally-scrollable row by default, so on a
    phone, without JS, or under reduced motion it is a swipeable strip that

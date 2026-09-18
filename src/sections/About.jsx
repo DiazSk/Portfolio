@@ -2,10 +2,10 @@ import { useState } from "react";
 import { resumeData } from "../constants/resumeData";
 import CopyEmailButton from "../components/CopyEmailButton";
 
-/* Drop a file at public/assets/portrait.jpg and it appears. Until then the
+/* Drop a file at public/assets/portrait.png and it appears. Until then the
    panel stays as flat tone, which in a grid like this reads as air rather
    than as a hole. */
-const PORTRAIT = "/assets/portrait.jpg";
+const PORTRAIT = "/assets/portrait.png";
 
 const CREDENTIALS = [
   {

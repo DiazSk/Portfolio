@@ -292,7 +292,11 @@ The wrapper uses `overflow: clip`, not `hidden`, and the distinction is load-bea
 
 Below 768px, and under reduced motion, `matchMedia` never runs the pin and the track stays what CSS makes it: a natively swipeable row with `scroll-snap`. That is the fallback, not a second code path.
 
-**Known gap:** while pinned, Tab can focus a panel that is off-screen. Two attempts to scroll the page after focus failed — `scrollBy` inside the `focusin` handler was undone by the browser's own adjustment, and a frame-deferred one did not fire. The fix is a pair of prev/next controls that move the page by one panel width; until that exists the track is mouse-and-touch first and the limitation is recorded here rather than hidden.
+**Controls.** A 28px square prev/next pair sits with the band's label, above the panels in both DOM and reading order. Pinned, they step the *page* by one panel width, which the 1:1 mapping turns into one panel of travel; unpinned, the track is a real scroller and takes the step directly. They disable at each end, driven by GSAP's progress when pinned and by the track's own scroll ratio when not — the same value that drives the progress rule.
+
+**Keyboard.** Focus follows the same path: focusing anything inside a panel scrolls the page so that panel lines up with the heading column, `instant` rather than `smooth` because during a Tab run smooth scrolls queue up and fight. Two earlier attempts at this failed from inside the motion module — `scrollBy` in a native `focusin` handler was undone by the browser's own adjustment, and a frame-deferred one never fired. Doing it in the component, through the path the buttons had already proven, is what made the difference.
+
+Verified with real `Tab` presses rather than programmatic focus: Next → Medicare → NYC Taxi → E-Commerce, every focused panel on screen, and every one of the six panels' toggles reachable in order.
 
 ### Cards / Containers
 - **Corner Style:** Square.
