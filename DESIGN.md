@@ -29,6 +29,29 @@ typography:
     lineHeight: 0.86
     letterSpacing: "-0.02em"
     fontVariation: "\"wdth\" 78"
+  hero-name:
+    fontFamily: "Bricolage Grotesque, Inter, sans-serif"
+    fontSize: "min(26.72cqw, 62vh)"
+    fontWeight: 800
+    lineHeight: 0.82
+    letterSpacing: "-0.035em"
+    fontVariation: "\"wdth\" 78"
+    fontFeature: "font-optical-sizing: none"
+  footer-wordmark:
+    fontFamily: "Bricolage Grotesque, Inter, sans-serif"
+    fontSize: "19.98cqw"
+    fontWeight: 800
+    lineHeight: 1
+    letterSpacing: "-0.012em"
+    fontVariation: "\"wdth\" 100"
+    fontFeature: "font-optical-sizing: none"
+  marquee:
+    fontFamily: "Bricolage Grotesque, Inter, sans-serif"
+    fontSize: "clamp(2rem, 5.5vw, 4.5rem)"
+    fontWeight: 800
+    lineHeight: 1
+    letterSpacing: "-0.02em"
+    fontVariation: "\"wdth\" 78"
   metric:
     fontFamily: "Bricolage Grotesque, Inter, sans-serif"
     fontSize: "clamp(2.5rem, 4.5vw, 4rem)"
@@ -136,6 +159,16 @@ components:
     height: "2.75rem"
   nav-link-hover:
     textColor: "{colors.ink}"
+  track-nav:
+    backgroundColor: "transparent"
+    textColor: "{colors.ink-muted}"
+    rounded: "{rounded.none}"
+    size: "28px"
+  track-nav-hover:
+    backgroundColor: "transparent"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.none}"
+    size: "28px"
   field-surface:
     backgroundColor: "{colors.field}"
     textColor: "{colors.field-ink}"

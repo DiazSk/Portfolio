@@ -1,97 +1,52 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-17T00:00:00.000Z",
-  "title": "Design System: Zaid Shaikh — Portfolio",
+  "generatedAt": "2026-09-18T10:22:01.624114Z",
+  "title": "Design System: Zaid Shaikh \u2014 Portfolio",
   "extensions": {
     "colorMeta": {
-      "field": {
-        "role": "primary",
-        "displayName": "Signal Vermilion",
-        "canonical": "#FF3B14",
-        "tonalRamp": [
-          "#2E0A02",
-          "#4D1104",
-          "#7A1C06",
-          "#A82609",
-          "#D4300D",
-          "#FF3B14",
-          "#FF7554",
-          "#FFB7A4"
-        ]
-      },
-      "field-ink": {
-        "role": "primary",
-        "displayName": "Field Ink",
-        "canonical": "#0A0A09",
-        "tonalRamp": [
-          "#0A0A09",
-          "#1C1C1A",
-          "#2E2E2B",
-          "#454540",
-          "#6B6B64",
-          "#94948B",
-          "#C2C2B9",
-          "#EDEDE7"
-        ]
-      },
-      "field-ink-secondary": {
-        "role": "primary",
-        "displayName": "Scorched Umber",
-        "canonical": "#2E1409",
-        "tonalRamp": [
-          "#170A04",
-          "#2E1409",
-          "#472010",
-          "#5F2C17",
-          "#8A4222",
-          "#B75C33",
-          "#DA9270",
-          "#F2CBB8"
-        ]
-      },
       "surface": {
         "role": "neutral",
-        "displayName": "Ground",
+        "displayName": "Ground Near-Black",
         "canonical": "#08090A",
         "tonalRamp": [
-          "#08090A",
-          "#0F1011",
-          "#16181A",
-          "#24272A",
-          "#3A3E43",
-          "#5C6168",
-          "#8A8F98",
-          "#F7F8F8"
+          "#23272B",
+          "#3D444C",
+          "#57626D",
+          "#71808E",
+          "#8C9DAF",
+          "#A6BBD0",
+          "#C0D8F1",
+          "#DBF6FF"
         ]
       },
       "surface-raised": {
         "role": "neutral",
-        "displayName": "Raised",
+        "displayName": "Raised Near-Black",
         "canonical": "#0F1011",
         "tonalRamp": [
-          "#08090A",
-          "#0F1011",
-          "#16181A",
-          "#1E2123",
-          "#2B2F33",
-          "#474C52",
-          "#7A808A",
-          "#E4E6E9"
+          "#242729",
+          "#404448",
+          "#5B6167",
+          "#777F87",
+          "#929CA6",
+          "#AEBAC5",
+          "#CAD7E4",
+          "#E5F4FF"
         ]
       },
       "surface-overlay": {
         "role": "neutral",
-        "displayName": "Overlay",
+        "displayName": "Overlay Near-Black",
         "canonical": "#16181A",
         "tonalRamp": [
-          "#0B0C0D",
-          "#16181A",
-          "#212427",
-          "#2D3135",
-          "#3E4349",
-          "#5F656D",
-          "#90969F",
-          "#E9EBEE"
+          "#23272A",
+          "#3F444A",
+          "#5A626A",
+          "#757F8A",
+          "#909DAA",
+          "#ABBACA",
+          "#C6D8EA",
+          "#E1F5FF"
         ]
       },
       "surface-hover": {
@@ -99,128 +54,165 @@
         "displayName": "Hover Ground",
         "canonical": "#111315",
         "tonalRamp": [
-          "#08090A",
-          "#111315",
-          "#191C1F",
-          "#24282C",
-          "#343940",
-          "#525860",
-          "#848A93",
-          "#E6E8EB"
-        ]
-      },
-      "ink": {
-        "role": "neutral",
-        "displayName": "Ink",
-        "canonical": "#F7F8F8",
-        "tonalRamp": [
-          "#1A1B1B",
-          "#2E3030",
-          "#494B4B",
-          "#6A6D6D",
-          "#8F9292",
-          "#B4B9C2",
-          "#D9DBDC",
-          "#F7F8F8"
-        ]
-      },
-      "ink-secondary": {
-        "role": "neutral",
-        "displayName": "Ink Secondary",
-        "canonical": "#B4B9C2",
-        "tonalRamp": [
-          "#1B1D21",
-          "#2E3138",
-          "#474C55",
-          "#636974",
-          "#8A8F98",
-          "#B4B9C2",
-          "#D4D7DD",
-          "#EFF1F4"
-        ]
-      },
-      "ink-muted": {
-        "role": "neutral",
-        "displayName": "Ink Muted",
-        "canonical": "#8A8F98",
-        "tonalRamp": [
-          "#181A1D",
-          "#292C31",
-          "#3F444A",
-          "#596069",
-          "#747B85",
-          "#8A8F98",
-          "#B6BAC1",
-          "#E3E5E9"
+          "#23272B",
+          "#3D444C",
+          "#58626C",
+          "#72808D",
+          "#8D9DAE",
+          "#A7BBCE",
+          "#C2D8EF",
+          "#DCF6FF"
         ]
       },
       "border": {
         "role": "neutral",
-        "displayName": "Hairline",
-        "canonical": "rgba(255, 255, 255, 0.08)",
-        "tonalRamp": [
-          "rgba(255,255,255,0.04)",
-          "rgba(255,255,255,0.08)",
-          "rgba(255,255,255,0.12)",
-          "rgba(255,255,255,0.16)",
-          "rgba(255,255,255,0.24)",
-          "rgba(255,255,255,0.36)",
-          "rgba(255,255,255,0.56)",
-          "rgba(255,255,255,0.86)"
-        ]
+        "displayName": "Hairline 8%",
+        "canonical": "rgba(255, 255, 255, 0.08)"
       },
       "border-strong": {
         "role": "neutral",
-        "displayName": "Hairline Strong",
-        "canonical": "rgba(255, 255, 255, 0.16)",
+        "displayName": "Hairline 16%",
+        "canonical": "rgba(255, 255, 255, 0.16)"
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Full Ink",
+        "canonical": "#F7F8F8",
         "tonalRamp": [
-          "rgba(255,255,255,0.04)",
-          "rgba(255,255,255,0.08)",
-          "rgba(255,255,255,0.12)",
-          "rgba(255,255,255,0.16)",
-          "rgba(255,255,255,0.24)",
-          "rgba(255,255,255,0.36)",
-          "rgba(255,255,255,0.56)",
-          "rgba(255,255,255,0.86)"
+          "#262626",
+          "#434343",
+          "#606161",
+          "#7D7E7E",
+          "#9A9B9B",
+          "#B7B8B8",
+          "#D4D5D5",
+          "#F1F2F2"
+        ]
+      },
+      "ink-secondary": {
+        "role": "neutral",
+        "displayName": "Secondary Ink",
+        "canonical": "#B4B9C2",
+        "tonalRamp": [
+          "#252628",
+          "#424447",
+          "#5E6165",
+          "#7B7E84",
+          "#979BA3",
+          "#B3B8C1",
+          "#D0D6E0",
+          "#ECF3FF"
+        ]
+      },
+      "ink-muted": {
+        "role": "neutral",
+        "displayName": "Muted Ink",
+        "canonical": "#8A8F98",
+        "tonalRamp": [
+          "#252629",
+          "#414448",
+          "#5D6167",
+          "#7A7E86",
+          "#969BA5",
+          "#B2B8C4",
+          "#CED6E3",
+          "#EAF3FF"
+        ]
+      },
+      "field": {
+        "role": "primary",
+        "displayName": "Signal Vermilion",
+        "canonical": "#FF3B14",
+        "tonalRamp": [
+          "#641708",
+          "#B0290E",
+          "#FC3A14",
+          "#FF4C1A",
+          "#FF5D20",
+          "#FF6F26",
+          "#FF802C",
+          "#FF9232"
+        ]
+      },
+      "field-ink": {
+        "role": "primary",
+        "displayName": "Field Ink",
+        "canonical": "#0A0A09",
+        "tonalRamp": [
+          "#272723",
+          "#44443D",
+          "#616158",
+          "#7F7F72",
+          "#9C9C8C",
+          "#B9B9A7",
+          "#D7D7C1",
+          "#F4F4DC"
+        ]
+      },
+      "field-ink-secondary": {
+        "role": "primary",
+        "displayName": "Field Ink Secondary",
+        "canonical": "#2E1409",
+        "tonalRamp": [
+          "#471F0E",
+          "#7D3619",
+          "#B44E23",
+          "#EA662E",
+          "#FF7D38",
+          "#FF9543",
+          "#FFAC4E",
+          "#FFC458"
         ]
       }
     },
     "typographyMeta": {
       "display": {
         "displayName": "Display",
-        "purpose": "The name in the first viewport and the footer close. Bricolage at wdth 78; one per page region at most."
+        "purpose": "The name in the first viewport. One per page region at most."
+      },
+      "hero-name": {
+        "displayName": "Hero Name",
+        "purpose": "The name filling the field viewport's width. Sized in cqw off a measured 3.7324 em-width ratio; optical sizing pinned or the ratio drifts."
+      },
+      "footer-wordmark": {
+        "displayName": "Footer Wordmark",
+        "purpose": "The name set once on the closing field band, flush to the hairline above the meta row."
+      },
+      "marquee": {
+        "displayName": "Marquee",
+        "purpose": "The running stack inside a field band. Belongs to the band alone."
       },
       "headline": {
-        "displayName": "Section Head",
-        "purpose": "Uppercase section headings. The second and last step of the two-step scale."
+        "displayName": "Headline",
+        "purpose": "Section heads, uppercase. The second and last step of the scale."
       },
       "metric": {
         "displayName": "Metric",
-        "purpose": "Measured numbers, in the field colour with tabular figures. Ranks above prose, below the section head."
-      },
-      "title": {
-        "displayName": "Title",
-        "purpose": "Project and stack-group names; uppercase display face at card scale."
-      },
-      "body": {
-        "displayName": "Body",
-        "purpose": "Inter, prose only. Capped at max-w-2xl; credo lines run 13–26ch. Explicitly not the display voice."
-      },
-      "label": {
-        "displayName": "Measurement Label",
-        "purpose": "Azeret Mono, restricted to measurement: metric labels and context, tech pills, schematic stage names, tabular metadata."
-      },
-      "action": {
-        "displayName": "Action",
-        "purpose": "Buttons at Bricolage wdth 82, uppercase; nav links at wdth 85."
-      },
-      "body-small": {
-        "displayName": "Body Small",
-        "purpose": "The dominant secondary reading size: outcome statements, highlights, credentials, schematic node labels, footer links. Used 12+ times."
+        "purpose": "Measured numbers in the hero and About's stat panels. Vermilion, tabular."
       },
       "metric-card": {
         "displayName": "Metric (card)",
-        "purpose": "The primary metric inside each project card — the same display face and field colour as the hero metric, one step down so the card title still leads."
+        "purpose": "The primary metric inside a project panel."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Project and stack-group names."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Prose only, capped at max-w-2xl."
+      },
+      "body-small": {
+        "displayName": "Body Small",
+        "purpose": "Outcome statements, decision logs, panel detail."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Metric labels and context, tech pills, micro-labels, tabular metadata."
+      },
+      "action": {
+        "displayName": "Action",
+        "purpose": "Buttons. Nav links use wdth 85 at 0.875rem/600."
       }
     },
     "shadows": [],
@@ -228,32 +220,32 @@
       {
         "name": "ease-entrance",
         "value": "cubic-bezier(0.16, 1, 0.3, 1)",
-        "purpose": "Word-rise and block-settle entrance reveals."
+        "purpose": "Every entrance reveal: word rise, block settle, panel rise."
       },
       {
         "name": "ease-disclosure",
         "value": "cubic-bezier(0.22, 1, 0.36, 1)",
-        "purpose": "Card disclosure row expansion and the schematic's node/edge draw."
+        "purpose": "Interaction and the schematic's staged build."
       },
       {
         "name": "ease-gsap",
         "value": "power3.out",
-        "purpose": "The GSAP layer's only easing — marquee and counters."
+        "purpose": "The GSAP layer's easing \u2014 Stack timeline heads and pills."
       },
       {
         "name": "duration-state",
         "value": "150ms",
-        "purpose": "All colour/border state transitions: buttons, links, cards, nav."
+        "purpose": "Hover and state changes: pills, links, cards, track controls."
       },
       {
         "name": "duration-disclosure",
         "value": "240ms",
-        "purpose": "grid-template-rows 0fr -> 1fr card expansion."
+        "purpose": "The project panel's face swap."
       },
       {
         "name": "duration-word-rise",
         "value": "950ms",
-        "purpose": "Poster-scale word reveal from translateY(110%)."
+        "purpose": "Masked display type arriving from below."
       },
       {
         "name": "duration-block-settle",
@@ -261,36 +253,52 @@
         "purpose": "Hero blocks and on-scroll section reveals."
       },
       {
-        "name": "stagger-word",
-        "value": "80ms",
-        "purpose": "Per-word delay via --i on the poster headline."
+        "name": "reveal-range",
+        "value": "entry 0% entry 100%",
+        "purpose": "Every scroll-driven reveal. Ends on entry, never on a cover percentage, or an element in the last section can never complete."
       },
       {
-        "name": "stagger-block",
-        "value": "70ms (after 300ms)",
-        "purpose": "Hero sub-block cascade."
+        "name": "reveal-stagger",
+        "value": "entry 12% / entry 24% (r1 / r2)",
+        "purpose": "Staggers a reveal by moving its start, never its end."
       },
       {
-        "name": "stagger-schematic",
-        "value": "90ms",
-        "purpose": "Per-stage node settle and edge extend when a project card opens."
+        "name": "grid-module",
+        "value": "5.5rem",
+        "purpose": "The ground grid's module."
       },
       {
-        "name": "scroll-reveal-range",
-        "value": "entry 5% cover 22% (animation-timeline: view())",
-        "purpose": "Native scroll-driven reveal for below-the-fold sections."
+        "name": "grid-ink",
+        "value": "rgba(255, 255, 255, 0.06)",
+        "purpose": "The ground grid's hairline. Renders as rgb(26,27,28) over the wash."
+      },
+      {
+        "name": "grid-travel",
+        "value": "72px",
+        "purpose": "The fixed grid's drift across the whole document."
+      },
+      {
+        "name": "hero-lift",
+        "value": "190px",
+        "purpose": "The hero name's differential over the first viewport \u2014 0.20x, inside the 0.2\u20130.3x band measured off the reference."
+      },
+      {
+        "name": "stack-timeline",
+        "value": "start: top 80% / end: bottom 70% / scrub: 0.6",
+        "purpose": "The Stack section's scrubbed GSAP timeline."
+      },
+      {
+        "name": "track-pin",
+        "value": "start: center center / end: +=(scrollWidth - innerWidth) / scrub: true / ease: none",
+        "purpose": "The project bands' pin. Pin length equals travel, which makes the mapping 1:1."
       },
       {
         "name": "reduced-motion",
-        "value": "@media (prefers-reduced-motion: reduce) { animation: none } + gsap.matchMedia()",
+        "value": "@media (prefers-reduced-motion: no-preference) gate + gsap.matchMedia()",
         "purpose": "Reduced motion is the absence of the animation, never a second code path."
       }
     ],
     "breakpoints": [
-      {
-        "name": "metric-row-collapse",
-        "value": "max-width: 640px"
-      },
       {
         "name": "sm",
         "value": "640px"
@@ -304,12 +312,8 @@
         "value": "1024px"
       },
       {
-        "name": "container-max",
-        "value": "80rem (max-w-7xl)"
-      },
-      {
-        "name": "schematic-axis (container query, not media)",
-        "value": "@container (min-width: 34rem)"
+        "name": "container-schematic",
+        "value": "34rem (container query, not viewport)"
       }
     ]
   },
@@ -318,112 +322,109 @@
       "name": "Primary Button",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "The page's committing action — field ground, black label, square.",
-      "html": "<button class=\"ds-btn-primary\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><rect x=\"1\" y=\"4\" width=\"9\" height=\"9\" rx=\"1.5\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M4 4V2.5A1.5 1.5 0 015.5 1h6A1.5 1.5 0 0113 2.5v6A1.5 1.5 0 0111.5 10H10\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/></svg>Copy email address</button>",
-      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.875rem 1.5rem; font-family: \"Bricolage Grotesque\", Inter, sans-serif; font-variation-settings: \"wdth\" 82; font-weight: 800; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.005em; background: #FF3B14; color: #0A0A09; border: none; border-radius: 0; cursor: pointer; transition: background 150ms; } .ds-btn-primary:hover { background: #F7F8F8; } .ds-btn-primary:focus-visible { outline: 2px solid #FF3B14; outline-offset: 2px; }"
+      "description": "The one action per region. Vermilion fill, black label, square.",
+      "html": "<button class=\"ds-btn-primary\"><svg width=\"15\" height=\"15\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><rect x=\"1\" y=\"3\" width=\"14\" height=\"10\" rx=\"2\" stroke=\"currentColor\" stroke-width=\"1.6\"/><path d=\"M1.8 4.2l5.4 4a1.4 1.4 0 001.6 0l5.4-4\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>shaikh.zaid@northeastern.edu</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.875rem 1.5rem; border: 0; border-radius: 0; background: var(--color-field, #FF3B14); color: var(--color-field-ink, #0A0A09); font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 1rem; font-variation-settings: \"wdth\" 82; letter-spacing: 0.005em; text-transform: uppercase; cursor: pointer; transition: background-color 150ms ease; } .ds-btn-primary:hover { background: var(--color-ink, #F7F8F8); } .ds-btn-primary:focus-visible { outline: 2px solid var(--color-field, #FF3B14); outline-offset: 2px; border-radius: 0.375rem; }"
     },
     {
       "name": "Ghost Button",
       "kind": "button",
       "refersTo": "button-ghost",
-      "description": "The secondary action — hairline outline on the ground, no fill at rest.",
-      "html": "<button class=\"ds-btn-ghost\">View source</button>",
-      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.875rem 1.5rem; font-family: \"Bricolage Grotesque\", Inter, sans-serif; font-variation-settings: \"wdth\" 82; font-weight: 800; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.005em; background: transparent; color: #F7F8F8; border: 1px solid rgba(255,255,255,0.16); border-radius: 0; cursor: pointer; transition: background 150ms, color 150ms; } .ds-btn-ghost:hover { background: #16181A; color: #F7F8F8; } .ds-btn-ghost:focus-visible { outline: 2px solid #FF3B14; outline-offset: 2px; }"
+      "description": "The secondary action. Hairline box, no fill until hover.",
+      "html": "<button class=\"ds-btn-ghost\">GitHub</button>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.875rem 1.5rem; border: 1px solid var(--color-border-strong, rgba(255,255,255,0.16)); border-radius: 0; background: transparent; color: var(--color-ink, #F7F8F8); font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 1rem; font-variation-settings: \"wdth\" 82; letter-spacing: 0.005em; text-transform: uppercase; cursor: pointer; transition: background-color 150ms ease, border-color 150ms ease; } .ds-btn-ghost:hover { background: var(--color-surface-overlay, #16181A); } .ds-btn-ghost:focus-visible { outline: 2px solid var(--color-field, #FF3B14); outline-offset: 2px; border-radius: 0.375rem; }"
     },
     {
-      "name": "On-Field Button",
+      "name": "Primary Button on Field",
       "kind": "button",
       "refersTo": "button-on-field",
-      "description": "The inversion used inside a vermilion region: black ground, vermilion label, mono. Its focus ring is field ink because vermilion on vermilion is invisible.",
-      "html": "<div class=\"ds-field-pad\"><button class=\"ds-btn-on-field\">Copy email</button></div>",
-      "css": ".ds-field-pad { background: #FF3B14; padding: 1.5rem; } .ds-btn-on-field { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.625rem 1.25rem; font-family: \"Azeret Mono\", ui-monospace, monospace; font-weight: 600; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.06em; background: #0A0A09; color: #FF3B14; border: none; border-radius: 0; cursor: pointer; transition: background 150ms; } .ds-btn-on-field:hover { background: #1C1C1A; } .ds-btn-on-field:focus-visible { outline: 2px solid #0A0A09; outline-offset: 3px; }"
-    },
-    {
-      "name": "Project Card",
-      "kind": "card",
-      "refersTo": "card",
-      "description": "Square, raised, hairline-bordered. Hover lifts the ground one step and turns the border vermilion — no shadow, ever.",
-      "html": "<article class=\"ds-card\"><h4 class=\"ds-card-title\">Medicare Gap Analyzer</h4><p class=\"ds-card-metric\">9.66M</p><p class=\"ds-card-metric-label\">rows, queryable live</p><p class=\"ds-card-body\">DuckDB-WASM over tiered Parquet: a reader queries every row in their own browser, with no backend to expire.</p></article>",
-      "css": ".ds-card { display: flex; flex-direction: column; padding: 1.5rem; background: #0F1011; border: 1px solid rgba(255,255,255,0.16); border-radius: 0; transition: border-color 150ms, background 150ms; } .ds-card:hover { border-color: #FF3B14; background: #111315; } .ds-card-title { margin: 0; font-family: \"Bricolage Grotesque\", Inter, sans-serif; font-variation-settings: \"wdth\" 78; font-weight: 800; font-size: 1.875rem; line-height: 1; letter-spacing: -0.02em; text-transform: uppercase; color: #F7F8F8; } .ds-card-metric { margin: 1rem 0 0; font-family: \"Bricolage Grotesque\", Inter, sans-serif; font-variation-settings: \"wdth\" 78; font-weight: 800; font-size: 3rem; line-height: 0.9; letter-spacing: -0.04em; font-variant-numeric: tabular-nums; color: #FF3B14; } .ds-card-metric-label { margin: 0.125rem 0 0; font-family: \"Azeret Mono\", ui-monospace, monospace; font-size: 0.75rem; color: #8A8F98; } .ds-card-body { margin: 1rem 0 0; font-family: Inter, sans-serif; font-size: 0.875rem; line-height: 1.6; color: #B4B9C2; }"
+      "description": "The same action inside a vermilion region, inverted so it survives there. Vermilion on vermilion would vanish.",
+      "html": "<button class=\"ds-btn-on-field\">Copy email address</button>",
+      "css": ".ds-btn-on-field { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.875rem 1.5rem; border: 0; border-radius: 0; background: var(--color-field-ink, #0A0A09); color: var(--color-field, #FF3B14); font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 1rem; font-variation-settings: \"wdth\" 82; letter-spacing: 0.005em; text-transform: uppercase; cursor: pointer; transition: background-color 150ms ease; } .ds-btn-on-field:hover { background: #2E1409; } .ds-btn-on-field:focus-visible { outline: 2px solid var(--color-field-ink, #0A0A09); outline-offset: 2px; border-radius: 0.375rem; }"
     },
     {
       "name": "Tech Pill",
       "kind": "chip",
       "refersTo": "tech-pill",
-      "description": "Metadata, never a control: transparent, square, hairline, mono.",
-      "html": "<span class=\"ds-pill\">Apache Flink</span> <span class=\"ds-pill\">dbt</span> <span class=\"ds-pill\">DuckDB</span>",
-      "css": ".ds-pill { display: inline-block; padding: 0.125rem 0.5rem; font-family: \"Azeret Mono\", ui-monospace, monospace; font-size: 0.75rem; background: transparent; color: #B4B9C2; border: 1px solid rgba(255,255,255,0.16); border-radius: 0; }"
+      "description": "Metadata, not a control \u2014 but it answers the pointer. Transparent with a hairline, mono, square.",
+      "html": "<span class=\"ds-tech-pill\">Apache Flink</span>",
+      "css": ".ds-tech-pill { display: inline-block; padding: 0.125rem 0.5rem; border: 1px solid var(--color-border-strong, rgba(255,255,255,0.16)); border-radius: 0; background: transparent; color: var(--color-ink-secondary, #B4B9C2); font-family: 'Azeret Mono', monospace; font-size: 0.75rem; font-variant-numeric: tabular-nums; letter-spacing: -0.01em; transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease; } .ds-tech-pill:hover { color: var(--color-ink, #F7F8F8); }"
     },
     {
-      "name": "On-Field Tech Pill",
+      "name": "Tech Pill on Field",
       "kind": "chip",
       "refersTo": "tech-pill-on-field",
-      "description": "The same pill inside a field region. Its border is a solid scorched umber, not an alpha black — rgba(10,9,8,0.38) composites to ~2.2:1 here.",
-      "html": "<div class=\"ds-field-pad2\"><span class=\"ds-pill-field\">PySpark</span> <span class=\"ds-pill-field\">Delta Lake</span></div>",
-      "css": ".ds-field-pad2 { background: #FF3B14; padding: 1.5rem; } .ds-pill-field { display: inline-block; padding: 0.125rem 0.5rem; font-family: \"Azeret Mono\", ui-monospace, monospace; font-size: 0.75rem; background: transparent; color: #0A0A09; border: 1px solid #2E1409; border-radius: 0; }"
+      "description": "The same pill inside a field region: solid field-ink border, black text, inverting to a filled chip on hover. rgba(10,9,8,0.38) measured ~2.2:1 there and failed the 3:1 boundary floor, which is why the border is solid.",
+      "html": "<span class=\"ds-tech-pill-field\">Apache Flink</span>",
+      "css": ".ds-tech-pill-field { display: inline-block; padding: 0.125rem 0.5rem; border: 1px solid #2E1409; border-radius: 0; background: transparent; color: var(--color-field-ink, #0A0A09); font-family: 'Azeret Mono', monospace; font-size: 0.75rem; letter-spacing: -0.01em; transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease; } .ds-tech-pill-field:hover { background: var(--color-field-ink, #0A0A09); border-color: var(--color-field-ink, #0A0A09); color: var(--color-field, #FF3B14); }"
     },
     {
-      "name": "Navigation",
+      "name": "Micro-label",
+      "kind": "custom",
+      "description": "Names a panel without spending a heading on it: a 6px filled vermilion square and the Label step.",
+      "html": "<p class=\"ds-micro\">Credentials</p>",
+      "css": ".ds-micro { display: flex; align-items: center; gap: 0.625rem; margin: 0; font-family: 'Azeret Mono', monospace; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-ink-muted, #8A8F98); } .ds-micro::before { content: \"\"; width: 6px; height: 6px; flex: none; background: var(--color-field, #FF3B14); }"
+    },
+    {
+      "name": "Stat Panel",
+      "kind": "custom",
+      "description": "One numeral at the Metric step with its caption pinned to the panel's foot. The scale gap inside one panel is the device.",
+      "html": "<div class=\"ds-stat\"><p class=\"ds-stat-value\">36,800+</p><p class=\"ds-stat-note\">Records in the Laundering Effect study</p></div>",
+      "css": ".ds-stat { display: flex; flex-direction: column; min-height: 13rem; padding: 2.5rem; background: var(--color-surface, #08090A); } .ds-stat-value { margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(2.5rem, 4.5vw, 4rem); font-variation-settings: \"wdth\" 78; font-variant-numeric: tabular-nums; line-height: 0.9; letter-spacing: -0.04em; color: var(--color-field, #FF3B14); } .ds-stat-note { margin: auto 0 0; padding-top: 2.5rem; font-family: 'Azeret Mono', monospace; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-ink-muted, #8A8F98); }"
+    },
+    {
+      "name": "Gauge",
+      "kind": "custom",
+      "description": "The proportion primitive. A 3px track at 14% white with a vermilion fill for the achieved value and muted ink for the baseline \u2014 a rule, never an inverted fill. The track stays visible because the interesting fills are short (2.4%, 7.1%).",
+      "html": "<div class=\"ds-gauge-row\"><span class=\"ds-gauge-label\">Write-behind, worker threads with adaptive JDBC batching</span><span class=\"ds-gauge-read\">21,091/s</span></div><span class=\"ds-gauge\"><i style=\"width:100%\"></i></span><div class=\"ds-gauge-row\"><span class=\"ds-gauge-label\">Write-through, capped by MySQL's 2\u20135ms insert latency</span><span class=\"ds-gauge-read ds-dim\">~500/s</span></div><span class=\"ds-gauge ds-gauge-dim\"><i style=\"width:2.4%\"></i></span>",
+      "css": ".ds-gauge { display: block; height: 3px; margin-bottom: 1rem; background: rgba(255,255,255,0.14); } .ds-gauge > i { display: block; height: 100%; background: var(--color-field, #FF3B14); } .ds-gauge-dim > i { background: var(--color-ink-muted, #8A8F98); } .ds-gauge-row { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: 0.375rem; } .ds-gauge-label { font-family: Inter, sans-serif; font-size: 0.75rem; color: var(--color-ink-secondary, #B4B9C2); } .ds-gauge-read { flex: none; font-family: 'Azeret Mono', monospace; font-size: 0.875rem; font-variant-numeric: tabular-nums; color: var(--color-field, #FF3B14); } .ds-gauge-read.ds-dim { color: var(--color-ink-muted, #8A8F98); }"
+    },
+    {
+      "name": "Project Panel",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "A panel in the horizontal track, with two faces that trade places rather than stacking. Expanding downward measured 1192px against a 946px viewport, which a pinned panel cannot show.",
+      "html": "<article class=\"ds-panel\"><p class=\"ds-panel-cat\">Data Engineering</p><h4 class=\"ds-panel-name\">Medicare Reimbursement Gap Analyzer</h4><p class=\"ds-panel-metric\">9.66M</p><p class=\"ds-panel-unit\">rows queryable in-browser \u00b7 no backend</p><p class=\"ds-panel-body\">Made all 9.66M CMS Medicare claim rows queryable in the browser with no backend.</p><button class=\"ds-panel-toggle\">Architecture &amp; details<svg width=\"12\" height=\"12\" viewBox=\"0 0 12 12\" fill=\"none\" aria-hidden=\"true\"><path d=\"M2 4l4 4 4-4\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></button></article>",
+      "css": ".ds-panel { display: flex; flex-direction: column; gap: 1.25rem; width: 40rem; max-width: 86vw; height: 620px; padding: 2.5rem; border-left: 1px solid var(--color-border-strong, rgba(255,255,255,0.16)); border-radius: 0; background: var(--color-surface, #08090A); } .ds-panel-cat { display: flex; align-items: center; gap: 0.625rem; margin: 0; font-family: 'Azeret Mono', monospace; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-ink-muted, #8A8F98); } .ds-panel-cat::before { content: \"\"; width: 6px; height: 6px; background: var(--color-field, #FF3B14); } .ds-panel-name { margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 1.875rem; font-variation-settings: \"wdth\" 78; line-height: 1; letter-spacing: -0.02em; text-transform: uppercase; color: var(--color-ink, #F7F8F8); } .ds-panel-metric { margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(2.25rem, 3.4vw, 3rem); font-variation-settings: \"wdth\" 78; font-variant-numeric: tabular-nums; line-height: 0.9; letter-spacing: -0.04em; color: var(--color-field, #FF3B14); } .ds-panel-unit { margin: 0.125rem 0 0; font-family: Inter, sans-serif; font-size: 0.75rem; color: var(--color-ink-muted, #8A8F98); } .ds-panel-body { margin: 0; font-family: Inter, sans-serif; font-size: 0.875rem; line-height: 1.6; color: var(--color-ink-secondary, #B4B9C2); } .ds-panel-toggle { margin-top: auto; display: inline-flex; align-items: center; gap: 0.375rem; padding: 0.5rem 0; border: 0; background: none; color: var(--color-ink-muted, #8A8F98); font-family: Inter, sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.02em; text-transform: uppercase; cursor: pointer; transition: color 150ms ease; } .ds-panel-toggle:hover { color: var(--color-ink, #F7F8F8); } .ds-panel-toggle:focus-visible { outline: 2px solid var(--color-field, #FF3B14); outline-offset: 2px; border-radius: 0.375rem; }"
+    },
+    {
+      "name": "Track Controls",
+      "kind": "nav",
+      "refersTo": "track-nav",
+      "description": "Prev/next for a pinned horizontal band. Steps the page by one panel width, which the 1:1 pin mapping turns into one panel of travel \u2014 the band's only keyboard-operable path. 28px, over the 24px target floor.",
+      "html": "<div class=\"ds-track-nav-row\"><button class=\"ds-track-nav\" aria-label=\"Previous project\"><svg width=\"13\" height=\"13\" viewBox=\"0 0 13 13\" fill=\"none\" aria-hidden=\"true\"><path d=\"M8 2.5L4 6.5l4 4\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></button><button class=\"ds-track-nav\" aria-label=\"Next project\"><svg width=\"13\" height=\"13\" viewBox=\"0 0 13 13\" fill=\"none\" aria-hidden=\"true\"><path d=\"M5 2.5l4 4-4 4\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></button></div>",
+      "css": ".ds-track-nav-row { display: flex; align-items: center; gap: 0.5rem; } .ds-track-nav { display: grid; place-items: center; width: 28px; height: 28px; border: 1px solid var(--color-border-strong, rgba(255,255,255,0.16)); border-radius: 0; background: transparent; color: var(--color-ink-muted, #8A8F98); cursor: pointer; transition: color 150ms ease, border-color 150ms ease; } .ds-track-nav:hover:not(:disabled) { color: var(--color-ink, #F7F8F8); } .ds-track-nav:disabled { opacity: 0.35; cursor: default; } .ds-track-nav:focus-visible { outline: 2px solid var(--color-field, #FF3B14); outline-offset: 2px; border-radius: 0.375rem; }"
+    },
+    {
+      "name": "Nav Link",
       "kind": "nav",
       "refersTo": "nav-link",
-      "description": "Fixed 64px header on a 72% translucent ground with a backdrop blur and a bottom hairline; uppercase condensed links, 2.75rem tall for target size.",
-      "html": "<header class=\"ds-nav\"><a class=\"ds-nav-mark\" href=\"#\">Zaid<span>.</span></a><ul class=\"ds-nav-ul\"><li><a class=\"ds-nav-link\" href=\"#projects\">Projects</a></li><li><a class=\"ds-nav-link\" href=\"#stack\">Stack</a></li><li><a class=\"ds-nav-link\" href=\"#contact\">Contact</a></li></ul></header>",
-      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; min-height: 64px; padding: 0 1.25rem; background: rgba(8,9,10,0.72); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.08); } .ds-nav-mark { font-family: Inter, sans-serif; font-weight: 600; font-size: 1.25rem; letter-spacing: -0.02em; color: #F7F8F8; text-decoration: none; transition: opacity 150ms; } .ds-nav-mark span { color: #8A8F98; } .ds-nav-mark:hover { opacity: 0.7; } .ds-nav-ul { display: flex; gap: 2rem; list-style: none; margin: 0; padding: 0; } .ds-nav-link { display: inline-flex; align-items: center; min-height: 2.75rem; font-family: \"Bricolage Grotesque\", Inter, sans-serif; font-variation-settings: \"wdth\" 85; font-weight: 600; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.01em; color: #8A8F98; text-decoration: none; transition: color 150ms; } .ds-nav-link:hover { color: #F7F8F8; } .ds-nav-link:focus-visible { outline: 2px solid #FF3B14; outline-offset: 2px; border-radius: 0.375rem; }"
-    },
-    {
-      "name": "Metric Row",
-      "kind": "custom",
-      "refersTo": "typography.metric",
-      "description": "The first viewport's three measured numbers: no card, pure type, divided by 1px rules that rotate from vertical to horizontal under 640px.",
-      "html": "<div class=\"ds-metric-grid\"><div class=\"ds-metric\"><span class=\"ds-metric-value\">21,091</span><span class=\"ds-metric-label\">msg/s sustained</span><span class=\"ds-metric-context\">Chatflow · Java + RabbitMQ + Redis</span></div><div class=\"ds-metric\"><span class=\"ds-metric-value\">&lt;100ms</span><span class=\"ds-metric-label\">end-to-end latency</span><span class=\"ds-metric-context\">Crypto Analyzer · Kafka + Flink</span></div><div class=\"ds-metric\"><span class=\"ds-metric-value\">9.66M</span><span class=\"ds-metric-label\">rows, queryable live</span><span class=\"ds-metric-context\">Medicare Gap Analyzer · DuckDB-WASM</span></div></div>",
-      "css": ".ds-metric-grid { display: grid; grid-template-columns: repeat(3, 1fr); } .ds-metric-grid > * + * { border-left: 1px solid rgba(255,255,255,0.08); padding-left: 2rem; } .ds-metric { display: flex; flex-direction: column; gap: 0.25rem; } .ds-metric-value { font-family: \"Bricolage Grotesque\", Inter, sans-serif; font-variation-settings: \"wdth\" 78; font-weight: 800; font-size: clamp(2.5rem, 4.5vw, 4rem); line-height: 0.9; letter-spacing: -0.04em; font-variant-numeric: tabular-nums; color: #FF3B14; } .ds-metric-label { margin-top: 0.25rem; font-family: \"Azeret Mono\", ui-monospace, monospace; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: #F7F8F8; } .ds-metric-context { font-family: \"Azeret Mono\", ui-monospace, monospace; font-size: 0.75rem; letter-spacing: 0.01em; color: #8A8F98; } @media (max-width: 640px) { .ds-metric-grid { grid-template-columns: 1fr; } .ds-metric-grid > * + * { border-left: none; border-top: 1px solid rgba(255,255,255,0.08); padding-left: 0; padding-top: 1.5rem; margin-top: 1.5rem; } }"
-    },
-    {
-      "name": "Field Band",
-      "kind": "custom",
-      "refersTo": "field-surface",
-      "description": "The signature region: full-bleed vermilion carrying one line of display-scale type in black. Closes the first viewport; the same surface class carries the whole Stack section and the footer.",
-      "html": "<div class=\"ds-field-band\"><div class=\"ds-field-track\"><span class=\"ds-field-item\">Data platforms</span><span class=\"ds-field-dot\">·</span><span class=\"ds-field-item\">Streaming</span><span class=\"ds-field-dot\">·</span><span class=\"ds-field-item\">Interface craft</span></div></div>",
-      "css": ".ds-field-band { background: #FF3B14; color: #0A0A09; overflow: hidden; padding: 1rem 0; } .ds-field-track { display: flex; align-items: center; gap: 1.5rem; } .ds-field-item { font-family: \"Bricolage Grotesque\", Inter, sans-serif; font-variation-settings: \"wdth\" 78; font-weight: 800; font-size: clamp(2rem, 5.5vw, 4.5rem); line-height: 1; letter-spacing: -0.02em; text-transform: uppercase; color: #0A0A09; white-space: nowrap; } .ds-field-dot { color: #0A0A09; opacity: 0.45; }"
-    },
-    {
-      "name": "Architecture Schematic",
-      "kind": "custom",
-      "refersTo": "typography.label",
-      "description": "The page's one authored motion moment: the pipeline draws itself stage by stage when a card opens, and reflows on its own container width rather than the viewport's.",
-      "html": "<figure class=\"ds-schematic\"><ol class=\"ds-schematic-flow\"><li class=\"ds-node\"><span class=\"ds-node-stage\">Ingest</span><div class=\"ds-node-items\"><span class=\"ds-node-item\">Kafka</span></div></li><li class=\"ds-edge\" aria-hidden=\"true\"></li><li class=\"ds-node\"><span class=\"ds-node-stage\">Process</span><div class=\"ds-node-items\"><span class=\"ds-node-item\">Flink</span></div></li><li class=\"ds-edge\" aria-hidden=\"true\"></li><li class=\"ds-node\"><span class=\"ds-node-stage\">Serve</span><div class=\"ds-node-items\"><span class=\"ds-node-item\">DuckDB</span><span class=\"ds-node-item\">Parquet</span></div></li></ol></figure>",
-      "css": ".ds-schematic { margin: 0; container-type: inline-size; } .ds-schematic-flow { display: flex; flex-direction: column; align-items: flex-start; list-style: none; margin: 0; padding: 0; } .ds-node { display: flex; flex-direction: column; gap: 0.375rem; animation: ds-settle 400ms cubic-bezier(0.22,1,0.36,1) both; } .ds-edge { width: 1px; height: 1.25rem; margin-left: 0.75rem; background: rgba(255,255,255,0.16); transform-origin: top; animation: ds-extend 320ms cubic-bezier(0.22,1,0.36,1) both; } .ds-node-stage { font-family: \"Azeret Mono\", ui-monospace, monospace; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #8A8F98; } .ds-node-items { display: flex; flex-direction: column; gap: 0.25rem; } .ds-node-item { font-family: Inter, sans-serif; font-size: 0.875rem; line-height: 1.4; color: #B4B9C2; background: #16181A; border: 1px solid rgba(255,255,255,0.08); padding: 0.3125rem 0.5rem; } @container (min-width: 34rem) { .ds-schematic-flow { flex-direction: row; align-items: flex-start; } .ds-edge { width: auto; flex: 1; min-width: 1rem; height: 1px; margin: 1.375rem 0.5rem 0; transform-origin: left; animation-name: ds-extend-x; } } @keyframes ds-settle { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } } @keyframes ds-extend { from { transform: scaleY(0); } to { transform: scaleY(1); } } @keyframes ds-extend-x { from { transform: scaleX(0); } to { transform: scaleX(1); } } @media (prefers-reduced-motion: reduce) { .ds-node, .ds-edge { animation: none; opacity: 1; transform: none; } }"
-    },
-    {
-      "name": "Decision Log",
-      "kind": "custom",
-      "refersTo": "typography.body",
-      "description": "Why each choice beat its alternative: a left hairline standing in for a list marker, mono label over prose.",
-      "html": "<div class=\"ds-log\"><p class=\"ds-log-label\">Chose</p><p class=\"ds-log-body\">DuckDB-WASM over a hosted API: no backend to expire, and the reader can operate it.</p></div>",
-      "css": ".ds-log { border-left: 1px solid rgba(255,255,255,0.16); padding-left: 1rem; } .ds-log-label { margin: 0; font-family: \"Azeret Mono\", ui-monospace, monospace; font-size: 0.75rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: #8A8F98; } .ds-log-body { margin: 0.375rem 0 0; font-family: Inter, sans-serif; font-size: 0.875rem; line-height: 1.6; color: #B4B9C2; }"
+      "description": "Uppercase Bricolage at wdth 85 on the opaque chrome bar, muted at rest and full ink on hover, with a 2.75rem minimum height.",
+      "html": "<a class=\"ds-nav-link\" href=\"#projects\">Projects</a>",
+      "css": ".ds-nav-link { display: inline-flex; align-items: center; min-height: 2.75rem; color: var(--color-ink-muted, #8A8F98); font-family: 'Bricolage Grotesque', sans-serif; font-weight: 600; font-size: 0.875rem; font-variation-settings: \"wdth\" 85; letter-spacing: 0.02em; text-transform: uppercase; text-decoration: none; transition: color 150ms ease; } .ds-nav-link:hover { color: var(--color-ink, #F7F8F8); } .ds-nav-link:focus-visible { outline: 2px solid var(--color-field, #FF3B14); outline-offset: 2px; border-radius: 0.375rem; }"
     }
   ],
   "narrative": {
     "northStar": "The Signal Field",
-    "overview": "A near-black ground interrupted by whole regions of one signal vermilion, with condensed poster type doing the talking. The system exists to prove interface craft by a data engineer, so every measured number is treated as the loudest element on its surface: display face, poster scale, field colour. Density is editorial rather than dashboard — long vertical rhythm, wide gutters, a single hairline where most systems would put a box.\n\nThe world is pinned, not rolled. It comes from bold-editorial references (Orbix Studio, Yucale Studio, CREATIQ, LAIN) and that genre is the craft bar: where a rule reads as unusually forceful, it is holding the line against softening back toward restraint. PRODUCT.md records this as a standing brand commitment that replaced an earlier \"category standard / linear.app\" preference. The prior implementation of that preference — restrained near-black surfaces, an amber accent, Inter as the only face, rounded cards, inset lit edges, ambient shadows — is retired wholesale, not evolved.\n\nTwo anti-references are explicit and confirmed: teal-on-navy (the most-cloned engineer portfolio) and violet-glow (the AI-generated cluster). Vermilion was chosen against that competitive landscape, not by taste. Restraint itself is the third anti-reference: an earlier build of this world scattered the vermilion as accents (1.0% of the first viewport, 12.9% of the page) and the finish review returned a rebuild directive. The shipped build holds it as regions — 11.8% of the first viewport, 28.7% of the page.",
+    "overview": "A near-black ground interrupted by whole regions of one signal vermilion, with condensed poster type doing the talking. The system exists to prove interface craft by a data engineer, so every measured number is treated as the loudest element on its surface: display face, poster scale, field colour. Density is editorial rather than dashboard \u2014 long vertical rhythm, wide gutters, a single hairline where most systems would put a box.\n\nThe world is pinned, not rolled. It comes from bold-editorial references (Orbix Studio, Yucale Studio, CREATIQ, LAIN) and that genre is the craft bar: where a rule below reads as unusually forceful, it is holding the line against softening back toward restraint. PRODUCT.md records this as a standing brand commitment that replaced an earlier \"category standard / linear.app\" preference. The prior implementation of that preference \u2014 restrained near-black surfaces, an amber accent, Inter as the only face, rounded cards, inset lit edges, ambient shadows \u2014 is retired wholesale, not evolved.\n\nTwo anti-references are explicit and confirmed: teal-on-navy (the most-cloned engineer portfolio) and violet-glow (the AI-generated cluster). Vermilion was chosen against that competitive landscape, not by taste. Restraint itself is the third anti-reference: an earlier build of *this* world scattered the vermilion as accents (1.0% of the first viewport, 12.9% of the page) and the finish review returned a rebuild directive. The shipped build holds it as regions \u2014 11.8% of the first viewport, 28.7% of the page.",
     "keyCharacteristics": [
       "One signal colour, held as whole surfaces rather than as trim",
-      "Black ink on the field, never white — white fails contrast there",
+      "Black ink on the field, never white \u2014 white fails contrast there",
       "Condensed variable-width display type at poster scale",
       "Three faces, three jobs, no overlap",
       "Hard edges: zero radius, no shadow, no lit edge",
-      "Two type steps only — poster and section head, nothing in between",
+      "Two type steps only \u2014 poster and section head, nothing in between",
       "Motion is entrance-in-CSS, authored-moments-in-GSAP, and absent under reduced motion"
     ],
     "rules": [
       {
         "name": "The Regions, Not Accents Rule",
-        "body": "Vermilion is applied as a whole surface. Three regions carry it and a fourth would be welcome; a fifth vermilion detail would not. Audit test: if the signal colour's coverage on the first viewport falls near 1% and reads as trim, the world has been reverted. The shipped build measures 11.8% first-viewport and 28.7% page-wide, and those are the floor, not a ceiling.",
+        "body": "Vermilion is applied as a whole surface. Three regions carry it and a fourth would be welcome; a *fifth vermilion detail* would not. Audit test: if the signal colour's coverage on the first viewport falls near 1% and reads as trim, the world has been reverted. The shipped build measures 11.8% first-viewport and 28.7% page-wide, and those are the floor, not a ceiling.",
         "section": "colors"
       },
       {
         "name": "The Black-On-Field Rule",
-        "body": "Nothing on the field is ever white — white measures 3.57:1 there. Every on-field tone is a solid colour, never alpha: rgba(10,10,9,0.72) composites to 4.01:1 and fails AA for body text, and rgba(10,9,8,0.38) composites to ~2.2:1, under the 3:1 a UI boundary needs. Exactly two on-field tones are legal.",
+        "body": "Nothing on the field is ever white \u2014 white measures 3.57:1 there. Every on-field tone is a *solid* colour, never alpha: `rgba(10,10,9,0.72)` composites to 4.01:1 and fails AA for body text, and `rgba(10,9,8,0.38)` composites to ~2.2:1, under the 3:1 a UI boundary needs. Exactly two on-field tones are legal.",
         "section": "colors"
       },
       {
@@ -433,22 +434,22 @@
       },
       {
         "name": "The Condensed Axis Rule",
-        "body": "Display type sets font-variation-settings: \"wdth\" 78 (82 for actions, 85 for nav). The condensed axis is the genre. An earlier build loaded the width axis and then pinned it to 100, rendering a wide neutral grotesque; the review scored that as contradicting the genre. Never ship Bricolage at default width.",
+        "body": "Display type sets `font-variation-settings: \"wdth\" 78` (82 for actions, 85 for nav). The condensed axis *is* the genre. An earlier build loaded the width axis and then pinned it to 100, rendering a wide neutral grotesque; the review scored that as contradicting the genre. Never ship Bricolage at default width.",
         "section": "typography"
       },
       {
         "name": "The Two-Step Scale Rule",
-        "body": "The ramp has two large steps — the poster h1 and the section head — and nothing between them. A single poster moment over a page of small heads was scored as a failure; section heads must stay at display scale.",
+        "body": "The ramp has two large steps \u2014 the poster h1 and the section head \u2014 and nothing between them. A single poster moment over a page of small heads was scored as a failure; section heads must stay at display scale.",
         "section": "typography"
       },
       {
         "name": "The Measurement-Only Mono Rule",
-        "body": "Azeret Mono appears only where something is measured or enumerated: metric labels and context, tech pills, schematic stage names, tabular metadata. Monospace worn as a costume to signal \"technical\" is a refused pattern. Inter is prose only and is explicitly not the display voice.",
+        "body": "Azeret Mono appears only where something is measured or enumerated: metric labels and context, tech pills, schematic stage names, tabular metadata. Monospace worn as a costume to signal \"technical\" is a refused pattern. Inter is prose only and is explicitly *not* the display voice.",
         "section": "typography"
       },
       {
         "name": "The No Kicker Rule",
-        "body": "No category label, eyebrow, or role tag sits above a heading. The project cards' RoleTag was deleted and its component removed for exactly this reason; the group heading above the grid carries the category instead.",
+        "body": "No category label, eyebrow, or role tag sits above a heading. The project cards' `RoleTag` was deleted and its component removed for exactly this reason; the group heading above the grid carries the category instead.",
         "section": "typography"
       },
       {
@@ -457,58 +458,73 @@
         "section": "typography"
       },
       {
-        "name": "The Full-Row Disclosure Rule",
-        "body": "An expanded project card is a detail view, so it takes the whole row (:has([aria-expanded=\"true\"]) { grid-column: span 2 } above 768px). This is load-bearing, not cosmetic: at half width the card's container is 518px and five schematic stages crush together.",
+        "name": "The Two-Face Rule",
+        "body": "A project panel does not grow to show its detail; it trades faces. The old card expanded downward and measured **1192px against a 946px viewport**, which a pinned panel cannot show at all, so opening swaps the summary out and the architecture in inside one fixed box. The container stays 704px wide, which is what the schematic needs \u2014 the retired grid had to claim a whole row on open because at half width the container was 518px and five stages crushed together. The hidden face carries `inert`, so nothing behind is reachable by keyboard.",
         "section": "layout"
       },
       {
         "name": "The Container-Query Rule",
-        "body": "The architecture schematic reflows on its own width, never the viewport's — container-type: inline-size plus @container (min-width: 34rem) flips it from vertical to horizontal. A 1400px viewport still only gives this card 518px, so a media query would be measuring the wrong box.",
+        "body": "The architecture schematic reflows on its own width, never the viewport's \u2014 `container-type: inline-size` plus `@container (min-width: 34rem)` flips it from vertical to horizontal. A 1400px viewport still only gives this card 518px, so a media query would be measuring the wrong box.",
         "section": "layout"
       },
       {
         "name": "The No Shadow, No Lit Edge Rule",
-        "body": "No box-shadow, no inset highlight, no ambient glow, anywhere. Rounded, lit, shadowed surfaces were the retired world's vocabulary; reintroducing any of them is reverting the world, not refining it.",
+        "body": "No `box-shadow`, no inset highlight, no ambient glow, anywhere. Rounded, lit, shadowed surfaces were the retired world's vocabulary; reintroducing any of them is reverting the world, not refining it.",
         "section": "elevation"
       },
       {
+        "name": "The Fixed-Is-The-Parallax Rule",
+        "body": "Depth on scroll comes from a layer that does not move. `position: fixed` holds the grid at 0\u00d7 while content runs at 1\u00d7, which is exactly what the measured reference (white-desert.com, Awwwards SOTD 11 Sep 2026) achieves by counter-translating its background at 1.00\u00d7 scroll. Only two things are animated on scroll, both in CSS with no JS: the grid drifts 72px across the whole document, and the hero name lifts 190px over the first viewport \u2014 **0.20\u00d7**, inside the 0.2\u20130.3\u00d7 band the reference sits in. Both live on custom properties in `:root` so the intensity is one number. One moving background layer, not three: the vestibular risk scales with layer count.",
+        "section": "components"
+      },
+      {
+        "name": "The Clip-Not-Hidden Rule",
+        "body": "`overflow: hidden` creates a scrollport; `overflow: clip` does not. That distinction has broken three separate things on this page, so it is a rule rather than a note:",
+        "section": "components"
+      },
+      {
+        "name": "The Reachable-Range Rule",
+        "body": "Scroll-driven reveals end on `entry 100%`, not on a `cover` percentage. A `cover`-based range needs the element to travel a share of the viewport *plus* its own height, which an element in the last section can never do \u2014 the page runs out of scroll first. The footer's reveals were written `entry 5% cover 22%` and left its content invisible on a phone. `entry 0% entry 100%` completes exactly when the element is fully on screen, which is reachable wherever it sits. Stagger by moving the *start* (`entry 12%`, `entry 24%`), never the end.",
+        "section": "components"
+      },
+      {
         "name": "The CSS-Entrance Rule",
-        "body": "Entrance reveals are CSS animations, not GSAP. gsap.from() applies its start state immediately, so an interrupted tween can leave text permanently invisible — StrictMode's double-invoked effects orphaned a staggered word at translateY(110%) exactly that way. A CSS animation cannot be orphaned. GSAP owns only what CSS cannot do: the scroll-velocity marquee and the counters.",
+        "body": "Entrance reveals are CSS animations, not GSAP. `gsap.from()` applies its start state immediately, so an interrupted tween can leave text permanently invisible \u2014 StrictMode's double-invoked effects orphaned a staggered word at `translateY(110%)` exactly that way. A CSS animation cannot be orphaned.",
         "section": "components"
       },
       {
         "name": "The Absence Rule",
-        "body": "Reduced motion is the absence of the animation, never a second code path. gsap.matchMedia() reverts what it created when its condition stops matching, and every CSS animation is switched off under prefers-reduced-motion: reduce. There is nothing to keep in sync.",
+        "body": "Reduced motion is the *absence* of the animation, never a second code path. `gsap.matchMedia()` reverts what it created when its condition stops matching, and every CSS animation is switched off under `prefers-reduced-motion: reduce`. There is nothing to keep in sync.",
         "section": "components"
       }
     ],
     "dos": [
-      "Do apply vermilion as a whole region — a full-bleed band, a whole section, the footer — and keep first-viewport coverage near 11.8% and page coverage near 28.7%.",
-      "Do use only field ink (5.55:1) and scorched umber (4.83:1) on the field, as solid colours.",
-      "Do set \"wdth\" 78 on display and heading type, 82 on actions, 85 on nav.",
-      "Do restrict Azeret Mono to measurements: metric labels and context, tech pills, schematic stage names, tabular metadata.",
-      "Do keep section heads at display scale (clamp(2.75rem, 8vw, 6.5rem)), uppercase.",
-      "Do draw structure with 1px hairlines and the three-step tonal ramp.",
-      "Do keep every text tone at 4.5:1 or better against its worst-case surface, and every UI boundary at 3:1 or better.",
-      "Do keep every interactive target at 24×24 CSS pixels or larger (WCAG 2.2 SC 2.5.8) — nav links and inline links carry explicit minimum heights for this reason.",
-      "Do keep the global :focus-visible ring, and override it to field ink inside a field region.",
-      "Do keep inert on collapsed disclosure content so hidden panels stay out of the tab order and the accessibility tree.",
-      "Do reflow the schematic on its own width with a container query, not a media query.",
-      "Do put entrance reveals in CSS and leave GSAP the marquee and the counters."
+      "**Do** apply vermilion as a whole region \u2014 a full-bleed band, a whole section, the footer \u2014 and keep first-viewport coverage near 11.8% and page coverage near 28.7%.",
+      "**Do** use only `{colors.field-ink}` (5.55:1) and `{colors.field-ink-secondary}` (4.83:1) on the field, as solid colours.",
+      "**Do** set `\"wdth\" 78` on display and heading type, 82 on actions, 85 on nav.",
+      "**Do** restrict Azeret Mono to measurements: metric labels and context, tech pills, schematic stage names, tabular metadata.",
+      "**Do** keep section heads at display scale (`clamp(2.75rem, 8vw, 6.5rem)`), uppercase.",
+      "**Do** draw structure with 1px hairlines and the three-step tonal ramp.",
+      "**Do** keep every text tone at 4.5:1 or better against its worst-case surface, and every UI boundary at 3:1 or better.",
+      "**Do** keep every interactive target at 24\u00d724 CSS pixels or larger (WCAG 2.2 SC 2.5.8) \u2014 nav links and inline links carry explicit minimum heights for this reason.",
+      "**Do** keep the global `:focus-visible` ring, and override it to field-ink inside a field region.",
+      "**Do** keep `inert` on collapsed disclosure content so hidden panels stay out of the tab order and the accessibility tree.",
+      "**Do** reflow the schematic on its own width with a container query, not a media query.",
+      "**Do** put entrance reveals in CSS and leave GSAP the marquee and the counters."
     ],
     "donts": [
-      "Don't scatter vermilion as accents, trim, or small badges on the dark ground. That produced a rebuild directive once already.",
-      "Don't put white text on the field (3.57:1), and don't use any alpha-composited tone there.",
-      "Don't add a second accent hue, and never teal-on-navy or violet-glow.",
-      "Don't reintroduce border radius on cards, buttons, or pills, and don't reintroduce inset lit edges or ambient shadows.",
-      "Don't render Bricolage at default width (wdth 100) — that is a wide neutral grotesque and contradicts the genre.",
-      "Don't use Inter or Bricolage for a measurement, and don't use Azeret Mono as a costume for \"technical\" prose.",
-      "Don't place a kicker, eyebrow, or category label above any heading; the group heading carries the category.",
-      "Don't flatten the scale into one poster moment over a page of small heads.",
-      "Don't stack two uppercase display blocks in a row.",
-      "Don't use gsap.from() for entrance reveals, and don't add @gsap/react — it resolves its own React against React 19 and throws \"Invalid hook call\".",
-      "Don't write a separate reduced-motion code path; remove the animation instead.",
-      "Don't soften any of the above toward restraint. The craft bar is the pinned bold-editorial genre, not linear.app."
+      "**Don't** scatter vermilion as accents, trim, or small badges on the dark ground. That produced a rebuild directive once already.",
+      "**Don't** put white text on the field (3.57:1), and don't use any alpha-composited tone there.",
+      "**Don't** add a second accent hue, and never teal-on-navy or violet-glow.",
+      "**Don't** reintroduce border radius on cards, buttons, or pills, and don't reintroduce inset lit edges or ambient shadows.",
+      "**Don't** render Bricolage at default width (`wdth 100`) \u2014 that is a wide neutral grotesque and contradicts the genre.",
+      "**Don't** use Inter or Bricolage for a measurement, and don't use Azeret Mono as a costume for \"technical\" prose.",
+      "**Don't** place a kicker, eyebrow, or category label above any heading; the group heading carries the category.",
+      "**Don't** flatten the scale into one poster moment over a page of small heads.",
+      "**Don't** stack two uppercase display blocks in a row.",
+      "**Don't** use `gsap.from()` for entrance reveals, and don't add `@gsap/react` \u2014 it resolves its own React against React 19 and throws \"Invalid hook call\".",
+      "**Don't** write a separate reduced-motion code path; remove the animation instead.",
+      "**Don't** soften any of the above toward restraint. The craft bar is the pinned bold-editorial genre, not linear.app."
     ]
   }
 }

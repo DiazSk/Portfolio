@@ -41,7 +41,11 @@ const Contact = () => {
                   className="rise-in text-display max-w-[13ch] uppercase"
                   style={{
                     color: "var(--color-ink)",
-                    fontSize: "clamp(2.75rem, 7vw, 5.5rem)",
+                    /* The documented Headline step. This carried a bespoke
+                       clamp(2.75rem, 7vw, 5.5rem) — a fourth display size
+                       for what is a section head, which the Two-Step Scale
+                       Rule exists to prevent. */
+                    fontSize: "clamp(2.75rem, 8vw, 6.5rem)",
                   }}
                 >
                   Open to the right opportunity.
