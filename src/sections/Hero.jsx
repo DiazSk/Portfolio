@@ -45,7 +45,7 @@ const Hero = () => {
     <section
       id="home"
       ref={root}
-      className="flex min-h-screen flex-col justify-center pt-28"
+      className="flex min-h-screen flex-col justify-center pt-24"
     >
       <div className="c-space mx-auto w-full max-w-7xl">
         {/* Name at poster scale. The pinned world overrides the 6rem cap. */}
@@ -70,14 +70,22 @@ const Hero = () => {
 
         <div className="hero-block mt-6 flex flex-wrap items-baseline gap-x-6 gap-y-2" style={{ "--i": 0 }}>
           <p
-            className="text-mono text-sm uppercase"
-            style={{ color: "var(--color-ink)", letterSpacing: "0.08em" }}
+            className="text-base font-extrabold uppercase"
+            style={{
+              color: "var(--color-ink)",
+              fontFamily: "var(--font-display)",
+              fontVariationSettings: '"wdth" 82',
+            }}
           >
             Data Engineer
           </p>
           <p
-            className="text-mono text-sm uppercase"
-            style={{ color: "var(--color-ink-muted)", letterSpacing: "0.08em" }}
+            className="text-base font-extrabold uppercase"
+            style={{
+              color: "var(--color-ink-muted)",
+              fontFamily: "var(--font-display)",
+              fontVariationSettings: '"wdth" 82',
+            }}
           >
             Backend Systems Engineer
           </p>
@@ -98,8 +106,13 @@ const Hero = () => {
             href={LIVE}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-mono group inline-flex min-h-7 items-center gap-2 py-1 text-sm uppercase"
-            style={{ color: "var(--color-field)", letterSpacing: "0.06em" }}
+            className="group inline-flex min-h-7 items-center gap-2 py-1 text-base font-extrabold uppercase"
+            style={{
+              color: "var(--color-field)",
+              fontFamily: "var(--font-display)",
+              fontVariationSettings: '"wdth" 82',
+              letterSpacing: "0.005em",
+            }}
           >
             <span
               className="inline-block h-2 w-2 shrink-0 rounded-full"
@@ -160,7 +173,7 @@ const Hero = () => {
       {/* ── The stack, running ──────────────────────────────────
           A field band at display scale closes the first viewport, so the
           field is a region here and not a colour on some numerals. */}
-      <div className="field-band mt-20 py-5" aria-hidden="true">
+      <div className="field-band mt-12 py-5" aria-hidden="true">
         <div className="marquee-track flex w-max items-center gap-8">
           {[...STACK, ...STACK].map((item, i) => (
             <span key={`${item}-${i}`} className="flex items-center gap-8">

@@ -384,7 +384,9 @@ body::before {
 
 .field-surface .tech-pill {
   background: transparent;
-  border-color: rgba(10, 9, 8, 0.38);
+  /* Solid, like every other on-field tone: rgba(10,9,8,0.38) composites to
+     ~2.2:1 here, under the 3:1 a UI boundary needs. */
+  border-color: #2E1409;
   color: var(--color-field-ink);
 }
 

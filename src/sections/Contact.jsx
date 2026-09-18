@@ -22,7 +22,7 @@ const Contact = () => {
           {/* Left — the ask */}
           <div>
             <h2
-              className="text-display max-w-[13ch]"
+              className="text-display max-w-[13ch] uppercase"
               style={{
                 color: "var(--color-field-ink)",
                 fontSize: "clamp(2.75rem, 7vw, 5.5rem)",
