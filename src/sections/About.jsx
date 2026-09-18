@@ -25,9 +25,9 @@ const CREDENTIALS = [
     meta: "36,800+ records",
   },
   {
-    label: "Oracle Cloud Infrastructure",
-    detail: "Data Science Professional, Certified",
-    meta: null,
+    label: "BE Computer Engineering",
+    detail: "St. Francis Institute of Technology · Mumbai, India",
+    meta: "2020 — 2024",
   },
 ];
 

@@ -63,6 +63,7 @@ export const resumeData = {
       location: "Mumbai, India",
       degree: "Bachelor of Engineering in Computer Engineering",
       specialization: "AI/ML",
+      startDate: "2020",
       graduationDate: "May 2024",
       relevantCourses: [
         "Object Oriented Programming",
