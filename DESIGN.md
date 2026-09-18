@@ -207,6 +207,7 @@ A monochrome near-black ramp carrying all structure, plus exactly one chromatic 
 - **Title** (800, 1.5rem rising to 1.875rem–2.25rem, uppercase, `wdth 78`): Project and stack-group names.
 - **Body** (400, 1rem, line-height ~1.6, Inter): Prose only, capped at `max-w-2xl`; the About credo runs to `26ch` and the hero claim to `13–18ch`.
 - **Label** (500, 0.75rem, tracking 0.1em, uppercase, Azeret Mono): Metric labels and context, tech pills, schematic stage names, tabular metadata, group counts.
+- **Marquee** (800, `clamp(2rem, 5.5vw, 4.5rem)`, line-height 1, `wdth 78`, tracking -0.02em, uppercase, field-ink): The running stack inside a field band. It sits between Headline and Title and belongs to the band alone — nothing else on the page uses this step.
 - **Action** (800, 1rem, uppercase, `wdth 82`, Bricolage): Buttons. Nav links use `wdth 85` at 0.875rem/600.
 
 ### Named Rules
