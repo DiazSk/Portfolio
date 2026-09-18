@@ -489,12 +489,17 @@ body::after {
 @media (min-width: 768px) {
   .about-grid {
     grid-template-columns: repeat(4, 1fr);
+    /* Deliberately irregular: each record and each stance is its own panel
+       and the spans alternate 2+1 / 1+2 down the grid, so no two rows read
+       as the same module. Aspen's grid never repeats a row either. */
     grid-template-areas:
       "label     statement statement statement"
       "bio       bio       portrait  avail"
       "stat1     stat2     stat3     avail"
-      "credsl    creds     creds     creds"
-      "workl     work      work      work";
+      "credsl    cred1     cred1     cred2"
+      "credsl    cred3     cred4     cred4"
+      "workl     pos1      pos2      pos2"
+      "workl     pos3      pos3      pos4";
   }
   .a-label     { grid-area: label; }
   .a-statement { grid-area: statement; }
@@ -504,10 +509,20 @@ body::after {
   .a-stat1     { grid-area: stat1; }
   .a-stat2     { grid-area: stat2; }
   .a-stat3     { grid-area: stat3; }
-  .a-credsl    { grid-area: credsl; }
-  .a-creds     { grid-area: creds; }
-  .a-workl     { grid-area: workl; }
-  .a-work      { grid-area: work; }
+  .a-credsl { grid-area: credsl; }
+  .a-cred1  { grid-area: cred1; }
+  .a-cred2  { grid-area: cred2; }
+  .a-cred3  { grid-area: cred3; }
+  .a-cred4  { grid-area: cred4; }
+  .a-workl  { grid-area: workl; }
+  .a-pos1   { grid-area: pos1; }
+  .a-pos2   { grid-area: pos2; }
+  .a-pos3   { grid-area: pos3; }
+  .a-pos4   { grid-area: pos4; }
+
+  /* A floor so a short record does not make a squat panel next to a tall
+     one; the row still grows to whatever the tallest panel in it needs. */
+  .panel-min { min-height: 13rem; }
 
   /* This is how the Aspen grid "moves": nothing is transformed. A label
      column pins under the header while the content column beside it scrolls

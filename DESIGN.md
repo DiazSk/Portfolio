@@ -295,7 +295,11 @@ Counters parse prefix, number, and suffix so `21,091`, `<100ms`, and `9.66M` all
 The proportion primitive: a 3px track at 14% white with a fill that is vermilion for the achieved value and muted ink for the baseline. A rule, not a filled bar — emphasis on the dark ground is a vermilion hairline, never an inverted fill. The track has to stay visible because the interesting fills are short: 2.4% and 7.1%.
 
 ### Panel Grid
-About is a hard modular grid of full-bleed panels that butt edge to edge, the structure `aspensearch.com` is built on: `label | statement`, then `bio | portrait | availability`, then three stat panels, then `credentials` and `how I work` as their own rows. The whole section is one continuous grid; the positions band used to sit below it in a separate `max-w-7xl` container, which broke the run of panels.
+About is a hard modular grid of full-bleed panels that butt edge to edge, the structure `aspensearch.com` is built on: `label | statement`, then `bio | portrait | availability`, then three stat panels, then the four credentials and the four stances — **each one its own panel**, not a list inside a panel. Seven rows, eighteen panels.
+
+The spans alternate deliberately so no two rows read as the same module: the records run `2+1` then `1+2`, the stances run `1+2` then `2+1`, and the tone alternates raised/surface across both so the checker never settles into a pattern. Aspen's grid never repeats a row either. `.panel-min` puts a 13rem floor under the record and stance panels so a short one does not sit squat beside a tall one, while the row still grows to whatever its tallest panel needs; the floor is off below 768px.
+
+The whole section is one continuous grid; the positions band used to sit below it in a separate `max-w-7xl` container, which broke the run of panels.
 
 Each panel carries exactly one thing, is named by a micro-label rather than a heading, and at least one is left as flat tone for air — the portrait panel holds that role until the file exists, and collapses to nothing on mobile. The hairlines between panels are the grid's own 1px gaps showing the container through, so there are no doubled rules where panels meet. `About` renders outside `<main>` for the same reason Hero and Contact do: panels that stop at 1280px are cards, not panels.
 

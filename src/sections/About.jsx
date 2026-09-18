@@ -141,40 +141,34 @@ const About = () => {
           <p className="micro sticky-label">Credentials</p>
         </div>
 
-        <div className="panel a-creds panel-raised">
-          {CREDENTIALS.map(({ label, detail, meta }, i) => (
-            <div
-              key={label}
-              className="grid grid-cols-1 gap-1 py-5 sm:grid-cols-[1fr_auto] sm:items-baseline sm:gap-6"
-              style={{
-                borderTop: i === 0 ? "none" : "1px solid var(--color-border)",
-              }}
-            >
-              <div>
-                <p
-                  className="text-lg font-medium"
-                  style={{ color: "var(--color-ink)", letterSpacing: "-0.01em" }}
-                >
-                  {label}
-                </p>
-                <p
-                  className="mt-1 text-sm leading-relaxed"
-                  style={{ color: "var(--color-ink-muted)" }}
-                >
-                  {detail}
-                </p>
-              </div>
-              {meta && (
-                <p
-                  className="tabular whitespace-nowrap text-sm"
-                  style={{ color: "var(--color-ink-secondary)" }}
-                >
-                  {meta}
-                </p>
-              )}
+        {CREDENTIALS.map(({ label, detail, meta }, i) => (
+          <div
+            key={label}
+            className={`panel panel-min a-cred${i + 1} justify-between gap-6 ${
+              i === 0 || i === 3 ? "panel-raised" : ""
+            }`}
+          >
+            <div>
+              <p
+                className="text-lg font-medium"
+                style={{ color: "var(--color-ink)", letterSpacing: "-0.01em" }}
+              >
+                {label}
+              </p>
+              <p
+                className="mt-2 text-sm leading-relaxed"
+                style={{ color: "var(--color-ink-muted)" }}
+              >
+                {detail}
+              </p>
             </div>
-          ))}
-        </div>
+            {meta && (
+              <p className="text-label" style={{ color: "var(--color-ink-secondary)" }}>
+                {meta}
+              </p>
+            )}
+          </div>
+        ))}
 
         {/* ── How I work ──────────────────────────────────────
             Folded into the grid rather than sitting in its own clamped band
@@ -184,25 +178,26 @@ const About = () => {
           <p className="micro sticky-label">How I work</p>
         </div>
 
-        <div className="panel a-work">
-          {positions.map(({ claim, body }, i) => (
-            <div
-              key={claim}
-              className="grid grid-cols-1 gap-2 py-6 md:grid-cols-[2.5rem_1.1fr_1fr] md:items-baseline md:gap-10"
-              style={{
-                borderTop: i === 0 ? "none" : "1px solid var(--color-border)",
-              }}
+        {positions.map(({ claim, body }, i) => (
+          <div
+            key={claim}
+            className={`panel panel-min a-pos${i + 1} gap-5 ${
+              i === 1 || i === 2 ? "panel-raised" : ""
+            }`}
+          >
+            <span className="tabular text-sm" style={{ color: "var(--color-field)" }}>
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            <p className="text-display text-xl md:text-2xl">{claim}</p>
+            <p
+              className="mt-auto max-w-[46ch] text-sm leading-relaxed"
+              style={{ color: "var(--color-ink-muted)" }}
             >
-              <span className="tabular text-sm" style={{ color: "var(--color-field)" }}>
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              <p className="text-display text-xl md:text-2xl">{claim}</p>
-              <p className="text-sm leading-relaxed" style={{ color: "var(--color-ink-muted)" }}>
-                {body}
-              </p>
-            </div>
-          ))}
-        </div>
+              {body}
+            </p>
+          </div>
+        ))}
+
       </div>
     </section>
   );
