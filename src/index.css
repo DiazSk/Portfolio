@@ -437,6 +437,107 @@ body::after {
   to { transform: translateY(calc(-1 * var(--hero-lift))); }
 }
 
+/* ─── Horizontal project track ───────────────────────────────
+   The track is a native horizontally-scrollable row by default, so on a
+   phone, without JS, or under reduced motion it is a swipeable strip that
+   needs nothing from GSAP. On a wide viewport with motion allowed, GSAP
+   pins the wrapper and drives the track's x instead, and .is-pinned turns
+   the native overflow off so the two cannot fight. */
+.h-wrap {
+  overflow: hidden;
+  padding-block: 6vh;
+}
+
+/* Panels are viewport-proportional so the pinned wrapper fills the screen
+   and the panel still clears the 64px header. */
+.h-panel { height: 78vh; }
+
+@media (max-width: 767px) {
+  .h-panel { height: auto; min-height: 32rem; }
+  .h-wrap { padding-block: 2rem; }
+}
+
+.h-track {
+  display: flex;
+  gap: 1px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  background: var(--color-border-strong);
+}
+
+.h-track::-webkit-scrollbar { display: none; }
+
+.h-wrap.is-pinned {
+  /* clip, not hidden: `hidden` still creates a scrollport, so focusing an
+     off-screen panel let the browser reveal it by setting the wrapper's
+     scrollLeft — on top of the track's transform, which left the track
+     doubly offset and the pin desynced. `clip` creates no scrollport, so
+     the browser has to scroll the page instead, which is what drives the
+     pin in the first place. */
+  overflow: clip;
+}
+
+.h-wrap.is-pinned .h-track {
+  overflow: clip;
+  scroll-snap-type: none;
+  width: max-content;
+}
+
+.h-panel {
+  position: relative;
+  flex: none;
+  scroll-snap-align: start;
+  width: min(88vw, 44rem);
+  background: var(--color-surface);
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+/* The swap. An expanding card measured 1192px against a 946px viewport, so
+   inside a pinned panel it could not be read at all. The panel keeps its
+   box and trades its contents instead: summary out, architecture in. */
+.h-face,
+.h-back {
+  display: flex;
+  flex-direction: column;
+  transition:
+    opacity 240ms cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 240ms;
+}
+
+.h-back {
+  position: absolute;
+  inset: clamp(1.5rem, 3vw, 2.5rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.h-panel.is-open .h-face { opacity: 0; visibility: hidden; }
+.h-panel.is-open .h-back { opacity: 1; visibility: visible; }
+
+@media (prefers-reduced-motion: reduce) {
+  .h-face,
+  .h-back { transition: none; }
+}
+
+/* Progress of the track, drawn as a rule like everything else here. */
+.h-progress {
+  height: 2px;
+  background: var(--color-border);
+}
+
+.h-progress > i {
+  display: block;
+  height: 100%;
+  width: 100%;
+  background: var(--color-field);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
 /* ─── Panel reveal ───────────────────────────────────────────
    Measured off aspensearch.com across its whole 11,180px page: 45 elements
    animate, and the repeated pattern is a scroll-linked rise and fade —
@@ -730,37 +831,8 @@ body::after {
   opacity: 0.45;
 }
 
-/* ─── Section divider ────────────────────────────────────────── */
-.section-rule {
-  @apply my-12;
-  border-color: var(--color-border);
-}
-
-/* ─── Project card disclosure ────────────────────────────────── */
-.layer2 {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 240ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.layer2.is-open {
-  grid-template-rows: 1fr;
-}
-
-.layer2-inner {
-  overflow: hidden;
-  min-height: 0;
-}
-
-/* ─── Project grid ───────────────────────────────────────────── */
-/* An open card is a detail view, so it takes the whole row. This is also
-   what gives the schematic the width to run left-to-right; at half width
-   its container is 518px and five stages crush together. */
 @media (min-width: 768px) {
-  .project-grid > article:has([aria-expanded="true"]) {
-    grid-column: span 2;
   }
-}
 
 /* ─── Architecture schematic ─────────────────────────────────── */
 /* The page's one authored motion moment: the pipeline draws itself, stage by
@@ -796,13 +868,13 @@ body::after {
 }
 
 /* The authored moment replays every time the card opens, never on page load. */
-.layer2.is-open .node {
+.h-panel.is-open .node {
   opacity: 0;
   animation: settle 400ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
   animation-delay: calc(var(--i) * 90ms);
 }
 
-.layer2.is-open .edge {
+.h-panel.is-open .edge {
   transform: scaleY(0);
   animation: extend 320ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
   animation-delay: calc(var(--i) * 90ms - 40ms);
@@ -852,7 +924,7 @@ body::after {
     margin: 1.375rem 0.5rem 0;
     transform-origin: left;
   }
-  .layer2.is-open .edge {
+  .h-panel.is-open .edge {
     transform: scaleX(0);
     animation-name: extend-x;
   }
@@ -868,8 +940,8 @@ body::after {
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .layer2.is-open .node,
-  .layer2.is-open .edge {
+  .h-panel.is-open .node,
+  .h-panel.is-open .edge {
     animation: none;
     opacity: 1;
     transform: none;

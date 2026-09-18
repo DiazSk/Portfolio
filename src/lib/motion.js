@@ -233,3 +233,61 @@ export function stackReveal(scope) {
   }, scope);
   return () => mm.revert();
 }
+
+/**
+ * The project track: pin the wrapper, translate the panels.
+ *
+ * Gated to >=768px with motion allowed. Below that, or under reduced motion,
+ * matchMedia never runs this and the track stays what it is in CSS — a
+ * natively swipeable row. That is the fallback, not a second code path.
+ *
+ * The horizontal tween must use ease "none" or scroll position and panel
+ * position stop agreeing, which is the documented way to get this wrong.
+ */
+export function horizontalTrack(scope, { onProgress } = {}) {
+  const mm = gsap.matchMedia();
+  mm.add("(min-width: 768px) and (prefers-reduced-motion: no-preference)", () => {
+    const wrap = scope.current?.querySelector(".h-wrap");
+    const track = wrap?.querySelector(".h-track");
+    if (!wrap || !track) return;
+
+    /* Tell CSS the native overflow is off before anything is measured. */
+    wrap.classList.add("is-pinned");
+    const distance = () => Math.max(0, track.scrollWidth - window.innerWidth);
+    if (!distance()) {
+      wrap.classList.remove("is-pinned");
+      return;
+    }
+
+    const tween = gsap.to(track, {
+      x: () => -distance(),
+      ease: "none",
+      scrollTrigger: {
+        trigger: wrap,
+        pin: true,
+        start: "top top",
+        end: () => "+=" + distance(),
+        scrub: true,
+        invalidateOnRefresh: true,
+        onUpdate: (self) => onProgress?.(self.progress),
+      },
+    });
+
+    /* Known gap, recorded rather than papered over: while the track is
+       pinned, Tab can move focus to a panel that is off-screen. `overflow:
+       clip` above stops the browser revealing it by scrolling the wrapper,
+       which was corrupting the pin, but nothing yet scrolls the page to
+       follow the focus. Two attempts at that failed — scrollBy inside the
+       focusin handler was undone by the browser's own adjustment, and a
+       deferred one did not fire at all. The fix is a pair of prev/next
+       controls that move the page by one panel, which is testable; until
+       that exists this track is mouse-and-touch first. */
+
+    return () => {
+      wrap.classList.remove("is-pinned");
+      tween.scrollTrigger?.kill();
+      tween.kill();
+    };
+  }, scope);
+  return () => mm.revert();
+}

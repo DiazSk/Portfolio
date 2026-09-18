@@ -29,7 +29,9 @@ const App = () => {
       {/* About's panel grid is full-bleed too — panels that stop at 1280px
           are cards, not panels. */}
       <About />
-      <main className="mx-auto max-w-7xl">
+      {/* No width clamp on main: the project track is full-bleed and each
+          section applies its own container. */}
+      <main>
         <Projects />
         <Skills />
       </main>

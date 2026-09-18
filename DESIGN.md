@@ -229,7 +229,7 @@ A single centred column at `max-w-7xl` with a three-step gutter (1.25rem / 2.5re
 
 The first viewport is one gesture and carries no column at all. The whole screen is the field region, and the name is set to the exact width of it — one line, `field-ink` on vermilion, `min(26.72cqw, 62vh)`. Everything that is not the name sits on an edge: a hairline above a two-column mono block holding role, location, availability, the email, the live-dashboard link and the degree. `Hero` therefore renders outside `<main>`, as `Contact` does, because the `max-w-7xl` clamp would cage the field.
 
-Below the field the ground picks the page back up: the one-sentence claim, then the measurement rows, then a thin marquee band. The two field regions are separated by ground rather than touching, which is the same fix the Stack/footer boundary needed. Projects sit two-up from 768px.
+Below the field the ground picks the page back up: the one-sentence claim, then the measurement rows, then a thin marquee band. The two field regions are separated by ground rather than touching, which is the same fix the Stack/footer boundary needed. Projects are no longer a grid at all — see Project Track.
 
 The composition comes from looking at the references rather than measuring them. Every award-winning first viewport that could be captured statically makes one edge-to-edge move: white-desert.com sets ANTARCTICA against the viewport edges, warmnfuzzy.tv floods the screen with a single saturated colour, aspensearch.com divides it into full-bleed colour panels, noho.ink splits it down the middle. None centres a padded column. An earlier version of this hero did, and that — not its information budget — was why it did not hold a reader. The metadata block sits *below* the name, which keeps the No Kicker Rule intact.
 
@@ -237,7 +237,7 @@ Scroll behaviour lives on `html` (not `body`, where the browser ignores it for d
 
 ### Named Rules
 
-**The Full-Row Disclosure Rule.** An expanded project card is a detail view, so it takes the whole row (`:has([aria-expanded="true"]) { grid-column: span 2 }` above 768px). This is load-bearing, not cosmetic: at half width the card's container is 518px and five schematic stages crush together.
+**The Two-Face Rule.** A project panel does not grow to show its detail; it trades faces. The old card expanded downward and measured **1192px against a 946px viewport**, which a pinned panel cannot show at all, so opening swaps the summary out and the architecture in inside one fixed box. The container stays 704px wide, which is what the schematic needs — the retired grid had to claim a whole row on open because at half width the container was 518px and five stages crushed together. The hidden face carries `inert`, so nothing behind is reachable by keyboard.
 
 **The Container-Query Rule.** The architecture schematic reflows on its own width, never the viewport's — `container-type: inline-size` plus `@container (min-width: 34rem)` flips it from vertical to horizontal. A 1400px viewport still only gives this card 518px, so a media query would be measuring the wrong box.
 
@@ -273,6 +273,17 @@ Recurring silhouettes: the full-bleed field band (edge to edge, overflow hidden,
 - **Style:** Tech pills are transparent with a strong hairline and secondary ink, Azeret Mono at 0.75rem, square. On the field they keep the transparent ground but take a solid `{colors.field-ink-secondary}` border and field-ink text.
 - **State:** A pill is metadata, never a control, but it does answer the pointer: 150ms to full ink on the dark ground, and on the field it inverts to a solid field-ink fill with field-coloured text — the documented 5.55:1 pair, reversed. The accent role chip (vermilion fill, field ink) exists but is used only where a filled emphasis is the point.
 - **Entrance:** In the Stack section the pills belong to that section's GSAP timeline (see Stack Timeline) rather than to a CSS reveal of their own; they rise 14px on a 0.07s stagger as their row resolves. A short-lived `.chip-in` CSS reveal was removed when the timeline took over — two systems animating the same pills is one too many.
+
+### Project Track
+The six systems run as one horizontal track. The heading block stays in normal vertical flow; below it the wrapper is pinned and GSAP translates the track's `x` by exactly `track.scrollWidth - innerWidth` (2936px at 1293px wide), with `ease: "none"` — any other ease and scroll position stops agreeing with panel position. Panels are `min(88vw, 44rem)` by `78vh`. A 2px rule under the heading reports track progress.
+
+Because the pin length equals the travel distance, the mapping is exactly 1:1 — one pixel of page scroll is one pixel of horizontal travel.
+
+The wrapper uses `overflow: clip`, not `hidden`, and the distinction is load-bearing: `hidden` still creates a scrollport, so focusing an off-screen panel let the browser reveal it by setting the wrapper's `scrollLeft` — 2646px of it, on top of the track's transform — which left the track doubly offset and the pin desynced for every later scroll. `clip` creates no scrollport, so that cannot happen.
+
+Below 768px, and under reduced motion, `matchMedia` never runs the pin and the track stays what CSS makes it: a natively swipeable row with `scroll-snap`. That is the fallback, not a second code path.
+
+**Known gap:** while pinned, Tab can focus a panel that is off-screen. Two attempts to scroll the page after focus failed — `scrollBy` inside the `focusin` handler was undone by the browser's own adjustment, and a frame-deferred one did not fire. The fix is a pair of prev/next controls that move the page by one panel width; until that exists the track is mouse-and-touch first and the limitation is recorded here rather than hidden.
 
 ### Cards / Containers
 - **Corner Style:** Square.
