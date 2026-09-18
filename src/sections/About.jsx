@@ -56,14 +56,14 @@ const About = () => {
 
   return (
     <section id="about">
-      <div className="panels about-grid">
+      <div className={`panels about-grid${hasPortrait ? "" : " no-portrait"}`}>
         {/* ── The section names itself in the margin ──────────── */}
         <div className="panel a-label justify-end">
           <p className="micro sticky-label">About</p>
         </div>
 
         {/* ── The statement ───────────────────────────────────── */}
-        <div className="panel a-statement justify-end">
+        <div className="panel panel-reveal a-statement justify-end">
           <h2 className="on-scroll text-heading max-w-[20ch] text-balance">
             I build the layer between raw data and the millisecond that
             matters.
@@ -71,7 +71,7 @@ const About = () => {
         </div>
 
         {/* ── Who, in two paragraphs ──────────────────────────── */}
-        <div className="panel a-bio panel-raised gap-5">
+        <div className="panel panel-reveal r1 a-bio panel-raised gap-5">
           <p
             className="max-w-2xl text-base leading-relaxed md:text-lg"
             style={{ color: "var(--color-ink-secondary)" }}
@@ -86,11 +86,12 @@ const About = () => {
           </p>
         </div>
 
-        {/* ── Portrait, or flat tone until the file lands ─────── */}
-        {/* Surface tone, not raised: against the raised bio panel next to it
-            the same tone merged into one block through the hairline. */}
-        <div className="panel a-portrait !p-0">
-          {hasPortrait && (
+        {/* ── Portrait ────────────────────────────────────────
+            The panel only exists if the file does. An empty panel here read
+            as a black rectangle rather than as air, so the grid drops the
+            column and the bio widens into it instead. */}
+        {hasPortrait && (
+          <div className="panel a-portrait !p-0">
             <img
               src={PORTRAIT}
               alt="Zaid Shaikh"
@@ -98,11 +99,11 @@ const About = () => {
               onError={() => setHasPortrait(false)}
               className="block h-full w-full object-cover"
             />
-          )}
-        </div>
+          </div>
+        )}
 
         {/* ── The ask, as a field region ──────────────────────── */}
-        <div className="panel a-avail panel-field gap-6">
+        <div className="panel panel-reveal r2 a-avail panel-field gap-6">
           <p className="micro">Availability</p>
 
           {/* text-balance because at this column width "Open to full-time
@@ -127,7 +128,7 @@ const About = () => {
 
         {/* ── Three readings ──────────────────────────────────── */}
         {STATS.map((s, i) => (
-          <div key={s.value} className={`panel a-stat${i + 1}`}>
+          <div key={s.value} className={`panel panel-reveal r${i} a-stat${i + 1}`}>
             {/* The documented Metric step and Label step, not a private pair:
                 vermilion carries every metric numeral in this system. The
                 caption is pinned to the panel's foot, which is the device. */}
@@ -144,9 +145,9 @@ const About = () => {
         {CREDENTIALS.map(({ label, detail, meta }, i) => (
           <div
             key={label}
-            className={`panel panel-min a-cred${i + 1} justify-between gap-6 ${
+            className={`panel panel-reveal panel-min a-cred${i + 1} justify-between gap-6 ${
               i === 0 || i === 3 ? "panel-raised" : ""
-            }`}
+            } r${i % 3}`}
           >
             <div>
               <p
@@ -181,9 +182,9 @@ const About = () => {
         {positions.map(({ claim, body }, i) => (
           <div
             key={claim}
-            className={`panel panel-min a-pos${i + 1} gap-5 ${
+            className={`panel panel-reveal panel-min a-pos${i + 1} gap-5 ${
               i === 1 || i === 2 ? "panel-raised" : ""
-            }`}
+            } r${(i + 1) % 3}`}
           >
             <span className="tabular text-sm" style={{ color: "var(--color-field)" }}>
               {String(i + 1).padStart(2, "0")}

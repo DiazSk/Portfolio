@@ -428,6 +428,42 @@ body::after {
   to { transform: translateY(calc(-1 * var(--hero-lift))); }
 }
 
+/* ─── Panel reveal ───────────────────────────────────────────
+   Measured off aspensearch.com across its whole 11,180px page: 45 elements
+   animate, and the repeated pattern is a scroll-linked rise and fade —
+   translateY(33px) with opacity 0 easing to none/1 as the element enters.
+   At any given scroll position neighbours sit at different progress
+   (0.138, 0.505, 0.746, 0.926 in one sample), and that stagger is what
+   reads as each block moving independently. --r varies the range per panel
+   so panels sharing a row do not fire in unison.
+
+   Same guards as every other reveal here: behind @supports so an engine
+   without view() timelines simply shows the panel, and behind
+   no-preference so reduced motion is the absence of the animation. */
+@keyframes panel-rise {
+  from { opacity: 0; transform: translateY(33px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    /* Literal ranges, not calc(): `entry 0% cover calc(20% + var(--r)*7%)`
+       computed to "entry cover 20%" — the start percentage was dropped and
+       the range was malformed, so the timeline never activated and the both
+       fill pinned every panel at the from keyframe. The whole section
+       rendered invisible. These three are the proven `.on-scroll` shape with
+       three different end points, which is what staggers them. */
+    .panel-reveal {
+      animation: panel-rise linear both;
+      animation-timeline: view();
+      animation-range: entry 5% cover 22%;
+    }
+
+    .panel-reveal.r1 { animation-range: entry 5% cover 34%; }
+    .panel-reveal.r2 { animation-range: entry 5% cover 46%; }
+  }
+}
+
 /* ─── Panel grid ─────────────────────────────────────────────
    A hard modular grid of full-bleed panels that butt edge to edge, the
    structure aspensearch.com is built on. The hairlines between panels are
@@ -519,6 +555,19 @@ body::after {
   .a-pos2   { grid-area: pos2; }
   .a-pos3   { grid-area: pos3; }
   .a-pos4   { grid-area: pos4; }
+
+  /* With no portrait file there is no panel, so the bio takes the column
+     rather than leaving a black rectangle that reads as a loading failure. */
+  .about-grid.no-portrait {
+    grid-template-areas:
+      "label     statement statement statement"
+      "bio       bio       bio       avail"
+      "stat1     stat2     stat3     avail"
+      "credsl    cred1     cred1     cred2"
+      "credsl    cred3     cred4     cred4"
+      "workl     pos1      pos2      pos2"
+      "workl     pos3      pos3      pos4";
+  }
 
   /* A floor so a short record does not make a squat panel next to a tall
      one; the row still grows to whatever the tallest panel in it needs. */

@@ -301,9 +301,16 @@ The spans alternate deliberately so no two rows read as the same module: the rec
 
 The whole section is one continuous grid; the positions band used to sit below it in a separate `max-w-7xl` container, which broke the run of panels.
 
-Each panel carries exactly one thing, is named by a micro-label rather than a heading, and at least one is left as flat tone for air — the portrait panel holds that role until the file exists, and collapses to nothing on mobile. The hairlines between panels are the grid's own 1px gaps showing the container through, so there are no doubled rules where panels meet. `About` renders outside `<main>` for the same reason Hero and Contact do: panels that stop at 1280px are cards, not panels.
+Each panel carries exactly one thing, is named by a micro-label rather than a heading, and the portrait panel exists only when `public/assets/portrait.jpg` does. An empty panel there read as a black rectangle rather than as air, so `.about-grid.no-portrait` drops the column and the bio widens into it instead. The hairlines between panels are the grid's own 1px gaps showing the container through, so there are no doubled rules where panels meet. `About` renders outside `<main>` for the same reason Hero and Contact do: panels that stop at 1280px are cards, not panels.
 
 The structure is Aspen's; the palette and the type are this system's — they set a light neutral grotesk on white and mint, this sets heavy condensed Bricolage on near-black and vermilion. Their panels also carry halftone photography, which this site has no assets for.
+
+### Panel Reveal
+The second half of how the grid moves, and the part measured across Aspen's whole 11,180px page rather than one section: **45 elements animate**, and the repeated pattern is a scroll-linked rise and fade — `translateY(33px)` with `opacity: 0` easing to none and 1 as the element enters. At any one scroll position neighbours sit at different progress; one sample read 0.138, 0.505, 0.746 and 0.926 simultaneously. That stagger is what reads as each block moving independently, and it is the thing a single shared reveal does not give you.
+
+Here it is three literal ranges — `entry 5% cover 22% / 34% / 46%` — cycled across the panels, so panels sharing a row finish at different times. The ranges are literal on purpose: `entry 0% cover calc(20% + var(--r) * 7%)` computed to `entry cover 20%`, a malformed range that never activated its timeline, and with `both` fill that pinned every panel at the from keyframe and rendered the whole section invisible. Behind `@supports (animation-timeline: view())` and `prefers-reduced-motion: no-preference`, so an engine without view timelines shows the panels outright and reduced motion is the absence of the animation.
+
+Label panels are deliberately excluded: they hold the sticky labels, and the two devices should not compete in the same panel.
 
 ### Sticky Label
 How the grid moves on scroll, and worth stating precisely because the obvious guess is wrong. Aspen transforms nothing: sampling their page across four scroll positions found one rotating graphic and **twelve `position: sticky` elements pinned at `top: 60px`**. A label column pins under the header while the content column beside it scrolls past, and that differential is the entire effect. Here the About, Credentials and How-I-work labels pin at `top: 5.5rem`, clearing the 64px header.
