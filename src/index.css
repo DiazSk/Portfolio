@@ -487,15 +487,6 @@ body::after {
   width: min(86vw, 40rem);
 }
 
-/* A wider panel for a band that holds fewer of them. Two at 640px overhung
-   by only 58px, under the 160px pin threshold, so that band never scrolled;
-   at 52rem the pair overhangs by ~440px and travels properly. Per-band
-   widths are faithful to the reference anyway — rauno.me's own items run
-   655, 916, 1414 and 2356px wide. */
-.h-wrap-wide .h-panel {
-  width: min(90vw, 52rem);
-}
-
 @media (max-width: 767px) {
   .h-panel { height: auto; min-height: 30rem; }
 }

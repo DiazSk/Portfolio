@@ -313,13 +313,13 @@ The close animates on entry rather than arriving flat. The "Open to the right op
 Both masks clip with `overflow: clip` and the footer itself carries no overflow at all — see the Clip-Not-Hidden Rule, which this section is the reason for.
 
 ### Project Track
-**One band per category**, not one queue of six. Data Engineering finishes before Systems Engineering starts, each band owning its own ScrollTrigger and its own progress rule.
+**One band, all six.** The section ran as two bands per category for a while; it is a single queue again, in resumeData's own order, which already leads with Data Engineering — the tie-break PRODUCT.md asks for. The two group names stay legible as a legend beside the controls, and each panel repeats its own category on its micro-label, so the grouping survives without splitting the track.
 
 The proportions come from rauno.me, measured rather than eyeballed: his horizontal strips are **655px tall inside a 1200px container with `overflow-x: clip`**, items of non-uniform width (655 square, 916, 1414, 2356), and the next card peeking past the edge — the page keeps its rhythm above and below rather than being taken over. Panels here are `min(86vw, 40rem)` by `min(620px, 74vh)` — 640×620 at 1293px wide — and the band pins at `center center` so it sits mid-viewport while it travels, rather than at the top with the screen half empty.
 
 The track is padded left by `max(0px, (100vw - 80rem) / 2) + c-space` so the first card's edge lines up with the heading column and the last runs off the right. Putting that padding on the track and not the wrapper keeps the travel distance as plain `track.scrollWidth - innerWidth`. GSAP translates `x` by exactly that, with `ease: "none"` — any other ease and scroll position stops agreeing with panel position.
 
-**A band only pins if it overhangs by more than 160px**, so a track with a trivial overhang stays a native row rather than holding the page for a stutter. Systems Engineering holds two projects, so its panels are wider — `min(90vw, 52rem)`, 832px against the other band's 640px — which takes its overhang from 58px to 442px and lets it travel. Per-band widths are faithful to the reference rather than a workaround: rauno.me's own items run 655, 916, 1414 and 2356px wide.
+**A band only pins if it overhangs by more than 160px**, so a track with a trivial overhang stays a native row rather than holding the page for a stutter. That guard existed because a two-project band overhung by only 58px; merged, all six panels sit at `min(86vw, 40rem)` and the track overhangs by 2576px, so the guard never fires — it stays as a floor for any future band.
 
 The wrapper uses `overflow: clip`, not `hidden`, and the distinction is load-bearing: `hidden` still creates a scrollport, so focusing an off-screen panel let the browser reveal it by setting the wrapper's `scrollLeft` — 2646px of it, on top of the track's transform — which left the track doubly offset and the pin desynced for every later scroll. `clip` creates no scrollport, so that cannot happen.
 
