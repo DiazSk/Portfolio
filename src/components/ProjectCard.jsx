@@ -1,6 +1,5 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
-import RoleTag from "./RoleTag";
 import DecisionLog from "./DecisionLog";
 import ArchitectureDiagram from "./ArchitectureDiagram";
 
@@ -10,7 +9,7 @@ const VISIBLE_TECH_COUNT = 4;
  * Dual-layer project card.
  *
  * Layer 1 (always visible):
- *   RoleTag · Project name · Outcome statement · Primary metric · Top tech pills · Expand toggle
+ *   Project name · Primary metric · Outcome statement · Top tech pills · Expand toggle
  *
  * Layer 2 (expanded on click):
  *   Decision log (if present) · Full highlights · All tech pills · GitHub link
@@ -20,7 +19,6 @@ const ProjectCard = ({ project }) => {
 
   const {
     name,
-    category,
     outcomeStatement,
     primaryMetric,
     technologies,
@@ -42,9 +40,8 @@ const ProjectCard = ({ project }) => {
         <div className="flex w-full flex-col items-start gap-4 overflow-hidden">
           {/* Title group - centered on mobile, left on md+ */}
           <div className="flex flex-col items-start gap-2">
-            <RoleTag category={category} />
             <h4
-              className="text-display text-2xl md:text-[1.75rem]"
+              className="text-display text-2xl uppercase md:text-3xl"
               style={{ color: "var(--color-ink)" }}
             >
               {name}
@@ -54,8 +51,8 @@ const ProjectCard = ({ project }) => {
           {/* Primary metric - centered on mobile, left on md+ */}
           <div className="flex flex-col items-start">
             <p
-              className="tabular text-2xl font-semibold leading-none"
-              style={{ color: "var(--color-ink)" }}
+              className="metric-value"
+              style={{ fontSize: "clamp(2.25rem, 3.4vw, 3rem)" }}
             >
               {primaryMetric.value}
             </p>
@@ -83,7 +80,7 @@ const ProjectCard = ({ project }) => {
 
           <button
             onClick={() => setIsExpanded(!isExpanded)}
-            className="text-mono -my-2 flex items-center gap-1 py-2 text-xs uppercase transition-colors"
+            className="-my-2 flex items-center gap-1 py-2 text-xs font-semibold uppercase tracking-wide transition-colors"
             style={{ color: "var(--color-ink-muted)" }}
             aria-expanded={isExpanded}
             aria-label={isExpanded ? "Collapse details" : "View architecture & decision log"}
@@ -193,7 +190,6 @@ const ProjectCard = ({ project }) => {
 ProjectCard.propTypes = {
   project: PropTypes.shape({
     name:            PropTypes.string.isRequired,
-    category:        PropTypes.string.isRequired,
     outcomeStatement: PropTypes.string.isRequired,
     primaryMetric:   PropTypes.shape({
       value: PropTypes.string.isRequired,

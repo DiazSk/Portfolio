@@ -61,14 +61,12 @@ const About = () => {
             {/* The section lands on conviction before it lists evidence.
                 Set against the accent rule so it reads as a statement, not
                 another paragraph. */}
+            {/* Display scale, but lowercase: the h2 above is already caps, and
+                two stacked caps blocks read as one long shout. Contrast of
+                voice, not more volume. */}
             <blockquote
-              className="mt-10 max-w-[34ch] border-l-2 pl-5 text-xl font-medium md:text-2xl"
-              style={{
-                borderColor: "var(--color-accent)",
-                color: "var(--color-ink)",
-                letterSpacing: "-0.015em",
-                lineHeight: 1.3,
-              }}
+              className="text-display mt-12 max-w-[26ch] text-3xl md:text-[2.75rem]"
+              style={{ color: "var(--color-ink)", lineHeight: 0.98 }}
             >
               {personal.credo}
             </blockquote>

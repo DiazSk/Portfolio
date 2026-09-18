@@ -157,23 +157,15 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* ── The stack, running ──────────────────────────────── */}
-      <div
-        className="mt-20 overflow-hidden border-y py-4"
-        style={{ borderColor: "var(--color-border)" }}
-        aria-hidden="true"
-      >
-        <div className="marquee-track flex w-max gap-10">
+      {/* ── The stack, running ──────────────────────────────────
+          A field band at display scale closes the first viewport, so the
+          field is a region here and not a colour on some numerals. */}
+      <div className="field-band mt-20 py-5" aria-hidden="true">
+        <div className="marquee-track flex w-max items-center gap-8">
           {[...STACK, ...STACK].map((item, i) => (
-            <span
-              key={`${item}-${i}`}
-              className="text-mono whitespace-nowrap text-sm uppercase"
-              style={{
-                color: i % 4 === 0 ? "var(--color-field)" : "var(--color-ink-muted)",
-                letterSpacing: "0.08em",
-              }}
-            >
-              {item}
+            <span key={`${item}-${i}`} className="flex items-center gap-8">
+              <span className="marquee-item">{item}</span>
+              <span className="marquee-dot marquee-item">/</span>
             </span>
           ))}
         </div>

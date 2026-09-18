@@ -4,7 +4,12 @@ import ProjectCard from "../components/ProjectCard";
 
 const GroupLabel = ({ children, count }) => (
   <div className="mb-6 flex items-baseline gap-3">
-    <h3 className="text-label">{children}</h3>
+    <h3
+      className="text-xs font-bold uppercase tracking-[0.18em]"
+      style={{ color: "var(--color-ink-muted)" }}
+    >
+      {children}
+    </h3>
     <span
       className="tabular text-xs"
       style={{ color: "var(--color-field)" }}

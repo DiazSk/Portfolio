@@ -61,14 +61,13 @@ const Skills = () => {
   return (
     <section
       id="skills"
-      className="c-space section-spacing border-t"
-      style={{ borderColor: "var(--color-border)" }}
+      className="field-surface c-space section-spacing"
     >
       <div className="mx-auto w-full max-w-7xl">
         <h2 className="on-scroll text-heading mb-4">Stack</h2>
         <p
           className="mb-12 max-w-2xl text-base leading-relaxed"
-          style={{ color: "var(--color-ink-secondary)" }}
+          style={{ color: "#2E1409" }}
         >
           Highlighted tools are the ones that actually carried the six systems
           above; the rest of the stack sits alongside them.
@@ -80,12 +79,12 @@ const Skills = () => {
           {SKILLS.map((group) => (
             <div
               key={group.category}
-              className="grid grid-cols-1 gap-3 border-t py-6 md:grid-cols-[220px_1fr] md:gap-8"
-              style={{ borderColor: "var(--color-border)" }}
+              className="grid grid-cols-1 gap-3 border-t py-6 md:grid-cols-[260px_1fr] md:gap-8"
+              style={{ borderColor: "rgba(10,9,8,0.28)" }}
             >
               <h3
-                className="text-display text-xl md:text-2xl"
-                style={{ lineHeight: 1.1 }}
+                className="text-display text-2xl uppercase md:text-4xl"
+                style={{ color: "var(--color-field-ink)", lineHeight: 0.95 }}
               >
                 {group.category}
               </h3>
