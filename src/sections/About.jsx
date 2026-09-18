@@ -3,7 +3,8 @@ import { resumeData } from "../constants/resumeData";
 import CopyEmailButton from "../components/CopyEmailButton";
 
 /* Drop a file at public/assets/portrait.jpg and it appears. Until then the
-   frame removes itself rather than showing a broken image or a fake avatar. */
+   panel stays as flat tone, which in a grid like this reads as air rather
+   than as a hole. */
 const PORTRAIT = "/assets/portrait.jpg";
 
 const CREDENTIALS = [
@@ -32,166 +33,166 @@ const CREDENTIALS = [
 
 const ROLES = ["Data Engineer", "Analytics Engineer", "Backend SWE / SDE"];
 
+/* Three readings, each already stated elsewhere on the site. The numeral is
+   huge and its caption is tiny and pinned to the panel's foot — the scale
+   gap inside one panel is the device. */
+const STATS = [
+  { value: "4.0", note: "GPA · MS Computer Science, Northeastern" },
+  { value: "36,800+", note: "Records in the Laundering Effect study" },
+  { value: "2 of 5", note: "Hypotheses reported refuted, not buried" },
+];
+
+/*
+ * Built on aspensearch.com's structure: a hard modular grid of full-bleed
+ * panels that butt edge to edge, each carrying exactly one thing, with tiny
+ * mono labels naming them and at least one panel left as flat tone for air.
+ * The structure is theirs; the palette and the type are this system's — they
+ * set a light neutral grotesk on white and mint, this sets heavy condensed
+ * Bricolage on near-black and vermilion.
+ */
 const About = () => {
   const { personal, positions } = resumeData;
   const [hasPortrait, setHasPortrait] = useState(true);
 
   return (
-    <section
-      id="about"
-      className="c-space section-spacing border-t"
-      style={{ borderColor: "var(--color-border)" }}
-    >
-      <div className="mx-auto w-full max-w-7xl">
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-[3fr_2fr] md:gap-16">
-          {/* ── Left ────────────────────────────────────────── */}
-          <div>
-            <h2 className="on-scroll text-heading mb-8 max-w-[18ch] text-balance">
-              I build the layer between raw data and the millisecond that
-              matters.
-            </h2>
+    <section id="about">
+      <div className="panels about-grid">
+        {/* ── The section names itself in the margin ──────────── */}
+        <div className="panel a-label justify-end">
+          <p className="micro">About</p>
+        </div>
 
-            {/* Two paragraphs, each with one job. Neither restates the
-                hero's metrics — the first viewport already owns those. */}
-            <p
-              className="max-w-2xl text-base leading-relaxed"
-              style={{ color: "var(--color-ink-secondary)" }}
-            >
-              {personal.bio}
-            </p>
-            <p
-              className="mt-5 max-w-2xl text-base leading-relaxed"
-              style={{ color: "var(--color-ink-secondary)" }}
-            >
-              {personal.focus}
-            </p>
+        {/* ── The statement ───────────────────────────────────── */}
+        <div className="panel a-statement justify-end">
+          <h2 className="on-scroll text-heading max-w-[20ch] text-balance">
+            I build the layer between raw data and the millisecond that
+            matters.
+          </h2>
+        </div>
 
-            {/* Credentials as a ruled record, not a list of equal rows */}
-            <div className="mt-14 border-t" style={{ borderColor: "var(--color-border)" }}>
-              {CREDENTIALS.map(({ label, detail, meta }) => (
-                <div
-                  key={label}
-                  className="grid grid-cols-1 gap-1 border-b py-5 sm:grid-cols-[1fr_auto] sm:items-baseline sm:gap-6"
-                  style={{ borderColor: "var(--color-border)" }}
-                >
-                  <div>
-                    <p
-                      className="text-lg font-medium"
-                      style={{ color: "var(--color-ink)", letterSpacing: "-0.01em" }}
-                    >
-                      {label}
-                    </p>
-                    <p
-                      className="mt-1 text-sm leading-relaxed"
-                      style={{ color: "var(--color-ink-muted)" }}
-                    >
-                      {detail}
-                    </p>
-                  </div>
-                  {meta && (
-                    <p
-                      className="tabular whitespace-nowrap text-sm"
-                      style={{ color: "var(--color-ink-secondary)" }}
-                    >
-                      {meta}
-                    </p>
-                  )}
-                </div>
-              ))}
-            </div>
+        {/* ── Who, in two paragraphs ──────────────────────────── */}
+        <div className="panel a-bio panel-raised gap-5">
+          <p
+            className="max-w-2xl text-base leading-relaxed md:text-lg"
+            style={{ color: "var(--color-ink-secondary)" }}
+          >
+            {personal.bio}
+          </p>
+          <p
+            className="max-w-2xl text-base leading-relaxed md:text-lg"
+            style={{ color: "var(--color-ink-secondary)" }}
+          >
+            {personal.focus}
+          </p>
+        </div>
+
+        {/* ── Portrait, or flat tone until the file lands ─────── */}
+        {/* Surface tone, not raised: against the raised bio panel next to it
+            the same tone merged into one block through the hairline. */}
+        <div className="panel a-portrait !p-0">
+          {hasPortrait && (
+            <img
+              src={PORTRAIT}
+              alt="Zaid Shaikh"
+              loading="lazy"
+              onError={() => setHasPortrait(false)}
+              className="block h-full w-full object-cover"
+            />
+          )}
+        </div>
+
+        {/* ── The ask, as a field region ──────────────────────── */}
+        <div className="panel a-avail panel-field gap-6">
+          <p className="micro">Availability</p>
+
+          {/* text-balance because at this column width "Open to full-time
+              roles" broke as "Open to full- / time roles". */}
+          <p
+            className="text-display text-2xl text-balance md:text-3xl"
+            style={{ color: "var(--color-field-ink)" }}
+          >
+            Open to full-time roles
+          </p>
+
+          <div className="text-sm leading-relaxed" style={{ color: "#2E1409" }}>
+            <p>Starting December 2026, on graduation</p>
+            <p>Seattle, WA · open to remote</p>
+            <p className="mt-4">{ROLES.join(" · ")}</p>
           </div>
 
-          {/* ── Right ───────────────────────────────────────── */}
-          <div className="flex flex-col gap-6">
-            {hasPortrait && (
-              <div
-                className="overflow-hidden border"
-                style={{
-                  borderColor: "var(--color-border-strong)",
-                  background: "var(--color-surface-raised)",
-                }}
-              >
-                <img
-                  src={PORTRAIT}
-                  alt="Zaid Shaikh"
-                  loading="lazy"
-                  onError={() => setHasPortrait(false)}
-                  className="block aspect-[4/5] w-full object-cover"
-                />
-              </div>
-            )}
-
-            <div
-              className="border p-6"
-              style={{
-                background: "var(--color-surface-raised)",
-                borderColor: "var(--color-border-strong)",
-              }}
-            >
-              <div className="mb-4 flex items-center gap-2">
-                <span
-                  className="h-1.5 w-1.5 rounded-full"
-                  style={{ background: "var(--color-accent)" }}
-                  aria-hidden="true"
-                />
-                <p
-                  className="text-lg font-semibold"
-                  style={{ color: "var(--color-ink)" }}
-                >
-                  Open to full-time roles
-                </p>
-              </div>
-
-              <div
-                className="mb-5 flex flex-col gap-1.5 text-sm"
-                style={{ color: "var(--color-ink-secondary)" }}
-              >
-                <span>Starting December 2026, on graduation</span>
-                <span>Seattle, WA · open to remote</span>
-              </div>
-
-              <p
-                className="mb-6 text-sm leading-relaxed"
-                style={{ color: "var(--color-ink-muted)" }}
-              >
-                {ROLES.join(" · ")}
-              </p>
-
-              <CopyEmailButton />
-            </div>
+          <div className="mt-auto pt-8">
+            <CopyEmailButton />
           </div>
         </div>
 
-        {/* ── How I work: the section's point of view, full width ──
-            Each stance traces to real work rather than standing as a slogan. */}
-        <div
-          className="mt-20 border-t pt-10"
-          style={{ borderColor: "var(--color-border-strong)" }}
-        >
-          <h3 className="text-label mb-8">How I work</h3>
+        {/* ── Three readings ──────────────────────────────────── */}
+        {STATS.map((s, i) => (
+          <div key={s.value} className={`panel a-stat${i + 1}`}>
+            <p className="stat-value">{s.value}</p>
+            <p className="stat-note">{s.note}</p>
+          </div>
+        ))}
 
-          {positions.map(({ claim, body }, i) => (
+        {/* ── The record ──────────────────────────────────────── */}
+        <div className="panel a-creds panel-raised">
+          <p className="micro mb-8">Credentials</p>
+          {CREDENTIALS.map(({ label, detail, meta }, i) => (
             <div
-              key={claim}
-              className="grid grid-cols-1 gap-2 border-b py-6 md:grid-cols-[2.5rem_1.1fr_1fr] md:items-baseline md:gap-10"
-              style={{ borderColor: "var(--color-border)" }}
+              key={label}
+              className="grid grid-cols-1 gap-1 py-5 sm:grid-cols-[1fr_auto] sm:items-baseline sm:gap-6"
+              style={{
+                borderTop: i === 0 ? "none" : "1px solid var(--color-border)",
+              }}
             >
-              <span
-                className="tabular text-sm"
-                style={{ color: "var(--color-field)" }}
-              >
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              <p className="text-display text-xl md:text-2xl">{claim}</p>
-              <p
-                className="text-sm leading-relaxed"
-                style={{ color: "var(--color-ink-muted)" }}
-              >
-                {body}
-              </p>
+              <div>
+                <p
+                  className="text-lg font-medium"
+                  style={{ color: "var(--color-ink)", letterSpacing: "-0.01em" }}
+                >
+                  {label}
+                </p>
+                <p
+                  className="mt-1 text-sm leading-relaxed"
+                  style={{ color: "var(--color-ink-muted)" }}
+                >
+                  {detail}
+                </p>
+              </div>
+              {meta && (
+                <p
+                  className="tabular whitespace-nowrap text-sm"
+                  style={{ color: "var(--color-ink-secondary)" }}
+                >
+                  {meta}
+                </p>
+              )}
             </div>
           ))}
         </div>
+      </div>
+
+      {/* ── How I work: the section's point of view ─────────────
+          Each stance traces to real work rather than standing as a slogan.
+          Kept as full-width ruled rows: Aspen indexes its content panels the
+          same way, and this already reads as that. */}
+      <div className="c-space mx-auto w-full max-w-7xl py-20 md:py-28">
+        <p className="micro mb-10">How I work</p>
+
+        {positions.map(({ claim, body }, i) => (
+          <div
+            key={claim}
+            className="grid grid-cols-1 gap-2 border-b py-6 md:grid-cols-[2.5rem_1.1fr_1fr] md:items-baseline md:gap-10"
+            style={{ borderColor: "var(--color-border)" }}
+          >
+            <span className="tabular text-sm" style={{ color: "var(--color-field)" }}>
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            <p className="text-display text-xl md:text-2xl">{claim}</p>
+            <p className="text-sm leading-relaxed" style={{ color: "var(--color-ink-muted)" }}>
+              {body}
+            </p>
+          </div>
+        ))}
       </div>
     </section>
   );

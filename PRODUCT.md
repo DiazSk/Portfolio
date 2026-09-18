@@ -86,6 +86,8 @@ The first viewport is now the field itself — the name at full screen width, wi
 
 ## Product Principles
 
+About's three stat panels restate facts already stated elsewhere on the site — the 4.0 GPA from the credentials record, the 36,800+ records from the research entry, and the 2-of-5 refuted hypotheses from position 04. They are a second rendering of the same facts, so they must not drift from their sources.
+
 **These are rendered on the site.** The About section's "How I work" band shows four of these as first-person stances, sourced from `resumeData.positions`. The two must not drift: if a principle changes here, change it there, and every stance must stay traceable to real work rather than becoming a slogan.
 
 1. **Decisions over tools.** Any surface that lists technologies without the reasoning behind one of them is doing the same thing every other candidate's site does. Lead with the choice and the trade-off; the stack list is a footnote.

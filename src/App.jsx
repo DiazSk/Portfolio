@@ -26,8 +26,10 @@ const App = () => {
       {/* Hero sits outside <main> for the same reason Contact does: its field
           region is full-bleed and the max-w-7xl clamp would cage it. */}
       <Hero />
+      {/* About's panel grid is full-bleed too — panels that stop at 1280px
+          are cards, not panels. */}
+      <About />
       <main className="mx-auto max-w-7xl">
-        <About />
         <Projects />
         <Skills />
       </main>

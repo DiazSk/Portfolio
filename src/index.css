@@ -428,6 +428,104 @@ body::after {
   to { transform: translateY(calc(-1 * var(--hero-lift))); }
 }
 
+/* ─── Panel grid ─────────────────────────────────────────────
+   A hard modular grid of full-bleed panels that butt edge to edge, the
+   structure aspensearch.com is built on. The hairlines between panels are
+   the grid's own 1px gaps showing the container through — no border maths,
+   and no doubled rules where panels meet. */
+.panels {
+  display: grid;
+  gap: 1px;
+  background: var(--color-border-strong);
+  border-block: 1px solid var(--color-border-strong);
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-surface);
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.panel-raised { background: var(--color-surface-raised); }
+.panel-field  { background: var(--color-field); color: var(--color-field-ink); }
+
+/* On a field panel the primary button would be vermilion on vermilion. */
+.panel-field .btn-primary {
+  background: var(--color-field-ink);
+  color: var(--color-field);
+}
+.panel-field .btn-primary:hover {
+  background: #2E1409;
+}
+
+/* The micro-label: a small filled square and letterspaced mono, the marker
+   Aspen uses to name a panel without giving it a heading. */
+.micro {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+}
+
+.micro::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  flex: none;
+  background: var(--color-field);
+}
+
+.panel-field .micro { color: #2E1409; }
+.panel-field .micro::before { background: var(--color-field-ink); }
+
+/* Stat panel: the numeral at the top, its caption pinned to the panel's
+   bottom edge. The scale gap between the two is the whole effect. */
+.stat-value {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-variation-settings: "wdth" 78;
+  font-size: clamp(2.75rem, 5.5vw, 4.5rem);
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  color: var(--color-ink);
+}
+
+.stat-note {
+  margin-top: auto;
+  padding-top: 2.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+}
+
+@media (min-width: 768px) {
+  .about-grid {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas:
+      "label     statement statement statement"
+      "bio       bio       portrait  avail"
+      "stat1     stat2     stat3     avail"
+      "creds     creds     creds     creds";
+  }
+  .a-label     { grid-area: label; }
+  .a-statement { grid-area: statement; }
+  .a-bio       { grid-area: bio; }
+  .a-portrait  { grid-area: portrait; }
+  .a-avail     { grid-area: avail; }
+  .a-stat1     { grid-area: stat1; }
+  .a-stat2     { grid-area: stat2; }
+  .a-stat3     { grid-area: stat3; }
+  .a-creds     { grid-area: creds; }
+}
+
 /* ─── Measurement rows ───────────────────────────────────────
    A number on its own is a claim; a number against the thing it beat is
    evidence. Each row carries the measurement and how it was taken. The
