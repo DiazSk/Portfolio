@@ -43,7 +43,7 @@ The differentiating claim is **decision quality, not tool inventory**. Hundreds 
 
 **Also retired (prior redesign):** the dark space theme, 3D astronaut, orbiting tech cards, and animated flip words. These are anti-references, not dormant features.
 
-**Architecture schematics:** each project carries an `architecture` array in `src/constants/resumeData.js`, rendered by `src/components/ArchitectureDiagram.jsx` inside the expanded project card. Every stage was derived from that project's own description and highlights. **These are pending Zaid's verification** — he agreed to check each before it ships. They are the site's only architecture visuals now that the unverified PNGs are gone.
+**Architecture schematics:** each project carries an `architecture` array in `src/constants/resumeData.js`, rendered by `src/components/ArchitectureDiagram.jsx` inside the expanded project card. Every stage was derived from that project's own description and highlights. **Five of the six are pending Zaid's verification** — he agreed to check each before it ships. The Medicare Gap Analyzer's stages are derived from his own verified `resume-bullets.md` and need no further check. They are the site's only architecture visuals now that the unverified PNGs are gone.
 
 **No social preview image.** `index.html` declares no `og:image` or `twitter:image`, so shared links render without a thumbnail. Open decision, not an oversight to fix silently.
 
@@ -60,16 +60,19 @@ The differentiating claim is **decision quality, not tool inventory**. Hundreds 
 
 **Confirmed and usable:**
 
-- **Public GitHub repositories** for all six featured projects — browsable source and READMEs. This is the primary and currently the *only* confirmed proof artifact.
-- Measured metrics cited in résumé data: 21,091 msg/s sustained (Chatflow), sub-100ms end-to-end latency with exactly-once semantics (Crypto Analyzer), 9.6M records / 80GB (Healthcare Lakehouse on Azure), 2.8M records (NYC Taxi), 146 dbt tests, 4.0 GPA, COLM 2026 paper under review.
+- **A live, interactive dashboard** for the Medicare Reimbursement Gap Analyzer: <https://diazsk.github.io/healthcare-lakehouse-azure/>. DuckDB-WASM over tiered Parquet, so a reader queries all 9.66M rows in their own browser — no backend, no sign-in, nothing that can expire. This is the strongest proof artifact on the site and the only one a reader can operate. Linked from the hero and from the project card.
+- **Public GitHub repositories** for all six featured projects — browsable source and READMEs.
+- Measured metrics cited in résumé data: 21,091 msg/s sustained (Chatflow), sub-100ms end-to-end latency with exactly-once semantics (Crypto Analyzer), 9.66M CMS rows (Medicare Gap Analyzer), 2.8M records (NYC Taxi), 146 dbt tests, 4.0 GPA, COLM 2026 paper under review.
 - Credentials: MS CS Northeastern (Dec 2026), Graduate TA for Machine Learning, Oracle Cloud Infrastructure Data Science Professional certification.
 
 **Not confirmed — do not treat as evidence:**
 
 - The architecture PNGs formerly in `public/assets/projects/` were never confirmed as accurate and have been deleted (2026-09-16) along with the rest of the retired space-theme assets — 28MB, of which only the favicon was referenced. They remain in git history if ever needed. The live architecture schematics are now rendered from data, not images.
-- **No live dashboards, screen recordings, or GIFs exist** of these systems running. Do not design a surface that depends on one, and never imply a live feed.
+- **No screen recordings or GIFs exist**, and no system other than the Medicare Gap Analyzer has a live surface. Do not imply a live feed for the other five.
 
 **Must never be fabricated:** testimonials, references, employer names, customer logos, press mentions, user counts, revenue or cost-savings figures beyond those already in resumeData, or any claim of professional industry employment. All experience to date is academic, research, or self-directed project work.
+
+**Retracted 2026-09-17**, on Zaid's instruction, after `azure-healthcare-platform/writing/resume-bullets.md` established verified figures for that project: the "80GB raw volume" and "35% Databricks compute cost reduction" claims, and the claim that a Microsoft Fabric + Power BI presentation layer was **built**. No `.pbix` was produced — Power BI Desktop is Windows-only and Zaid works on a Mac; the model was fully specified and a static dashboard shipped as the serving layer instead. Do not reinstate any of the three.
 
 **Flagged for review:** the "96.3% dbt test pass rate" still present in resumeData was previously judged a liability (3.7% failing). Confirm with Zaid before it appears on any surface; the safer form is "146 dbt tests across the full pipeline."
 

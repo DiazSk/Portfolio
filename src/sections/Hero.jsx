@@ -16,9 +16,9 @@ const METRICS = [
     context: "Crypto Analyzer · Kafka + Flink · exactly-once",
   },
   {
-    value: "9.6M",
-    label: "records processed",
-    context: "Healthcare Lakehouse · Azure Medallion",
+    value: "9.66M",
+    label: "rows, queryable live",
+    context: "Medicare Gap Analyzer · DuckDB-WASM, no backend",
   },
 ];
 
@@ -51,6 +51,22 @@ const Hero = () => {
           I build the infrastructure layer: streaming pipelines, distributed
           warehouses, and high-throughput backend systems that process millions
           of records reliably.
+        </p>
+
+        {/* The one artifact a reader can open and use right now. */}
+        <p className="mt-5 text-base">
+          <a
+            href="https://diazsk.github.io/healthcare-lakehouse-azure/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="link-void"
+            style={{ color: "var(--color-accent)" }}
+          >
+            Query 9.66M Medicare rows in your browser
+          </a>
+          <span style={{ color: "var(--color-ink-muted)" }}>
+            {" "}— no sign-in, no backend
+          </span>
         </p>
 
         {/* Availability + location, the two facts a recruiter checks next */}

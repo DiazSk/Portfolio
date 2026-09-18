@@ -27,6 +27,7 @@ const ProjectCard = ({ project }) => {
     highlights,
     decisionLog,
     architecture,
+    liveUrl,
     github,
   } = project;
 
@@ -150,7 +151,24 @@ const ProjectCard = ({ project }) => {
                 ))}
               </div>
 
-              {/* GitHub link */}
+              {/* Links out. A live artifact leads; the repo follows. */}
+              <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+              {liveUrl && (
+                <a
+                  href={liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex w-fit items-center gap-1.5 py-1.5 text-sm font-medium transition-opacity hover:opacity-70"
+                  style={{ color: "var(--color-accent)" }}
+                >
+                  <span
+                    className="h-1.5 w-1.5 rounded-full"
+                    style={{ background: "var(--color-accent)" }}
+                    aria-hidden="true"
+                  />
+                  Live dashboard →
+                </a>
+              )}
               {github && (
                 <a
                   href={github}
@@ -165,6 +183,7 @@ const ProjectCard = ({ project }) => {
                   View on GitHub →
                 </a>
               )}
+              </div>
             </div>
         </div>
       </div>
@@ -189,6 +208,7 @@ ProjectCard.propTypes = {
       because: PropTypes.string.isRequired,
     }),
     architecture: PropTypes.array,
+    liveUrl: PropTypes.string,
     github: PropTypes.string,
   }).isRequired,
 };
