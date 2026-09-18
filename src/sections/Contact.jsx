@@ -102,19 +102,25 @@ const Contact = () => {
         {/* The name leads the band; the meta row sits under it.
             Widened to wdth 100 with near-neutral tracking — at 245px the
             condensed axis plus -0.06em was overlapping glyphs. */}
-        <div className="overflow-hidden">
-          <span
-            className="text-display block w-full select-none leading-none"
-            style={{
-              color: "var(--color-field-ink)",
-              fontSize: "clamp(4rem, 18vw, 16rem)",
-              fontVariationSettings: '"wdth" 100',
-              letterSpacing: "-0.012em",
-            }}
-            aria-hidden="true"
-          >
-            Zaid Shaikh
-          </span>
+        {/* Same container as the meta row below, so the name's edges line up
+            with the hairline rather than bleeding past it. */}
+        <div className="c-space mx-auto w-full max-w-7xl">
+          <div className="overflow-hidden">
+            <span
+              className="text-display block w-full select-none leading-none"
+              style={{
+                color: "var(--color-field-ink)",
+                /* Tuned so the name's inked width matches the container, so
+                   both ends sit flush with the hairline below it. */
+                fontSize: "clamp(3.25rem, 17.8vw, 14.4rem)",
+                fontVariationSettings: '"wdth" 100',
+                letterSpacing: "-0.012em",
+              }}
+              aria-hidden="true"
+            >
+              Zaid Shaikh
+            </span>
+          </div>
         </div>
 
         <div className="c-space mx-auto w-full max-w-7xl">
