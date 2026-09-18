@@ -59,7 +59,7 @@ const About = () => {
       <div className="panels about-grid">
         {/* ── The section names itself in the margin ──────────── */}
         <div className="panel a-label justify-end">
-          <p className="micro">About</p>
+          <p className="micro sticky-label">About</p>
         </div>
 
         {/* ── The statement ───────────────────────────────────── */}
@@ -137,8 +137,11 @@ const About = () => {
         ))}
 
         {/* ── The record ──────────────────────────────────────── */}
+        <div className="panel a-credsl panel-raised">
+          <p className="micro sticky-label">Credentials</p>
+        </div>
+
         <div className="panel a-creds panel-raised">
-          <p className="micro mb-8">Credentials</p>
           {CREDENTIALS.map(({ label, detail, meta }, i) => (
             <div
               key={label}
@@ -172,30 +175,34 @@ const About = () => {
             </div>
           ))}
         </div>
-      </div>
 
-      {/* ── How I work: the section's point of view ─────────────
-          Each stance traces to real work rather than standing as a slogan.
-          Kept as full-width ruled rows: Aspen indexes its content panels the
-          same way, and this already reads as that. */}
-      <div className="c-space mx-auto w-full max-w-7xl py-20 md:py-28">
-        <p className="micro mb-10">How I work</p>
+        {/* ── How I work ──────────────────────────────────────
+            Folded into the grid rather than sitting in its own clamped band
+            below it, so the section is one continuous set of panels. Each
+            stance traces to real work rather than standing as a slogan. */}
+        <div className="panel a-workl">
+          <p className="micro sticky-label">How I work</p>
+        </div>
 
-        {positions.map(({ claim, body }, i) => (
-          <div
-            key={claim}
-            className="grid grid-cols-1 gap-2 border-b py-6 md:grid-cols-[2.5rem_1.1fr_1fr] md:items-baseline md:gap-10"
-            style={{ borderColor: "var(--color-border)" }}
-          >
-            <span className="tabular text-sm" style={{ color: "var(--color-field)" }}>
-              {String(i + 1).padStart(2, "0")}
-            </span>
-            <p className="text-display text-xl md:text-2xl">{claim}</p>
-            <p className="text-sm leading-relaxed" style={{ color: "var(--color-ink-muted)" }}>
-              {body}
-            </p>
-          </div>
-        ))}
+        <div className="panel a-work">
+          {positions.map(({ claim, body }, i) => (
+            <div
+              key={claim}
+              className="grid grid-cols-1 gap-2 py-6 md:grid-cols-[2.5rem_1.1fr_1fr] md:items-baseline md:gap-10"
+              style={{
+                borderTop: i === 0 ? "none" : "1px solid var(--color-border)",
+              }}
+            >
+              <span className="tabular text-sm" style={{ color: "var(--color-field)" }}>
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <p className="text-display text-xl md:text-2xl">{claim}</p>
+              <p className="text-sm leading-relaxed" style={{ color: "var(--color-ink-muted)" }}>
+                {body}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

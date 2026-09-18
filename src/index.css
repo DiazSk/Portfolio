@@ -493,7 +493,8 @@ body::after {
       "label     statement statement statement"
       "bio       bio       portrait  avail"
       "stat1     stat2     stat3     avail"
-      "creds     creds     creds     creds";
+      "credsl    creds     creds     creds"
+      "workl     work      work      work";
   }
   .a-label     { grid-area: label; }
   .a-statement { grid-area: statement; }
@@ -503,7 +504,20 @@ body::after {
   .a-stat1     { grid-area: stat1; }
   .a-stat2     { grid-area: stat2; }
   .a-stat3     { grid-area: stat3; }
+  .a-credsl    { grid-area: credsl; }
   .a-creds     { grid-area: creds; }
+  .a-workl     { grid-area: workl; }
+  .a-work      { grid-area: work; }
+
+  /* This is how the Aspen grid "moves": nothing is transformed. A label
+     column pins under the header while the content column beside it scrolls
+     past — 12 sticky elements at top: 60px, no parallax anywhere on the
+     page. Sticky is not animation, so it needs no reduced-motion gate and
+     carries none of the vestibular load a multi-layer parallax would. */
+  .sticky-label {
+    position: sticky;
+    top: 5.5rem;
+  }
 }
 
 /* ─── Measurement rows ───────────────────────────────────────
