@@ -17,9 +17,12 @@ const Navbar = () => {
 
   return (
     <header
-      className="fixed inset-x-0 top-0 z-20 w-full border-b backdrop-blur-md"
+      className="fixed inset-x-0 top-0 z-20 w-full border-b"
       style={{
-        background: "rgba(8,9,10,0.72)",
+        /* Opaque, not the old 72% translucent ground: over the hero's field
+           region a translucent dark bar turns muddy brown. A solid chrome bar
+           reads as deliberate and keeps contrast fixed on every section. */
+        background: "var(--color-surface)",
         borderColor: "var(--color-border)",
       }}
     >

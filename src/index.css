@@ -425,6 +425,65 @@ body::after {
   to { transform: translateY(calc(-1 * var(--hero-lift))); }
 }
 
+/* ─── The hero field ─────────────────────────────────────────
+   The whole first viewport is the signal colour and the name is set to the
+   exact width of the screen. Sized in cqw off a measured ratio — the face
+   renders "ZAID SHAIKH" at 3.7324 em-widths at wdth 78 / -0.035em with the
+   opsz axis pinned, so 100/3.7324 = 26.79cqw fills the container exactly.
+   Optical sizing must stay off or the ratio drifts with size and the last
+   letter overflows. */
+.hero-field {
+  container-type: inline-size;
+}
+
+.hero-name {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-variation-settings: "wdth" 78;
+  font-optical-sizing: none;
+  /* min() is a guard for short, wide windows; at any normal ratio the cqw
+     term wins and the name runs edge to edge. */
+  font-size: min(26.72cqw, 62vh);
+  line-height: 0.82;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--color-field-ink);
+}
+
+/* Everything that is not the name lives on an edge of the field. */
+.hero-meta {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: 1.9;
+  color: #2E1409;
+}
+
+.hero-meta a {
+  /* inline-block with a 24px box: as plain inline text these measured 14px
+     tall and failed the 24x24 target floor (WCAG 2.2 SC 2.5.8). */
+  display: inline-block;
+  min-height: 24px;
+  line-height: 24px;
+  color: var(--color-field-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.hero-meta a:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* On the field the global ring would vanish against vermilion. */
+.field-surface :focus-visible,
+.field-band :focus-visible {
+  outline-color: var(--color-field-ink);
+}
+
 /* ─── The field as a whole surface ───────────────────────────── */
 /* OWN-WORLD's actual promise: regions, plural. Three carry it — the hero's
    closing band, the Stack section, and the footer. Black type only; white

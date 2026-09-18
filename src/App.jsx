@@ -23,8 +23,10 @@ const App = () => {
   return (
     <>
       <Navbar />
+      {/* Hero sits outside <main> for the same reason Contact does: its field
+          region is full-bleed and the max-w-7xl clamp would cage it. */}
+      <Hero />
       <main className="mx-auto max-w-7xl">
-        <Hero />
         <About />
         <Projects />
         <Skills />
