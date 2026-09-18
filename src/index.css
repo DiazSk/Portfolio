@@ -791,7 +791,13 @@ body::after {
    renders "ZAID SHAIKH" at 3.7324 em-widths at wdth 78 / -0.035em with the
    opsz axis pinned, so 100/3.7324 = 26.79cqw fills the container exactly.
    Optical sizing must stay off or the ratio drifts with size and the last
-   letter overflows. */
+   letter overflows.
+
+   26.603, not the 26.72 that made the ink exactly fill: at 26.72 the Z's
+   left side bearing left a 6px gap while the H sat flush, because the
+   -0.035em tracking applies after the final glyph and ate the right
+   bearing. Solving 3.7263F + 2(0.01632F) = container for equal gaps gives
+   26.603cqw, so both sides carry the same ~0.016em of air at every width. */
 .hero-field {
   container-type: inline-size;
 }
@@ -804,7 +810,7 @@ body::after {
   font-optical-sizing: none;
   /* min() is a guard for short, wide windows; at any normal ratio the cqw
      term wins and the name runs edge to edge. */
-  font-size: min(26.72cqw, 62vh);
+  font-size: min(26.603cqw, 62vh);
   line-height: 0.82;
   letter-spacing: -0.035em;
   text-transform: uppercase;
