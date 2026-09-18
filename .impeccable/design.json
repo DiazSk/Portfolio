@@ -338,9 +338,9 @@
       "name": "Primary Button on Field",
       "kind": "button",
       "refersTo": "button-on-field",
-      "description": "The same action inside a vermilion region, inverted so it survives there. Vermilion on vermilion would vanish.",
+      "description": "The same action inside a vermilion region, inverted so it survives there. Vermilion on vermilion would vanish. Hovers to the same white ground and near-black label as every other primary button.",
       "html": "<button class=\"ds-btn-on-field\">Copy email address</button>",
-      "css": ".ds-btn-on-field { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.875rem 1.5rem; border: 0; border-radius: 0; background: var(--color-field-ink, #0A0A09); color: var(--color-field, #FF3B14); font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 1rem; font-variation-settings: \"wdth\" 82; letter-spacing: 0.005em; text-transform: uppercase; cursor: pointer; transition: background-color 150ms ease; } .ds-btn-on-field:hover { background: #2E1409; } .ds-btn-on-field:focus-visible { outline: 2px solid var(--color-field-ink, #0A0A09); outline-offset: 2px; border-radius: 0.375rem; }"
+      "css": ".ds-btn-on-field { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.875rem 1.5rem; border: 0; border-radius: 0; background: var(--color-field-ink, #0A0A09); color: var(--color-field, #FF3B14); font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 1rem; font-variation-settings: \"wdth\" 82; letter-spacing: 0.005em; text-transform: uppercase; cursor: pointer; transition: background-color 150ms ease; } .ds-btn-on-field:hover { background: var(--color-ink, #F7F8F8); color: var(--color-field-ink, #0A0A09); } .ds-btn-on-field:focus-visible { outline: 2px solid var(--color-field-ink, #0A0A09); outline-offset: 2px; border-radius: 0.375rem; }"
     },
     {
       "name": "Tech Pill",

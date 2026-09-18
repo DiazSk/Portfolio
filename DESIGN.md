@@ -300,7 +300,7 @@ Recurring silhouettes: the full-bleed field band (edge to edge, overflow hidden,
 - **Primary:** Field background, field-ink label, uppercase Bricolage at `wdth 82`, 0.875rem/1.5rem padding.
 - **Hover / Focus:** Primary inverts to white ink ground on hover (colour transition, 150ms); focus uses the global vermilion ring at 2px with 2px offset.
 - **Ghost:** Transparent with a strong hairline, ink label; hover fills to the overlay tone and keeps its border.
-- **On Field:** Where a button sits inside a vermilion region it inverts — field-ink ground, vermilion label, Azeret Mono at 0.06em tracking — and its focus ring is field-ink, not vermilion, because vermilion on vermilion is invisible.
+- **On Field:** Where a button sits inside a vermilion region it inverts — field-ink ground, vermilion label, Azeret Mono at 0.06em tracking — and its focus ring is field-ink, not vermilion, because vermilion on vermilion is invisible. **It hovers to the same white ground and near-black label as every other primary button**, which means setting the label explicitly: the resting label is vermilion, and letting that inherit onto white would invent a third treatment. A white button *fill* on the field is not a breach of the Black-On-Field Rule, which governs ink and borders drawn on vermilion, not a surface laid over it; the pair measures 4.75:1 as a boundary.
 
 ### Chips
 - **Style:** Tech pills are transparent with a strong hairline and secondary ink, Azeret Mono at 0.75rem, square. On the field they keep the transparent ground but take a solid `{colors.field-ink-secondary}` border and field-ink text.

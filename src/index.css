@@ -674,7 +674,12 @@ body::after {
   color: var(--color-field);
 }
 .panel-field .btn-primary:hover {
-  background: #2E1409;
+  /* The same hover as every other primary button: white ground, near-black
+     label. The label has to be set too, because this variant's resting text
+     is vermilion and inheriting it onto white would be a third treatment
+     rather than the one the rest of the site uses. */
+  background: var(--color-ink);
+  color: var(--color-field-ink);
 }
 
 /* The micro-label: a small filled square and letterspaced mono, the marker
