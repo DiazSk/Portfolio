@@ -9,7 +9,9 @@ export const resumeData = {
     tagline:
       "Architecting resilient data ecosystems and scalable software systems. Committed to building robust underlying architectures that drive real-time stream processing and high-throughput backend platforms.",
     summary:
-      "MS Computer Science at Northeastern University (4.0 GPA, December 2026), serving as a Graduate Teaching Assistant for the Machine Learning course and co-authoring a paper under review at COLM 2026. My work spans the full data stack: Medallion lakehouses ingesting 9.66M records on Azure, streaming backends sustaining 21,091 msg/s with exactly-once Flink semantics, and full-stack terminals closing the Kafka-to-browser gap in under 100ms. I build systems where every architectural layer is a deliberate decision, optimized for throughput, correctness, and the engineers who maintain them.",
+      "MS Computer Science at Northeastern University (4.0 GPA, December 2026), serving as a Graduate Teaching Assistant for the Machine Learning course and co-authoring research on cumulative semantic erosion under iterative LLM paraphrasing. My work spans the full data stack: Medallion lakehouses ingesting 9.66M records on Azure, streaming backends sustaining 21,091 msg/s with exactly-once Flink semantics, and full-stack terminals closing the Kafka-to-browser gap in under 100ms.",
+    credo:
+      "I build systems where every architectural layer is a deliberate decision — optimized for throughput, correctness, and the engineers who maintain them.",
     yearsOfExperience: 0,
     availability: "Full-Time from December 2026",
     phone: "+1(206) 843-6128",
@@ -57,7 +59,7 @@ export const resumeData = {
       startDate: "Fall 2025",
       endDate: "Present",
       description:
-        "Co-authoring The Laundering Effect (COLM 2026, under review) under faculty advisement, formalizing cumulative semantic erosion under iterative LLM paraphrasing. Extended from an NLP course group project into a full research contribution.",
+        "Co-authoring The Laundering Effect under faculty advisement, formalizing cumulative semantic erosion under iterative LLM paraphrasing. Extended from an NLP course group project into a full research contribution.",
       achievements: [
         "Contributed to a 3-phase evaluation pipeline processing 36,800+ records across two corpora (PADBen: 16,232 sentence-level records; Ship of Theseus: 20,595 paragraph-level records, 7 domains) through corpus standardization, multi-hop paraphrasing chains, and composite metric computation",
         "Implemented the Composite Semantic Drift Score (SDS: weighted SBERT / METEOR / ROUGE-L) across iterative paraphrase trajectories, quantifying a data quality failure mode — the Boiling Frog Effect — where cumulative drift reached 189-331% above the per-hop safety threshold while individual-step signals appeared clean",

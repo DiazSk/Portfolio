@@ -62,13 +62,16 @@ The differentiating claim is **decision quality, not tool inventory**. Hundreds 
 
 - **A live, interactive dashboard** for the Medicare Reimbursement Gap Analyzer: <https://diazsk.github.io/healthcare-lakehouse-azure/>. DuckDB-WASM over tiered Parquet, so a reader queries all 9.66M rows in their own browser — no backend, no sign-in, nothing that can expire. This is the strongest proof artifact on the site and the only one a reader can operate. Linked from the hero and from the project card.
 - **Public GitHub repositories** for all six featured projects — browsable source and READMEs.
-- Measured metrics cited in résumé data: 21,091 msg/s sustained (Chatflow), sub-100ms end-to-end latency with exactly-once semantics (Crypto Analyzer), 9.66M CMS rows (Medicare Gap Analyzer), 2.8M records (NYC Taxi), 146 dbt tests, 4.0 GPA, COLM 2026 paper under review.
-- Credentials: MS CS Northeastern (Dec 2026), Graduate TA for Machine Learning, Oracle Cloud Infrastructure Data Science Professional certification.
+- Measured metrics cited in résumé data: 21,091 msg/s sustained (Chatflow), sub-100ms end-to-end latency with exactly-once semantics (Crypto Analyzer), 9.66M CMS rows (Medicare Gap Analyzer), 2.8M records (NYC Taxi), 146 dbt tests, 4.0 GPA.
+- Credentials: MS CS Northeastern (Dec 2026, 4.0 GPA), Graduate TA for Machine Learning, Oracle Cloud Infrastructure Data Science Professional certification.
+- Research: co-authored *The Laundering Effect*, formalizing cumulative semantic erosion under iterative LLM paraphrasing across 36,800+ records. **Submitted to COLM 2026 and rejected (confirmed 2026-09-17).** The research contribution is real and stays on the site; the venue is never named. Do not describe it as under review, forthcoming, or published.
 
 **Not confirmed — do not treat as evidence:**
 
 - The architecture PNGs formerly in `public/assets/projects/` were never confirmed as accurate and have been deleted (2026-09-16) along with the rest of the retired space-theme assets — 28MB, of which only the favicon was referenced. They remain in git history if ever needed. The live architecture schematics are now rendered from data, not images.
 - **No screen recordings or GIFs exist**, and no system other than the Medicare Gap Analyzer has a live surface. Do not imply a live feed for the other five.
+
+**Awaited asset:** the About section has a portrait frame wired to `public/assets/portrait.jpg`. The file does not exist yet; the frame removes itself on error rather than showing a broken image or a stand-in avatar. Zaid said he will supply it.
 
 **Must never be fabricated:** testimonials, references, employer names, customer logos, press mentions, user counts, revenue or cost-savings figures beyond those already in resumeData, or any claim of professional industry employment. All experience to date is academic, research, or self-directed project work.
 

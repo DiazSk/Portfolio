@@ -31,14 +31,20 @@ const Hero = () => {
       <div className="mx-auto w-full max-w-7xl">
         {/* Name and claim first. */}
         <h1
-          className="text-4xl font-semibold md:text-6xl"
-          style={{ color: "var(--color-ink)", letterSpacing: "-0.04em", lineHeight: 1.05 }}
+          className="font-semibold"
+          style={{
+            color: "var(--color-ink)",
+            /* The page's peak. Capped at 6rem per the craft floor. */
+            fontSize: "clamp(2.75rem, 8vw, 6rem)",
+            letterSpacing: "-0.045em",
+            lineHeight: 0.95,
+          }}
         >
           Zaid Shaikh
         </h1>
 
         <p
-          className="mt-3 text-xl font-medium md:text-2xl"
+          className="mt-4 text-xl font-medium md:text-2xl"
           style={{ color: "var(--color-ink-secondary)", letterSpacing: "-0.02em" }}
         >
           Data Engineer &amp; Backend Systems Engineer

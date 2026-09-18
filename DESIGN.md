@@ -15,10 +15,10 @@ colors:
 typography:
   display:
     fontFamily: "Inter, sans-serif"
-    fontSize: "clamp(2.25rem, 6vw, 3.75rem)"
+    fontSize: "clamp(2.75rem, 8vw, 6rem)"
     fontWeight: 600
-    lineHeight: 1.05
-    letterSpacing: "-0.04em"
+    lineHeight: 0.95
+    letterSpacing: "-0.045em"
   headline:
     fontFamily: "Inter, sans-serif"
     fontSize: "clamp(2.25rem, 4vw, 3rem)"

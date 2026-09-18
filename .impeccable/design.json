@@ -162,7 +162,7 @@
     "typographyMeta": {
       "display": {
         "displayName": "Display",
-        "purpose": "The name in the first viewport and the Contact ask. The only type above 3rem."
+        "purpose": "The name in the first viewport, at the page's peak scale (capped at 6rem by the craft floor). The Contact ask uses the headline role."
       },
       "headline": {
         "displayName": "Headline",

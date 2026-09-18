@@ -1,27 +1,40 @@
+import { useState } from "react";
 import { resumeData } from "../constants/resumeData";
 import CopyEmailButton from "../components/CopyEmailButton";
+
+/* Drop a file at public/assets/portrait.jpg and it appears. Until then the
+   frame removes itself rather than showing a broken image or a fake avatar. */
+const PORTRAIT = "/assets/portrait.jpg";
 
 const CREDENTIALS = [
   {
     label: "MS Computer Science",
-    detail: "Northeastern University · 4.0 GPA · Dec 2026",
+    detail: "Northeastern University · Khoury College",
+    meta: "2025 — 2026 · 4.0 GPA",
   },
   {
     label: "Graduate Teaching Assistant",
     detail: "Graduate Machine Learning · Northeastern University",
+    meta: null,
   },
   {
     label: "Research Co-author",
-    detail: "The Laundering Effect · COLM 2026 (under review)",
+    detail:
+      "The Laundering Effect · cumulative semantic erosion under iterative LLM paraphrasing",
+    meta: "36,800+ records",
   },
   {
     label: "Oracle Cloud Infrastructure",
     detail: "Data Science Professional, Certified",
+    meta: null,
   },
 ];
 
+const ROLES = ["Data Engineer", "Analytics Engineer", "Backend SWE / SDE"];
+
 const About = () => {
   const { personal } = resumeData;
+  const [hasPortrait, setHasPortrait] = useState(true);
 
   return (
     <section
@@ -30,10 +43,10 @@ const About = () => {
       style={{ borderColor: "var(--color-border)" }}
     >
       <div className="mx-auto w-full max-w-7xl">
-        <div className="grid grid-cols-1 gap-16 md:grid-cols-[3fr_2fr]">
-          {/* ── Left column ─────────────────────────────────── */}
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-[3fr_2fr] md:gap-16">
+          {/* ── Left ────────────────────────────────────────── */}
           <div>
-            <h2 className="text-heading mb-6">
+            <h2 className="text-heading mb-8 max-w-[18ch] text-balance">
               I build the layer between raw data and the millisecond that
               matters.
             </h2>
@@ -45,33 +58,78 @@ const About = () => {
               {personal.summary}
             </p>
 
-            {/* Credentials */}
-            <div className="mt-10 flex flex-col">
-              {CREDENTIALS.map(({ label, detail }, i) => (
+            {/* The section lands on conviction before it lists evidence.
+                Set against the accent rule so it reads as a statement, not
+                another paragraph. */}
+            <blockquote
+              className="mt-10 max-w-[34ch] border-l-2 pl-5 text-xl font-medium md:text-2xl"
+              style={{
+                borderColor: "var(--color-accent)",
+                color: "var(--color-ink)",
+                letterSpacing: "-0.015em",
+                lineHeight: 1.3,
+              }}
+            >
+              {personal.credo}
+            </blockquote>
+
+            {/* Credentials as a ruled record, not a list of equal rows */}
+            <div className="mt-14 border-t" style={{ borderColor: "var(--color-border)" }}>
+              {CREDENTIALS.map(({ label, detail, meta }) => (
                 <div
                   key={label}
-                  className={`flex flex-col gap-0.5 py-4 ${i !== 0 ? "border-t" : ""}`}
+                  className="grid grid-cols-1 gap-1 border-b py-5 sm:grid-cols-[1fr_auto] sm:items-baseline sm:gap-6"
                   style={{ borderColor: "var(--color-border)" }}
                 >
-                  <span
-                    className="text-sm font-medium"
-                    style={{ color: "var(--color-ink)" }}
-                  >
-                    {label}
-                  </span>
-                  <span
-                    className="text-sm"
-                    style={{ color: "var(--color-ink-muted)" }}
-                  >
-                    {detail}
-                  </span>
+                  <div>
+                    <p
+                      className="text-lg font-medium"
+                      style={{ color: "var(--color-ink)", letterSpacing: "-0.01em" }}
+                    >
+                      {label}
+                    </p>
+                    <p
+                      className="mt-1 text-sm leading-relaxed"
+                      style={{ color: "var(--color-ink-muted)" }}
+                    >
+                      {detail}
+                    </p>
+                  </div>
+                  {meta && (
+                    <p
+                      className="tabular whitespace-nowrap text-sm"
+                      style={{ color: "var(--color-ink-secondary)" }}
+                    >
+                      {meta}
+                    </p>
+                  )}
                 </div>
               ))}
             </div>
           </div>
 
-          {/* ── Right column ────────────────────────────────── */}
-          <div>
+          {/* ── Right ───────────────────────────────────────── */}
+          <div className="flex flex-col gap-6">
+            {hasPortrait && (
+              <div
+                className="overflow-hidden rounded-xl border"
+                style={{
+                  borderColor: "var(--color-border)",
+                  background: "var(--color-surface-raised)",
+                  boxShadow:
+                    "inset 0 1px 0 rgba(255,255,255,0.055), 0 8px 24px -12px rgba(0,0,0,0.7)",
+                }}
+              >
+                <img
+                  src={PORTRAIT}
+                  alt="Zaid Shaikh"
+                  loading="lazy"
+                  onError={() => setHasPortrait(false)}
+                  className="block aspect-[4/5] w-full object-cover"
+                />
+              </div>
+            )}
+
             <div
               className="rounded-xl border p-6"
               style={{
@@ -94,37 +152,21 @@ const About = () => {
               </div>
 
               <div
-                className="mb-6 flex flex-col gap-1.5 text-sm"
+                className="mb-5 flex flex-col gap-1.5 text-sm"
                 style={{ color: "var(--color-ink-secondary)" }}
               >
                 <span>Starting December 2026, on graduation</span>
                 <span>Seattle, WA · open to remote</span>
               </div>
 
-              <CopyEmailButton />
-            </div>
+              <p
+                className="mb-6 text-sm leading-relaxed"
+                style={{ color: "var(--color-ink-muted)" }}
+              >
+                {ROLES.join(" · ")}
+              </p>
 
-            {/* Role targets */}
-            <div className="mt-4 flex flex-col gap-2">
-              {["Data Engineer", "Analytics Engineer", "Backend SWE / SDE"].map(
-                (role) => (
-                  <div
-                    key={role}
-                    className="flex items-center gap-3 rounded-lg border px-4 py-3 text-sm"
-                    style={{
-                      borderColor: "var(--color-border)",
-                      color: "var(--color-ink-secondary)",
-                    }}
-                  >
-                    <span
-                      className="h-1 w-1 shrink-0 rounded-full"
-                      style={{ background: "var(--color-ink-muted)" }}
-                      aria-hidden="true"
-                    />
-                    {role}
-                  </div>
-                )
-              )}
+              <CopyEmailButton />
             </div>
           </div>
         </div>
