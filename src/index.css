@@ -158,6 +158,9 @@ body::after {
    scale, field colour. */
 .metric-value {
   font-family: var(--font-display);
+  /* The size used to come from MetricStat's utility classes; that component
+     is gone, so the documented hero step lives on the class itself. */
+  font-size: clamp(2.5rem, 4.5vw, 4rem);
   font-weight: 800;
   font-variation-settings: "wdth" 78;
   font-variant-numeric: tabular-nums;
@@ -423,6 +426,29 @@ body::after {
 
 @keyframes hero-lift {
   to { transform: translateY(calc(-1 * var(--hero-lift))); }
+}
+
+/* ─── Measurement rows ───────────────────────────────────────
+   A number on its own is a claim; a number against the thing it beat is
+   evidence. Each row carries the measurement and how it was taken. The
+   proportion is drawn as a rule, not a filled bar: emphasis on the dark
+   ground is a vermilion hairline, never an inverted fill. */
+.gauge {
+  display: block;
+  height: 3px;
+  /* Needs to read as a track, not a hairline: at 2.4% the fill is a 12px stub
+     and the comparison only lands if the full length is visible behind it. */
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.gauge > i {
+  display: block;
+  height: 100%;
+  background: var(--color-field);
+}
+
+.gauge-dim > i {
+  background: var(--color-ink-muted);
 }
 
 /* ─── The hero field ─────────────────────────────────────────

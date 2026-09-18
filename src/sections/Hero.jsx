@@ -1,26 +1,43 @@
 import { useRef } from "react";
-import MetricStat from "../components/MetricStat";
 import { resumeData } from "../constants/resumeData";
 import { useMotion, countUp, marquee } from "../lib/motion";
 
 const EMAIL = resumeData.personal.email;
 const LIVE = "https://diazsk.github.io/healthcare-lakehouse-azure/";
 
+/*
+ * Each measurement carries the thing it was measured against, because a
+ * number on its own is a claim and a number against a baseline is evidence —
+ * which is what position 03 on the About page commits to. Every figure here
+ * is already in resumeData's decision logs; nothing is derived for effect.
+ */
 const METRICS = [
   {
     value: "21,091",
-    label: "msg/s sustained",
-    context: "Chatflow · Java + RabbitMQ + Redis",
+    unit: "msg/s sustained",
+    source: "Chatflow · zero loss across 1M messages",
+    gain: "42× the design it replaced",
+    scale: [
+      { label: "Write-through, capped by MySQL's 2–5ms insert latency", read: "~500/s", pct: 2.4, dim: true },
+      { label: "Write-behind, worker threads with adaptive JDBC batching", read: "21,091/s", pct: 100 },
+    ],
   },
   {
     value: "<100ms",
-    label: "end-to-end latency",
-    context: "Crypto Analyzer · Kafka + Flink · exactly-once",
+    unit: "end-to-end latency",
+    source: "Crypto Analyzer · exactly-once",
+    gain: "Kafka ingestion to rendered browser UI",
+    path: ["Kafka", "Flink · OHLC windows", "Redis · sub-1ms", "FastAPI · WebSocket", "Browser"],
   },
   {
     value: "9.66M",
-    label: "rows, queryable live",
-    context: "Medicare Gap Analyzer · DuckDB-WASM, no backend",
+    unit: "rows, queryable live",
+    source: "Medicare Gap Analyzer · DuckDB-WASM, no backend",
+    gain: "No server to expire",
+    scale: [
+      { label: "Downloaded up front — covers every panel", read: "3.7 MB", pct: 7.1 },
+      { label: "Detail tier, read by HTTP range requests, never downloaded", read: "52 MB", pct: 100, dim: true },
+    ],
   },
 ];
 
@@ -103,9 +120,71 @@ const Hero = () => {
           that move millions of records reliably.
         </p>
 
-        <div className="metric-grid mt-16 max-w-4xl">
-          {METRICS.map((m) => (
-            <MetricStat key={m.value} {...m} />
+        <div className="mt-20 border-t" style={{ borderColor: "var(--color-border-strong)" }}>
+          <h2 className="text-label mt-8 mb-10">How these were measured</h2>
+
+          {METRICS.map((m, i) => (
+            <div
+              key={m.value}
+              className="grid grid-cols-1 gap-x-10 gap-y-5 border-b py-8 md:grid-cols-[2.5rem_minmax(14rem,1fr)_1.6fr]"
+              style={{ borderColor: "var(--color-border)" }}
+            >
+              <span className="tabular text-sm" style={{ color: "var(--color-field)" }}>
+                {String(i + 1).padStart(2, "0")}
+              </span>
+
+              <div>
+                <p className="metric-value">{m.value}</p>
+                <p className="text-label mt-2">{m.unit}</p>
+                <p className="mt-1 text-xs" style={{ color: "var(--color-ink-muted)" }}>
+                  {m.source}
+                </p>
+              </div>
+
+              <div className="flex flex-col justify-center gap-4">
+                {m.scale?.map((row) => (
+                  <div key={row.read}>
+                    <div className="mb-1.5 flex items-baseline justify-between gap-4">
+                      <span className="text-xs" style={{ color: "var(--color-ink-secondary)" }}>
+                        {row.label}
+                      </span>
+                      <span
+                        className="tabular shrink-0 text-sm"
+                        style={{ color: row.dim ? "var(--color-ink-muted)" : "var(--color-field)" }}
+                      >
+                        {row.read}
+                      </span>
+                    </div>
+                    <span className={row.dim ? "gauge gauge-dim" : "gauge"}>
+                      <i style={{ width: `${row.pct}%` }} />
+                    </span>
+                  </div>
+                ))}
+
+                {m.path && (
+                  <ol className="flex flex-wrap items-center gap-x-3 gap-y-2">
+                    {m.path.map((stage, j) => (
+                      <li key={stage} className="flex items-center gap-3">
+                        {j > 0 && (
+                          <span
+                            className="h-px w-5"
+                            style={{ background: "var(--color-border-strong)" }}
+                            aria-hidden="true"
+                          />
+                        )}
+                        <span className="text-label" style={{ color: "var(--color-ink-secondary)" }}>
+                          {stage}
+                        </span>
+                      </li>
+                    ))}
+                  </ol>
+                )}
+
+                <p className="text-xs" style={{ color: "var(--color-ink-muted)" }}>
+                  {m.gain}
+                </p>
+              </div>
+            </div>
           ))}
         </div>
       </div>

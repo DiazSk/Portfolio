@@ -88,13 +88,25 @@ export function marquee(scope, selector, { speed = 50 } = {}) {
  * strips the comma and can no longer match the original string — and corrupts
  * prefixed ones into "<0ms". The authored text is restored exactly on
  * completion, and is never cleared before the tween actually plays.
+ *
+ * The authored value is cached on the element the first time it is seen.
+ * Without that this is not idempotent: StrictMode reverts the first context
+ * mid-tween, leaving "0" in the DOM, and the second pass reads that "0" as
+ * the target and counts 0 to 0 — the numbers stuck at 0, <0ms and 0.00M
+ * permanently. Same failure mode as the entrance reveals, one layer over.
+ *
+ * Scoped with querySelectorAll rather than gsap.utils.toArray, which ignores
+ * the context scope and was reaching every .metric-value on the page,
+ * including the project cards.
  */
 export function countUp(scope, selector, { immediate = false } = {}) {
   const mm = gsap.matchMedia();
   mm.add(MOTION_OK, (ctx) => {
     if (ctx.conditions.reduce) return;
-    gsap.utils.toArray(selector).forEach((el) => {
-      const final = el.textContent;
+    const els = scope.current ? [...scope.current.querySelectorAll(selector)] : [];
+    els.forEach((el) => {
+      if (!el.dataset.countTo) el.dataset.countTo = el.textContent;
+      const final = el.dataset.countTo;
       const parts = final.match(/^([^\d]*)([\d,]+(?:\.\d+)?)(.*)$/);
       if (!parts) return;
       const [, prefix, numStr, suffix] = parts;
