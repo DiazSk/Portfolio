@@ -19,6 +19,10 @@
      it, never white: white measures 3.57:1 there and fails. */
   --color-field:            #FF3B14;
   --color-field-ink:        #0A0A09;
+  /* The only legal de-emphasis tone on the field (4.83:1). Solid, never an
+     alpha composite — rgba(10,10,9,0.72) reads 4.01:1 and fails. It was a
+     hardcoded literal in seven places before it became a token. */
+  --color-field-ink-secondary: #2E1409;
   --color-surface-hover:    #111315;
 
   /* Kept as an alias so focus rings and status dots resolve to the field. */
@@ -697,8 +701,16 @@ body::after {
   background: var(--color-field);
 }
 
-.panel-field .micro { color: #2E1409; }
+.panel-field .micro { color: var(--color-field-ink-secondary); }
 .panel-field .micro::before { background: var(--color-field-ink); }
+
+/* A metric panel is where the field turns inside out: vermilion already
+   carries every numeral on the dark ground, so a whole field panel inverts
+   that pair rather than inventing a treatment. Both tones have to be set —
+   the numeral's own colour IS the field, and the caption's ink-muted has no
+   contrast here at all. */
+.panel-field .metric-value { color: var(--color-field-ink); }
+.panel-field .text-label   { color: var(--color-field-ink-secondary); }
 
 @media (min-width: 768px) {
   .about-grid {
@@ -826,7 +838,7 @@ body::after {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   line-height: 1.9;
-  color: #2E1409;
+  color: var(--color-field-ink-secondary);
 }
 
 .hero-meta a {
@@ -874,12 +886,12 @@ body::after {
   background: transparent;
   /* Solid, like every other on-field tone: rgba(10,9,8,0.38) composites to
      ~2.2:1 here, under the 3:1 a UI boundary needs. */
-  border-color: #2E1409;
+  border-color: var(--color-field-ink-secondary);
   color: var(--color-field-ink);
 }
 
 .field-surface .tech-plain {
-  color: #2E1409;
+  color: var(--color-field-ink-secondary);
 }
 
 .field-band {

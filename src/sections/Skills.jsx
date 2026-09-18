@@ -83,7 +83,7 @@ const Skills = () => {
           <h2 className="on-scroll text-heading">Stack</h2>
           <p
             className="max-w-xl text-base leading-relaxed md:pb-2"
-            style={{ color: "#2E1409" }}
+            style={{ color: "var(--color-field-ink-secondary)" }}
           >
             Highlighted tools are the ones that actually carried the six systems
             above; the rest of the stack sits alongside them.

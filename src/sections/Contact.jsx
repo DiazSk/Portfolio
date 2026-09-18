@@ -152,7 +152,7 @@ const Contact = () => {
         <div className="c-space mx-auto w-full max-w-7xl">
           <div
             className="on-scroll r1 mt-8 flex flex-wrap items-center justify-between gap-3 border-t pt-5 text-xs"
-            style={{ borderColor: "#2E1409", color: "#2E1409" }}
+            style={{ borderColor: "var(--color-field-ink-secondary)", color: "var(--color-field-ink-secondary)" }}
           >
             <span>Seattle, WA</span>
             <span className="tabular">© {new Date().getFullYear()}</span>

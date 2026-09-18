@@ -107,6 +107,35 @@ const About = () => {
           </div>
         )}
 
+        {/* ── Three readings ──────────────────────────────────────
+            The first runs as a field panel: the section's second vermilion
+            region, at the opposite end of its row from Availability so the two
+            bookend the band with two dark panels between them. The middle slot
+            was tried first and reads worse — vermilion, dark, vermilion
+            alternates, and the one panel between them looks like a hole rather
+            than air. A metric panel and not a credential because vermilion
+            already carries every numeral here, so a whole field panel inverts
+            that pair rather than inventing a rule; the eight record panels are
+            a uniform family and colouring one of them would have nothing
+            behind it.
+
+            These sit above the ask in source order even though the desktop
+            grid places both by name and does not care: the single mobile
+            column follows the DOM, and with the ask first the two field panels
+            butted into one unbroken 510px block of vermilion. */}
+        {STATS.map((s, i) => (
+          <div
+            key={s.value}
+            className={`panel panel-reveal r${i} a-stat${i + 1}${i === 0 ? " panel-field" : ""}`}
+          >
+            {/* The documented Metric step and Label step, not a private pair:
+                vermilion carries every metric numeral in this system. The
+                caption is pinned to the panel's foot, which is the device. */}
+            <p className="metric-value">{s.value}</p>
+            <p className="text-label mt-auto pt-10">{s.note}</p>
+          </div>
+        ))}
+
         {/* ── The ask, as a field region ──────────────────────── */}
         <div className="panel panel-reveal r2 a-avail panel-field gap-6">
           <p className="micro">Availability</p>
@@ -120,7 +149,7 @@ const About = () => {
             Open to full-time roles
           </p>
 
-          <div className="text-sm leading-relaxed" style={{ color: "#2E1409" }}>
+          <div className="text-sm leading-relaxed" style={{ color: "var(--color-field-ink-secondary)" }}>
             <p>Starting December 2026, on graduation</p>
             <p>Seattle, WA · open to remote</p>
             <p className="mt-4">{ROLES.join(" · ")}</p>
@@ -130,17 +159,6 @@ const About = () => {
             <CopyEmailButton />
           </div>
         </div>
-
-        {/* ── Three readings ──────────────────────────────────── */}
-        {STATS.map((s, i) => (
-          <div key={s.value} className={`panel panel-reveal r${i} a-stat${i + 1}`}>
-            {/* The documented Metric step and Label step, not a private pair:
-                vermilion carries every metric numeral in this system. The
-                caption is pinned to the panel's foot, which is the device. */}
-            <p className="metric-value">{s.value}</p>
-            <p className="text-label mt-auto pt-10">{s.note}</p>
-          </div>
-        ))}
 
         {/* ── The record ──────────────────────────────────────── */}
         <div className="panel a-credsl panel-raised">
