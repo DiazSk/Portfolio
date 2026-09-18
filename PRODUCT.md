@@ -76,7 +76,7 @@ The first viewport is now the field itself — the name at full screen width, wi
 - The architecture PNGs formerly in `public/assets/projects/` were never confirmed as accurate and have been deleted (2026-09-16) along with the rest of the retired space-theme assets — 28MB, of which only the favicon was referenced. They remain in git history if ever needed. The live architecture schematics are now rendered from data, not images.
 - **No screen recordings or GIFs exist**, and no system other than the Medicare Gap Analyzer has a live surface. Do not imply a live feed for the other five.
 
-**Awaited asset:** the About section has a portrait frame wired to `public/assets/portrait.jpg`. The file does not exist yet; the frame removes itself on error rather than showing a broken image or a stand-in avatar. Zaid said he will supply it.
+**Portrait:** supplied 2026-09-18 and live at `public/assets/portrait.webp` — 900x1350, WebP q82, 43 KB. It replaced a 2.1 MB PNG and an unused 1.2 MB JPEG that were both being deployed. If the file is ever removed the About grid drops that column and the bio widens into it, rather than showing a broken image or a stand-in avatar.
 
 **Must never be fabricated:** testimonials, references, employer names, customer logos, press mentions, user counts, revenue or cost-savings figures beyond those already in resumeData, or any claim of professional industry employment. All experience to date is academic, research, or self-directed project work.
 
