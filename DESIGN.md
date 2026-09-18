@@ -274,6 +274,11 @@ Recurring silhouettes: the full-bleed field band (edge to edge, overflow hidden,
 - **State:** A pill is metadata, never a control, but it does answer the pointer: 150ms to full ink on the dark ground, and on the field it inverts to a solid field-ink fill with field-coloured text — the documented 5.55:1 pair, reversed. The accent role chip (vermilion fill, field ink) exists but is used only where a filled emphasis is the point.
 - **Entrance:** In the Stack section the pills belong to that section's GSAP timeline (see Stack Timeline) rather than to a CSS reveal of their own; they rise 14px on a 0.07s stagger as their row resolves. A short-lived `.chip-in` CSS reveal was removed when the timeline took over — two systems animating the same pills is one too many.
 
+### Contact
+The close animates on entry rather than arriving flat. The "Open to the right opportunity." headline rises out of a clipping wrapper on `.rise-in`, which reuses the hero's own `word-rise` keyframe on a `view()` timeline instead of a load-time delay; the lede follows on `.on-scroll`, and the Index and Contact columns take `r1` and `r2` so they begin 12% and 24% later. In the field band the wordmark rises the same way, and the meta row under it follows.
+
+Both masks clip with `overflow: clip` and the footer itself carries no overflow at all — see the Clip-Not-Hidden Rule, which this section is the reason for.
+
 ### Project Track
 **One band per category**, not one queue of six. Data Engineering finishes before Systems Engineering starts, each band owning its own ScrollTrigger and its own progress rule.
 
@@ -349,6 +354,15 @@ One numeral at the Metric step and its caption at the Label step, pinned to the 
 ### Named Rules
 
 **The Fixed-Is-The-Parallax Rule.** Depth on scroll comes from a layer that does not move. `position: fixed` holds the grid at 0× while content runs at 1×, which is exactly what the measured reference (white-desert.com, Awwwards SOTD 11 Sep 2026) achieves by counter-translating its background at 1.00× scroll. Only two things are animated on scroll, both in CSS with no JS: the grid drifts 72px across the whole document, and the hero name lifts 190px over the first viewport — **0.20×**, inside the 0.2–0.3× band the reference sits in. Both live on custom properties in `:root` so the intensity is one number. One moving background layer, not three: the vestibular risk scales with layer count.
+
+**The Clip-Not-Hidden Rule.** `overflow: hidden` creates a scrollport; `overflow: clip` does not. That distinction has broken three separate things on this page, so it is a rule rather than a note:
+
+- A `view()` timeline resolves against the element's nearest scrollport. `overflow: hidden` on the footer made the footer that scrollport, and every reveal inside it silently never ran. Same again one level down, where the mask wrapper that makes a headline "rise from below" was itself clipping with `hidden` — a masked rise and a `view()` timeline cannot coexist through `hidden`. Same again on `.field-band`, which is why the footer wordmark sat still.
+- On the pinned project track, `hidden` let the browser reveal an off-screen panel by setting the wrapper's `scrollLeft`, on top of the track's transform, desyncing the pin.
+
+Use `clip` wherever the intent is masking. Reserve `hidden` for something that is genuinely meant to scroll.
+
+**The Reachable-Range Rule.** Scroll-driven reveals end on `entry 100%`, not on a `cover` percentage. A `cover`-based range needs the element to travel a share of the viewport *plus* its own height, which an element in the last section can never do — the page runs out of scroll first. The footer's reveals were written `entry 5% cover 22%` and left its content invisible on a phone. `entry 0% entry 100%` completes exactly when the element is fully on screen, which is reachable wherever it sits. Stagger by moving the *start* (`entry 12%`, `entry 24%`), never the end.
 
 **The CSS-Entrance Rule.** Entrance reveals are CSS animations, not GSAP. `gsap.from()` applies its start state immediately, so an interrupted tween can leave text permanently invisible — StrictMode's double-invoked effects orphaned a staggered word at `translateY(110%)` exactly that way. A CSS animation cannot be orphaned.
 

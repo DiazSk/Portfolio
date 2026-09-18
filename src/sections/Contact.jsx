@@ -17,8 +17,12 @@ const Contact = () => {
   const { personal } = resumeData;
   const socialLinks = mySocials.filter((s) => s.name !== "Email");
 
+  /* No overflow-hidden on the footer. It made the footer its own scrollport,
+     so every view() timeline inside resolved against the footer rather than
+     the viewport, and no reveal in this section ever ran. The field band and
+     the wordmark each clip themselves. */
   return (
-    <footer id="contact" className="relative overflow-hidden">
+    <footer id="contact" className="relative">
       {/* ── Upper: the ask, on the ground ──────────────────────── */}
       <div
         className="c-space border-t pt-24 pb-20"
@@ -28,17 +32,23 @@ const Contact = () => {
           <div className="grid grid-cols-1 gap-12 md:grid-cols-[3fr_2fr_2fr]">
             {/* Left — the ask */}
             <div>
-              <h2
-                className="text-display max-w-[13ch] uppercase"
-                style={{
-                  color: "var(--color-ink)",
-                  fontSize: "clamp(2.75rem, 7vw, 5.5rem)",
-                }}
-              >
-                Open to the right opportunity.
-              </h2>
+              {/* overflow-clip, not hidden: the mask has to clip without
+                  becoming a scrollport, or the headline's own view() timeline
+                  resolves against this box instead of the viewport and the
+                  rise never runs. */}
+              <div className="overflow-clip pb-[0.06em]">
+                <h2
+                  className="rise-in text-display max-w-[13ch] uppercase"
+                  style={{
+                    color: "var(--color-ink)",
+                    fontSize: "clamp(2.75rem, 7vw, 5.5rem)",
+                  }}
+                >
+                  Open to the right opportunity.
+                </h2>
+              </div>
               <p
-                className="mt-6 max-w-sm text-base leading-relaxed"
+                className="on-scroll mt-6 max-w-sm text-base leading-relaxed"
                 style={{ color: "var(--color-ink-secondary)" }}
               >
                 Full-time Data Engineering roles starting December 2026.
@@ -46,7 +56,7 @@ const Contact = () => {
             </div>
 
             {/* Centre — wayfinding */}
-            <div>
+            <div className="on-scroll r1">
               <h3
                 className="text-mono mb-4 text-xs uppercase"
                 style={{ color: "var(--color-ink-muted)", letterSpacing: "0.1em" }}
@@ -65,7 +75,7 @@ const Contact = () => {
             </div>
 
             {/* Right — reach him */}
-            <div>
+            <div className="on-scroll r2">
               <h3
                 className="text-mono mb-4 text-xs uppercase"
                 style={{ color: "var(--color-ink-muted)", letterSpacing: "0.1em" }}
@@ -117,9 +127,9 @@ const Contact = () => {
               it is on. Pinned, the ratio is 5.002 at every size and
               19.98cqw lands under a pixel inside the hairline. Above 120px
               this renders exactly what auto already chose. */}
-          <div className="overflow-hidden" style={{ containerType: "inline-size" }}>
+          <div className="overflow-clip" style={{ containerType: "inline-size" }}>
             <span
-              className="text-display block w-full select-none leading-none"
+              className="rise-in text-display block w-full select-none leading-none"
               style={{
                 color: "var(--color-field-ink)",
                 fontSize: "19.98cqw",
@@ -137,7 +147,7 @@ const Contact = () => {
 
         <div className="c-space mx-auto w-full max-w-7xl">
           <div
-            className="mt-8 flex flex-wrap items-center justify-between gap-3 border-t pt-5 text-xs"
+            className="on-scroll r1 mt-8 flex flex-wrap items-center justify-between gap-3 border-t pt-5 text-xs"
             style={{ borderColor: "#2E1409", color: "#2E1409" }}
           >
             <span>Seattle, WA</span>
