@@ -61,6 +61,33 @@ body::before {
   );
 }
 
+/* The parallax knobs. One number each — turn the effect up or down here and
+   nowhere else. Rates are deliberately inside the 0.2–0.3x band measured off
+   white-desert.com (Awwwards SOTD, 11 Sep 2026), whose whole hero effect is
+   one layer at 0.30x over 0.6vh of travel. */
+:root {
+  --grid-module: 5.5rem;
+  --grid-ink: rgba(255, 255, 255, 0.06);
+  --grid-travel: 72px;
+  --hero-lift: 190px;
+}
+
+/* The second ground layer: a hairline field, drawn the way this system draws
+   everything structural. Being `fixed` IS the parallax — it holds still at 0x
+   while content moves at 1x, which is exactly what the measured reference does
+   by counter-translating its background at 1.00x scroll. The drift on top is
+   flavour, so the layer is complete without it. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: -10% 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    repeating-linear-gradient(to right,  var(--grid-ink) 0 1px, transparent 1px var(--grid-module)),
+    repeating-linear-gradient(to bottom, var(--grid-ink) 0 1px, transparent 1px var(--grid-module));
+}
+
 ::selection {
   background: var(--color-field);
   color: var(--color-field-ink);
@@ -366,6 +393,36 @@ body::before {
   .on-scroll {
     animation: none;
   }
+}
+
+/* ─── Parallax ───────────────────────────────────────────────── */
+/* Two rules, no JS. GSAP is not involved: its remit here is the marquee and
+   the counters, and a scroll-linked transform is something CSS now does off
+   the main thread. Gated on no-preference rather than switched off under
+   reduce, so reduced motion is the absence of the animation and there is no
+   second code path to keep in sync. Firefox has no support yet, so it gets
+   the static grid — the same deal `.on-scroll` already ships under. */
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    body::after {
+      animation: grid-drift linear both;
+      animation-timeline: scroll(root block);
+    }
+
+    .hero-lift {
+      animation: hero-lift linear both;
+      animation-timeline: scroll(root block);
+      animation-range: 0 100vh;
+    }
+  }
+}
+
+@keyframes grid-drift {
+  to { transform: translateY(calc(-1 * var(--grid-travel))); }
+}
+
+@keyframes hero-lift {
+  to { transform: translateY(calc(-1 * var(--hero-lift))); }
 }
 
 /* ─── The field as a whole surface ───────────────────────────── */

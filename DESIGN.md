@@ -185,6 +185,8 @@ A monochrome near-black ramp carrying all structure, plus exactly one chromatic 
 
 **The Regions, Not Accents Rule.** Vermilion is applied as a whole surface. Three regions carry it and a fourth would be welcome; a *fifth vermilion detail* would not. Audit test: if the signal colour's coverage on the first viewport falls near 1% and reads as trim, the world has been reverted. The shipped build measures 11.8% first-viewport and 28.7% page-wide, and those are the floor, not a ceiling.
 
+*Measurement note (2026-09-18):* counting pixels within tolerance of `#FF3B14` on a 1293×946 capture does not reproduce 11.8% — it reads **8.29%** for the build that figure was recorded against, so the two methods are not comparable and only like-for-like deltas mean anything. Under that method the four-block hero measures **8.74%**, i.e. coverage went *up*: the band gains more of the viewport than the three relocated numerals cost it. Re-measure with the same script before trusting any future number.
+
 **The Black-On-Field Rule.** Nothing on the field is ever white — white measures 3.57:1 there. Every on-field tone is a *solid* colour, never alpha: `rgba(10,10,9,0.72)` composites to 4.01:1 and fails AA for body text, and `rgba(10,9,8,0.38)` composites to ~2.2:1, under the 3:1 a UI boundary needs. Exactly two on-field tones are legal.
 
 **The One Voice Rule.** There is no secondary or tertiary accent, and adding one is a change of world rather than an extension of it. Everything that is not the field is a step on the near-black neutral ramp.
@@ -223,7 +225,11 @@ A monochrome near-black ramp carrying all structure, plus exactly one chromatic 
 
 A single centred column at `max-w-7xl` with a three-step gutter (1.25rem / 2.5rem / 4rem at `sm` and `lg`) and a vertical rhythm of 6rem rising to 8rem per section. Sections are separated by a top hairline, not by a change of background — except the two field regions, which are separated by being a different colour entirely.
 
-The first viewport is `min-height: 100vh`, centred, padded 6rem from the fixed header: name at poster scale, the claim, the live-dashboard link, availability, then three metrics on a ruled row. That metric row is a three-column grid whose dividers are 1px left borders with 2rem of inset; under 640px it collapses to one column and the dividers rotate to top borders with 1.5rem of inset. Projects sit two-up from 768px.
+The first viewport is `min-height: 100vh`, padded 6rem from the fixed header, and carries **four blocks and a frame**: name at poster scale, one sentence fusing role and claim, the live-dashboard link, one action. Role, location and availability sit in the frame — a hairline-ruled mono row on the bottom edge — rather than stacked under the name. The field band closes the viewport exactly, because the first viewport is its own `min-h-screen` column inside the section; everything after the band is past the fold by construction rather than by arithmetic.
+
+The three-metric ruled row now sits **after** the band, so it is the first thing a reader meets on scrolling. It is still at rest and still the loudest row on the page — it is out of the first viewport, never behind an interaction. That row is a three-column grid whose dividers are 1px left borders with 2rem of inset; under 640px it collapses to one column and the dividers rotate to top borders with 1.5rem of inset. Projects sit two-up from 768px.
+
+The composition is sized against measurement, not taste: across 15 admired first viewports (9 of them Awwwards Sites of the Day, 7–18 Sep 2026) the median count of discrete text blocks is **four**, and **10 of 15** move role, location or status to the viewport edges instead of stacking them. The frame sits *below* the name, which is what keeps the No Kicker Rule intact.
 
 Scroll behaviour lives on `html` (not `body`, where the browser ignores it for document scrolling) with `scroll-padding-top: 5rem` to clear the 64px fixed header.
 
@@ -235,7 +241,12 @@ Scroll behaviour lives on `html` (not `body`, where the browser ignores it for d
 
 ## Elevation & Depth
 
-There are no shadows in this system. Depth is a three-step tonal ramp (ground, raised, overlay) plus hairline rules, and nothing else. The one atmospheric element is a fixed radial white wash at 3.5% over the ground, which establishes a single top-of-page light source; it is a compositing layer of its own so the body is not repainted on every frame.
+There are no shadows in this system. Depth is a three-step tonal ramp (ground, raised, overlay) plus hairline rules, and nothing else. Two atmospheric elements sit over the ground, both fixed compositing layers of their own so the body is not repainted on every frame:
+
+1. A **radial white wash at 3.5%**, which establishes a single top-of-page light source.
+2. A **hairline grid** — 1px rules at 6% white on a 5.5rem module, whole page. It is the same move the rest of the system makes, structure drawn with rules rather than boxes, extended to the ground itself. Rendered, a grid line measures `rgb(26,27,28)`; the worst text tone over one (`ink-muted`) holds 5.31:1 and the field link 4.84:1.
+
+A third atmospheric layer would be one too many.
 
 ### Named Rules
 
@@ -277,6 +288,8 @@ The page's one authored motion moment. A stage list of mono stage names and over
 No border, no card — pure type hierarchy. Vermilion display numeral at poster scale over a mono label and a mono context line. Counters parse prefix, number, and suffix so `21,091`, `<100ms`, and `9.66M` all survive the count-up intact.
 
 ### Named Rules
+
+**The Fixed-Is-The-Parallax Rule.** Depth on scroll comes from a layer that does not move. `position: fixed` holds the grid at 0× while content runs at 1×, which is exactly what the measured reference (white-desert.com, Awwwards SOTD 11 Sep 2026) achieves by counter-translating its background at 1.00× scroll. Only two things are animated on scroll, both in CSS with no JS: the grid drifts 72px across the whole document, and the hero name lifts 190px over the first viewport — **0.20×**, inside the 0.2–0.3× band the reference sits in. Both live on custom properties in `:root` so the intensity is one number. One moving background layer, not three: the vestibular risk scales with layer count.
 
 **The CSS-Entrance Rule.** Entrance reveals are CSS animations, not GSAP. `gsap.from()` applies its start state immediately, so an interrupted tween can leave text permanently invisible — StrictMode's double-invoked effects orphaned a staggered word at `translateY(110%)` exactly that way. A CSS animation cannot be orphaned. GSAP owns only what CSS cannot do: the scroll-velocity marquee and the counters.
 

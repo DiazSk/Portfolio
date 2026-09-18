@@ -35,7 +35,7 @@ The differentiating claim is **decision quality, not tool inventory**. Hundreds 
 
 **Current surfaces:** single-page site — Hero, About, Projects (grouped Data Engineering & Analytics / Systems Engineering), Skills, Contact — with a fixed nav and anchor scroll.
 
-**Content source of truth:** `src/constants/resumeData.js` holds personal details, education, experience, projects, and skills. Section components read from it. Hero metrics are currently hardcoded in `src/sections/Hero.jsx`, separate from resumeData.
+**Content source of truth:** `src/constants/resumeData.js` holds personal details, education, experience, projects, and skills. Section components read from it. Hero metrics are currently hardcoded in `src/sections/Hero.jsx`, separate from resumeData. As of 2026-09-18 that row sits **below the fold**, immediately after the field band: the first viewport carries four blocks, and the one number left in it is the 9.66M inside the live-dashboard link, stated in a sentence rather than broken out. The metrics are still at rest and still the loudest row on the page, which is what "never hidden behind an interaction" requires — but a reader who never scrolls now sees no measured number. That trade was made deliberately; reversing it means putting the row back above the band, not adding a fourth number somewhere else.
 
 **Contact:** currently `mailto:` and a copy-email button only. **A real contact form is a planned capability** and should re-wire to the existing Resend handler at `api/contact.js`.
 
