@@ -286,8 +286,31 @@ A fixed full-width header, 64px tall, on an opaque `{colors.surface}` ground wit
 ### Architecture Schematic
 The page's one authored motion moment. A stage list of mono stage names and overlay-toned item boxes, connected by 1px edges. When a card opens, nodes settle in and edges extend stage by stage at a 90ms stagger; it replays on every open and never on page load. It is fully legible with the animation absent, and two items in one stage means a real branch in the architecture, not a layout convenience.
 
-### Metric Stat
-No border, no card — pure type hierarchy. Vermilion display numeral at poster scale over a mono label and a mono context line. Counters parse prefix, number, and suffix so `21,091`, `<100ms`, and `9.66M` all survive the count-up intact.
+### Measurement Rows
+Three full-width ruled rows under "How these were measured", `[2.5rem | number | evidence]` at 768px and stacked below it. The number is the Metric step in vermilion; the evidence column carries whichever form the measurement actually took — a two-bar comparison against the design it replaced (21,091 msg/s against ~500), or the pipeline path as mono stage names joined by hairlines. It replaced a three-column stats row that stated numbers without saying how they were taken, and `MetricStat` was deleted with it. A number on its own is a claim; this is the component that makes it evidence, which is the commitment position 03 in About already makes.
+
+Counters parse prefix, number, and suffix so `21,091`, `<100ms`, and `9.66M` all survive the count-up intact, and the authored value is cached on the element so a re-run cannot read a half-counted "0" as its target.
+
+### Gauge
+The proportion primitive: a 3px track at 14% white with a fill that is vermilion for the achieved value and muted ink for the baseline. A rule, not a filled bar — emphasis on the dark ground is a vermilion hairline, never an inverted fill. The track has to stay visible because the interesting fills are short: 2.4% and 7.1%.
+
+### Panel Grid
+About is a hard modular grid of full-bleed panels that butt edge to edge, the structure `aspensearch.com` is built on: `label | statement`, then `bio | portrait | availability`, then three stat panels, then `credentials` and `how I work` as their own rows. The whole section is one continuous grid; the positions band used to sit below it in a separate `max-w-7xl` container, which broke the run of panels.
+
+Each panel carries exactly one thing, is named by a micro-label rather than a heading, and at least one is left as flat tone for air — the portrait panel holds that role until the file exists, and collapses to nothing on mobile. The hairlines between panels are the grid's own 1px gaps showing the container through, so there are no doubled rules where panels meet. `About` renders outside `<main>` for the same reason Hero and Contact do: panels that stop at 1280px are cards, not panels.
+
+The structure is Aspen's; the palette and the type are this system's — they set a light neutral grotesk on white and mint, this sets heavy condensed Bricolage on near-black and vermilion. Their panels also carry halftone photography, which this site has no assets for.
+
+### Sticky Label
+How the grid moves on scroll, and worth stating precisely because the obvious guess is wrong. Aspen transforms nothing: sampling their page across four scroll positions found one rotating graphic and **twelve `position: sticky` elements pinned at `top: 60px`**. A label column pins under the header while the content column beside it scrolls past, and that differential is the entire effect. Here the About, Credentials and How-I-work labels pin at `top: 5.5rem`, clearing the 64px header.
+
+Sticky is not animation. It needs no `@supports` branch, no reduced-motion gate, and it carries none of the vestibular load that moving several layers at different speeds would. Below 768px the rule is off and the labels become plain section headers.
+
+### Micro-label
+A 6px filled vermilion square followed by the Label step — mono, 0.75rem, 0.1em, uppercase. It names a panel without spending a heading on it, and inverts to field-ink inside a field panel. It is the Label step and not a size of its own: a first pass set 0.6875rem here, a second micro size one pixel off the one the system already had.
+
+### Stat Panel
+One numeral at the Metric step and its caption at the Label step, pinned to the panel's foot with `margin-top: auto`. The scale gap between the two, inside one panel, is the whole device. It has no styles of its own — an earlier pass gave it a private `clamp(2.75rem, 5.5vw, 4.5rem)` and a private caption size, a third metric scale in a system that already had two. The numeral is vermilion because vermilion carries every metric numeral here.
 
 ### Named Rules
 
