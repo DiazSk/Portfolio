@@ -15,7 +15,7 @@ import { useMotion, horizontalTrack } from "../lib/motion";
  * Each band owns its own ScrollTrigger and its own progress, which is why
  * this is a component rather than an index into a shared one.
  */
-const Track = ({ label, projects }) => {
+const Track = ({ label, projects, wide }) => {
   const root = useRef(null);
   const [progress, setProgress] = useState(0);
 
@@ -36,7 +36,7 @@ const Track = ({ label, projects }) => {
         </div>
       </div>
 
-      <div className="h-wrap mt-6">
+      <div className={`h-wrap mt-6${wide ? " h-wrap-wide" : ""}`}>
         <div className="h-track">
           {projects.map((project) => (
             <ProjectCard key={project.name} project={project} />
@@ -50,6 +50,7 @@ const Track = ({ label, projects }) => {
 Track.propTypes = {
   label: PropTypes.string.isRequired,
   projects: PropTypes.array.isRequired,
+  wide: PropTypes.bool,
 };
 
 const isSystems = (p) =>
@@ -77,7 +78,7 @@ const Projects = () => {
       </div>
 
       <Track label="Data Engineering & Analytics" projects={data} />
-      <Track label="Systems Engineering" projects={systems} />
+      <Track label="Systems Engineering" projects={systems} wide />
     </section>
   );
 };

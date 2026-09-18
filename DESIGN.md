@@ -281,7 +281,7 @@ The proportions come from rauno.me, measured rather than eyeballed: his horizont
 
 The track is padded left by `max(0px, (100vw - 80rem) / 2) + c-space` so the first card's edge lines up with the heading column and the last runs off the right. Putting that padding on the track and not the wrapper keeps the travel distance as plain `track.scrollWidth - innerWidth`. GSAP translates `x` by exactly that, with `ease: "none"` — any other ease and scroll position stops agreeing with panel position.
 
-**A band only pins if it overhangs by more than 160px.** Systems Engineering holds two projects and overhangs by 58px; holding the page for 58px reads as a stutter rather than an effect, so that band stays a native row.
+**A band only pins if it overhangs by more than 160px**, so a track with a trivial overhang stays a native row rather than holding the page for a stutter. Systems Engineering holds two projects, so its panels are wider — `min(90vw, 52rem)`, 832px against the other band's 640px — which takes its overhang from 58px to 442px and lets it travel. Per-band widths are faithful to the reference rather than a workaround: rauno.me's own items run 655, 916, 1414 and 2356px wide.
 
 The wrapper uses `overflow: clip`, not `hidden`, and the distinction is load-bearing: `hidden` still creates a scrollport, so focusing an off-screen panel let the browser reveal it by setting the wrapper's `scrollLeft` — 2646px of it, on top of the track's transform — which left the track doubly offset and the pin desynced for every later scroll. `clip` creates no scrollport, so that cannot happen.
 
