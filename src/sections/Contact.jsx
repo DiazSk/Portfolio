@@ -98,30 +98,33 @@ const Contact = () => {
       </div>
 
       {/* ── The close: full-bleed field, the name set once ─────── */}
-      <div className="field-band pt-10">
-        <div className="c-space mx-auto w-full max-w-7xl">
-          <div
-            className="flex flex-wrap items-center justify-between gap-3 border-b pb-5 text-xs"
-            style={{ borderColor: "#2E1409", color: "#2E1409" }}
-          >
-            <span>Seattle, WA</span>
-            <span className="tabular">© {new Date().getFullYear()}</span>
-          </div>
-        </div>
-
+      <div className="field-band pt-14 pb-8">
+        {/* The name leads the band; the meta row sits under it.
+            Widened to wdth 100 with near-neutral tracking — at 245px the
+            condensed axis plus -0.06em was overlapping glyphs. */}
         <div className="overflow-hidden">
           <span
             className="text-display block w-full select-none leading-none"
             style={{
               color: "var(--color-field-ink)",
-              fontSize: "clamp(4rem, 19vw, 17rem)",
-              letterSpacing: "-0.06em",
-              marginBottom: "-0.12em",
+              fontSize: "clamp(4rem, 18vw, 16rem)",
+              fontVariationSettings: '"wdth" 100',
+              letterSpacing: "-0.012em",
             }}
             aria-hidden="true"
           >
             Zaid Shaikh
           </span>
+        </div>
+
+        <div className="c-space mx-auto w-full max-w-7xl">
+          <div
+            className="mt-8 flex flex-wrap items-center justify-between gap-3 border-t pt-5 text-xs"
+            style={{ borderColor: "#2E1409", color: "#2E1409" }}
+          >
+            <span>Seattle, WA</span>
+            <span className="tabular">© {new Date().getFullYear()}</span>
+          </div>
         </div>
       </div>
     </footer>
