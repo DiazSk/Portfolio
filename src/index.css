@@ -466,9 +466,11 @@ body::after {
   align-items: center;
   gap: 0.625rem;
   font-family: var(--font-mono);
-  font-size: 0.6875rem;
+  /* The documented Label step. An earlier pass set 0.6875rem here, which was
+     a second micro size one pixel off the one the system already has. */
+  font-size: 0.75rem;
   font-weight: 500;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--color-ink-muted);
 }
@@ -483,28 +485,6 @@ body::after {
 
 .panel-field .micro { color: #2E1409; }
 .panel-field .micro::before { background: var(--color-field-ink); }
-
-/* Stat panel: the numeral at the top, its caption pinned to the panel's
-   bottom edge. The scale gap between the two is the whole effect. */
-.stat-value {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-variation-settings: "wdth" 78;
-  font-size: clamp(2.75rem, 5.5vw, 4.5rem);
-  line-height: 0.85;
-  letter-spacing: -0.04em;
-  color: var(--color-ink);
-}
-
-.stat-note {
-  margin-top: auto;
-  padding-top: 2.5rem;
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-ink-muted);
-}
 
 @media (min-width: 768px) {
   .about-grid {

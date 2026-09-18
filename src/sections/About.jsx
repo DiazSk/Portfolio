@@ -128,8 +128,11 @@ const About = () => {
         {/* ── Three readings ──────────────────────────────────── */}
         {STATS.map((s, i) => (
           <div key={s.value} className={`panel a-stat${i + 1}`}>
-            <p className="stat-value">{s.value}</p>
-            <p className="stat-note">{s.note}</p>
+            {/* The documented Metric step and Label step, not a private pair:
+                vermilion carries every metric numeral in this system. The
+                caption is pinned to the panel's foot, which is the device. */}
+            <p className="metric-value">{s.value}</p>
+            <p className="text-label mt-auto pt-10">{s.note}</p>
           </div>
         ))}
 
