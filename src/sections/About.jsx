@@ -110,12 +110,10 @@ const About = () => {
           <div className="flex flex-col gap-6">
             {hasPortrait && (
               <div
-                className="overflow-hidden rounded-xl border"
+                className="overflow-hidden border"
                 style={{
-                  borderColor: "var(--color-border)",
+                  borderColor: "var(--color-border-strong)",
                   background: "var(--color-surface-raised)",
-                  boxShadow:
-                    "inset 0 1px 0 rgba(255,255,255,0.055), 0 8px 24px -12px rgba(0,0,0,0.7)",
                 }}
               >
                 <img
@@ -129,10 +127,10 @@ const About = () => {
             )}
 
             <div
-              className="rounded-xl border p-6"
+              className="border p-6"
               style={{
                 background: "var(--color-surface-raised)",
-                borderColor: "var(--color-border)",
+                borderColor: "var(--color-border-strong)",
               }}
             >
               <div className="mb-4 flex items-center gap-2">

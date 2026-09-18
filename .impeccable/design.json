@@ -1,52 +1,157 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-16T00:00:00Z",
+  "generatedAt": "2026-09-17T00:00:00.000Z",
   "title": "Design System: Zaid Shaikh — Portfolio",
   "extensions": {
     "colorMeta": {
+      "field": {
+        "role": "primary",
+        "displayName": "Signal Vermilion",
+        "canonical": "#FF3B14",
+        "tonalRamp": [
+          "#2E0A02",
+          "#4D1104",
+          "#7A1C06",
+          "#A82609",
+          "#D4300D",
+          "#FF3B14",
+          "#FF7554",
+          "#FFB7A4"
+        ]
+      },
+      "field-ink": {
+        "role": "primary",
+        "displayName": "Field Ink",
+        "canonical": "#0A0A09",
+        "tonalRamp": [
+          "#0A0A09",
+          "#1C1C1A",
+          "#2E2E2B",
+          "#454540",
+          "#6B6B64",
+          "#94948B",
+          "#C2C2B9",
+          "#EDEDE7"
+        ]
+      },
+      "field-ink-secondary": {
+        "role": "primary",
+        "displayName": "Scorched Umber",
+        "canonical": "#2E1409",
+        "tonalRamp": [
+          "#170A04",
+          "#2E1409",
+          "#472010",
+          "#5F2C17",
+          "#8A4222",
+          "#B75C33",
+          "#DA9270",
+          "#F2CBB8"
+        ]
+      },
       "surface": {
         "role": "neutral",
-        "displayName": "Void",
+        "displayName": "Ground",
         "canonical": "#08090A",
         "tonalRamp": [
           "#08090A",
           "#0F1011",
           "#16181A",
-          "#212426",
-          "#33373A",
-          "#575C61",
+          "#24272A",
+          "#3A3E43",
+          "#5C6168",
           "#8A8F98",
           "#F7F8F8"
         ]
       },
       "surface-raised": {
         "role": "neutral",
-        "displayName": "Raised Plane",
+        "displayName": "Raised",
         "canonical": "#0F1011",
         "tonalRamp": [
           "#08090A",
           "#0F1011",
           "#16181A",
-          "#111315",
-          "#212426",
-          "#33373A",
-          "#575C61",
-          "#B4B9C2"
+          "#1E2123",
+          "#2B2F33",
+          "#474C52",
+          "#7A808A",
+          "#E4E6E9"
         ]
       },
       "surface-overlay": {
         "role": "neutral",
-        "displayName": "Overlay Plane",
+        "displayName": "Overlay",
         "canonical": "#16181A",
         "tonalRamp": [
-          "#08090A",
-          "#0F1011",
+          "#0B0C0D",
           "#16181A",
-          "#212426",
-          "#2C3033",
-          "#33373A",
-          "#575C61",
-          "#8A8F98"
+          "#212427",
+          "#2D3135",
+          "#3E4349",
+          "#5F656D",
+          "#90969F",
+          "#E9EBEE"
+        ]
+      },
+      "surface-hover": {
+        "role": "neutral",
+        "displayName": "Hover Ground",
+        "canonical": "#111315",
+        "tonalRamp": [
+          "#08090A",
+          "#111315",
+          "#191C1F",
+          "#24282C",
+          "#343940",
+          "#525860",
+          "#848A93",
+          "#E6E8EB"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#F7F8F8",
+        "tonalRamp": [
+          "#1A1B1B",
+          "#2E3030",
+          "#494B4B",
+          "#6A6D6D",
+          "#8F9292",
+          "#B4B9C2",
+          "#D9DBDC",
+          "#F7F8F8"
+        ]
+      },
+      "ink-secondary": {
+        "role": "neutral",
+        "displayName": "Ink Secondary",
+        "canonical": "#B4B9C2",
+        "tonalRamp": [
+          "#1B1D21",
+          "#2E3138",
+          "#474C55",
+          "#636974",
+          "#8A8F98",
+          "#B4B9C2",
+          "#D4D7DD",
+          "#EFF1F4"
+        ]
+      },
+      "ink-muted": {
+        "role": "neutral",
+        "displayName": "Ink Muted",
+        "canonical": "#8A8F98",
+        "tonalRamp": [
+          "#181A1D",
+          "#292C31",
+          "#3F444A",
+          "#596069",
+          "#747B85",
+          "#8A8F98",
+          "#B6BAC1",
+          "#E3E5E9"
         ]
       },
       "border": {
@@ -54,14 +159,14 @@
         "displayName": "Hairline",
         "canonical": "rgba(255, 255, 255, 0.08)",
         "tonalRamp": [
-          "rgba(255,255,255,0.02)",
           "rgba(255,255,255,0.04)",
-          "rgba(255,255,255,0.06)",
           "rgba(255,255,255,0.08)",
           "rgba(255,255,255,0.12)",
           "rgba(255,255,255,0.16)",
           "rgba(255,255,255,0.24)",
-          "rgba(255,255,255,0.4)"
+          "rgba(255,255,255,0.36)",
+          "rgba(255,255,255,0.56)",
+          "rgba(255,255,255,0.86)"
         ]
       },
       "border-strong": {
@@ -74,196 +179,118 @@
           "rgba(255,255,255,0.12)",
           "rgba(255,255,255,0.16)",
           "rgba(255,255,255,0.24)",
-          "rgba(255,255,255,0.32)",
-          "rgba(255,255,255,0.48)",
-          "rgba(255,255,255,0.64)"
-        ]
-      },
-      "ink": {
-        "role": "neutral",
-        "displayName": "Primary Ink",
-        "canonical": "#F7F8F8",
-        "contrastOnOverlay": "16.73:1",
-        "tonalRamp": [
-          "#26282B",
-          "#33373A",
-          "#4A4E53",
-          "#676C72",
-          "#8A8F98",
-          "#B4B9C2",
-          "#D9DCE0",
-          "#F7F8F8"
-        ]
-      },
-      "ink-secondary": {
-        "role": "neutral",
-        "displayName": "Secondary Ink",
-        "canonical": "#B4B9C2",
-        "contrastOnOverlay": "9.04:1",
-        "tonalRamp": [
-          "#1C1E21",
-          "#2B2E33",
-          "#3F444A",
-          "#575C64",
-          "#727880",
-          "#8A8F98",
-          "#B4B9C2",
-          "#E4E6EA"
-        ]
-      },
-      "ink-muted": {
-        "role": "neutral",
-        "displayName": "Muted Ink",
-        "canonical": "#8A8F98",
-        "contrastOnOverlay": "5.48:1",
-        "tonalRamp": [
-          "#17191C",
-          "#232629",
-          "#33373C",
-          "#474C52",
-          "#5D636A",
-          "#757B83",
-          "#8A8F98",
-          "#C3C7CD"
-        ]
-      },
-      "accent": {
-        "role": "primary",
-        "displayName": "Signal Amber",
-        "canonical": "#EBA352",
-        "contrastOnSurface": "8.39:1",
-        "tonalRamp": [
-          "#2E1D08",
-          "#4A2F0E",
-          "#6B4415",
-          "#8F5C1D",
-          "#B67826",
-          "#D4913C",
-          "#EBA352",
-          "#F7D3A6"
-        ]
-      },
-      "surface-hover": {
-        "role": "neutral",
-        "displayName": "Surface Hover",
-        "canonical": "#111315",
-        "tonalRamp": [
-          "#0A0B0C",
-          "#111315",
-          "#1B1E21",
-          "#2A2E33",
-          "#474D55",
-          "#6E757F",
-          "#A3AAB4",
-          "#DDE1E6"
+          "rgba(255,255,255,0.36)",
+          "rgba(255,255,255,0.56)",
+          "rgba(255,255,255,0.86)"
         ]
       }
     },
     "typographyMeta": {
       "display": {
         "displayName": "Display",
-        "purpose": "The name in the first viewport, at the page's peak scale (capped at 6rem by the craft floor). The Contact ask uses the headline role."
+        "purpose": "The name in the first viewport and the footer close. Bricolage at wdth 78; one per page region at most."
       },
       "headline": {
-        "displayName": "Headline",
-        "purpose": "Section headings: 'Selected systems', 'Stack', the About claim."
+        "displayName": "Section Head",
+        "purpose": "Uppercase section headings. The second and last step of the two-step scale."
       },
       "metric": {
         "displayName": "Metric",
-        "purpose": "The three hero numbers, in Signal Amber, always tabular."
+        "purpose": "Measured numbers, in the field colour with tabular figures. Ranks above prose, below the section head."
       },
       "title": {
         "displayName": "Title",
-        "purpose": "Project names inside cards."
+        "purpose": "Project and stack-group names; uppercase display face at card scale."
       },
       "body": {
         "displayName": "Body",
-        "purpose": "All prose, capped at max-w-2xl (~42rem)."
+        "purpose": "Inter, prose only. Capped at max-w-2xl; credo lines run 13–26ch. Explicitly not the display voice."
+      },
+      "label": {
+        "displayName": "Measurement Label",
+        "purpose": "Azeret Mono, restricted to measurement: metric labels and context, tech pills, schematic stage names, tabular metadata."
+      },
+      "action": {
+        "displayName": "Action",
+        "purpose": "Buttons at Bricolage wdth 82, uppercase; nav links at wdth 85."
       },
       "body-small": {
         "displayName": "Body Small",
-        "purpose": "The site's dominant reading size: outcome statements, highlights, nav links, buttons, credentials, schematic node labels."
+        "purpose": "The dominant secondary reading size: outcome statements, highlights, credentials, schematic node labels, footer links. Used 12+ times."
       },
-      "label": {
-        "displayName": "Label",
-        "purpose": "Uppercase group indexes, schematic stage names, footer column heads. Never an eyebrow above a heading."
+      "metric-card": {
+        "displayName": "Metric (card)",
+        "purpose": "The primary metric inside each project card — the same display face and field colour as the hero metric, one step down so the card title still leads."
       }
     },
-    "shadows": [
-      {
-        "name": "card-rest",
-        "value": "inset 0 1px 0 rgba(255,255,255,0.055), 0 1px 2px rgba(0,0,0,0.4), 0 8px 24px -12px rgba(0,0,0,0.7)",
-        "purpose": "Every card and card-like panel at rest: lit top edge plus two-part ambient seating."
-      },
-      {
-        "name": "card-hover",
-        "value": "inset 0 1px 0 rgba(255,255,255,0.09), 0 2px 4px rgba(0,0,0,0.45), 0 14px 34px -14px rgba(0,0,0,0.8)",
-        "purpose": "Card hover, paired with border → strong and fill → #111315."
-      },
-      {
-        "name": "pill-highlight",
-        "value": "inset 0 1px 0 rgba(255,255,255,0.04)",
-        "purpose": "Tech pills: the smallest surfaces are still lit."
-      },
-      {
-        "name": "ghost-highlight",
-        "value": "inset 0 1px 0 rgba(255,255,255,0.045)",
-        "purpose": "Secondary (ghost) buttons."
-      },
-      {
-        "name": "primary-ambient",
-        "value": "0 1px 2px rgba(0,0,0,0.5), 0 8px 20px -10px rgba(0,0,0,0.9)",
-        "purpose": "The light-on-dark primary button, which needs seating rather than lighting."
-      },
-      {
-        "name": "ground-wash",
-        "value": "radial-gradient(120% 70% at 50% 0%, rgba(255,255,255,0.035) 0%, rgba(255,255,255,0) 55%)",
-        "purpose": "Fixed background-image on body: the page's light source, so scrolling moves content through the light."
-      },
-      {
-        "name": "focus-ring",
-        "value": "outline: 2px solid #EBA352; outline-offset: 2px; border-radius: 0.25rem",
-        "purpose": "Global :focus-visible for everything that does not define its own."
-      }
-    ],
+    "shadows": [],
     "motion": [
       {
-        "name": "state-transition",
-        "value": "150ms",
-        "purpose": "Every hover/colour/shadow state change. Fill, border, highlight and shadow move together."
+        "name": "ease-entrance",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Word-rise and block-settle entrance reveals."
       },
       {
-        "name": "disclosure",
-        "value": "220ms easeInOut",
-        "purpose": "Project card layer-2 height+opacity expand/collapse."
-      },
-      {
-        "name": "ease-settle",
+        "name": "ease-disclosure",
         "value": "cubic-bezier(0.22, 1, 0.36, 1)",
-        "purpose": "Decelerating curve for the schematic node settle and edge extend."
+        "purpose": "Card disclosure row expansion and the schematic's node/edge draw."
       },
       {
-        "name": "node-settle",
-        "value": "settle 400ms cubic-bezier(0.22,1,0.36,1) forwards — from { opacity:0; translateY(4px) }",
-        "purpose": "A schematic stage node arriving."
+        "name": "ease-gsap",
+        "value": "power3.out",
+        "purpose": "The GSAP layer's only easing — marquee and counters."
       },
       {
-        "name": "edge-extend",
-        "value": "extend 320ms cubic-bezier(0.22,1,0.36,1) forwards — scaleY(0)→1 vertical, scaleX(0)→1 horizontal",
-        "purpose": "A schematic connector drawing itself."
+        "name": "duration-state",
+        "value": "150ms",
+        "purpose": "All colour/border state transitions: buttons, links, cards, nav."
       },
       {
-        "name": "stagger",
-        "value": "calc(var(--i) * 90ms)",
-        "purpose": "Per-stage delay so the pipeline reads as construction, edges leading nodes by 40ms."
+        "name": "duration-disclosure",
+        "value": "240ms",
+        "purpose": "grid-template-rows 0fr -> 1fr card expansion."
+      },
+      {
+        "name": "duration-word-rise",
+        "value": "950ms",
+        "purpose": "Poster-scale word reveal from translateY(110%)."
+      },
+      {
+        "name": "duration-block-settle",
+        "value": "700ms",
+        "purpose": "Hero blocks and on-scroll section reveals."
+      },
+      {
+        "name": "stagger-word",
+        "value": "80ms",
+        "purpose": "Per-word delay via --i on the poster headline."
+      },
+      {
+        "name": "stagger-block",
+        "value": "70ms (after 300ms)",
+        "purpose": "Hero sub-block cascade."
+      },
+      {
+        "name": "stagger-schematic",
+        "value": "90ms",
+        "purpose": "Per-stage node settle and edge extend when a project card opens."
+      },
+      {
+        "name": "scroll-reveal-range",
+        "value": "entry 5% cover 22% (animation-timeline: view())",
+        "purpose": "Native scroll-driven reveal for below-the-fold sections."
       },
       {
         "name": "reduced-motion",
-        "value": "@media (prefers-reduced-motion: reduce) { .node, .edge { animation: none; opacity: 1; transform: none } html { scroll-behavior: auto } }",
-        "purpose": "All motion is removable with zero loss of information."
+        "value": "@media (prefers-reduced-motion: reduce) { animation: none } + gsap.matchMedia()",
+        "purpose": "Reduced motion is the absence of the animation, never a second code path."
       }
     ],
     "breakpoints": [
+      {
+        "name": "metric-row-collapse",
+        "value": "max-width: 640px"
+      },
       {
         "name": "sm",
         "value": "640px"
@@ -277,209 +304,211 @@
         "value": "1024px"
       },
       {
-        "name": "container-schematic",
-        "value": "34rem (container query, not viewport)"
+        "name": "container-max",
+        "value": "80rem (max-w-7xl)"
+      },
+      {
+        "name": "schematic-axis (container query, not media)",
+        "value": "@container (min-width: 34rem)"
       }
-    ],
-    "layout": {
-      "container": "max-width 80rem, centred",
-      "gutter": "1.25rem → 2.5rem (640px) → 4rem (1024px)",
-      "sectionRhythm": "6rem vertical padding, 8rem at ≥768px",
-      "columnModels": [
-        "3fr / 2fr split (About)",
-        "220px fixed label column / 1fr (Skills index)",
-        "3fr / 2fr / 2fr (Contact)"
-      ]
-    }
+    ]
   },
   "components": [
     {
       "name": "Primary Button",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "The one real action per region: mailto, copy email, contact address. Inverted ink fill on near-black text.",
-      "html": "<button class=\"ds-btn-primary\"><svg width=\"15\" height=\"15\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><rect x=\"1\" y=\"3\" width=\"14\" height=\"10\" rx=\"2\" stroke=\"currentColor\" stroke-width=\"1.4\"/><path d=\"M1.8 4.2l5.4 4a1.4 1.4 0 001.6 0l5.4-4\" stroke=\"currentColor\" stroke-width=\"1.4\" stroke-linecap=\"round\"/></svg>shaikh.zaid@northeastern.edu</button>",
-      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; border: none; border-radius: 0.5rem; padding: 0.625rem 1.25rem; font-family: Inter, sans-serif; font-size: 0.875rem; font-weight: 500; background: #F7F8F8; color: #08090A; box-shadow: 0 1px 2px rgba(0,0,0,0.5), 0 8px 20px -10px rgba(0,0,0,0.9); transition: background 150ms; cursor: pointer; } .ds-btn-primary:hover { background: #FFFFFF; } .ds-btn-primary:focus-visible { outline: 2px solid #EBA352; outline-offset: 2px; }"
+      "description": "The page's committing action — field ground, black label, square.",
+      "html": "<button class=\"ds-btn-primary\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><rect x=\"1\" y=\"4\" width=\"9\" height=\"9\" rx=\"1.5\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M4 4V2.5A1.5 1.5 0 015.5 1h6A1.5 1.5 0 0113 2.5v6A1.5 1.5 0 0111.5 10H10\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/></svg>Copy email address</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.875rem 1.5rem; font-family: \"Bricolage Grotesque\", Inter, sans-serif; font-variation-settings: \"wdth\" 82; font-weight: 800; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.005em; background: #FF3B14; color: #0A0A09; border: none; border-radius: 0; cursor: pointer; transition: background 150ms; } .ds-btn-primary:hover { background: #F7F8F8; } .ds-btn-primary:focus-visible { outline: 2px solid #FF3B14; outline-offset: 2px; }"
     },
     {
       "name": "Ghost Button",
       "kind": "button",
       "refersTo": "button-ghost",
-      "description": "Secondary actions beside the primary — social links in the hero. Raised plane, hairline border, own inset highlight.",
-      "html": "<a class=\"ds-btn-ghost\" href=\"#\">GitHub</a>",
-      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; gap: 0.5rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 0.5rem; padding: 0.625rem 1.25rem; font-family: Inter, sans-serif; font-size: 0.875rem; font-weight: 500; text-decoration: none; background: #0F1011; color: #B4B9C2; box-shadow: inset 0 1px 0 rgba(255,255,255,0.045); transition: color 150ms, border-color 150ms, background 150ms; } .ds-btn-ghost:hover { border-color: rgba(255,255,255,0.16); background: #16181A; color: #F7F8F8; } .ds-btn-ghost:focus-visible { outline: 2px solid #EBA352; outline-offset: 2px; }"
+      "description": "The secondary action — hairline outline on the ground, no fill at rest.",
+      "html": "<button class=\"ds-btn-ghost\">View source</button>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.875rem 1.5rem; font-family: \"Bricolage Grotesque\", Inter, sans-serif; font-variation-settings: \"wdth\" 82; font-weight: 800; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.005em; background: transparent; color: #F7F8F8; border: 1px solid rgba(255,255,255,0.16); border-radius: 0; cursor: pointer; transition: background 150ms, color 150ms; } .ds-btn-ghost:hover { background: #16181A; color: #F7F8F8; } .ds-btn-ghost:focus-visible { outline: 2px solid #FF3B14; outline-offset: 2px; }"
+    },
+    {
+      "name": "On-Field Button",
+      "kind": "button",
+      "refersTo": "button-on-field",
+      "description": "The inversion used inside a vermilion region: black ground, vermilion label, mono. Its focus ring is field ink because vermilion on vermilion is invisible.",
+      "html": "<div class=\"ds-field-pad\"><button class=\"ds-btn-on-field\">Copy email</button></div>",
+      "css": ".ds-field-pad { background: #FF3B14; padding: 1.5rem; } .ds-btn-on-field { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.625rem 1.25rem; font-family: \"Azeret Mono\", ui-monospace, monospace; font-weight: 600; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.06em; background: #0A0A09; color: #FF3B14; border: none; border-radius: 0; cursor: pointer; transition: background 150ms; } .ds-btn-on-field:hover { background: #1C1C1A; } .ds-btn-on-field:focus-visible { outline: 2px solid #0A0A09; outline-offset: 3px; }"
     },
     {
       "name": "Project Card",
       "kind": "card",
       "refersTo": "card",
-      "description": "The lit surface of the system: inset top-edge highlight plus two-part ambient shadow, all four properties lifting together on hover.",
-      "html": "<article class=\"ds-card\"><span class=\"ds-role-tag ds-role-tag-accent\">Systems Engineering</span><h3 class=\"ds-card-title\">Chatflow</h3><p class=\"ds-card-metric\">21,091</p><p class=\"ds-card-metric-label\">msg/s sustained</p><p class=\"ds-card-body\">A distributed chat backend sustaining twenty-one thousand messages a second.</p></article>",
-      "css": ".ds-card { display: flex; flex-direction: column; gap: 0.5rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 0.75rem; padding: 1.5rem; font-family: Inter, sans-serif; background: #0F1011; box-shadow: inset 0 1px 0 rgba(255,255,255,0.055), 0 1px 2px rgba(0,0,0,0.4), 0 8px 24px -12px rgba(0,0,0,0.7); transition: border-color 150ms, box-shadow 150ms, background 150ms; align-items: flex-start; } .ds-card:hover { border-color: rgba(255,255,255,0.16); background: #111315; box-shadow: inset 0 1px 0 rgba(255,255,255,0.09), 0 2px 4px rgba(0,0,0,0.45), 0 14px 34px -14px rgba(0,0,0,0.8); } .ds-card-title { margin: 0; font-size: 1.25rem; font-weight: 600; line-height: 1.375; color: #F7F8F8; } .ds-card-metric { margin: 0.5rem 0 0; font-size: 1.5rem; font-weight: 600; line-height: 1; font-variant-numeric: tabular-nums; color: #F7F8F8; } .ds-card-metric-label { margin: 0.125rem 0 0; font-size: 0.75rem; color: #8A8F98; } .ds-card-body { margin: 0.5rem 0 0; font-size: 0.875rem; line-height: 1.625; color: #B4B9C2; }"
+      "description": "Square, raised, hairline-bordered. Hover lifts the ground one step and turns the border vermilion — no shadow, ever.",
+      "html": "<article class=\"ds-card\"><h4 class=\"ds-card-title\">Medicare Gap Analyzer</h4><p class=\"ds-card-metric\">9.66M</p><p class=\"ds-card-metric-label\">rows, queryable live</p><p class=\"ds-card-body\">DuckDB-WASM over tiered Parquet: a reader queries every row in their own browser, with no backend to expire.</p></article>",
+      "css": ".ds-card { display: flex; flex-direction: column; padding: 1.5rem; background: #0F1011; border: 1px solid rgba(255,255,255,0.16); border-radius: 0; transition: border-color 150ms, background 150ms; } .ds-card:hover { border-color: #FF3B14; background: #111315; } .ds-card-title { margin: 0; font-family: \"Bricolage Grotesque\", Inter, sans-serif; font-variation-settings: \"wdth\" 78; font-weight: 800; font-size: 1.875rem; line-height: 1; letter-spacing: -0.02em; text-transform: uppercase; color: #F7F8F8; } .ds-card-metric { margin: 1rem 0 0; font-family: \"Bricolage Grotesque\", Inter, sans-serif; font-variation-settings: \"wdth\" 78; font-weight: 800; font-size: 3rem; line-height: 0.9; letter-spacing: -0.04em; font-variant-numeric: tabular-nums; color: #FF3B14; } .ds-card-metric-label { margin: 0.125rem 0 0; font-family: \"Azeret Mono\", ui-monospace, monospace; font-size: 0.75rem; color: #8A8F98; } .ds-card-body { margin: 1rem 0 0; font-family: Inter, sans-serif; font-size: 0.875rem; line-height: 1.6; color: #B4B9C2; }"
     },
     {
       "name": "Tech Pill",
       "kind": "chip",
       "refersTo": "tech-pill",
-      "description": "Marks a tool that actually carried a shipped system. The long tail renders as muted plain text instead.",
-      "html": "<span class=\"ds-tech-pill\">Apache Kafka</span> <span class=\"ds-tech-pill\">Flink</span> <span class=\"ds-tech-plain\">DuckDB · Metabase · Streamlit</span>",
-      "css": ".ds-tech-pill { display: inline-block; border: 1px solid rgba(255,255,255,0.08); border-radius: 0.375rem; padding: 0.125rem 0.5rem; font-family: Inter, sans-serif; font-size: 0.75rem; background: #16181A; color: #B4B9C2; box-shadow: inset 0 1px 0 rgba(255,255,255,0.04); } .ds-tech-plain { font-family: Inter, sans-serif; font-size: 0.75rem; line-height: 1.625; color: #8A8F98; }"
+      "description": "Metadata, never a control: transparent, square, hairline, mono.",
+      "html": "<span class=\"ds-pill\">Apache Flink</span> <span class=\"ds-pill\">dbt</span> <span class=\"ds-pill\">DuckDB</span>",
+      "css": ".ds-pill { display: inline-block; padding: 0.125rem 0.5rem; font-family: \"Azeret Mono\", ui-monospace, monospace; font-size: 0.75rem; background: transparent; color: #B4B9C2; border: 1px solid rgba(255,255,255,0.16); border-radius: 0; }"
     },
     {
-      "name": "Role Tag",
+      "name": "On-Field Tech Pill",
       "kind": "chip",
-      "refersTo": "role-tag-accent",
-      "description": "Categorises a project. Systems / Backend work carries the accent — an amber hairline, never an ink inversion.",
-      "html": "<span class=\"ds-role-tag ds-role-tag-default\">Data Engineering</span> <span class=\"ds-role-tag ds-role-tag-accent\">Systems Engineering</span>",
-      "css": ".ds-role-tag { display: inline-block; border: 1px solid transparent; border-radius: 9999px; padding: 0.125rem 0.625rem; font-family: Inter, sans-serif; font-size: 0.75rem; font-weight: 500; } .ds-role-tag-default { background: #16181A; border-color: rgba(255,255,255,0.08); color: #B4B9C2; } .ds-role-tag-accent { background: rgba(235,163,82,0.1); border-color: rgba(235,163,82,0.35); color: #EBA352; }"
+      "refersTo": "tech-pill-on-field",
+      "description": "The same pill inside a field region. Its border is a solid scorched umber, not an alpha black — rgba(10,9,8,0.38) composites to ~2.2:1 here.",
+      "html": "<div class=\"ds-field-pad2\"><span class=\"ds-pill-field\">PySpark</span> <span class=\"ds-pill-field\">Delta Lake</span></div>",
+      "css": ".ds-field-pad2 { background: #FF3B14; padding: 1.5rem; } .ds-pill-field { display: inline-block; padding: 0.125rem 0.5rem; font-family: \"Azeret Mono\", ui-monospace, monospace; font-size: 0.75rem; background: transparent; color: #0A0A09; border: 1px solid #2E1409; border-radius: 0; }"
     },
     {
-      "name": "Navigation Bar",
+      "name": "Navigation",
       "kind": "nav",
       "refersTo": "nav-link",
-      "description": "Fixed 64px header on a 72%-opaque ground with backdrop blur and a hairline bottom border; the page scrolls beneath it.",
-      "html": "<header class=\"ds-nav\"><a class=\"ds-nav-mark\" href=\"/\">Zaid<span>.</span></a><ul class=\"ds-nav-ul\"><li><a class=\"ds-nav-link\" href=\"#about\">About</a></li><li><a class=\"ds-nav-link\" href=\"#projects\">Projects</a></li><li><a class=\"ds-nav-link\" href=\"#contact\">Contact</a></li></ul></header>",
-      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; min-height: 64px; padding: 0 1.25rem; font-family: Inter, sans-serif; background: rgba(8,9,10,0.72); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.08); } .ds-nav-mark { font-size: 1.25rem; font-weight: 600; letter-spacing: -0.02em; color: #F7F8F8; text-decoration: none; transition: opacity 150ms; } .ds-nav-mark span { color: #8A8F98; } .ds-nav-mark:hover { opacity: 0.7; } .ds-nav-ul { display: flex; gap: 2rem; list-style: none; margin: 0; padding: 0; } .ds-nav-link { font-size: 0.875rem; color: #8A8F98; text-decoration: none; transition: color 150ms; } .ds-nav-link:hover { color: #F7F8F8; } .ds-nav-link:focus-visible { outline: 2px solid #EBA352; outline-offset: 2px; border-radius: 0.25rem; }"
+      "description": "Fixed 64px header on a 72% translucent ground with a backdrop blur and a bottom hairline; uppercase condensed links, 2.75rem tall for target size.",
+      "html": "<header class=\"ds-nav\"><a class=\"ds-nav-mark\" href=\"#\">Zaid<span>.</span></a><ul class=\"ds-nav-ul\"><li><a class=\"ds-nav-link\" href=\"#projects\">Projects</a></li><li><a class=\"ds-nav-link\" href=\"#stack\">Stack</a></li><li><a class=\"ds-nav-link\" href=\"#contact\">Contact</a></li></ul></header>",
+      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; min-height: 64px; padding: 0 1.25rem; background: rgba(8,9,10,0.72); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.08); } .ds-nav-mark { font-family: Inter, sans-serif; font-weight: 600; font-size: 1.25rem; letter-spacing: -0.02em; color: #F7F8F8; text-decoration: none; transition: opacity 150ms; } .ds-nav-mark span { color: #8A8F98; } .ds-nav-mark:hover { opacity: 0.7; } .ds-nav-ul { display: flex; gap: 2rem; list-style: none; margin: 0; padding: 0; } .ds-nav-link { display: inline-flex; align-items: center; min-height: 2.75rem; font-family: \"Bricolage Grotesque\", Inter, sans-serif; font-variation-settings: \"wdth\" 85; font-weight: 600; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.01em; color: #8A8F98; text-decoration: none; transition: color 150ms; } .ds-nav-link:hover { color: #F7F8F8; } .ds-nav-link:focus-visible { outline: 2px solid #FF3B14; outline-offset: 2px; border-radius: 0.375rem; }"
     },
     {
       "name": "Metric Row",
       "kind": "custom",
       "refersTo": "typography.metric",
-      "description": "Three headline numbers in one hairline-ruled row — not three cards. Rules rotate from left to top below 640px.",
-      "html": "<div class=\"ds-metric-grid\"><div class=\"ds-metric\"><span class=\"ds-metric-value\">21,091</span><span class=\"ds-metric-label\">msg/s sustained</span><span class=\"ds-metric-context\">Chatflow · Java + RabbitMQ + Redis</span></div><div class=\"ds-metric\"><span class=\"ds-metric-value\">&lt;100ms</span><span class=\"ds-metric-label\">end-to-end latency</span><span class=\"ds-metric-context\">Crypto Analyzer · Kafka + Flink</span></div><div class=\"ds-metric\"><span class=\"ds-metric-value\">9.6M</span><span class=\"ds-metric-label\">records processed</span><span class=\"ds-metric-context\">Healthcare Lakehouse · Azure Medallion</span></div></div>",
-      "css": ".ds-metric-grid { display: grid; grid-template-columns: repeat(3, 1fr); font-family: Inter, sans-serif; } .ds-metric-grid > * + * { border-left: 1px solid rgba(255,255,255,0.08); padding-left: 2rem; } .ds-metric { display: flex; flex-direction: column; gap: 0.25rem; } .ds-metric-value { font-size: 3rem; font-weight: 600; letter-spacing: -0.025em; line-height: 1.1; font-variant-numeric: tabular-nums; color: #EBA352; } .ds-metric-label { font-size: 0.875rem; font-weight: 500; color: #B4B9C2; } .ds-metric-context { font-size: 0.75rem; color: #8A8F98; } @media (max-width: 640px) { .ds-metric-grid { grid-template-columns: 1fr; } .ds-metric-grid > * + * { border-left: none; border-top: 1px solid rgba(255,255,255,0.08); padding-left: 0; padding-top: 1.5rem; margin-top: 1.5rem; } }"
+      "description": "The first viewport's three measured numbers: no card, pure type, divided by 1px rules that rotate from vertical to horizontal under 640px.",
+      "html": "<div class=\"ds-metric-grid\"><div class=\"ds-metric\"><span class=\"ds-metric-value\">21,091</span><span class=\"ds-metric-label\">msg/s sustained</span><span class=\"ds-metric-context\">Chatflow · Java + RabbitMQ + Redis</span></div><div class=\"ds-metric\"><span class=\"ds-metric-value\">&lt;100ms</span><span class=\"ds-metric-label\">end-to-end latency</span><span class=\"ds-metric-context\">Crypto Analyzer · Kafka + Flink</span></div><div class=\"ds-metric\"><span class=\"ds-metric-value\">9.66M</span><span class=\"ds-metric-label\">rows, queryable live</span><span class=\"ds-metric-context\">Medicare Gap Analyzer · DuckDB-WASM</span></div></div>",
+      "css": ".ds-metric-grid { display: grid; grid-template-columns: repeat(3, 1fr); } .ds-metric-grid > * + * { border-left: 1px solid rgba(255,255,255,0.08); padding-left: 2rem; } .ds-metric { display: flex; flex-direction: column; gap: 0.25rem; } .ds-metric-value { font-family: \"Bricolage Grotesque\", Inter, sans-serif; font-variation-settings: \"wdth\" 78; font-weight: 800; font-size: clamp(2.5rem, 4.5vw, 4rem); line-height: 0.9; letter-spacing: -0.04em; font-variant-numeric: tabular-nums; color: #FF3B14; } .ds-metric-label { margin-top: 0.25rem; font-family: \"Azeret Mono\", ui-monospace, monospace; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: #F7F8F8; } .ds-metric-context { font-family: \"Azeret Mono\", ui-monospace, monospace; font-size: 0.75rem; letter-spacing: 0.01em; color: #8A8F98; } @media (max-width: 640px) { .ds-metric-grid { grid-template-columns: 1fr; } .ds-metric-grid > * + * { border-left: none; border-top: 1px solid rgba(255,255,255,0.08); padding-left: 0; padding-top: 1.5rem; margin-top: 1.5rem; } }"
+    },
+    {
+      "name": "Field Band",
+      "kind": "custom",
+      "refersTo": "field-surface",
+      "description": "The signature region: full-bleed vermilion carrying one line of display-scale type in black. Closes the first viewport; the same surface class carries the whole Stack section and the footer.",
+      "html": "<div class=\"ds-field-band\"><div class=\"ds-field-track\"><span class=\"ds-field-item\">Data platforms</span><span class=\"ds-field-dot\">·</span><span class=\"ds-field-item\">Streaming</span><span class=\"ds-field-dot\">·</span><span class=\"ds-field-item\">Interface craft</span></div></div>",
+      "css": ".ds-field-band { background: #FF3B14; color: #0A0A09; overflow: hidden; padding: 1rem 0; } .ds-field-track { display: flex; align-items: center; gap: 1.5rem; } .ds-field-item { font-family: \"Bricolage Grotesque\", Inter, sans-serif; font-variation-settings: \"wdth\" 78; font-weight: 800; font-size: clamp(2rem, 5.5vw, 4.5rem); line-height: 1; letter-spacing: -0.02em; text-transform: uppercase; color: #0A0A09; white-space: nowrap; } .ds-field-dot { color: #0A0A09; opacity: 0.45; }"
     },
     {
       "name": "Architecture Schematic",
       "kind": "custom",
-      "refersTo": "schematic-node",
-      "description": "The system's one authored motion moment: the pipeline draws itself stage by stage, staggered 90ms, switching axis on a container query at 34rem. Fully legible with motion off.",
-      "html": "<figure class=\"ds-schematic\"><ol class=\"ds-schematic-flow\"><li class=\"ds-node\" style=\"--i:0\"><span class=\"ds-node-stage\">Ingest</span><span class=\"ds-node-items\"><span class=\"ds-node-item\">Kafka</span></span></li><li class=\"ds-edge\" style=\"--i:1\" aria-hidden=\"true\"></li><li class=\"ds-node\" style=\"--i:1\"><span class=\"ds-node-stage\">Process</span><span class=\"ds-node-items\"><span class=\"ds-node-item\">Flink</span></span></li><li class=\"ds-edge\" style=\"--i:2\" aria-hidden=\"true\"></li><li class=\"ds-node\" style=\"--i:2\"><span class=\"ds-node-stage\">Serve</span><span class=\"ds-node-items\"><span class=\"ds-node-item\">Redis</span><span class=\"ds-node-item\">TimescaleDB</span></span></li></ol></figure>",
-      "css": ".ds-schematic { margin: 0; container-type: inline-size; font-family: Inter, sans-serif; } .ds-schematic-flow { display: flex; flex-direction: column; align-items: flex-start; list-style: none; margin: 0; padding: 0; } .ds-node { display: flex; flex-direction: column; gap: 0.375rem; opacity: 0; animation: ds-settle 400ms cubic-bezier(0.22,1,0.36,1) forwards; animation-delay: calc(var(--i) * 90ms); } .ds-node-stage { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #8A8F98; } .ds-node-items { display: flex; flex-direction: column; gap: 0.25rem; } .ds-node-item { font-size: 0.875rem; line-height: 1.4; color: #B4B9C2; background: #16181A; border: 1px solid rgba(255,255,255,0.08); border-radius: 0.375rem; padding: 0.3125rem 0.5rem; } .ds-edge { width: 1px; height: 1.25rem; margin-left: 0.75rem; background: rgba(255,255,255,0.16); transform-origin: top; transform: scaleY(0); animation: ds-extend 320ms cubic-bezier(0.22,1,0.36,1) forwards; animation-delay: calc(var(--i) * 90ms - 40ms); } @container (min-width: 34rem) { .ds-schematic-flow { flex-direction: row; align-items: flex-start; } .ds-edge { width: auto; flex: 1; min-width: 1rem; height: 1px; margin: 1.375rem 0.5rem 0; transform-origin: left; transform: scaleX(0); animation-name: ds-extend-x; } } @keyframes ds-settle { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } } @keyframes ds-extend { to { transform: scaleY(1); } } @keyframes ds-extend-x { to { transform: scaleX(1); } } @media (prefers-reduced-motion: reduce) { .ds-node, .ds-edge { animation: none; opacity: 1; transform: none; } }"
+      "refersTo": "typography.label",
+      "description": "The page's one authored motion moment: the pipeline draws itself stage by stage when a card opens, and reflows on its own container width rather than the viewport's.",
+      "html": "<figure class=\"ds-schematic\"><ol class=\"ds-schematic-flow\"><li class=\"ds-node\"><span class=\"ds-node-stage\">Ingest</span><div class=\"ds-node-items\"><span class=\"ds-node-item\">Kafka</span></div></li><li class=\"ds-edge\" aria-hidden=\"true\"></li><li class=\"ds-node\"><span class=\"ds-node-stage\">Process</span><div class=\"ds-node-items\"><span class=\"ds-node-item\">Flink</span></div></li><li class=\"ds-edge\" aria-hidden=\"true\"></li><li class=\"ds-node\"><span class=\"ds-node-stage\">Serve</span><div class=\"ds-node-items\"><span class=\"ds-node-item\">DuckDB</span><span class=\"ds-node-item\">Parquet</span></div></li></ol></figure>",
+      "css": ".ds-schematic { margin: 0; container-type: inline-size; } .ds-schematic-flow { display: flex; flex-direction: column; align-items: flex-start; list-style: none; margin: 0; padding: 0; } .ds-node { display: flex; flex-direction: column; gap: 0.375rem; animation: ds-settle 400ms cubic-bezier(0.22,1,0.36,1) both; } .ds-edge { width: 1px; height: 1.25rem; margin-left: 0.75rem; background: rgba(255,255,255,0.16); transform-origin: top; animation: ds-extend 320ms cubic-bezier(0.22,1,0.36,1) both; } .ds-node-stage { font-family: \"Azeret Mono\", ui-monospace, monospace; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #8A8F98; } .ds-node-items { display: flex; flex-direction: column; gap: 0.25rem; } .ds-node-item { font-family: Inter, sans-serif; font-size: 0.875rem; line-height: 1.4; color: #B4B9C2; background: #16181A; border: 1px solid rgba(255,255,255,0.08); padding: 0.3125rem 0.5rem; } @container (min-width: 34rem) { .ds-schematic-flow { flex-direction: row; align-items: flex-start; } .ds-edge { width: auto; flex: 1; min-width: 1rem; height: 1px; margin: 1.375rem 0.5rem 0; transform-origin: left; animation-name: ds-extend-x; } } @keyframes ds-settle { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } } @keyframes ds-extend { from { transform: scaleY(0); } to { transform: scaleY(1); } } @keyframes ds-extend-x { from { transform: scaleX(0); } to { transform: scaleX(1); } } @media (prefers-reduced-motion: reduce) { .ds-node, .ds-edge { animation: none; opacity: 1; transform: none; } }"
     },
     {
       "name": "Decision Log",
       "kind": "custom",
-      "refersTo": "colors.border-strong",
-      "description": "Chose / Over / Because, set against the system's one asymmetric border — a single left rule at 16% that reads as a margin annotation.",
-      "html": "<div class=\"ds-decision-log\"><p class=\"ds-decision-head\">Architecture Decision</p><div class=\"ds-decision-row\"><span class=\"ds-decision-label\">Chose</span><span class=\"ds-decision-value\">Flink</span></div><div class=\"ds-decision-row\"><span class=\"ds-decision-label\">Over</span><span class=\"ds-decision-value\">Spark Streaming</span></div><div class=\"ds-decision-row\"><span class=\"ds-decision-label\">Because</span><span class=\"ds-decision-value\">Exactly-once semantics hold under network partition.</span></div></div>",
-      "css": ".ds-decision-log { border-left: 1px solid rgba(255,255,255,0.16); padding-left: 1rem; font-family: Inter, sans-serif; } .ds-decision-head { margin: 0 0 0.75rem; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #8A8F98; } .ds-decision-row { display: flex; gap: 0.75rem; font-size: 0.875rem; margin-bottom: 0.625rem; } .ds-decision-label { width: 3.5rem; flex-shrink: 0; font-weight: 500; font-variant: small-caps; color: #8A8F98; } .ds-decision-value { color: #B4B9C2; }"
+      "refersTo": "typography.body",
+      "description": "Why each choice beat its alternative: a left hairline standing in for a list marker, mono label over prose.",
+      "html": "<div class=\"ds-log\"><p class=\"ds-log-label\">Chose</p><p class=\"ds-log-body\">DuckDB-WASM over a hosted API: no backend to expire, and the reader can operate it.</p></div>",
+      "css": ".ds-log { border-left: 1px solid rgba(255,255,255,0.16); padding-left: 1rem; } .ds-log-label { margin: 0; font-family: \"Azeret Mono\", ui-monospace, monospace; font-size: 0.75rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: #8A8F98; } .ds-log-body { margin: 0.375rem 0 0; font-family: Inter, sans-serif; font-size: 0.875rem; line-height: 1.6; color: #B4B9C2; }"
     }
   ],
   "narrative": {
-    "northStar": "The Instrument Panel",
-    "overview": "The site is a data engineer's evidence file rendered as lit instrumentation on a near-black ground. Nothing decorates; every surface either carries a measured value, frames one, or gets out of the way. The world is three steps of near-black, hairline rules at 8% white, and a single warm amber that appears only where something is live or measured — the three headline metrics, the availability dots, the systems role tag, and every focus ring.\n\nThe form language is a standing product commitment, not a per-page choice: offered a derived visual world, the owner chose the category standard — the conventional developer-portfolio canon — with linear.app named as the craft bar. That bar is why this system is not a flat dark template. Surfaces are lit: every raised plane carries a 1px inset top-edge highlight so it reads as catching light from above, and the page ground itself is modulated by a fixed radial wash rather than one uniform fill. Precise grid, exact spacing, and real state detail on every interactive element are the price of that bar; a future pass that flattens the highlights or drops the hover states is lowering it, not simplifying it.\n\nDensity is high and text-forward. The page refuses the expanding-accordion résumé that hides its numbers behind a click: the numbers sit at rest at display scale, and only the architecture is behind an interaction. There is exactly one authored motion moment — the pipeline schematic drawing itself, stage by stage, when a project card opens — and it is decoration-free, purely explanatory, and fully removable under reduced motion with no loss of content.",
+    "northStar": "The Signal Field",
+    "overview": "A near-black ground interrupted by whole regions of one signal vermilion, with condensed poster type doing the talking. The system exists to prove interface craft by a data engineer, so every measured number is treated as the loudest element on its surface: display face, poster scale, field colour. Density is editorial rather than dashboard — long vertical rhythm, wide gutters, a single hairline where most systems would put a box.\n\nThe world is pinned, not rolled. It comes from bold-editorial references (Orbix Studio, Yucale Studio, CREATIQ, LAIN) and that genre is the craft bar: where a rule reads as unusually forceful, it is holding the line against softening back toward restraint. PRODUCT.md records this as a standing brand commitment that replaced an earlier \"category standard / linear.app\" preference. The prior implementation of that preference — restrained near-black surfaces, an amber accent, Inter as the only face, rounded cards, inset lit edges, ambient shadows — is retired wholesale, not evolved.\n\nTwo anti-references are explicit and confirmed: teal-on-navy (the most-cloned engineer portfolio) and violet-glow (the AI-generated cluster). Vermilion was chosen against that competitive landscape, not by taste. Restraint itself is the third anti-reference: an earlier build of this world scattered the vermilion as accents (1.0% of the first viewport, 12.9% of the page) and the finish review returned a rebuild directive. The shipped build holds it as regions — 11.8% of the first viewport, 28.7% of the page.",
     "keyCharacteristics": [
-      "Three surface steps only (#08090A page → #0F1011 raised → #16181A overlay); no fourth step exists.",
-      "Hairline borders, always 1px, always white at 8% or 16% — never a solid grey.",
-      "One accent (#EBA352), reserved for measured values, live status, the systems tag, and focus.",
-      "Every text tone clears 4.5:1 against the worst-case surface, not just the page.",
-      "Lit surfaces: inset top-edge highlight plus two-part ambient shadow, both lifting on hover.",
-      "Inter only, tight negative tracking on headings, tabular figures on every number.",
-      "One authored motion moment; everything else is a 150ms state transition."
+      "One signal colour, held as whole surfaces rather than as trim",
+      "Black ink on the field, never white — white fails contrast there",
+      "Condensed variable-width display type at poster scale",
+      "Three faces, three jobs, no overlap",
+      "Hard edges: zero radius, no shadow, no lit edge",
+      "Two type steps only — poster and section head, nothing in between",
+      "Motion is entrance-in-CSS, authored-moments-in-GSAP, and absent under reduced motion"
     ],
     "rules": [
       {
-        "name": "The Worst-Surface Rule",
-        "body": "Every text tone is chosen to clear 4.5:1 against #16181A — the lightest surface in the system — not against the page ground. A tone that passes only on #08090A is not in this palette. Measured: ink 16.73:1, secondary 9.04:1, muted 5.48:1, accent 8.39:1.",
+        "name": "The Regions, Not Accents Rule",
+        "body": "Vermilion is applied as a whole surface. Three regions carry it and a fourth would be welcome; a fifth vermilion detail would not. Audit test: if the signal colour's coverage on the first viewport falls near 1% and reads as trim, the world has been reverted. The shipped build measures 11.8% first-viewport and 28.7% page-wide, and those are the floor, not a ceiling.",
         "section": "colors"
       },
       {
-        "name": "The Reserved Accent Rule",
-        "body": "Amber appears only where something is measured, live, or focused. If you cannot name the number, the status, or the interaction it represents, it does not get the accent. It is never a background fill for a large area, never a heading colour, and never used to make a section \"pop\".",
+        "name": "The Black-On-Field Rule",
+        "body": "Nothing on the field is ever white — white measures 3.57:1 there. Every on-field tone is a solid colour, never alpha: rgba(10,10,9,0.72) composites to 4.01:1 and fails AA for body text, and rgba(10,9,8,0.38) composites to ~2.2:1, under the 3:1 a UI boundary needs. Exactly two on-field tones are legal.",
         "section": "colors"
       },
       {
-        "name": "The Three Steps Rule",
-        "body": "There are exactly three surfaces. Depth beyond the third step is expressed with the inset highlight and ambient shadow, never by inventing a fourth fill. (The card hover fill #111315 is a state of the raised plane, not a step.)",
+        "name": "The One Voice Rule",
+        "body": "There is no secondary or tertiary accent, and adding one is a change of world rather than an extension of it. Everything that is not the field is a step on the near-black neutral ramp.",
         "section": "colors"
       },
       {
-        "name": "The Hairline Rule",
-        "body": "Separation is a 1px white-alpha rule at 8%, stepping to 16% for emphasis. No solid grey borders, no 2px rules, no double rules.",
-        "section": "colors"
-      },
-      {
-        "name": "The Tabular Figures Rule",
-        "body": "Every number that a reader might compare or that sits in a ruled row — hero metrics, card metrics, group counts, the copyright year — is set font-variant-numeric: tabular-nums. Proportional figures in a metric row are a defect.",
+        "name": "The Condensed Axis Rule",
+        "body": "Display type sets font-variation-settings: \"wdth\" 78 (82 for actions, 85 for nav). The condensed axis is the genre. An earlier build loaded the width axis and then pinned it to 100, rendering a wide neutral grotesque; the review scored that as contradicting the genre. Never ship Bricolage at default width.",
         "section": "typography"
       },
       {
-        "name": "The Tight-Top Rule",
-        "body": "Tracking tightens as size grows: −0.02em at 24px, −0.03em at section headings, −0.04em at display, −0.055em at the largest setting. Small type never goes negative; uppercase labels always go positive (+0.02em to +0.08em).",
+        "name": "The Two-Step Scale Rule",
+        "body": "The ramp has two large steps — the poster h1 and the section head — and nothing between them. A single poster moment over a page of small heads was scored as a failure; section heads must stay at display scale.",
         "section": "typography"
       },
       {
-        "name": "The No-Kicker Rule",
-        "body": "Headings stand alone. Eyebrow kickers and pre-heading labels were eliminated site-wide during the build and must not return. The 12px uppercase label is a group index (a category name with a count, a footer column head) — it never sits above a heading as its introduction.",
+        "name": "The Measurement-Only Mono Rule",
+        "body": "Azeret Mono appears only where something is measured or enumerated: metric labels and context, tech pills, schematic stage names, tabular metadata. Monospace worn as a costume to signal \"technical\" is a refused pattern. Inter is prose only and is explicitly not the display voice.",
         "section": "typography"
       },
       {
-        "name": "The Ruled Row Rule",
-        "body": "Related numbers sit in one row divided by hairlines, not in separate cards. The hero metric row is three equal columns with a left rule and 32px of left padding on each subsequent cell; below 640px those rules rotate to top rules with 24px of padding and margin. Boxing each metric would make three cards where there is one comparison.",
-        "section": "layout"
+        "name": "The No Kicker Rule",
+        "body": "No category label, eyebrow, or role tag sits above a heading. The project cards' RoleTag was deleted and its component removed for exactly this reason; the group heading above the grid carries the category instead.",
+        "section": "typography"
       },
       {
-        "name": "The Open-Card-Takes-the-Row Rule",
-        "body": "At ≥768px, a project card whose toggle is aria-expanded=\"true\" spans both grid columns (:has() selector on the article). An expanded card is a detail view; at half width its schematic container is 518px and five stages crush together.",
+        "name": "The Alternating Case Rule",
+        "body": "Section heads are uppercase; the About credo is display scale but deliberately lowercase, so two stacked caps blocks do not read as one long shout.",
+        "section": "typography"
+      },
+      {
+        "name": "The Full-Row Disclosure Rule",
+        "body": "An expanded project card is a detail view, so it takes the whole row (:has([aria-expanded=\"true\"]) { grid-column: span 2 } above 768px). This is load-bearing, not cosmetic: at half width the card's container is 518px and five schematic stages crush together.",
         "section": "layout"
       },
       {
         "name": "The Container-Query Rule",
-        "body": "The architecture schematic responds to its own width, not the viewport's (@container (min-width: 34rem) on an inline-size container). Because cards sit two-up, a 1400px viewport still gives the schematic only 518px. Any component whose layout depends on the box it sits in — not the screen — uses a container query.",
+        "body": "The architecture schematic reflows on its own width, never the viewport's — container-type: inline-size plus @container (min-width: 34rem) flips it from vertical to horizontal. A 1400px viewport still only gives this card 518px, so a media query would be measuring the wrong box.",
         "section": "layout"
       },
       {
-        "name": "The Lit Surface Rule",
-        "body": "Any element that sits on a step above its parent takes an inset top-edge highlight. Flat fill plus flat border is what makes a dark page look like a template; the highlight is 1px and between 4% and 9% white, never more.",
+        "name": "The No Shadow, No Lit Edge Rule",
+        "body": "No box-shadow, no inset highlight, no ambient glow, anywhere. Rounded, lit, shadowed surfaces were the retired world's vocabulary; reintroducing any of them is reverting the world, not refining it.",
         "section": "elevation"
       },
       {
-        "name": "The Whole-State Rule",
-        "body": "A hover changes fill, border, highlight, and shadow together, in one 150ms transition. A border-only hover reads as a bug at this craft bar.",
-        "section": "elevation"
-      },
-      {
-        "name": "The One Motion Moment Rule",
-        "body": "The page has exactly one authored animation: the schematic drawing itself. Everything else is a 150ms colour/shadow state transition or a ≤220ms disclosure. No scroll-triggered reveals, no parallax, no entrance animations on load.",
+        "name": "The CSS-Entrance Rule",
+        "body": "Entrance reveals are CSS animations, not GSAP. gsap.from() applies its start state immediately, so an interrupted tween can leave text permanently invisible — StrictMode's double-invoked effects orphaned a staggered word at translateY(110%) exactly that way. A CSS animation cannot be orphaned. GSAP owns only what CSS cannot do: the scroll-velocity marquee and the counters.",
         "section": "components"
       },
       {
-        "name": "The Reduced-Motion-Is-Complete Rule",
-        "body": "Every animated element renders fully legible at rest under prefers-reduced-motion. Motion may sequence information; it may never be the only way to see it.",
-        "section": "components"
-      },
-      {
-        "name": "The Computed-Claim Rule",
-        "body": "Where the copy states a rule about the content, the component computes it. The Skills standfirst claims the highlighted tools are the ones that carried the six systems, so the pill/plain split is derived at render time from those projects' own technologies arrays — not from hand-maintained source order. If the component changes, the claim must stay computed or the standfirst must change.",
+        "name": "The Absence Rule",
+        "body": "Reduced motion is the absence of the animation, never a second code path. gsap.matchMedia() reverts what it created when its condition stops matching, and every CSS animation is switched off under prefers-reduced-motion: reduce. There is nothing to keep in sync.",
         "section": "components"
       }
     ],
     "dos": [
-      "Do keep to the three surface steps (#08090A / #0F1011 / #16181A) and express further depth with the inset highlight and ambient shadow.",
-      "Do give every raised surface a 1px inset top-edge highlight between 4% and 9% white — this is the craft-bar rule that keeps the world off the flat-dark-template floor.",
-      "Do verify new text tones against #16181A, the worst-case surface, at 4.5:1 minimum.",
-      "Do reserve the amber for measured values, live status, the systems role tag, and focus rings.",
-      "Do set every number tabular-nums.",
-      "Do change fill, border, highlight, and shadow together on hover, at 150ms.",
-      "Do use a container query when a component's layout depends on the box it sits in rather than the viewport.",
-      "Do put related numbers in one hairline-ruled row rather than in separate cards.",
-      "Do let every animated element render complete and legible under prefers-reduced-motion."
+      "Do apply vermilion as a whole region — a full-bleed band, a whole section, the footer — and keep first-viewport coverage near 11.8% and page coverage near 28.7%.",
+      "Do use only field ink (5.55:1) and scorched umber (4.83:1) on the field, as solid colours.",
+      "Do set \"wdth\" 78 on display and heading type, 82 on actions, 85 on nav.",
+      "Do restrict Azeret Mono to measurements: metric labels and context, tech pills, schematic stage names, tabular metadata.",
+      "Do keep section heads at display scale (clamp(2.75rem, 8vw, 6.5rem)), uppercase.",
+      "Do draw structure with 1px hairlines and the three-step tonal ramp.",
+      "Do keep every text tone at 4.5:1 or better against its worst-case surface, and every UI boundary at 3:1 or better.",
+      "Do keep every interactive target at 24×24 CSS pixels or larger (WCAG 2.2 SC 2.5.8) — nav links and inline links carry explicit minimum heights for this reason.",
+      "Do keep the global :focus-visible ring, and override it to field ink inside a field region.",
+      "Do keep inert on collapsed disclosure content so hidden panels stay out of the tab order and the accessibility tree.",
+      "Do reflow the schematic on its own width with a container query, not a media query.",
+      "Do put entrance reveals in CSS and leave GSAP the marquee and the counters."
     ],
     "donts": [
-      "Don't reintroduce eyebrow kickers or pre-heading labels; they were removed site-wide and headings stand alone.",
-      "Don't invent a fourth surface step or a solid grey border; separation is 1px white-alpha at 8% or 16%.",
-      "Don't use the amber as a background fill, a heading colour, or decoration — if you cannot name the number, status, or interaction it marks, it does not get the accent.",
-      "Don't flatten the surfaces: removing the inset highlights, the ambient shadows, or the fixed radial ground wash lowers the stated craft bar rather than simplifying the code.",
-      "Don't add a second authored animation, a scroll reveal, or a load-in entrance; the schematic is the page's one motion moment.",
-      "Don't emphasise on a dark ground by inverting to an ink fill; emphasis is an accent hairline.",
-      "Don't hide a measured number behind an interaction — architecture is the only thing allowed behind the card toggle.",
-      "Don't add a second typeface; the ramp is carried by weight, size, and tracking within Inter."
-    ],
-    "recordedDecisions": [
-      "Typeface: Inter, kept deliberately. It is the pinned canon's and the craft bar's own face; the owner was shown the 'Inter is overused' trade-off explicitly and kept it. Recorded as a decision, not debt.",
-      "Inter is served from the Google Fonts CDN rather than self-hosted. Known and deprioritised.",
-      "Form language: the category standard, chosen over a derived visual world, with linear.app as the craft bar. Standing preference recorded in PRODUCT.md 2026-09-16 — future surfaces execute the convention at full fidelity rather than reaching for a distinctive world."
+      "Don't scatter vermilion as accents, trim, or small badges on the dark ground. That produced a rebuild directive once already.",
+      "Don't put white text on the field (3.57:1), and don't use any alpha-composited tone there.",
+      "Don't add a second accent hue, and never teal-on-navy or violet-glow.",
+      "Don't reintroduce border radius on cards, buttons, or pills, and don't reintroduce inset lit edges or ambient shadows.",
+      "Don't render Bricolage at default width (wdth 100) — that is a wide neutral grotesque and contradicts the genre.",
+      "Don't use Inter or Bricolage for a measurement, and don't use Azeret Mono as a costume for \"technical\" prose.",
+      "Don't place a kicker, eyebrow, or category label above any heading; the group heading carries the category.",
+      "Don't flatten the scale into one poster moment over a page of small heads.",
+      "Don't stack two uppercase display blocks in a row.",
+      "Don't use gsap.from() for entrance reveals, and don't add @gsap/react — it resolves its own React against React 19 and throws \"Invalid hook call\".",
+      "Don't write a separate reduced-motion code path; remove the animation instead.",
+      "Don't soften any of the above toward restraint. The craft bar is the pinned bold-editorial genre, not linear.app."
     ]
   }
 }

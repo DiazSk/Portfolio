@@ -1,6 +1,6 @@
 ---
 name: Zaid Shaikh — Portfolio
-description: A data engineer's evidence file on near-black ground, executed at the linear.app craft bar.
+description: Near-black ground, one signal vermilion held as a field, condensed poster type.
 colors:
   surface: "#08090A"
   surface-raised: "#0F1011"
@@ -11,26 +11,45 @@ colors:
   ink: "#F7F8F8"
   ink-secondary: "#B4B9C2"
   ink-muted: "#8A8F98"
-  accent: "#EBA352"
+  field: "#FF3B14"
+  field-ink: "#0A0A09"
+  field-ink-secondary: "#2E1409"
 typography:
   display:
-    fontFamily: "Inter, sans-serif"
-    fontSize: "clamp(2.75rem, 8vw, 6rem)"
-    fontWeight: 600
-    lineHeight: 0.95
-    letterSpacing: "-0.045em"
+    fontFamily: "Bricolage Grotesque, Inter, sans-serif"
+    fontSize: "clamp(3.25rem, 13vw, 11rem)"
+    fontWeight: 800
+    lineHeight: 0.85
+    letterSpacing: "-0.02em"
+    fontVariation: "\"wdth\" 78"
   headline:
-    fontFamily: "Inter, sans-serif"
-    fontSize: "clamp(2.25rem, 4vw, 3rem)"
-    fontWeight: 600
-    lineHeight: 1.1
-    letterSpacing: "-0.03em"
+    fontFamily: "Bricolage Grotesque, Inter, sans-serif"
+    fontSize: "clamp(2.75rem, 8vw, 6.5rem)"
+    fontWeight: 800
+    lineHeight: 0.86
+    letterSpacing: "-0.02em"
+    fontVariation: "\"wdth\" 78"
+  metric:
+    fontFamily: "Bricolage Grotesque, Inter, sans-serif"
+    fontSize: "clamp(2.5rem, 4.5vw, 4rem)"
+    fontWeight: 800
+    lineHeight: 0.9
+    letterSpacing: "-0.04em"
+    fontVariation: "\"wdth\" 78"
+  metric-card:
+    fontFamily: "Bricolage Grotesque, sans-serif"
+    fontSize: "clamp(2.25rem, 3.4vw, 3rem)"
+    fontWeight: 800
+    lineHeight: 0.9
+    letterSpacing: "-0.04em"
+    fontVariation: "wdth 78"
   title:
-    fontFamily: "Inter, sans-serif"
-    fontSize: "1.25rem"
-    fontWeight: 600
-    lineHeight: 1.375
-    letterSpacing: "normal"
+    fontFamily: "Bricolage Grotesque, Inter, sans-serif"
+    fontSize: "1.5rem"
+    fontWeight: 800
+    lineHeight: 1
+    letterSpacing: "-0.02em"
+    fontVariation: "\"wdth\" 78"
   body:
     fontFamily: "Inter, sans-serif"
     fontSize: "1rem"
@@ -41,260 +60,253 @@ typography:
     fontFamily: "Inter, sans-serif"
     fontSize: "0.875rem"
     fontWeight: 400
-    lineHeight: 1.625
+    lineHeight: 1.5
     letterSpacing: "normal"
   label:
-    fontFamily: "Inter, sans-serif"
+    fontFamily: "Azeret Mono, ui-monospace, monospace"
     fontSize: "0.75rem"
     fontWeight: 500
     lineHeight: 1.4
-    letterSpacing: "0.08em"
-  metric:
-    fontFamily: "Inter, sans-serif"
-    fontSize: "clamp(2.25rem, 4vw, 3rem)"
-    fontWeight: 600
-    lineHeight: 1.1
-    letterSpacing: "-0.025em"
-    fontFeature: "tabular-nums"
+    letterSpacing: "0.1em"
+  action:
+    fontFamily: "Bricolage Grotesque, Inter, sans-serif"
+    fontSize: "1rem"
+    fontWeight: 800
+    lineHeight: 1
+    letterSpacing: "0.005em"
+    fontVariation: "\"wdth\" 82"
 rounded:
-  sm: "0.375rem"
-  md: "0.5rem"
-  lg: "0.75rem"
-  full: "9999px"
+  none: "0"
+  ring: "0.375rem"
 spacing:
-  xs: "0.375rem"
-  sm: "0.5rem"
-  md: "1rem"
-  lg: "1.5rem"
-  xl: "2rem"
-  gutter: "1.25rem"
+  gutter-sm: "1.25rem"
+  gutter-md: "2.5rem"
   gutter-lg: "4rem"
-  section: "6rem"
-  section-lg: "8rem"
+  card-pad: "1.5rem"
+  section-y: "6rem"
+  section-y-md: "8rem"
 components:
   button-primary:
-    backgroundColor: "{colors.ink}"
-    textColor: "{colors.surface}"
-    rounded: "{rounded.md}"
-    padding: "0.625rem 1.25rem"
-    typography: "{typography.label}"
+    backgroundColor: "{colors.field}"
+    textColor: "{colors.field-ink}"
+    typography: "{typography.action}"
+    rounded: "{rounded.none}"
+    padding: "0.875rem 1.5rem"
   button-primary-hover:
-    backgroundColor: "#FFFFFF"
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.field-ink}"
   button-ghost:
-    backgroundColor: "{colors.surface-raised}"
-    textColor: "{colors.ink-secondary}"
-    rounded: "{rounded.md}"
-    padding: "0.625rem 1.25rem"
+    backgroundColor: "transparent"
+    textColor: "{colors.ink}"
+    typography: "{typography.action}"
+    rounded: "{rounded.none}"
+    padding: "0.875rem 1.5rem"
   button-ghost-hover:
     backgroundColor: "{colors.surface-overlay}"
     textColor: "{colors.ink}"
+  button-on-field:
+    backgroundColor: "{colors.field-ink}"
+    textColor: "{colors.field}"
+    typography: "{typography.label}"
+    padding: "0.625rem 1.25rem"
   card:
     backgroundColor: "{colors.surface-raised}"
-    textColor: "{colors.ink}"
-    rounded: "{rounded.lg}"
-    padding: "1.5rem"
+    textColor: "{colors.ink-secondary}"
+    rounded: "{rounded.none}"
+    padding: "{spacing.card-pad}"
   card-hover:
     backgroundColor: "{colors.surface-hover}"
   tech-pill:
-    backgroundColor: "{colors.surface-overlay}"
+    backgroundColor: "transparent"
     textColor: "{colors.ink-secondary}"
-    rounded: "{rounded.sm}"
+    typography: "{typography.label}"
+    rounded: "{rounded.none}"
     padding: "0.125rem 0.5rem"
-  role-tag-default:
-    backgroundColor: "{colors.surface-overlay}"
-    textColor: "{colors.ink-secondary}"
-    rounded: "{rounded.full}"
-    padding: "0.125rem 0.625rem"
-  role-tag-accent:
-    backgroundColor: "rgba(235, 163, 82, 0.1)"
-    textColor: "{colors.accent}"
-    rounded: "{rounded.full}"
-    padding: "0.125rem 0.625rem"
+  tech-pill-on-field:
+    backgroundColor: "transparent"
+    textColor: "{colors.field-ink}"
+    typography: "{typography.label}"
+    rounded: "{rounded.none}"
+    padding: "0.125rem 0.5rem"
   nav-link:
+    backgroundColor: "transparent"
     textColor: "{colors.ink-muted}"
-    typography: "{typography.body}"
+    typography: "{typography.action}"
+    rounded: "{rounded.none}"
+    height: "2.75rem"
   nav-link-hover:
     textColor: "{colors.ink}"
-  schematic-node:
-    backgroundColor: "{colors.surface-overlay}"
-    textColor: "{colors.ink-secondary}"
-    rounded: "{rounded.sm}"
-    padding: "0.3125rem 0.5rem"
+  field-surface:
+    backgroundColor: "{colors.field}"
+    textColor: "{colors.field-ink}"
+    rounded: "{rounded.none}"
+    padding: "6rem 1.25rem"
 ---
 
 # Design System: Zaid Shaikh — Portfolio
 
 ## Overview
 
-**Creative North Star: "The Instrument Panel"**
+**Creative North Star: "The Signal Field"**
 
-The site is a data engineer's evidence file rendered as lit instrumentation on a near-black ground. Nothing decorates; every surface either carries a measured value, frames one, or gets out of the way. The world is three steps of near-black, hairline rules at 8% white, and a single warm amber that appears only where something is live or measured — the three headline metrics, the availability dots, the systems role tag, and every focus ring.
+A near-black ground interrupted by whole regions of one signal vermilion, with condensed poster type doing the talking. The system exists to prove interface craft by a data engineer, so every measured number is treated as the loudest element on its surface: display face, poster scale, field colour. Density is editorial rather than dashboard — long vertical rhythm, wide gutters, a single hairline where most systems would put a box.
 
-The form language is a **standing product commitment, not a per-page choice**: offered a derived visual world, the owner chose the category standard — the conventional developer-portfolio canon — with **linear.app named as the craft bar**. That bar is why this system is not a flat dark template. Surfaces are *lit*: every raised plane carries a 1px inset top-edge highlight so it reads as catching light from above, and the page ground itself is modulated by a fixed radial wash rather than one uniform fill. Precise grid, exact spacing, and real state detail on every interactive element are the price of that bar; a future pass that flattens the highlights or drops the hover states is lowering it, not simplifying it.
+The world is pinned, not rolled. It comes from bold-editorial references (Orbix Studio, Yucale Studio, CREATIQ, LAIN) and that genre is the craft bar: where a rule below reads as unusually forceful, it is holding the line against softening back toward restraint. PRODUCT.md records this as a standing brand commitment that replaced an earlier "category standard / linear.app" preference. The prior implementation of that preference — restrained near-black surfaces, an amber accent, Inter as the only face, rounded cards, inset lit edges, ambient shadows — is retired wholesale, not evolved.
 
-Density is high and text-forward. The page refuses the expanding-accordion résumé that hides its numbers behind a click: the numbers sit at rest at display scale, and only the *architecture* is behind an interaction. There is exactly one authored motion moment — the pipeline schematic drawing itself, stage by stage, when a project card opens — and it is decoration-free, purely explanatory, and fully removable under reduced motion with no loss of content.
+Two anti-references are explicit and confirmed: teal-on-navy (the most-cloned engineer portfolio) and violet-glow (the AI-generated cluster). Vermilion was chosen against that competitive landscape, not by taste. Restraint itself is the third anti-reference: an earlier build of *this* world scattered the vermilion as accents (1.0% of the first viewport, 12.9% of the page) and the finish review returned a rebuild directive. The shipped build holds it as regions — 11.8% of the first viewport, 28.7% of the page.
 
 **Key Characteristics:**
-- Three surface steps only (`#08090A` page → `#0F1011` raised → `#16181A` overlay); no fourth step exists.
-- Hairline borders, always 1px, always white at 8% or 16% — never a solid grey.
-- One accent (`#EBA352`), reserved for measured values, live status, the systems tag, and focus.
-- Every text tone clears 4.5:1 against the *worst-case* surface, not just the page.
-- Lit surfaces: inset top-edge highlight plus two-part ambient shadow, both lifting on hover.
-- Inter only, tight negative tracking on headings, tabular figures on every number.
-- One authored motion moment; everything else is a 150ms state transition.
+- One signal colour, held as whole surfaces rather than as trim
+- Black ink on the field, never white — white fails contrast there
+- Condensed variable-width display type at poster scale
+- Three faces, three jobs, no overlap
+- Hard edges: zero radius, no shadow, no lit edge
+- Two type steps only — poster and section head, nothing in between
+- Motion is entrance-in-CSS, authored-moments-in-GSAP, and absent under reduced motion
 
 ## Colors
 
-A three-step near-black ground, a three-tone cool-grey ink ramp, and a single warm amber that is the only chromatic event on the page.
+A monochrome near-black ramp carrying all structure, plus exactly one chromatic voice that never appears in small doses.
 
 ### Primary
-- **Signal Amber** (`{colors.accent}`): The only saturated colour in the system, and it is never decorative. It carries the three hero metric values, the live-availability dots in Hero and About, the Systems Engineering / Backend SWE role tag, the text selection highlight, and every focus ring. On the page ground it measures 8.39:1.
+- **Signal Vermilion** (`{colors.field}`): The field. It is applied to whole regions, never to trim: the full-bleed display-scale marquee band that closes the hero viewport, the entire Stack section, and the footer. It also carries every metric numeral, the focus ring, the selection highlight, and card hover borders — those are the only sub-region uses, and they are type or a hairline, never a filled chip on a dark surface.
+- **Field Ink** (`{colors.field-ink}`): The only full-strength text tone permitted on the field (5.55:1). Also the background of the on-field button, inverting the region.
+- **Field Ink Secondary** (`{colors.field-ink-secondary}`): The single legal de-emphasis tone on the field (4.83:1) — on-field links at rest, the long-tail stack list, on-field pill borders. A solid colour precisely so it is not an alpha composite.
 
 ### Neutral
-- **Void** (`{colors.surface}`): The page ground. Not flat — the body carries a fixed radial wash of white at 3.5% falling to zero by 55% height, anchored top-centre, so the viewport has a light source instead of a fill.
-- **Raised Plane** (`{colors.surface-raised}`): Cards, ghost buttons, the About availability panel. One step up from the ground.
-- **Overlay Plane** (`{colors.surface-overlay}`): The topmost step — tech pills, role tags, schematic nodes, ghost-button hover. Anything sitting *on* a card sits here.
-- **Hairline** (`{colors.border}`): Every default rule, divider, section boundary, and card edge.
-- **Hairline Strong** (`{colors.border-strong}`): The emphasis rule — card hover borders, the decision-log left rule, schematic edges, highlight bullets.
-- **Primary Ink** (`{colors.ink}`): Headings, names, metric values inside cards, primary-button fill. 16.73:1 on the overlay surface.
-- **Secondary Ink** (`{colors.ink-secondary}`): All body prose, pill text, schematic node labels. 9.04:1 on the overlay surface.
-- **Muted Ink** (`{colors.ink-muted}`): Labels, metric captions, section eyebrows-as-group-headings, nav links at rest. 5.48:1 on the overlay surface.
+- **Ground** (`{colors.surface}`): The page. A fixed radial wash of `rgba(255,255,255,0.035)` sits above it as its own compositing layer, giving a single top-of-page light source without repainting the body.
+- **Raised** (`{colors.surface-raised}`): Card interiors.
+- **Overlay** (`{colors.surface-overlay}`): Schematic nodes, ghost-button hover, default role chips.
+- **Hover Ground** (`{colors.surface-hover}`): Card background on hover — a one-step lift, paired with the border going vermilion.
+- **Hairline** (`{colors.border}`) / **Hairline Strong** (`{colors.border-strong}`): Structure is drawn with rules, not boxes: section tops, the metric row's dividers, the decision log's left rule, pill and card outlines.
+- **Ink** (`{colors.ink}`) / **Ink Secondary** (`{colors.ink-secondary}`) / **Ink Muted** (`{colors.ink-muted}`): Headings and emphatic labels; prose and schematic items; labels, captions and nav at rest.
 
 ### Named Rules
 
-**The Worst-Surface Rule.** Every text tone is chosen to clear 4.5:1 against `{colors.surface-overlay}` — the lightest surface in the system — not against the page ground. A tone that passes only on `#08090A` is not in this palette. Measured: ink 16.73:1, secondary 9.04:1, muted 5.48:1, accent 8.39:1.
+**The Regions, Not Accents Rule.** Vermilion is applied as a whole surface. Three regions carry it and a fourth would be welcome; a *fifth vermilion detail* would not. Audit test: if the signal colour's coverage on the first viewport falls near 1% and reads as trim, the world has been reverted. The shipped build measures 11.8% first-viewport and 28.7% page-wide, and those are the floor, not a ceiling.
 
-**The Reserved Accent Rule.** Amber appears only where something is measured, live, or focused. If you cannot name the number, the status, or the interaction it represents, it does not get the accent. It is never a background fill for a large area, never a heading colour, and never used to make a section "pop".
+**The Black-On-Field Rule.** Nothing on the field is ever white — white measures 3.57:1 there. Every on-field tone is a *solid* colour, never alpha: `rgba(10,10,9,0.72)` composites to 4.01:1 and fails AA for body text, and `rgba(10,9,8,0.38)` composites to ~2.2:1, under the 3:1 a UI boundary needs. Exactly two on-field tones are legal.
 
-**The Three Steps Rule.** There are exactly three surfaces. Depth beyond the third step is expressed with the inset highlight and ambient shadow, never by inventing a fourth fill. (The card hover fill `#111315` is a *state* of the raised plane, not a step.)
-
-**The Hairline Rule.** Separation is a 1px white-alpha rule at 8%, stepping to 16% for emphasis. No solid grey borders, no 2px rules, no double rules.
+**The One Voice Rule.** There is no secondary or tertiary accent, and adding one is a change of world rather than an extension of it. Everything that is not the field is a step on the near-black neutral ramp.
 
 ## Typography
 
-**Display Font:** Inter (with `sans-serif` fallback)
-**Body Font:** Inter (same family; the ramp is carried by weight, size, and tracking)
-**Label/Mono Font:** none — numeric alignment is handled by Inter's tabular figures, not a mono face.
+**Display Font:** Bricolage Grotesque (variable `opsz 12..96`, `wdth 75..100`, `wght 300..800`; falls back to Inter)
+**Body Font:** Inter (variable `opsz 14..32`, `wght 400..600`)
+**Label/Mono Font:** Azeret Mono (400 / 500 / 600)
 
-**Character:** One family, worked hard. Inter is a deliberate, recorded decision: it is the pinned canon's own typeface and the craft bar's, and the owner was shown the "Inter is overused" trade-off explicitly and kept it. It is a decision, not debt. The system earns differentiation from tracking and figures rather than from a display face: headings run tight negative tracking (−0.03em to −0.055em) so large type reads as set rather than typed, and every number on the page is tabular.
+**Character:** Condensed, heavy, tightly tracked poster type against plain workhorse prose, with a mono face reserved for anything that is a measurement. The pairing reads as a printed editorial spread rather than a product UI.
 
 ### Hierarchy
-- **Display** (600, `clamp(2.25rem, 6vw, 3.75rem)`, 1.05, −0.04em): The name in the first viewport and the Contact ask. The only type allowed above 3rem.
-- **Headline** (600, 36→48px, −0.03em): Section headings (`.text-heading`) — "Selected systems", "Stack", the About claim.
-- **Metric** (600, 36→48px, −0.025em, tabular): The three hero numbers, in accent. Card-level metrics use the same treatment at 24px in primary ink.
-- **Title** (600, 20px, 1.375): Project names inside cards.
-- **Body** (400, 16px, 1.625): All prose. Capped at `max-w-2xl` (~42rem) on every standfirst and paragraph.
-- **Small** (400, 14px, 1.625): Card outcome statements, highlights, decision-log rows, nav and footer links.
-- **Label** (500, 12px, +0.08em, uppercase): Group headings, schematic stage names, "Key Highlights", "Architecture Decision", footer column heads. A quieter 12px variant at +0.02em (`.text-label`) covers non-uppercase captions.
+- **Display** (800, `clamp(3.25rem, 13vw, 11rem)`, line-height 0.85, `wdth 78`, tracking -0.02em): The name in the first viewport and the footer close. Balanced wrap. One per page region at most.
+- **Headline** (800, `clamp(2.75rem, 8vw, 6.5rem)`, line-height 0.86, `wdth 78`, uppercase): Section heads. The second and last step of the scale.
+- **Metric** (800, `clamp(2.5rem, 4.5vw, 4rem)` in the hero and `clamp(2.25rem, 3.4vw, 3rem)` on cards, tracking -0.04em, tabular figures, field colour): Measured numbers. They rank above prose and below the section head.
+- **Title** (800, 1.5rem rising to 1.875rem–2.25rem, uppercase, `wdth 78`): Project and stack-group names.
+- **Body** (400, 1rem, line-height ~1.6, Inter): Prose only, capped at `max-w-2xl`; the About credo runs to `26ch` and the hero claim to `13–18ch`.
+- **Label** (500, 0.75rem, tracking 0.1em, uppercase, Azeret Mono): Metric labels and context, tech pills, schematic stage names, tabular metadata, group counts.
+- **Action** (800, 1rem, uppercase, `wdth 82`, Bricolage): Buttons. Nav links use `wdth 85` at 0.875rem/600.
 
 ### Named Rules
 
-**The Tabular Figures Rule.** Every number that a reader might compare or that sits in a ruled row — hero metrics, card metrics, group counts, the copyright year — is set `font-variant-numeric: tabular-nums`. Proportional figures in a metric row are a defect.
+**The Condensed Axis Rule.** Display type sets `font-variation-settings: "wdth" 78` (82 for actions, 85 for nav). The condensed axis *is* the genre. An earlier build loaded the width axis and then pinned it to 100, rendering a wide neutral grotesque; the review scored that as contradicting the genre. Never ship Bricolage at default width.
 
-**The Tight-Top Rule.** Tracking tightens as size grows: −0.02em at 24px, −0.03em at section headings, −0.04em at display, −0.055em at the largest setting. Small type never goes negative; uppercase labels always go positive (+0.02em to +0.08em).
+**The Two-Step Scale Rule.** The ramp has two large steps — the poster h1 and the section head — and nothing between them. A single poster moment over a page of small heads was scored as a failure; section heads must stay at display scale.
 
-**The No-Kicker Rule.** Headings stand alone. Eyebrow kickers and pre-heading labels were eliminated site-wide during the build and must not return. The 12px uppercase label is a *group index* (a category name with a count, a footer column head) — it never sits above a heading as its introduction.
+**The Measurement-Only Mono Rule.** Azeret Mono appears only where something is measured or enumerated: metric labels and context, tech pills, schematic stage names, tabular metadata. Monospace worn as a costume to signal "technical" is a refused pattern. Inter is prose only and is explicitly *not* the display voice.
+
+**The No Kicker Rule.** No category label, eyebrow, or role tag sits above a heading. The project cards' `RoleTag` was deleted and its component removed for exactly this reason; the group heading above the grid carries the category instead.
+
+**The Alternating Case Rule.** Section heads are uppercase; the About credo is display scale but deliberately lowercase, so two stacked caps blocks do not read as one long shout.
 
 ## Layout
 
-A single-column page of full-width sections, each capped at `max-w-7xl` (80rem) and centred, with a responsive gutter that steps 20px → 40px (≥640px) → 64px (≥1024px). Vertical rhythm is one value: 96px section padding, 128px at ≥768px. Sections are separated by a top hairline, never by a colour change — the ground is continuous from nav to footer.
+A single centred column at `max-w-7xl` with a three-step gutter (1.25rem / 2.5rem / 4rem at `sm` and `lg`) and a vertical rhythm of 6rem rising to 8rem per section. Sections are separated by a top hairline, not by a change of background — except the two field regions, which are separated by being a different colour entirely.
 
-The spacing scale is small and repeated: 6px / 8px / 16px / 24px / 32px for internal rhythm, 24px card padding, 16px grid gaps, 64px between the two columns of a split section.
+The first viewport is `min-height: 100vh`, centred, padded 6rem from the fixed header: name at poster scale, the claim, the live-dashboard link, availability, then three metrics on a ruled row. That metric row is a three-column grid whose dividers are 1px left borders with 2rem of inset; under 640px it collapses to one column and the dividers rotate to top borders with 1.5rem of inset. Projects sit two-up from 768px.
 
-**Responsive behaviour.** Breakpoints are Tailwind defaults and only three are actually used: 640px (nav collapses to a dropdown, the hero metric row goes from three ruled columns to a stacked list with top rules, buttons go full-width), 768px (project grid goes two-up, Skills rows adopt a fixed 220px category column, About and Contact become multi-column), 1024px (gutter widens only).
-
-Two column models recur: the **3fr / 2fr split** (About: argument left, availability panel right) and the **fixed-label index** (Skills: a 220px category column against a fluid content column, so every row scans on one axis). Contact uses a 3fr / 2fr / 2fr variant.
+Scroll behaviour lives on `html` (not `body`, where the browser ignores it for document scrolling) with `scroll-padding-top: 5rem` to clear the 64px fixed header.
 
 ### Named Rules
 
-**The Ruled Row Rule.** Related numbers sit in one row divided by hairlines, not in separate cards. The hero metric row is three equal columns with a left rule and 32px of left padding on each subsequent cell; below 640px those rules rotate to top rules with 24px of padding and margin. Boxing each metric would make three cards where there is one comparison.
+**The Full-Row Disclosure Rule.** An expanded project card is a detail view, so it takes the whole row (`:has([aria-expanded="true"]) { grid-column: span 2 }` above 768px). This is load-bearing, not cosmetic: at half width the card's container is 518px and five schematic stages crush together.
 
-**The Open-Card-Takes-the-Row Rule.** At ≥768px, a project card whose toggle is `aria-expanded="true"` spans both grid columns (`:has()` selector on the article). An expanded card is a detail view; at half width its schematic container is 518px and five stages crush together.
-
-**The Container-Query Rule.** The architecture schematic responds to *its own* width, not the viewport's (`@container (min-width: 34rem)` on an `inline-size` container). Because cards sit two-up, a 1400px viewport still gives the schematic only 518px. Any component whose layout depends on the box it sits in — not the screen — uses a container query.
+**The Container-Query Rule.** The architecture schematic reflows on its own width, never the viewport's — `container-type: inline-size` plus `@container (min-width: 34rem)` flips it from vertical to horizontal. A 1400px viewport still only gives this card 518px, so a media query would be measuring the wrong box.
 
 ## Elevation & Depth
 
-Hybrid, and the depth is the thing that separates this world from a flat dark template. Tonal layering does the structural work (three surface steps), and light does the material work: every raised plane carries a 1px **inset top-edge highlight** in white alpha, so its top edge reads as catching light from a source above the fold, and a **two-part ambient shadow** (a tight contact shadow plus a wide, heavily negative-spread ambient) seats it against the ground. The page ground itself is lit by a fixed radial wash rather than being a flat fill. On hover the card raises all three at once — highlight brightens, both shadows deepen and spread, fill lifts one notch — in a single 150ms transition. This is directly downstream of the linear.app craft bar.
-
-### Shadow Vocabulary
-- **Card rest** (`box-shadow: inset 0 1px 0 rgba(255,255,255,0.055), 0 1px 2px rgba(0,0,0,0.4), 0 8px 24px -12px rgba(0,0,0,0.7)`): Every card and card-like panel at rest.
-- **Card hover** (`box-shadow: inset 0 1px 0 rgba(255,255,255,0.09), 0 2px 4px rgba(0,0,0,0.45), 0 14px 34px -14px rgba(0,0,0,0.8)`): Paired with the border stepping to strong and the fill shifting to `#111315`.
-- **Pill highlight** (`box-shadow: inset 0 1px 0 rgba(255,255,255,0.04)`): Tech pills. The smallest surfaces still get lit.
-- **Ghost-button highlight** (`box-shadow: inset 0 1px 0 rgba(255,255,255,0.045)`): Secondary buttons.
-- **Primary-button ambient** (`box-shadow: 0 1px 2px rgba(0,0,0,0.5), 0 8px 20px -10px rgba(0,0,0,0.9)`): The light-on-dark primary button, which needs seating rather than lighting.
-- **Ground wash** (`radial-gradient(120% 70% at 50% 0%, rgba(255,255,255,0.035) 0%, rgba(255,255,255,0) 55%)`, `background-attachment: fixed`): The page's light source. Fixed, so scrolling moves content through the light rather than dragging the light along.
+There are no shadows in this system. Depth is a three-step tonal ramp (ground, raised, overlay) plus hairline rules, and nothing else. The one atmospheric element is a fixed radial white wash at 3.5% over the ground, which establishes a single top-of-page light source; it is a compositing layer of its own so the body is not repainted on every frame.
 
 ### Named Rules
 
-**The Lit Surface Rule.** Any element that sits on a step above its parent takes an inset top-edge highlight. Flat fill plus flat border is what makes a dark page look like a template; the highlight is 1px and between 4% and 9% white, never more.
-
-**The Whole-State Rule.** A hover changes fill, border, highlight, and shadow together, in one 150ms transition. A border-only hover reads as a bug at this craft bar.
+**The No Shadow, No Lit Edge Rule.** No `box-shadow`, no inset highlight, no ambient glow, anywhere. Rounded, lit, shadowed surfaces were the retired world's vocabulary; reintroducing any of them is reverting the world, not refining it.
 
 ## Shapes
 
-Rounded rectangles throughout, on a four-step radius scale that tracks element size: 6px for the smallest chips and schematic nodes, 8px for buttons and role rows, 12px for cards and panels, full for role tags. Nothing is square-cornered except rules and dividers, and nothing is a circle except status dots (6px) and bullet marks (4px).
+Hard-edged blocks and hairline rules. `border-radius: 0` on cards, buttons, pills, and role chips; borders are 1px at 8% or 16% white. Emphasis on a dark ground is a vermilion hairline, never an inverted fill. The only radius in the system is `{rounded.ring}` (0.375rem) on the global focus ring, where it softens the outline around small targets.
 
-Borders are always 1px white-alpha and carry most of the structure: they divide the metric row, separate every section, rule the credential list and the Skills index, and mark the left edge of the decision log. The decision log's single left rule at 16% is the system's only asymmetric border and reads as a margin annotation.
-
-The architecture schematic is the one geometric departure: a flow of labelled boxes joined by 1px edges, vertical on narrow containers and horizontal on wide ones, built from HTML rather than SVG so its labels stay selectable, screen-readable, and never scale below legibility.
+Recurring silhouettes: the full-bleed field band (edge to edge, overflow hidden, one line of display type); the ruled row (siblings divided by 1px, never boxed); and the left-ruled log (a 1px left border with 1rem of inset standing in for a list marker).
 
 ## Components
 
 ### Buttons
-- **Shape:** Softly rounded (8px), inline-flex with a 8px icon gap and 10px/20px padding.
-- **Primary:** Inverted — primary ink fill on near-black text, carrying the ambient seating shadow. Used for the one real action per region: the mailto in the hero, the copy-email button, the contact address.
-- **Ghost:** Raised-plane fill, hairline border, secondary ink, with its own inset highlight. Used for the social links alongside the primary.
-- **Hover / Focus:** Primary goes to pure white; ghost steps border to strong, fill to the overlay plane, text to primary ink — all at 150ms. Focus falls through to the global ring.
+- **Shape:** Square (`{rounded.none}`), no shadow.
+- **Primary:** Field background, field-ink label, uppercase Bricolage at `wdth 82`, 0.875rem/1.5rem padding.
+- **Hover / Focus:** Primary inverts to white ink ground on hover (colour transition, 150ms); focus uses the global vermilion ring at 2px with 2px offset.
+- **Ghost:** Transparent with a strong hairline, ink label; hover fills to the overlay tone and keeps its border.
+- **On Field:** Where a button sits inside a vermilion region it inverts — field-ink ground, vermilion label, Azeret Mono at 0.06em tracking — and its focus ring is field-ink, not vermilion, because vermilion on vermilion is invisible.
 
 ### Chips
-- **Tech pill:** Overlay-plane fill, hairline border, secondary ink, 12px, 6px radius, with a 4% inset highlight. Marks a tool that actually carried a shipped system.
-- **Plain tech text:** The long tail of the stack renders as muted 12px text joined by middots — true, present, and deliberately not competing with the pills.
-- **Role tag:** Full-radius, 12px medium. Default is overlay fill with a hairline border; the Systems / Backend variant is an accent hairline — amber text on a 10% amber wash with a 35% amber border. On a dark ground, emphasis is an accent hairline, never an ink inversion.
+- **Style:** Tech pills are transparent with a strong hairline and secondary ink, Azeret Mono at 0.75rem, square. On the field they keep the transparent ground but take a solid `{colors.field-ink-secondary}` border and field-ink text.
+- **State:** Static; a pill is metadata, never a control. The accent role chip (vermilion fill, field ink) exists but is used only where a filled emphasis is the point.
 
 ### Cards / Containers
-- **Corner Style:** 12px.
-- **Background:** Raised plane at rest, `#111315` on hover.
-- **Shadow Strategy:** Card rest → card hover (see Elevation & Depth); all three layers move together.
-- **Border:** 1px hairline at rest, stepping to hairline-strong on hover.
-- **Internal Padding:** 24px, with a 20px-gap internal stack and a hairline top rule separating the expanded layer.
+- **Corner Style:** Square.
+- **Background:** Raised surface on the ground.
+- **Shadow Strategy:** None — see Elevation & Depth.
+- **Border:** 1px strong hairline, which goes vermilion on hover as the background lifts one step.
+- **Internal Padding:** `{spacing.card-pad}` (1.5rem).
 
 ### Navigation
-Fixed full-width header, 64px tall, on a 72%-opaque ground fill with a medium backdrop blur and a hairline bottom border — the page scrolls beneath it and stays readable. Wordmark is plain text "Zaid" with a muted period. Links are 14px muted ink, going to primary ink on hover at 150ms. Below 640px the links collapse into a three-line toggle whose bars animate into a cross, and the menu drops in as a bordered panel. Anchor scrolling is smooth with a 5rem scroll-padding so a target never lands beneath the header.
+A fixed full-width header, 64px tall, on a 72% translucent ground with `backdrop-blur-md` and a bottom hairline. Links are uppercase Bricolage at `wdth 85`, muted ink at rest, full ink on hover, each with a 2.75rem minimum height. The wordmark is plain text "Zaid" with a muted period. The mobile menu is *opaque* on purpose: over a 72% translucent header the poster headline bleeds through an open menu.
 
-### Focus
-A single global treatment: a 2px accent outline at 2px offset with a 4px radius, applied to everything that does not define its own. Focus is the accent's fourth job and is never removed.
+### Architecture Schematic
+The page's one authored motion moment. A stage list of mono stage names and overlay-toned item boxes, connected by 1px edges. When a card opens, nodes settle in and edges extend stage by stage at a 90ms stagger; it replays on every open and never on page load. It is fully legible with the animation absent, and two items in one stage means a real branch in the architecture, not a layout convenience.
 
-### Architecture Schematic (signature)
-The system's one authored motion moment. When a project card opens, the pipeline draws itself: each stage node settles in (4px rise plus fade, 400ms on a decelerating curve) and each connecting edge extends from its origin (320ms, scaling from zero), staggered 90ms per index so the flow reads left-to-right as construction rather than appearing all at once. Nodes are overlay-plane boxes at 6px radius with a 12px uppercase stage label above; edges are 1px hairline-strong. The flow is a vertical stack by default and switches to a horizontal row at a 34rem *container* width. Under `prefers-reduced-motion: reduce` all animation is dropped and every node and edge renders at full opacity and identity transform — the diagram is complete and legible with no motion at all.
+### Metric Stat
+No border, no card — pure type hierarchy. Vermilion display numeral at poster scale over a mono label and a mono context line. Counters parse prefix, number, and suffix so `21,091`, `<100ms`, and `9.66M` all survive the count-up intact.
 
 ### Named Rules
 
-**The One Motion Moment Rule.** The page has exactly one authored animation: the schematic drawing itself. Everything else is a 150ms colour/shadow state transition or a ≤220ms disclosure. No scroll-triggered reveals, no parallax, no entrance animations on load.
+**The CSS-Entrance Rule.** Entrance reveals are CSS animations, not GSAP. `gsap.from()` applies its start state immediately, so an interrupted tween can leave text permanently invisible — StrictMode's double-invoked effects orphaned a staggered word at `translateY(110%)` exactly that way. A CSS animation cannot be orphaned. GSAP owns only what CSS cannot do: the scroll-velocity marquee and the counters.
 
-**The Reduced-Motion-Is-Complete Rule.** Every animated element renders fully legible at rest under `prefers-reduced-motion`. Motion may sequence information; it may never be the only way to see it.
-
-**The Computed-Claim Rule.** Where the copy states a rule about the content, the component computes it. The Skills standfirst claims the highlighted tools are the ones that carried the six systems, so the pill/plain split is derived at render time from those projects' own `technologies` arrays — not from hand-maintained source order. If the component changes, the claim must stay computed or the standfirst must change.
+**The Absence Rule.** Reduced motion is the *absence* of the animation, never a second code path. `gsap.matchMedia()` reverts what it created when its condition stops matching, and every CSS animation is switched off under `prefers-reduced-motion: reduce`. There is nothing to keep in sync.
 
 ## Do's and Don'ts
 
 ### Do:
-- **Do** keep to the three surface steps (`#08090A` / `#0F1011` / `#16181A`) and express further depth with the inset highlight and ambient shadow.
-- **Do** give every raised surface a 1px inset top-edge highlight between 4% and 9% white — this is the craft-bar rule that keeps the world off the flat-dark-template floor.
-- **Do** verify new text tones against `#16181A`, the worst-case surface, at 4.5:1 minimum.
-- **Do** reserve the amber for measured values, live status, the systems role tag, and focus rings.
-- **Do** set every number `tabular-nums`.
-- **Do** change fill, border, highlight, and shadow together on hover, at 150ms.
-- **Do** use a container query when a component's layout depends on the box it sits in rather than the viewport.
-- **Do** put related numbers in one hairline-ruled row rather than in separate cards.
-- **Do** let every animated element render complete and legible under `prefers-reduced-motion`.
+- **Do** apply vermilion as a whole region — a full-bleed band, a whole section, the footer — and keep first-viewport coverage near 11.8% and page coverage near 28.7%.
+- **Do** use only `{colors.field-ink}` (5.55:1) and `{colors.field-ink-secondary}` (4.83:1) on the field, as solid colours.
+- **Do** set `"wdth" 78` on display and heading type, 82 on actions, 85 on nav.
+- **Do** restrict Azeret Mono to measurements: metric labels and context, tech pills, schematic stage names, tabular metadata.
+- **Do** keep section heads at display scale (`clamp(2.75rem, 8vw, 6.5rem)`), uppercase.
+- **Do** draw structure with 1px hairlines and the three-step tonal ramp.
+- **Do** keep every text tone at 4.5:1 or better against its worst-case surface, and every UI boundary at 3:1 or better.
+- **Do** keep every interactive target at 24×24 CSS pixels or larger (WCAG 2.2 SC 2.5.8) — nav links and inline links carry explicit minimum heights for this reason.
+- **Do** keep the global `:focus-visible` ring, and override it to field-ink inside a field region.
+- **Do** keep `inert` on collapsed disclosure content so hidden panels stay out of the tab order and the accessibility tree.
+- **Do** reflow the schematic on its own width with a container query, not a media query.
+- **Do** put entrance reveals in CSS and leave GSAP the marquee and the counters.
 
 ### Don't:
-- **Don't** reintroduce eyebrow kickers or pre-heading labels; they were removed site-wide and headings stand alone.
-- **Don't** invent a fourth surface step or a solid grey border; separation is 1px white-alpha at 8% or 16%.
-- **Don't** use the amber as a background fill, a heading colour, or decoration — if you cannot name the number, status, or interaction it marks, it does not get the accent.
-- **Don't** flatten the surfaces: removing the inset highlights, the ambient shadows, or the fixed radial ground wash lowers the stated craft bar rather than simplifying the code.
-- **Don't** add a second authored animation, a scroll reveal, or a load-in entrance; the schematic is the page's one motion moment.
-- **Don't** emphasise on a dark ground by inverting to an ink fill; emphasis is an accent hairline.
-- **Don't** hide a measured number behind an interaction — architecture is the only thing allowed behind the card toggle.
-- **Don't** add a second typeface; the ramp is carried by weight, size, and tracking within Inter.
+- **Don't** scatter vermilion as accents, trim, or small badges on the dark ground. That produced a rebuild directive once already.
+- **Don't** put white text on the field (3.57:1), and don't use any alpha-composited tone there.
+- **Don't** add a second accent hue, and never teal-on-navy or violet-glow.
+- **Don't** reintroduce border radius on cards, buttons, or pills, and don't reintroduce inset lit edges or ambient shadows.
+- **Don't** render Bricolage at default width (`wdth 100`) — that is a wide neutral grotesque and contradicts the genre.
+- **Don't** use Inter or Bricolage for a measurement, and don't use Azeret Mono as a costume for "technical" prose.
+- **Don't** place a kicker, eyebrow, or category label above any heading; the group heading carries the category.
+- **Don't** flatten the scale into one poster moment over a page of small heads.
+- **Don't** stack two uppercase display blocks in a row.
+- **Don't** use `gsap.from()` for entrance reveals, and don't add `@gsap/react` — it resolves its own React against React 19 and throws "Invalid hook call".
+- **Don't** write a separate reduced-motion code path; remove the animation instead.
+- **Don't** soften any of the above toward restraint. The craft bar is the pinned bold-editorial genre, not linear.app.
