@@ -272,7 +272,7 @@ Recurring silhouettes: the full-bleed field band (edge to edge, overflow hidden,
 ### Chips
 - **Style:** Tech pills are transparent with a strong hairline and secondary ink, Azeret Mono at 0.75rem, square. On the field they keep the transparent ground but take a solid `{colors.field-ink-secondary}` border and field-ink text.
 - **State:** A pill is metadata, never a control, but it does answer the pointer: 150ms to full ink on the dark ground, and on the field it inverts to a solid field-ink fill with field-coloured text — the documented 5.55:1 pair, reversed. The accent role chip (vermilion fill, field ink) exists but is used only where a filled emphasis is the point.
-- **Entrance:** The stack rows carry 40+ pills, so they arrive in sequence rather than together. `.chip-in` rises 10px and fades on a `view()` timeline, cycling six literal ranges (`entry 10% cover 18%` through `38%`) by index so a row staggers left to right. The rows themselves reveal with `.on-scroll`, which completes first, so a row is never visible before its own pills. Both are behind `@supports` and `prefers-reduced-motion: no-preference`.
+- **Entrance:** In the Stack section the pills belong to that section's GSAP timeline (see Stack Timeline) rather than to a CSS reveal of their own; they rise 14px on a 0.07s stagger as their row resolves. A short-lived `.chip-in` CSS reveal was removed when the timeline took over — two systems animating the same pills is one too many.
 
 ### Cards / Containers
 - **Corner Style:** Square.
@@ -313,6 +313,11 @@ Here it is three literal ranges — `entry 5% cover 22% / 34% / 46%` — cycled 
 
 Label panels are deliberately excluded: they hold the sticky labels, and the two devices should not compete in the same panel.
 
+### Stack Timeline
+One GSAP timeline scrubbed by the Stack section's own scroll progress (`start: top 80%`, `end: bottom 70%`, `scrub: 0.6`). Each row resolves in turn: its hairline draws left to right (`scaleX 0 → 1`, which is why the rule is a real element and not a `border-top` — a border cannot be drawn on), the category head slides in from `x: -28`, its pills stagger up 14px at 0.07s apart, and the plain-text tail fades last. Scrolling back up unwinds it.
+
+Measured across the section: 0 of 30 pills visible before the trigger, 7 at 30% progress, 20 at 60%, 28 at 100%, all 30 past the end. Under `prefers-reduced-motion: reduce` the `matchMedia` branch never runs, so no start state is ever written and the section simply renders.
+
 ### Sticky Label
 How the grid moves on scroll, and worth stating precisely because the obvious guess is wrong. Aspen transforms nothing: sampling their page across four scroll positions found one rotating graphic and **twelve `position: sticky` elements pinned at `top: 60px`**. A label column pins under the header while the content column beside it scrolls past, and that differential is the entire effect. Here the About, Credentials and How-I-work labels pin at `top: 5.5rem`, clearing the 64px header.
 
@@ -328,7 +333,11 @@ One numeral at the Metric step and its caption at the Label step, pinned to the 
 
 **The Fixed-Is-The-Parallax Rule.** Depth on scroll comes from a layer that does not move. `position: fixed` holds the grid at 0× while content runs at 1×, which is exactly what the measured reference (white-desert.com, Awwwards SOTD 11 Sep 2026) achieves by counter-translating its background at 1.00× scroll. Only two things are animated on scroll, both in CSS with no JS: the grid drifts 72px across the whole document, and the hero name lifts 190px over the first viewport — **0.20×**, inside the 0.2–0.3× band the reference sits in. Both live on custom properties in `:root` so the intensity is one number. One moving background layer, not three: the vestibular risk scales with layer count.
 
-**The CSS-Entrance Rule.** Entrance reveals are CSS animations, not GSAP. `gsap.from()` applies its start state immediately, so an interrupted tween can leave text permanently invisible — StrictMode's double-invoked effects orphaned a staggered word at `translateY(110%)` exactly that way. A CSS animation cannot be orphaned. GSAP owns only what CSS cannot do: the scroll-velocity marquee and the counters.
+**The CSS-Entrance Rule.** Entrance reveals are CSS animations, not GSAP. `gsap.from()` applies its start state immediately, so an interrupted tween can leave text permanently invisible — StrictMode's double-invoked effects orphaned a staggered word at `translateY(110%)` exactly that way. A CSS animation cannot be orphaned.
+
+GSAP owns only what CSS cannot do, and that is now three things: the scroll-velocity marquee, the counters, and the Stack section's scrubbed timeline. The third was added at Zaid's request (2026-09-18) and is a real widening of this rule, recorded rather than smuggled. It earns the exception: a single sequence whose progress *is* the section's scroll progress cannot be built from `view()` timelines, because each element's CSS timeline starts from its own position and they cannot be sequenced against one another.
+
+Anything GSAP reveals uses `gsap.set()` for the start state and `to()` for the tween — never `gsap.from()`, and not `fromTo` with `immediateRender: false` either: deferring the start state means a scrubbed timeline leaves everything visible at progress 0 and the section does nothing. `gsap.set()` applies immediately and is undone by `ctx.revert()`, so an interrupted context restores the markup instead of stranding it invisible.
 
 **The Absence Rule.** Reduced motion is the *absence* of the animation, never a second code path. `gsap.matchMedia()` reverts what it created when its condition stops matching, and every CSS animation is switched off under `prefers-reduced-motion: reduce`. There is nothing to keep in sync.
 

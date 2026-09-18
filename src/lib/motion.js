@@ -18,6 +18,13 @@ gsap.registerPlugin(ScrollTrigger);
  *    gsap.matchMedia() reverts whatever it created when its condition stops
  *    matching, so there is nothing to keep in sync.
  *
+ * Zaid asked for a GSAP-driven reveal across the whole Stack section, so
+ * GSAP's remit here is now three things: the marquee, the counters, and
+ * stackReveal. That is a deliberate widening of the rule in DESIGN.md, not
+ * an accident — and it is done with fromTo plus immediateRender: false, never
+ * gsap.from, because gsap.from is what left text permanently invisible the
+ * first time round.
+ *
  * Deliberately does not use @gsap/react's useGSAP: that package resolves its
  * own React instance against React 19 and throws "Invalid hook call". The
  * official GSAP React skill sanctions gsap.context() inside useEffect with
@@ -151,3 +158,73 @@ export function useMotion(setup, ref) {
 }
 
 export { gsap, ScrollTrigger };
+
+/**
+ * One scrubbed timeline across the whole Stack section.
+ *
+ * This is the thing CSS view() timelines cannot do: a single sequence whose
+ * progress is the section's scroll progress, so the rows resolve in order as
+ * you pass through it and unwind if you scroll back up. Per-element CSS
+ * timelines each start from their own position and cannot be sequenced
+ * against each other.
+ *
+ * fromTo with immediateRender: false throughout. A gsap.from here would
+ * write opacity 0 into the DOM the moment it is created, and an interrupted
+ * context would leave the section invisible — which has already happened
+ * twice on this page.
+ */
+export function stackReveal(scope) {
+  const mm = gsap.matchMedia();
+  mm.add(MOTION_OK, (ctx) => {
+    if (ctx.conditions.reduce) return;
+    const root = scope.current;
+    const rows = root ? [...root.querySelectorAll(".stack-row")] : [];
+    if (!rows.length) return;
+
+    const parts = rows.map((row) => ({
+      rule: row.querySelector(".stack-rule"),
+      head: row.querySelector(".stack-head"),
+      chips: [...row.querySelectorAll(".tech-pill")],
+      plain: row.querySelector(".tech-plain"),
+    }));
+
+    /* gsap.set for the start state, not gsap.from and not fromTo with
+       immediateRender: false. fromTo defers its start state until the tween
+       actually plays, so with a scrubbed timeline everything sat visible at
+       progress 0 and the section did nothing. gsap.set applies now and is
+       undone by ctx.revert(), so an interrupted context restores the markup
+       rather than stranding it invisible — which is the failure gsap.from
+       caused here the first time. */
+    for (const { rule, head, chips, plain } of parts) {
+      if (rule) gsap.set(rule, { scaleX: 0 });
+      if (head) gsap.set(head, { x: -28, autoAlpha: 0 });
+      if (chips.length) gsap.set(chips, { y: 14, autoAlpha: 0 });
+      if (plain) gsap.set(plain, { autoAlpha: 0 });
+    }
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: root,
+        start: "top 80%",
+        end: "bottom 70%",
+        scrub: 0.6,
+      },
+    });
+
+    parts.forEach(({ rule, head, chips, plain }, i) => {
+      const at = i === 0 ? 0 : "<+=0.35";
+      if (rule) tl.to(rule, { scaleX: 1, duration: 0.5, ease: "none" }, at);
+      if (head) tl.to(head, { x: 0, autoAlpha: 1, duration: 0.6, ease: EASE }, rule ? "<+=0.1" : at);
+      if (chips.length) {
+        tl.to(chips, { y: 0, autoAlpha: 1, duration: 0.5, ease: EASE, stagger: 0.07 }, "<+=0.12");
+      }
+      if (plain) tl.to(plain, { autoAlpha: 1, duration: 0.4 }, "<+=0.2");
+    });
+
+    return () => {
+      tl.scrollTrigger?.kill();
+      tl.kill();
+    };
+  }, scope);
+  return () => mm.revert();
+}

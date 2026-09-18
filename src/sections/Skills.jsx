@@ -1,4 +1,6 @@
+import { useRef } from "react";
 import { resumeData } from "../constants/resumeData";
+import { useMotion, stackReveal } from "../lib/motion";
 const SKILLS = [
   {
     category: "Data Platforms & Pipelines",
@@ -58,9 +60,16 @@ const carriedAProject = (skill) => {
 };
 
 const Skills = () => {
+  const root = useRef(null);
+
+  // GSAP owns this section: one timeline scrubbed by the section's own
+  // scroll progress, which per-element CSS timelines cannot be sequenced into.
+  useMotion(() => stackReveal(root), root);
+
   return (
     <section
       id="skills"
+      ref={root}
       className="field-surface c-space section-spacing"
     >
       <div className="mx-auto w-full max-w-7xl">
@@ -79,11 +88,16 @@ const Skills = () => {
           {SKILLS.map((group) => (
             <div
               key={group.category}
-              className="on-scroll grid grid-cols-1 gap-3 border-t py-6 md:grid-cols-[260px_1fr] md:gap-8"
-              style={{ borderColor: "rgba(10,9,8,0.28)" }}
+              className="stack-row relative grid grid-cols-1 gap-3 py-6 md:grid-cols-[260px_1fr] md:gap-8"
             >
+              {/* A real element, not a border: a border cannot be drawn on. */}
+              <span
+                className="stack-rule absolute inset-x-0 top-0 h-px origin-left"
+                style={{ background: "rgba(10,9,8,0.28)" }}
+                aria-hidden="true"
+              />
               <h3
-                className="text-display text-2xl uppercase md:text-4xl"
+                className="stack-head text-display text-2xl uppercase md:text-4xl"
                 style={{ color: "var(--color-field-ink)", lineHeight: 0.95 }}
               >
                 {group.category}
@@ -92,8 +106,8 @@ const Skills = () => {
                 {/* The tools actually load-bearing in the shipped projects
                     carry weight; the rest stay true but stop competing. */}
                 <div className="flex flex-wrap gap-1.5">
-                  {group.items.filter(carriedAProject).map((skill, i) => (
-                    <span key={skill} className={`tech-pill chip-in s${i % 6}`}>
+                  {group.items.filter(carriedAProject).map((skill) => (
+                    <span key={skill} className="tech-pill">
                       {skill}
                     </span>
                   ))}
