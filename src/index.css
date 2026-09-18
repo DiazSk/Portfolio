@@ -876,10 +876,15 @@ body::after {
   color: var(--color-field-ink);
 }
 
+/* The same hover every primary button on the field takes: white ground,
+   near-black label. It used to invert to a field-ink fill with a vermilion
+   label, which was a second on-field hover treatment for no reason. A white
+   fill is a surface laid over the field, not ink drawn on it, so the
+   Black-On-Field Rule does not reach it — the boundary measures 4.75:1. */
 .field-surface .tech-pill:hover {
-  background: var(--color-field-ink);
-  border-color: var(--color-field-ink);
-  color: var(--color-field);
+  background: var(--color-ink);
+  border-color: var(--color-ink);
+  color: var(--color-field-ink);
 }
 
 .field-surface .tech-pill {

@@ -304,7 +304,7 @@ Recurring silhouettes: the full-bleed field band (edge to edge, overflow hidden,
 
 ### Chips
 - **Style:** Tech pills are transparent with a strong hairline and secondary ink, Azeret Mono at 0.75rem, square. On the field they keep the transparent ground but take a solid `{colors.field-ink-secondary}` border and field-ink text.
-- **State:** A pill is metadata, never a control, but it does answer the pointer: 150ms to full ink on the dark ground, and on the field it inverts to a solid field-ink fill with field-coloured text — the documented 5.55:1 pair, reversed. The accent role chip (vermilion fill, field ink) exists but is used only where a filled emphasis is the point.
+- **State:** A pill is metadata, never a control, but it does answer the pointer: 150ms to full ink on the dark ground, and on the field it takes the **same hover as every primary button there** — white ground, near-black label — because a second on-field hover treatment earns nothing. It inverted to a field-ink fill with a vermilion label until 2026-09-18. The accent role chip (vermilion fill, field ink) exists but is used only where a filled emphasis is the point.
 - **Entrance:** In the Stack section the pills belong to that section's GSAP timeline (see Stack Timeline) rather than to a CSS reveal of their own; they rise 14px on a 0.07s stagger as their row resolves. A short-lived `.chip-in` CSS reveal was removed when the timeline took over — two systems animating the same pills is one too many.
 
 ### Contact
