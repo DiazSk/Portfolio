@@ -271,7 +271,8 @@ Recurring silhouettes: the full-bleed field band (edge to edge, overflow hidden,
 
 ### Chips
 - **Style:** Tech pills are transparent with a strong hairline and secondary ink, Azeret Mono at 0.75rem, square. On the field they keep the transparent ground but take a solid `{colors.field-ink-secondary}` border and field-ink text.
-- **State:** Static; a pill is metadata, never a control. The accent role chip (vermilion fill, field ink) exists but is used only where a filled emphasis is the point.
+- **State:** A pill is metadata, never a control, but it does answer the pointer: 150ms to full ink on the dark ground, and on the field it inverts to a solid field-ink fill with field-coloured text — the documented 5.55:1 pair, reversed. The accent role chip (vermilion fill, field ink) exists but is used only where a filled emphasis is the point.
+- **Entrance:** The stack rows carry 40+ pills, so they arrive in sequence rather than together. `.chip-in` rises 10px and fades on a `view()` timeline, cycling six literal ranges (`entry 10% cover 18%` through `38%`) by index so a row staggers left to right. The rows themselves reveal with `.on-scroll`, which completes first, so a row is never visible before its own pills. Both are behind `@supports` and `prefers-reduced-motion: no-preference`.
 
 ### Cards / Containers
 - **Corner Style:** Square.

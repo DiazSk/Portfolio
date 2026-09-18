@@ -79,7 +79,7 @@ const Skills = () => {
           {SKILLS.map((group) => (
             <div
               key={group.category}
-              className="grid grid-cols-1 gap-3 border-t py-6 md:grid-cols-[260px_1fr] md:gap-8"
+              className="on-scroll grid grid-cols-1 gap-3 border-t py-6 md:grid-cols-[260px_1fr] md:gap-8"
               style={{ borderColor: "rgba(10,9,8,0.28)" }}
             >
               <h3
@@ -92,8 +92,8 @@ const Skills = () => {
                 {/* The tools actually load-bearing in the shipped projects
                     carry weight; the rest stay true but stop competing. */}
                 <div className="flex flex-wrap gap-1.5">
-                  {group.items.filter(carriedAProject).map((skill) => (
-                    <span key={skill} className="tech-pill">
+                  {group.items.filter(carriedAProject).map((skill, i) => (
+                    <span key={skill} className={`tech-pill chip-in s${i % 6}`}>
                       {skill}
                     </span>
                   ))}
