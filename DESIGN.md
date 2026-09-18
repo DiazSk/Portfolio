@@ -314,7 +314,9 @@ Here it is three literal ranges — `entry 5% cover 22% / 34% / 46%` — cycled 
 Label panels are deliberately excluded: they hold the sticky labels, and the two devices should not compete in the same panel.
 
 ### Stack Timeline
-One GSAP timeline scrubbed by the Stack section's own scroll progress (`start: top 80%`, `end: bottom 70%`, `scrub: 0.6`). Each row resolves in turn: its hairline draws left to right (`scaleX 0 → 1`, which is why the rule is a real element and not a `border-top` — a border cannot be drawn on), the category head slides in from `x: -28`, its pills stagger up 14px at 0.07s apart, and the plain-text tail fades last. Scrolling back up unwinds it.
+One GSAP timeline scrubbed by the Stack section's own scroll progress (`start: top 85%`, `end: bottom bottom`, `scrub: 0.6`). The end matters: at `bottom 70%` progress only reached 1 once the section's top had left the viewport, so the last row could never be read at the same time as the first. Ending at `bottom bottom` completes the timeline exactly when the whole section is on screen.
+
+The section is sized to make that possible. At `section-spacing` with 24px row padding and a 36px category head it measured **1121px against a 946px viewport**; it is **792px** now — `py-16 md:py-20`, `py-4` rows, a 30px head, and the lede beside the heading rather than under it, which alone was worth ~84px. Below roughly 860px of viewport height the six rows still will not share a screen; the next cuts would be `py-3` rows and `md:py-14`. Each row resolves in turn: its hairline draws left to right (`scaleX 0 → 1`, which is why the rule is a real element and not a `border-top` — a border cannot be drawn on), the category head slides in from `x: -28`, its pills stagger up 14px at 0.07s apart, and the plain-text tail fades last. Scrolling back up unwinds it.
 
 Measured across the section: 0 of 30 pills visible before the trigger, 7 at 30% progress, 20 at 60%, 28 at 100%, all 30 past the end. Under `prefers-reduced-motion: reduce` the `matchMedia` branch never runs, so no start state is ever written and the section simply renders.
 

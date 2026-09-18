@@ -205,8 +205,13 @@ export function stackReveal(scope) {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: root,
-        start: "top 80%",
-        end: "bottom 70%",
+        /* end at "bottom bottom", not "bottom 70%": the later end put
+           progress 1 where the section's top had already left the viewport,
+           so the last row could not be read at the same time as the first.
+           This way the timeline is complete exactly when the whole section
+           is on screen. */
+        start: "top 85%",
+        end: "bottom bottom",
         scrub: 0.6,
       },
     });

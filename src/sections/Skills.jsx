@@ -70,17 +70,25 @@ const Skills = () => {
     <section
       id="skills"
       ref={root}
-      className="field-surface c-space section-spacing"
+      /* Not section-spacing: at py-24/32 plus 24px row padding the
+             section measured 1121px against a 946px viewport, so the first
+             and last rows could never be read together. */
+      className="field-surface c-space py-16 md:py-20"
     >
       <div className="mx-auto w-full max-w-7xl">
-        <h2 className="on-scroll text-heading mb-4">Stack</h2>
-        <p
-          className="mb-12 max-w-2xl text-base leading-relaxed"
-          style={{ color: "#2E1409" }}
-        >
-          Highlighted tools are the ones that actually carried the six systems
-          above; the rest of the stack sits alongside them.
-        </p>
+        {/* Head and lede share a row rather than stacking: stacked they cost
+            ~84px of height, which is the difference between the six rows
+            fitting one viewport and not on a shorter laptop window. */}
+        <div className="mb-8 grid grid-cols-1 items-end gap-4 md:grid-cols-[auto_1fr] md:gap-10">
+          <h2 className="on-scroll text-heading">Stack</h2>
+          <p
+            className="max-w-xl text-base leading-relaxed md:pb-2"
+            style={{ color: "#2E1409" }}
+          >
+            Highlighted tools are the ones that actually carried the six systems
+            above; the rest of the stack sits alongside them.
+          </p>
+        </div>
 
         {/* A ruled index, not a grid of identical cards: the category sits in
             a fixed left column so every row scans on one axis. */}
@@ -88,7 +96,7 @@ const Skills = () => {
           {SKILLS.map((group) => (
             <div
               key={group.category}
-              className="stack-row relative grid grid-cols-1 gap-3 py-6 md:grid-cols-[260px_1fr] md:gap-8"
+              className="stack-row relative grid grid-cols-1 gap-3 py-4 md:grid-cols-[260px_1fr] md:gap-8"
             >
               {/* A real element, not a border: a border cannot be drawn on. */}
               <span
@@ -97,7 +105,7 @@ const Skills = () => {
                 aria-hidden="true"
               />
               <h3
-                className="stack-head text-display text-2xl uppercase md:text-4xl"
+                className="stack-head text-display text-2xl uppercase md:text-3xl"
                 style={{ color: "var(--color-field-ink)", lineHeight: 0.95 }}
               >
                 {group.category}
