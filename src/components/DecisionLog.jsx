@@ -16,8 +16,7 @@ const DecisionLog = ({ decisionLog }) => {
   return (
     <div className="decision-log">
       <p
-        className="mb-3 text-xs font-semibold uppercase tracking-widest"
-        style={{ color: "var(--color-ink-muted)" }}
+        className="text-label mb-3"
       >
         Architecture Decision
       </p>
@@ -26,8 +25,8 @@ const DecisionLog = ({ decisionLog }) => {
         {rows.map(({ label, value }) => (
           <div key={label} className="flex gap-3 text-sm">
             <span
-              className="w-14 shrink-0 font-medium"
-              style={{ color: "var(--color-ink-muted)", fontVariant: "small-caps" }}
+              className="text-mono w-16 shrink-0 text-xs uppercase"
+              style={{ color: "var(--color-field)", letterSpacing: "0.06em" }}
             >
               {label}
             </span>

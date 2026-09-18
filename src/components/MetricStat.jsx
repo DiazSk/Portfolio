@@ -8,15 +8,22 @@ const MetricStat = ({ value, label, context }) => {
   return (
     <div className="flex flex-col gap-1">
       <span
-        className="metric-value text-4xl font-semibold tracking-tight md:text-5xl"
+        className="metric-value"
+        style={{ fontSize: "clamp(2.5rem, 4.5vw, 4rem)" }}
       >
         {value}
       </span>
-      <span className="text-sm font-medium" style={{ color: "var(--color-ink-secondary)" }}>
+      <span
+        className="text-mono mt-1 text-xs uppercase"
+        style={{ color: "var(--color-ink)", letterSpacing: "0.08em" }}
+      >
         {label}
       </span>
       {context && (
-        <span className="text-xs" style={{ color: "var(--color-ink-muted)" }}>
+        <span
+          className="text-mono text-xs"
+          style={{ color: "var(--color-ink-muted)", letterSpacing: "0.01em" }}
+        >
           {context}
         </span>
       )}

@@ -15,15 +15,24 @@
   --color-ink-secondary:    #B4B9C2;
   --color-ink-muted:        #8A8F98;
 
-  /* One accent. Live values and focus only. */
-  --color-accent:           #EBA352;
+  /* The field. Held as whole regions, not scattered accents. Black type on
+     it, never white: white measures 3.57:1 there and fails. */
+  --color-field:            #FF3B14;
+  --color-field-ink:        #0A0A09;
   --color-surface-hover:    #111315;
+
+  /* Kept as an alias so focus rings and status dots resolve to the field. */
+  --color-accent:           #FF3B14;
+
+  --font-display:           "Bricolage Grotesque", "Inter", sans-serif;
+  --font-mono:              "Azeret Mono", ui-monospace, monospace;
+  --font-body:              "Inter", sans-serif;
 }
 
 /* ─── Base ───────────────────────────────────────────────────── */
 body {
   background: var(--color-surface);
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-body);
   color: var(--color-ink);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -53,8 +62,8 @@ body::before {
 }
 
 ::selection {
-  background: var(--color-accent);
-  color: var(--color-surface);
+  background: var(--color-field);
+  color: var(--color-field-ink);
 }
 
 /* One focus treatment for everything that doesn't define its own. */
@@ -74,26 +83,57 @@ body::before {
 }
 
 /* ─── Typography ─────────────────────────────────────────────── */
-.text-heading {
-  @apply text-4xl font-semibold tracking-tight md:text-5xl;
+/* Bricolage carries scale; Azeret Mono carries measurement; Inter carries
+   prose only. Three faces, three jobs, no overlap. */
+.text-display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-variation-settings: "wdth" 100;
+  letter-spacing: -0.035em;
+  line-height: 0.88;
   color: var(--color-ink);
+  text-wrap: balance;
+}
+
+.text-heading {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.25rem, 5vw, 3.75rem);
+  font-variation-settings: "wdth" 100;
   letter-spacing: -0.03em;
+  line-height: 0.95;
+  color: var(--color-ink);
+  text-wrap: balance;
+}
+
+.text-mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
 }
 
 .text-label {
-  @apply text-xs font-medium;
+  @apply text-xs font-medium uppercase;
+  font-family: var(--font-mono);
   color: var(--color-ink-muted);
-  letter-spacing: 0.02em;
+  letter-spacing: 0.1em;
 }
 
 .tabular {
+  font-family: var(--font-mono);
   font-variant-numeric: tabular-nums;
 }
 
-/* OWN-WORLD: the accent is reserved for measured values and focus. */
+/* Measured values are the loudest thing on the page: display face, poster
+   scale, field colour. */
 .metric-value {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-variation-settings: "wdth" 100;
   font-variant-numeric: tabular-nums;
-  color: var(--color-accent);
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+  color: var(--color-field);
 }
 
 /* ─── Navigation ─────────────────────────────────────────────── */
@@ -109,6 +149,9 @@ body::before {
   @apply inline-flex items-center text-sm transition-colors duration-150;
   min-height: 2.75rem;
   color: var(--color-ink-muted);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
 .nav-link:hover {
@@ -172,6 +215,7 @@ body::before {
 /* ─── Tech pill ──────────────────────────────────────────────── */
 .tech-pill {
   @apply inline-block rounded-md border px-2 py-0.5 text-xs;
+  font-family: var(--font-mono);
   background: var(--color-surface-overlay);
   border-color: var(--color-border);
   color: var(--color-ink-secondary);
@@ -186,7 +230,9 @@ body::before {
 
 /* ─── Role tag ───────────────────────────────────────────────── */
 .role-tag {
-  @apply inline-block rounded-full border px-2.5 py-0.5 text-xs font-medium;
+  @apply inline-block rounded-full border px-2.5 py-0.5 text-xs font-medium uppercase;
+  font-family: var(--font-mono);
+  letter-spacing: 0.06em;
 }
 
 .role-tag-default {
@@ -197,25 +243,29 @@ body::before {
 
 /* On a dark ground, emphasis is the accent hairline — not an inversion. */
 .role-tag-accent {
-  background: rgba(235, 163, 82, 0.1);
-  border-color: rgba(235, 163, 82, 0.35);
-  color: var(--color-accent);
+  background: var(--color-field);
+  border-color: var(--color-field);
+  color: var(--color-field-ink);
 }
 
 /* ─── Buttons ────────────────────────────────────────────────── */
 .btn-primary {
-  @apply inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-medium transition-colors duration-150;
-  background: var(--color-ink);
-  color: var(--color-surface);
+  @apply inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold uppercase transition-colors duration-150;
+  font-family: var(--font-mono);
+  letter-spacing: 0.06em;
+  background: var(--color-field);
+  color: var(--color-field-ink);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px -12px rgba(0, 0, 0, 0.7);
 }
 
 .btn-primary:hover {
-  background: #FFFFFF;
+  background: #FF5A38;
 }
 
 .btn-ghost {
-  @apply inline-flex items-center gap-2 rounded-lg border px-5 py-2.5 text-sm font-medium transition-colors duration-150;
+  @apply inline-flex items-center gap-2 rounded-lg border px-5 py-2.5 text-sm font-medium uppercase transition-colors duration-150;
+  font-family: var(--font-mono);
+  letter-spacing: 0.06em;
   background: var(--color-surface-raised);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.045);
   border-color: var(--color-border);
@@ -276,6 +326,92 @@ body::before {
   .swap {
     animation: none;
   }
+}
+
+/* ─── Entrance reveals ──────────────────────────────────────── */
+/* Deliberately CSS, not GSAP. A CSS animation cannot be orphaned by React
+   effect churn (StrictMode double-invokes effects in dev, which left one
+   staggered word stuck at its start state). GSAP keeps the jobs CSS cannot
+   do: the velocity-reactive marquee and the counters. */
+.reveal-word {
+  animation: word-rise 950ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(var(--i, 0) * 80ms);
+}
+
+@keyframes word-rise {
+  from { transform: translateY(110%); }
+  to   { transform: translateY(0); }
+}
+
+.hero-block {
+  animation: block-settle 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(300ms + var(--i, 0) * 70ms);
+}
+
+@keyframes block-settle {
+  from { opacity: 0; transform: translateY(26px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Sections below the fold reveal on scroll, natively. */
+@supports (animation-timeline: view()) {
+  .on-scroll {
+    animation: block-settle 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-timeline: view();
+    animation-range: entry 5% cover 22%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-word,
+  .hero-block,
+  .on-scroll {
+    animation: none;
+  }
+}
+
+/* ─── On the field ───────────────────────────────────────────── */
+/* The close inverts: black ink on vermilion. White fails contrast there
+   (3.57:1), so nothing on the field is ever white. */
+.link-field {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.75rem;
+  /* Solid, not alpha: rgba(10,10,9,0.72) over the field composites to
+     4.01:1 and fails AA for body text. #2E1409 measures 4.83:1. */
+  color: #2E1409;
+  text-decoration: none;
+  text-underline-offset: 3px;
+  transition: color 150ms;
+}
+
+.link-field:hover,
+.link-field:focus-visible {
+  color: var(--color-field-ink);
+  text-decoration: underline;
+}
+
+.link-field:focus-visible {
+  outline: 2px solid var(--color-field-ink);
+  outline-offset: 3px;
+  border-radius: 0.375rem;
+}
+
+.btn-on-field {
+  @apply inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold uppercase transition-colors duration-150;
+  font-family: var(--font-mono);
+  letter-spacing: 0.06em;
+  background: var(--color-field-ink);
+  color: var(--color-field);
+}
+
+.btn-on-field:hover {
+  background: #1C1C1A;
+}
+
+.btn-on-field:focus-visible {
+  outline: 2px solid var(--color-field-ink);
+  outline-offset: 3px;
 }
 
 /* ─── Section divider ────────────────────────────────────────── */
@@ -357,6 +493,7 @@ body::before {
 }
 
 .node-stage {
+  font-family: var(--font-mono);
   font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 0.08em;

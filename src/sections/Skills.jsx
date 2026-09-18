@@ -65,7 +65,7 @@ const Skills = () => {
       style={{ borderColor: "var(--color-border)" }}
     >
       <div className="mx-auto w-full max-w-7xl">
-        <h2 className="text-heading mb-4">Stack</h2>
+        <h2 className="on-scroll text-heading mb-4">Stack</h2>
         <p
           className="mb-12 max-w-2xl text-base leading-relaxed"
           style={{ color: "var(--color-ink-secondary)" }}
@@ -84,8 +84,8 @@ const Skills = () => {
               style={{ borderColor: "var(--color-border)" }}
             >
               <h3
-                className="text-sm font-medium"
-                style={{ color: "var(--color-ink)" }}
+                className="text-display text-xl md:text-2xl"
+                style={{ lineHeight: 1.1 }}
               >
                 {group.category}
               </h3>

@@ -46,7 +46,7 @@ const About = () => {
         <div className="grid grid-cols-1 gap-12 md:grid-cols-[3fr_2fr] md:gap-16">
           {/* ── Left ────────────────────────────────────────── */}
           <div>
-            <h2 className="text-heading mb-8 max-w-[18ch] text-balance">
+            <h2 className="on-scroll text-heading mb-8 max-w-[18ch] text-balance">
               I build the layer between raw data and the millisecond that
               matters.
             </h2>

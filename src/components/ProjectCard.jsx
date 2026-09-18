@@ -44,7 +44,7 @@ const ProjectCard = ({ project }) => {
           <div className="flex flex-col items-start gap-2">
             <RoleTag category={category} />
             <h4
-              className="text-xl font-semibold leading-snug"
+              className="text-display text-2xl md:text-[1.75rem]"
               style={{ color: "var(--color-ink)" }}
             >
               {name}
@@ -83,7 +83,7 @@ const ProjectCard = ({ project }) => {
 
           <button
             onClick={() => setIsExpanded(!isExpanded)}
-            className="-my-2 flex items-center gap-1 py-2 text-xs transition-colors"
+            className="text-mono -my-2 flex items-center gap-1 py-2 text-xs uppercase transition-colors"
             style={{ color: "var(--color-ink-muted)" }}
             aria-expanded={isExpanded}
             aria-label={isExpanded ? "Collapse details" : "View architecture & decision log"}
@@ -121,8 +121,7 @@ const ProjectCard = ({ project }) => {
               {/* Key highlights */}
               <div>
                 <p
-                  className="mb-3 text-xs font-semibold uppercase tracking-widest"
-                  style={{ color: "var(--color-ink-muted)" }}
+                  className="text-label mb-3"
                 >
                   Key Highlights
                 </p>
