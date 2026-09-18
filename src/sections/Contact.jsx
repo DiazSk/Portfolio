@@ -105,16 +105,28 @@ const Contact = () => {
         {/* Same container as the meta row below, so the name's edges line up
             with the hairline rather than bleeding past it. */}
         <div className="c-space mx-auto w-full max-w-7xl">
-          <div className="overflow-hidden">
+          {/* Sized in cqw, not vw: the hairline's width is the container's,
+              which stops growing at max-w-7xl while vw keeps going. Past
+              ~1294px the two scales crossed, the line overshot by a pixel
+              and wrapped — so on a full-screen MacBook the name broke into
+              two short lines. One container unit drives both now, and nowrap
+              makes a wrap impossible rather than unlikely.
+              Optical sizing is off because it is a second scale: Bricolage's
+              opsz axis widens the face below ~120px (5.22 em-widths instead
+              of 5.00), so one multiplier cannot be flush at both ends while
+              it is on. Pinned, the ratio is 5.002 at every size and
+              19.98cqw lands under a pixel inside the hairline. Above 120px
+              this renders exactly what auto already chose. */}
+          <div className="overflow-hidden" style={{ containerType: "inline-size" }}>
             <span
               className="text-display block w-full select-none leading-none"
               style={{
                 color: "var(--color-field-ink)",
-                /* Tuned so the name's inked width matches the container, so
-                   both ends sit flush with the hairline below it. */
-                fontSize: "clamp(3.25rem, 17.8vw, 14.4rem)",
+                fontSize: "19.98cqw",
                 fontVariationSettings: '"wdth" 100',
+                fontOpticalSizing: "none",
                 letterSpacing: "-0.012em",
+                whiteSpace: "nowrap",
               }}
               aria-hidden="true"
             >

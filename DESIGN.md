@@ -198,7 +198,8 @@ A monochrome near-black ramp carrying all structure, plus exactly one chromatic 
 **Character:** Condensed, heavy, tightly tracked poster type against plain workhorse prose, with a mono face reserved for anything that is a measurement. The pairing reads as a printed editorial spread rather than a product UI.
 
 ### Hierarchy
-- **Display** (800, `clamp(3.25rem, 13vw, 11rem)`, line-height 0.85, `wdth 78`, tracking -0.02em): The name in the first viewport and the footer close. Balanced wrap. One per page region at most.
+- **Display** (800, `clamp(3.25rem, 13vw, 11rem)`, line-height 0.85, `wdth 78`, tracking -0.02em): The name in the first viewport. Balanced wrap. One per page region at most.
+- **Footer wordmark** (Display, but `19.98cqw` with `wdth 100`, tracking -0.012em, `font-optical-sizing: none`, `nowrap`): The name set once on the field band, sized to fill the container so both ends meet the hairline above the meta row. Container units, not `vw` — the hairline's width stops at `max-w-7xl` and a `vw` size does not, so the two scales crossed past ~1294px and the line wrapped. Optical sizing is pinned because the `opsz` axis widens the face below ~120px, which no single multiplier can absorb.
 - **Headline** (800, `clamp(2.75rem, 8vw, 6.5rem)`, line-height 0.86, `wdth 78`, uppercase): Section heads. The second and last step of the scale.
 - **Metric** (800, `clamp(2.5rem, 4.5vw, 4rem)` in the hero and `clamp(2.25rem, 3.4vw, 3rem)` on cards, tracking -0.04em, tabular figures, field colour): Measured numbers. They rank above prose and below the section head.
 - **Title** (800, 1.5rem rising to 1.875rem–2.25rem, uppercase, `wdth 78`): Project and stack-group names.
