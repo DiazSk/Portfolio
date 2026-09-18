@@ -445,29 +445,44 @@ body::after {
    the native overflow off so the two cannot fight. */
 .h-wrap {
   overflow: hidden;
-  padding-block: 6vh;
 }
 
-/* Panels are viewport-proportional so the pinned wrapper fills the screen
-   and the panel still clears the 64px header. */
-.h-panel { height: 78vh; }
+/* A band inside the page, not a full-screen panel. rauno.me's horizontal
+   strips measure 655px tall inside a 1200px container, with the next card
+   peeking past the right edge — the page keeps its own rhythm around them
+   rather than being taken over. 620px is that proportion; the vh term only
+   binds on a short window. */
+.h-panel {
+  height: min(620px, 74vh);
+  width: min(86vw, 40rem);
+}
 
 @media (max-width: 767px) {
-  .h-panel { height: auto; min-height: 32rem; }
-  .h-wrap { padding-block: 2rem; }
+  .h-panel { height: auto; min-height: 30rem; }
 }
 
 .h-track {
   display: flex;
-  gap: 1px;
+  /* Padded so the first card's left edge lines up with the heading column
+     while the last runs off the right edge. Putting it on the track rather
+     than the wrapper keeps the travel distance as
+     `track.scrollWidth - innerWidth` with no extra arithmetic. */
+  padding-left: calc(max(0px, (100vw - 80rem) / 2) + 1.25rem);
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   overscroll-behavior-x: contain;
   scrollbar-width: none;
-  background: var(--color-border-strong);
 }
 
 .h-track::-webkit-scrollbar { display: none; }
+
+@media (min-width: 640px) {
+  .h-track { padding-left: calc(max(0px, (100vw - 80rem) / 2) + 2.5rem); }
+}
+
+@media (min-width: 1024px) {
+  .h-track { padding-left: calc(max(0px, (100vw - 80rem) / 2) + 4rem); }
+}
 
 .h-wrap.is-pinned {
   /* clip, not hidden: `hidden` still creates a scrollport, so focusing an
@@ -489,7 +504,10 @@ body::after {
   position: relative;
   flex: none;
   scroll-snap-align: start;
-  width: min(88vw, 44rem);
+  /* The separators are per-panel rules now. They used to be the track's own
+     background showing through a 1px gap, which painted a grey strip down
+     the padding once the track was inset to the heading column. */
+  border-left: 1px solid var(--color-border-strong);
   background: var(--color-surface);
   padding: clamp(1.5rem, 3vw, 2.5rem);
 }

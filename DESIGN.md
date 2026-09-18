@@ -275,9 +275,13 @@ Recurring silhouettes: the full-bleed field band (edge to edge, overflow hidden,
 - **Entrance:** In the Stack section the pills belong to that section's GSAP timeline (see Stack Timeline) rather than to a CSS reveal of their own; they rise 14px on a 0.07s stagger as their row resolves. A short-lived `.chip-in` CSS reveal was removed when the timeline took over — two systems animating the same pills is one too many.
 
 ### Project Track
-The six systems run as one horizontal track. The heading block stays in normal vertical flow; below it the wrapper is pinned and GSAP translates the track's `x` by exactly `track.scrollWidth - innerWidth` (2936px at 1293px wide), with `ease: "none"` — any other ease and scroll position stops agreeing with panel position. Panels are `min(88vw, 44rem)` by `78vh`. A 2px rule under the heading reports track progress.
+**One band per category**, not one queue of six. Data Engineering finishes before Systems Engineering starts, each band owning its own ScrollTrigger and its own progress rule.
 
-Because the pin length equals the travel distance, the mapping is exactly 1:1 — one pixel of page scroll is one pixel of horizontal travel.
+The proportions come from rauno.me, measured rather than eyeballed: his horizontal strips are **655px tall inside a 1200px container with `overflow-x: clip`**, items of non-uniform width (655 square, 916, 1414, 2356), and the next card peeking past the edge — the page keeps its rhythm above and below rather than being taken over. Panels here are `min(86vw, 40rem)` by `min(620px, 74vh)` — 640×620 at 1293px wide — and the band pins at `center center` so it sits mid-viewport while it travels, rather than at the top with the screen half empty.
+
+The track is padded left by `max(0px, (100vw - 80rem) / 2) + c-space` so the first card's edge lines up with the heading column and the last runs off the right. Putting that padding on the track and not the wrapper keeps the travel distance as plain `track.scrollWidth - innerWidth`. GSAP translates `x` by exactly that, with `ease: "none"` — any other ease and scroll position stops agreeing with panel position.
+
+**A band only pins if it overhangs by more than 160px.** Systems Engineering holds two projects and overhangs by 58px; holding the page for 58px reads as a stutter rather than an effect, so that band stays a native row.
 
 The wrapper uses `overflow: clip`, not `hidden`, and the distinction is load-bearing: `hidden` still creates a scrollport, so focusing an off-screen panel let the browser reveal it by setting the wrapper's `scrollLeft` — 2646px of it, on top of the track's transform — which left the track doubly offset and the pin desynced for every later scroll. `clip` creates no scrollport, so that cannot happen.
 

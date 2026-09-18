@@ -254,7 +254,11 @@ export function horizontalTrack(scope, { onProgress } = {}) {
     /* Tell CSS the native overflow is off before anything is measured. */
     wrap.classList.add("is-pinned");
     const distance = () => Math.max(0, track.scrollWidth - window.innerWidth);
-    if (!distance()) {
+    /* A track with only a little overhang is not worth pinning: Systems
+       Engineering has two projects and overhangs by 59px, and holding the
+       page for 59px reads as a stutter, not an effect. Under the threshold
+       it stays a native row. */
+    if (distance() < 160) {
       wrap.classList.remove("is-pinned");
       return;
     }
@@ -265,7 +269,11 @@ export function horizontalTrack(scope, { onProgress } = {}) {
       scrollTrigger: {
         trigger: wrap,
         pin: true,
-        start: "top top",
+        /* centre, not top: the band is ~620px inside a 946px viewport, so
+           pinning it to the top would leave the screen half empty while it
+           scrolls. Centred, the page reads as content around a moving band,
+           which is how rauno.me frames its strips. */
+        start: "center center",
         end: () => "+=" + distance(),
         scrub: true,
         invalidateOnRefresh: true,
