@@ -33,7 +33,7 @@ const CREDENTIALS = [
 const ROLES = ["Data Engineer", "Analytics Engineer", "Backend SWE / SDE"];
 
 const About = () => {
-  const { personal } = resumeData;
+  const { personal, positions } = resumeData;
   const [hasPortrait, setHasPortrait] = useState(true);
 
   return (
@@ -51,25 +51,20 @@ const About = () => {
               matters.
             </h2>
 
+            {/* Two paragraphs, each with one job. Neither restates the
+                hero's metrics — the first viewport already owns those. */}
             <p
               className="max-w-2xl text-base leading-relaxed"
               style={{ color: "var(--color-ink-secondary)" }}
             >
-              {personal.summary}
+              {personal.bio}
             </p>
-
-            {/* The section lands on conviction before it lists evidence.
-                Set against the accent rule so it reads as a statement, not
-                another paragraph. */}
-            {/* Display scale, but lowercase: the h2 above is already caps, and
-                two stacked caps blocks read as one long shout. Contrast of
-                voice, not more volume. */}
-            <blockquote
-              className="text-display mt-12 max-w-[26ch] text-3xl md:text-[2.75rem]"
-              style={{ color: "var(--color-ink)", lineHeight: 0.98 }}
+            <p
+              className="mt-5 max-w-2xl text-base leading-relaxed"
+              style={{ color: "var(--color-ink-secondary)" }}
             >
-              {personal.credo}
-            </blockquote>
+              {personal.focus}
+            </p>
 
             {/* Credentials as a ruled record, not a list of equal rows */}
             <div className="mt-14 border-t" style={{ borderColor: "var(--color-border)" }}>
@@ -165,6 +160,37 @@ const About = () => {
               <CopyEmailButton />
             </div>
           </div>
+        </div>
+
+        {/* ── How I work: the section's point of view, full width ──
+            Each stance traces to real work rather than standing as a slogan. */}
+        <div
+          className="mt-20 border-t pt-10"
+          style={{ borderColor: "var(--color-border-strong)" }}
+        >
+          <h3 className="text-label mb-8">How I work</h3>
+
+          {positions.map(({ claim, body }, i) => (
+            <div
+              key={claim}
+              className="grid grid-cols-1 gap-2 border-b py-6 md:grid-cols-[2.5rem_1.1fr_1fr] md:items-baseline md:gap-10"
+              style={{ borderColor: "var(--color-border)" }}
+            >
+              <span
+                className="tabular text-sm"
+                style={{ color: "var(--color-field)" }}
+              >
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <p className="text-display text-xl md:text-2xl">{claim}</p>
+              <p
+                className="text-sm leading-relaxed"
+                style={{ color: "var(--color-ink-muted)" }}
+              >
+                {body}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

@@ -8,15 +8,37 @@ export const resumeData = {
     github: "https://github.com/DiazSk",
     tagline:
       "Architecting resilient data ecosystems and scalable software systems. Committed to building robust underlying architectures that drive real-time stream processing and high-throughput backend platforms.",
-    summary:
-      "MS Computer Science at Northeastern University (4.0 GPA, December 2026), serving as a Graduate Teaching Assistant for the Machine Learning course and co-authoring research on cumulative semantic erosion under iterative LLM paraphrasing. My work spans the full data stack: Medallion lakehouses ingesting 9.66M records on Azure, streaming backends sustaining 21,091 msg/s with exactly-once Flink semantics, and full-stack terminals closing the Kafka-to-browser gap in under 100ms.",
-    credo:
-      "I build systems where every architectural layer is a deliberate decision — optimized for throughput, correctness, and the engineers who maintain them.",
+    bio:
+      "I came to this work from Mumbai, where I took a BE in Computer Engineering at St. Francis Institute of Technology. I am finishing an MS in Computer Science at Northeastern in Seattle, and teaching the graduate Machine Learning course as a TA.",
+    focus:
+      "Day to day I work across the data stack: Medallion lakehouses on Azure and AWS, streaming pipelines on Kafka and Flink, and the backend systems that serve them. My research began as a group project in an NLP course and carried on under faculty advisement after the course ended, becoming The Laundering Effect \u2014 a formalization of cumulative semantic erosion under iterative LLM paraphrasing.",
     yearsOfExperience: 0,
     availability: "Full-Time from December 2026",
     phone: "+1(206) 843-6128",
     universityEmail: "shaikh.zaid@northeastern.edu",
   },
+
+  /* Rendered by the About section. These are PRODUCT.md's Product Principles
+     in first person; each one traces to real work, not to a slogan. Keep the
+     two in step if either changes. */
+  positions: [
+    {
+      claim: "Every architectural layer is a deliberate decision.",
+      body: "Optimized for throughput, correctness, and the engineers who maintain it afterwards.",
+    },
+    {
+      claim: "Decisions over tools.",
+      body: "Any two candidates list Airflow and Kafka. The difference is why one was chosen over the other, and what it cost.",
+    },
+    {
+      claim: "A measurement is only evidence if you can say how it was taken.",
+      body: "A parity suite on the Medicare project caught one of my own panels reading 41% high \u2014 beneficiary-weighted where my query was service-weighted. It looked entirely plausible.",
+    },
+    {
+      claim: "When a result does not hold up, say so.",
+      body: "Two of five hypotheses in that analysis were refuted, and the published dashboard reports them as refuted.",
+    },
+  ],
 
   education: [
     {

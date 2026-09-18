@@ -82,6 +82,8 @@ The differentiating claim is **decision quality, not tool inventory**. Hundreds 
 
 ## Product Principles
 
+**These are rendered on the site.** The About section's "How I work" band shows four of these as first-person stances, sourced from `resumeData.positions`. The two must not drift: if a principle changes here, change it there, and every stance must stay traceable to real work rather than becoming a slogan.
+
 1. **Decisions over tools.** Any surface that lists technologies without the reasoning behind one of them is doing the same thing every other candidate's site does. Lead with the choice and the trade-off; the stack list is a footnote.
 2. **Two layers, one page.** Every project presents a plain-English outcome plus one large metric at rest, and architectural depth on demand. Neither audience should have to read past content written for the other.
 3. **Numbers are the loudest element.** The measured metrics are the strongest asset. They are never hidden behind an interaction, and nothing decorative outranks them visually.
