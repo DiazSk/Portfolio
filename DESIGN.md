@@ -391,6 +391,12 @@ One GSAP timeline scrubbed by the Stack section's own scroll progress (`start: t
 
 The section is sized to make that possible. At `section-spacing` with 24px row padding and a 36px category head it measured **1121px against a 946px viewport**; it is **792px** now — `py-16 md:py-20`, `py-4` rows, a 30px head, and the lede beside the heading rather than under it, which alone was worth ~84px. Below roughly 860px of viewport height the six rows still will not share a screen; the next cuts would be `py-3` rows and `md:py-14`. Each row resolves in turn: its hairline draws left to right (`scaleX 0 → 1`, which is why the rule is a real element and not a `border-top` — a border cannot be drawn on), the category head slides in from `x: -28`, its pills stagger up 14px at 0.07s apart, and the plain-text tail fades last. Scrolling back up unwinds it.
 
+**The rows grow and shrink too**, on the same rule the project track runs and one axis over: a row is at full size while it is wholly on screen and scales down to `0.9` as either edge leaves, so rows swell in across the bottom of the viewport and fall back as they leave the top. It settles correctly against the constraint above — with the whole 793px section inside a 946px viewport every row is wholly on screen, so all six sit at full size together.
+
+**No dim here, unlike the track.** This is a field region, and fading a row composites `{colors.field-ink}` toward vermilion: at the track's 0.72 floor the body text measures **4.08:1**, under AA. Scale changes no contrast at all, so size carries the whole effect on the field.
+
+Like the track it reads **layout** geometry and never `getBoundingClientRect()` on a row, which returns the transformed box and would have the function reading its own output back in. The rows are contiguous block siblings, so a running sum of `offsetHeight` off the list container is exact, and the container is never transformed. The teardown clears the inline transforms by hand for the same reason the track's does — `onUpdate` fires after the `matchMedia` callback has returned, so its writes are outside the context and survive the revert.
+
 Measured across the section: 0 of 30 pills visible before the trigger, 7 at 30% progress, 20 at 60%, 28 at 100%, all 30 past the end. Under `prefers-reduced-motion: reduce` the `matchMedia` branch never runs, so no start state is ever written and the section simply renders.
 
 ### Sticky Label

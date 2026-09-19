@@ -33,6 +33,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 export const EASE = "power3.out";
 
+const clamp01 = (n) => Math.min(1, Math.max(0, n));
+
 const MOTION_OK = {
   reduce: "(prefers-reduced-motion: reduce)",
   ok: "(prefers-reduced-motion: no-preference)",
@@ -226,7 +228,67 @@ export function stackReveal(scope) {
       if (plain) tl.to(plain, { autoAlpha: 1, duration: 0.4 }, "<+=0.2");
     });
 
+    /*
+     * Grow and shrink, the same rule the project track runs, one axis over:
+     * a row is at full size while it is wholly on screen and scales down to
+     * 0.9 as either edge leaves, so rows swell in as they cross the bottom of
+     * the viewport and fall back as they leave the top.
+     *
+     * No dim here, unlike the track. This section is a field region, and
+     * fading a row composites field-ink toward vermilion — at the track's
+     * 0.72 floor the body text measures 4.08:1, under AA. Scale changes no
+     * contrast at all, so size carries the whole effect.
+     *
+     * Layout geometry, never getBoundingClientRect() on a row: that returns
+     * the transformed box, so once rows scale the function reads its own
+     * output back in. The rows are contiguous block siblings, so a running
+     * sum of offsetHeight off the list container is exact, and the container
+     * itself is never transformed.
+     */
+    const FLOOR = 0.9;
+    const list = rows[0].parentElement;
+    let geom = [];
+    const measure = () => {
+      let y = 0;
+      geom = rows.map((el) => {
+        const h = el.offsetHeight;
+        const at = { off: y, h };
+        y += h;
+        return at;
+      });
+    };
+
+    const grow = () => {
+      const vh = window.innerHeight;
+      const base = list.getBoundingClientRect().top;
+      geom.forEach(({ off, h }, i) => {
+        if (!h) return;
+        const top = base + off;
+        const on = Math.min(clamp01((top + h) / h), clamp01((vh - top) / h));
+        gsap.set(rows[i], { scale: FLOOR + (1 - FLOOR) * on });
+      });
+    };
+
+    measure();
+    grow();
+
+    const sizing = ScrollTrigger.create({
+      trigger: root,
+      start: "top bottom",
+      end: "bottom top",
+      onUpdate: grow,
+      onRefresh: () => {
+        measure();
+        grow();
+      },
+    });
+
     return () => {
+      /* grow() runs from onUpdate, after this callback has returned, so its
+         writes are not in the matchMedia context and would survive the
+         revert — every row stuck at 0.9. Same obligation as the track. */
+      gsap.set(rows, { clearProps: "transform" });
+      sizing.kill();
       tl.scrollTrigger?.kill();
       tl.kill();
     };
@@ -290,7 +352,6 @@ export function horizontalTrack(scope, { onProgress } = {}) {
     const LAG = 10;
     const panels = [...track.querySelectorAll(".h-panel")];
     const faces = panels.map((el) => [...el.querySelectorAll(".h-face, .h-back")]);
-    const clamp = (n) => Math.min(1, Math.max(0, n));
 
     /*
      * Layout geometry, measured once and re-measured on refresh.
@@ -319,7 +380,7 @@ export function horizontalTrack(scope, { onProgress } = {}) {
       geom.forEach(({ off, w }, i) => {
         if (!w) return;
         const left = base + off;
-        const on = Math.min(clamp((left + w) / w), clamp((vw - left) / w));
+        const on = Math.min(clamp01((left + w) / w), clamp01((vw - left) / w));
         /* The contents travel slower than the box carrying them, which is
            the depth on top of the size change. Signed distance from the
            middle of the screen, so the lag grows the further left the panel
