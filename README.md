@@ -8,7 +8,7 @@ Personal portfolio website for Zaid Shaikh - MS Computer Science student at Nort
 
 Now includes an AI Resume Chat section where recruiters can ask targeted questions about experience, projects, and role fit.
 
-**Live Site:** [zaidshaikh.dev](https://zaidshaikh.dev) *(Update with your actual domain)*
+**Live Site:** [zaid-data.vercel.app](https://zaid-data.vercel.app)
 
 ## 🏗️ Featured Projects
 

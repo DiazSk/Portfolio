@@ -28,7 +28,7 @@ The differentiating claim is **decision quality, not tool inventory**. Hundreds 
 
 - Read in a single sitting, usually once, often on a phone between other candidate tabs.
 - Reached from a résumé PDF, a LinkedIn profile, or a GitHub profile link — the reader arrives with partial context and a specific question ("is this person real, and at what level?").
-- Deployed on Vercel. Domain to confirm (README names `zaidshaikh.dev`; prior council notes reference `zaid-data.vercel.app`).
+- Deployed on Vercel at `zaid-data.vercel.app` — confirmed by Zaid on 2026-09-18, closing the open domain question. The README previously carried `zaidshaikh.dev` under its own "update with your actual domain" placeholder note.
 - The reader's next action is either opening a GitHub repo in a new tab or copying the email address.
 
 ## Capabilities and Constraints
