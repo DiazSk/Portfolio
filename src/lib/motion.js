@@ -264,47 +264,73 @@ export function horizontalTrack(scope, { onProgress } = {}) {
     }
 
     /*
-     * Per-panel focus and parallax, computed from where each panel actually
-     * sits rather than from a second layer of ScrollTriggers. ScrollTrigger's
+     * Per-panel grow/shrink, computed from where each panel actually sits
+     * rather than from a second layer of ScrollTriggers. ScrollTrigger's
      * containerAnimation would do this too, but reading the positions the pin
      * has already produced is a third of the code and cannot drift out of
      * sync with it by construction.
      *
-     * A panel is at full strength while it is wholly on screen and falls back
-     * as either edge leaves, so the first two panels are already bright when
-     * the track is at rest — a "brightest at the centre of the viewport" rule
-     * would have dimmed both of them, because the first panel rests at the
-     * left edge and is never centred at all.
+     * A panel is at full size while it is wholly on screen and shrinks as
+     * either edge leaves, so the first two panels are already at full size
+     * when the track is at rest — a "biggest at the centre of the viewport"
+     * rule would have shrunk both of them, because the first panel rests at
+     * the left edge and is never centred at any point in the travel.
      *
-     * 0.62 is the floor and not a rounder 0.4 because ink-secondary
-     * composited on the ground drops under 4.5:1 below it. A dimmed panel is
-     * still a panel someone can stop scrolling on and read.
+     * Scale never goes above 1. Panels butt edge to edge, so anything over 1
+     * would have them overlapping, and the later one in the DOM paints over
+     * its neighbour.
+     *
+     * The dim rides along at a floor of 0.72 rather than carrying the effect
+     * on its own, which is what it did first and what made the whole thing
+     * invisible: opacity only reaches its floor once a panel is entirely off
+     * screen, so the only part anyone ever saw was a sliver at the edge.
      */
-    const DIM = 0.62;
+    const DIM = 0.72;
+    const MIN_SCALE = 0.84;
     const LAG = 10;
     const panels = [...track.querySelectorAll(".h-panel")];
     const faces = panels.map((el) => [...el.querySelectorAll(".h-face, .h-back")]);
     const clamp = (n) => Math.min(1, Math.max(0, n));
 
+    /*
+     * Layout geometry, measured once and re-measured on refresh.
+     * getBoundingClientRect() returns the *transformed* box, so the moment
+     * these panels scale, reading their rects means reading this function's
+     * own output back in — a feedback loop that settles somewhere wrong.
+     * Panels are contiguous flex items, so their untransformed offsets are
+     * just the track's padding plus a running sum of offsetWidth, and
+     * offsetWidth is layout width, which no transform touches.
+     */
+    let geom = [];
+    const measure = () => {
+      let x = parseFloat(getComputedStyle(track).paddingLeft) || 0;
+      geom = panels.map((el) => {
+        const w = el.offsetWidth;
+        const at = { off: x, w };
+        x += w;
+        return at;
+      });
+    };
+
     const focus = () => {
       const vw = window.innerWidth;
-      /* Every read first, then every write: six rects in one pass rather
-         than six interleaved layout flushes. */
-      const rects = panels.map((el) => el.getBoundingClientRect());
-      rects.forEach((r, i) => {
-        if (!r.width) return;
-        const on = Math.min(clamp(r.right / r.width), clamp((vw - r.left) / r.width));
+      /* One rect for the whole track, which carries the tween's x. */
+      const base = track.getBoundingClientRect().left;
+      geom.forEach(({ off, w }, i) => {
+        if (!w) return;
+        const left = base + off;
+        const on = Math.min(clamp((left + w) / w), clamp((vw - left) / w));
         /* The contents travel slower than the box carrying them, which is
-           the whole of the depth effect. Signed distance from the middle of
-           the screen, so the lag grows the further left the panel gets;
-           ±10px keeps it inside the panel's own padding, so nothing ever
-           crosses a separator. */
-        const off = (r.left + r.width / 2 - vw / 2) / (vw / 2);
-        gsap.set(panels[i], { opacity: DIM + (1 - DIM) * on });
-        gsap.set(faces[i], {
-          scale: 0.97 + 0.03 * on,
-          x: -LAG * Math.min(1, Math.max(-1, off)),
+           the depth on top of the size change. Signed distance from the
+           middle of the screen, so the lag grows the further left the panel
+           gets; ±10px keeps it inside the panel's own padding, so nothing
+           ever crosses a separator. */
+        const d = (left + w / 2 - vw / 2) / (vw / 2);
+        gsap.set(panels[i], {
+          scale: MIN_SCALE + (1 - MIN_SCALE) * on,
+          opacity: DIM + (1 - DIM) * on,
         });
+        gsap.set(faces[i], { x: -LAG * Math.min(1, Math.max(-1, d)) });
       });
     };
 
@@ -322,14 +348,20 @@ export function horizontalTrack(scope, { onProgress } = {}) {
         end: () => "+=" + distance(),
         scrub: true,
         invalidateOnRefresh: true,
-        onRefresh: focus,
+        onRefresh: () => {
+          measure();
+          measure();
+    focus();
+        },
         onUpdate: (self) => {
           onProgress?.(self.progress);
-          focus();
+          measure();
+    focus();
         },
       },
     });
 
+    measure();
     focus();
 
     /* Known gap, recorded rather than papered over: while the track is
@@ -349,7 +381,7 @@ export function horizontalTrack(scope, { onProgress } = {}) {
          would survive its revert — every panel stuck at 0.62 the moment the
          window crosses 768px or reduced motion is switched on. Cleared by
          hand for that reason. */
-      gsap.set(panels, { clearProps: "opacity" });
+      gsap.set(panels, { clearProps: "opacity,transform" });
       gsap.set(faces.flat(), { clearProps: "transform" });
       tween.scrollTrigger?.kill();
       tween.kill();
