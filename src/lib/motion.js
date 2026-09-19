@@ -263,6 +263,51 @@ export function horizontalTrack(scope, { onProgress } = {}) {
       return;
     }
 
+    /*
+     * Per-panel focus and parallax, computed from where each panel actually
+     * sits rather than from a second layer of ScrollTriggers. ScrollTrigger's
+     * containerAnimation would do this too, but reading the positions the pin
+     * has already produced is a third of the code and cannot drift out of
+     * sync with it by construction.
+     *
+     * A panel is at full strength while it is wholly on screen and falls back
+     * as either edge leaves, so the first two panels are already bright when
+     * the track is at rest — a "brightest at the centre of the viewport" rule
+     * would have dimmed both of them, because the first panel rests at the
+     * left edge and is never centred at all.
+     *
+     * 0.62 is the floor and not a rounder 0.4 because ink-secondary
+     * composited on the ground drops under 4.5:1 below it. A dimmed panel is
+     * still a panel someone can stop scrolling on and read.
+     */
+    const DIM = 0.62;
+    const LAG = 10;
+    const panels = [...track.querySelectorAll(".h-panel")];
+    const faces = panels.map((el) => [...el.querySelectorAll(".h-face, .h-back")]);
+    const clamp = (n) => Math.min(1, Math.max(0, n));
+
+    const focus = () => {
+      const vw = window.innerWidth;
+      /* Every read first, then every write: six rects in one pass rather
+         than six interleaved layout flushes. */
+      const rects = panels.map((el) => el.getBoundingClientRect());
+      rects.forEach((r, i) => {
+        if (!r.width) return;
+        const on = Math.min(clamp(r.right / r.width), clamp((vw - r.left) / r.width));
+        /* The contents travel slower than the box carrying them, which is
+           the whole of the depth effect. Signed distance from the middle of
+           the screen, so the lag grows the further left the panel gets;
+           ±10px keeps it inside the panel's own padding, so nothing ever
+           crosses a separator. */
+        const off = (r.left + r.width / 2 - vw / 2) / (vw / 2);
+        gsap.set(panels[i], { opacity: DIM + (1 - DIM) * on });
+        gsap.set(faces[i], {
+          scale: 0.97 + 0.03 * on,
+          x: -LAG * Math.min(1, Math.max(-1, off)),
+        });
+      });
+    };
+
     const tween = gsap.to(track, {
       x: () => -distance(),
       ease: "none",
@@ -277,9 +322,15 @@ export function horizontalTrack(scope, { onProgress } = {}) {
         end: () => "+=" + distance(),
         scrub: true,
         invalidateOnRefresh: true,
-        onUpdate: (self) => onProgress?.(self.progress),
+        onRefresh: focus,
+        onUpdate: (self) => {
+          onProgress?.(self.progress);
+          focus();
+        },
       },
     });
+
+    focus();
 
     /* Known gap, recorded rather than papered over: while the track is
        pinned, Tab can move focus to a panel that is off-screen. `overflow:
@@ -293,6 +344,13 @@ export function horizontalTrack(scope, { onProgress } = {}) {
 
     return () => {
       wrap.classList.remove("is-pinned");
+      /* focus() runs from onUpdate, which is after this context callback has
+         finished, so the styles it writes are not recorded by matchMedia and
+         would survive its revert — every panel stuck at 0.62 the moment the
+         window crosses 768px or reduced motion is switched on. Cleared by
+         hand for that reason. */
+      gsap.set(panels, { clearProps: "opacity" });
+      gsap.set(faces.flat(), { clearProps: "transform" });
       tween.scrollTrigger?.kill();
       tween.kill();
     };

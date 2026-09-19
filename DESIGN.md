@@ -323,6 +323,14 @@ The track is padded left by `max(0px, (100vw - 80rem) / 2) + c-space` so the fir
 
 The wrapper uses `overflow: clip`, not `hidden`, and the distinction is load-bearing: `hidden` still creates a scrollport, so focusing an off-screen panel let the browser reveal it by setting the wrapper's `scrollLeft` — 2646px of it, on top of the track's transform — which left the track doubly offset and the pin desynced for every later scroll. `clip` creates no scrollport, so that cannot happen.
 
+**Focus falloff and content lag.** A panel is at full strength while it is wholly on screen and falls back to `0.62` opacity as either edge leaves, and its contents scale `0.97 → 1` with it. Inside the panel, the face lags the box carrying it by up to 10px against the direction of travel — the whole of the depth effect, and small enough to stay inside the panel's own padding so nothing ever crosses a separator.
+
+Both are computed from each panel's own rect on the track tween's `onUpdate`, not from a second layer of ScrollTriggers. `containerAnimation` would do the same job; reading the positions the pin has already produced is a third of the code and cannot drift out of sync with it. The rule is "wholly on screen", not "centred in the viewport", because the first panel rests at the **left** edge and is never centred at all — a centre-weighted rule dimmed the two panels that are actually being read at rest.
+
+`0.62` is the floor and not a rounder `0.4`: `{colors.ink-secondary}` composited on the ground drops under 4.5:1 below it, and a dimmed panel is still one someone can stop scrolling on and read.
+
+Because `onUpdate` fires after the `matchMedia` callback has returned, the styles it writes are **not** recorded by the context and would survive its revert — every panel frozen at 0.62 the moment the window crosses 768px. The teardown clears them by hand. Any future per-frame writer in this file has the same obligation.
+
 Below 768px, and under reduced motion, `matchMedia` never runs the pin and the track stays what CSS makes it: a natively swipeable row with `scroll-snap`. That is the fallback, not a second code path.
 
 **Controls.** A 28px square prev/next pair sits with the band's label, above the panels in both DOM and reading order. Pinned, they step the *page* by one panel width, which the 1:1 mapping turns into one panel of travel; unpinned, the track is a real scroller and takes the step directly. They disable at each end, driven by GSAP's progress when pinned and by the track's own scroll ratio when not — the same value that drives the progress rule.
