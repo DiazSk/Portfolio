@@ -252,7 +252,8 @@ body::after {
   transition:
     background-color 150ms ease,
     border-color 150ms ease,
-    color 150ms ease;
+    color 150ms ease,
+    scale 150ms ease;
 }
 
 .tech-pill:hover {
@@ -874,6 +875,27 @@ body::after {
 .field-surface .text-display,
 .field-surface .text-heading {
   color: var(--color-field-ink);
+}
+
+/* The skill pills answer the pointer with size as well as tone, the same
+   grow/shrink the stack rows and the project panels do, at the scale a 22px
+   chip can carry. 6% of a 158px pill is 9.5px, under 5px a side, which fits
+   inside the 6px gap so a growing pill never touches its neighbour.
+
+   `!important`, and the `scale` property rather than `transform`, both for
+   the same reason: the stack reveal is a GSAP timeline, so these pills carry
+   `transform: translate(0px, 0px)` AND `scale: none` as inline styles written
+   by script. An author `!important` is the only declaration that outranks a
+   normal inline one. Using the individual `scale` property means this
+   composes with GSAP's `transform` instead of replacing it, so a pill still
+   sits where the reveal put it while it grows.
+
+   Gated rather than merely un-transitioned: under reduced motion the rule is
+   absent, so the pill does not jump to a new size with no tween. */
+@media (prefers-reduced-motion: no-preference) {
+  .field-surface .tech-pill:hover {
+    scale: 1.06 !important;
+  }
 }
 
 /* The same hover every primary button on the field takes: white ground,
