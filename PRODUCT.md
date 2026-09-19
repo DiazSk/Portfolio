@@ -86,7 +86,7 @@ The handler was rebuilt on 2026-09-19 and is dormant but correct: one notificati
 
 **Retracted 2026-09-17**, on Zaid's instruction, after `azure-healthcare-platform/writing/resume-bullets.md` established verified figures for that project: the "80GB raw volume" and "35% Databricks compute cost reduction" claims, and the claim that a Microsoft Fabric + Power BI presentation layer was **built**. No `.pbix` was produced — Power BI Desktop is Windows-only and Zaid works on a Mac; the model was fully specified and a static dashboard shipped as the serving layer instead. Do not reinstate any of the three.
 
-**Flagged for review:** the "96.3% dbt test pass rate" still present in resumeData was previously judged a liability (3.7% failing). Confirm with Zaid before it appears on any surface; the safer form is "146 dbt tests across the full pipeline."
+**Resolved 2026-09-19:** the "96.3% dbt test pass rate" is **not to appear on any surface.** Zaid chose the raw count instead — a pass rate invites "so what failed?", where a count does not. The site already did the right thing: the Scalable E-Commerce Analytics Platform carries `146 automated dbt tests` as its primary metric. The README was the one place still publishing 96.3%, and no longer does. The figure stays in resumeData as a record; it is simply never rendered.
 
 ## Product Principles
 

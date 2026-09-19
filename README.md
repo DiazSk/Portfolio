@@ -1,161 +1,120 @@
-# Zaid Shaikh - Data Engineer Portfolio
+# Zaid Shaikh — Portfolio
 
-> Production-grade portfolio showcasing data engineering projects with Apache Airflow, Kafka, Flink, dbt, and Terraform.
+Portfolio site for Zaid Shaikh, a data engineer in Seattle. Six production-grade builds, each stated against the baseline it beat.
 
-## 🎯 Overview
+**Live:** [zaid-data.vercel.app](https://zaid-data.vercel.app)
 
-Personal portfolio website for Zaid Shaikh - MS Computer Science student at Northeastern University (Seattle) specializing in Data Engineering. Targeting Summer 2026 Data Engineering internships at FAANG and fintech companies.
+## About
 
-Now includes an AI Resume Chat section where recruiters can ask targeted questions about experience, projects, and role fit.
+MS Computer Science at Northeastern University (Khoury College, Seattle), graduating December 2026. The site exists to answer the question a reader arrives with — "is this person real, and at what level?" — in a single sitting, usually on a phone.
 
-**Live Site:** [zaid-data.vercel.app](https://zaid-data.vercel.app)
+Every measured number on the site is carried against the design it replaced, because a number on its own is a claim and a number against a baseline is evidence.
 
-## 🏗️ Featured Projects
+## Projects
 
-### 1. Modern E-Commerce Analytics Platform
-- **Tech Stack:** Apache Airflow, dbt, PostgreSQL, AWS S3, Terraform, Docker
-- **Highlights:** 66K+ records processed, 96.3% test pass rate, 67% query optimization
-- **Impact:** $2,297 annual cost savings, $53K+ opportunity identification
+| Project | Category | Measured |
+|---|---|---|
+| Medicare Reimbursement Gap Analyzer | Data Engineering | 9.66M rows queryable in-browser, no backend |
+| NYC Taxi Data Lakehouse | Data Engineering | 2.8M clean records, 96.8% retention |
+| E-Commerce Data Warehouse (Olist) | Analytics Engineering | 90% query latency reduction |
+| Scalable E-Commerce Analytics Platform | Analytics Engineering | 146 automated dbt tests |
+| Real-Time Cryptocurrency Market Analyzer | Systems Engineering | <100ms Kafka-to-browser, exactly-once |
+| Chatflow Messaging System | Backend SWE | 21,091 msg/s, zero loss across 1M messages |
 
-### 2. Real-Time Cryptocurrency Market Analyzer
-- **Tech Stack:** Apache Kafka, Apache Flink (Java), Redis, PostgreSQL, FastAPI
-- **Highlights:** Exactly-once semantics, sub-100ms latency, stateful stream processing
-- **Impact:** 99% reduction in Redis operations, real-time OHLC candlestick charts
+The Medicare analyzer has a [live dashboard](https://diazsk.github.io/healthcare-lakehouse-azure/) — DuckDB compiled to WebAssembly over tiered Parquet, so all 9.66M rows are queryable in the browser with no backend and nothing that can expire.
 
-### 3. PathCode Database Design
-- **Tech Stack:** PostgreSQL, SQL, Database Design (3NF)
-- **Role:** Technical Lead mentoring 3 students on SQL optimization
-- **Impact:** 40% query performance improvement, comprehensive ER modeling
+## Stack
 
-## 💻 Tech Stack
+- **React 19** + **Vite 7**
+- **Tailwind CSS 4** — CSS-first `@theme` in `src/index.css`; there is no `tailwind.config.js`
+- **GSAP** + ScrollTrigger — the pinned horizontal project track, the Stack timeline, the marquee and the counters. Entrance reveals are CSS scroll-driven animations rather than GSAP
+- **Resend** — the contact notification serverless function
 
-**Portfolio Built With:**
-- React 19 + Vite
-- Tailwind CSS 4.1
-- Framer Motion (animations)
-- Three.js (3D astronaut model)
-- EmailJS (contact form)
+## Quick start
 
-**Key Features:**
-- Responsive design (mobile + desktop)
-- Smooth scroll animations
-- 3D interactive elements
-- Fast load times with Vite
-- Production-optimized build
-- AI Resume Chat with streaming responses
-- Suggested recruiter prompts and markdown answers
-- Guardrails for safe, professional conversation flow
-
-## 🚀 Quick Start
-
-### Prerequisites
-- Node.js 18+ and npm
-
-### Installation
+Node 20.19+ (Vite 7's floor).
 
 ```bash
-# Clone repository
 git clone https://github.com/DiazSk/Portfolio.git
 cd Portfolio
-
-# Install dependencies
 npm install
-
-# Run development server
 npm run dev
-
-# Build for production
-npm run build
-
-# Preview production build
-npm run preview
 ```
 
-### Environment Variables
+## Scripts
 
-Create a `.env.local` file for API routes:
+```bash
+npm run dev      # Vite dev server on localhost:5173
+npm run build    # production build
+npm run preview  # serve the production build
+npm run lint     # ESLint across the repo, including api/
+```
+
+```bash
+node --test api/contact.test.mjs   # contact handler: escaping and validation
+```
+
+## Environment variables
+
+`.env.local`, for the serverless function only. The front end needs none.
 
 ```bash
 RESEND_API_KEY=your_resend_key_here
 CONTACT_TO=where_contact_notifications_should_land
 ```
 
-`CONTACT_TO` is optional and defaults to the published contact address. It exists because Resend's sandbox sender only delivers to the Resend account's own address; set it until a sending domain is verified.
+`CONTACT_TO` is optional and defaults to the published contact address. It exists because Resend's sandbox sender delivers only to the address the Resend account is registered under; set it until a sending domain is verified.
 
-### Running with API Routes Locally
+## API routes
 
-The project uses Vercel-style serverless APIs in `api/` (including `api/chat.js` and `api/contact.js`).
+`api/` holds Vercel-style serverless functions. There is one: `api/contact.js`, which sends a single notification email. **Nothing on the site calls it yet** — Contact is `mailto:` and a copy-email button. A real contact form is a planned capability that re-wires to this handler.
 
-- Frontend only: `npm run dev`
-- Frontend + API routes: `npx vercel dev`
+- Front end only: `npm run dev`
+- Front end plus API routes: `npx vercel dev`
 
-## 📁 Project Structure
+## Structure
 
 ```
 Portfolio/
+├── api/
+│   ├── contact.js           # Resend notification handler
+│   └── contact.test.mjs     # node --test, no dependency
 ├── src/
-│   ├── components/      # Reusable UI components
-│   │   ├── Astronaut.jsx
-│   │   ├── FlipWords.jsx
-│   │   └── ...
-│   ├── sections/        # Page sections
-│   │   ├── Hero.jsx
-│   │   ├── About.jsx
-│   │   ├── Projects.jsx
-│   │   └── ...
-│   ├── constants/       # Content data
-│   │   └── index.js     # Projects, experiences, skills
-│   └── index.css        # Global styles
-├── public/
-│   └── assets/          # Images, logos, 3D models
-├── index.html           # Entry HTML with SEO meta tags
-└── package.json
+│   ├── components/          # ArchitectureDiagram, ProjectCard, DecisionLog, CopyEmailButton
+│   ├── sections/            # Hero, About, Projects, Skills, Contact, Navbar
+│   ├── constants/
+│   │   ├── resumeData.js    # content source of truth
+│   │   └── index.js         # social links
+│   ├── lib/motion.js        # all GSAP; one file, deliberately
+│   └── index.css            # the whole design system, Tailwind v4 @theme
+├── public/assets/           # portrait.webp, logos
+├── DESIGN.md                # the visual system
+├── PRODUCT.md               # product truth: what may and may not be claimed
+└── index.html               # SEO and Open Graph meta
 ```
 
-## 🎨 Customization
+## Editing content
 
-### Update Projects
-Edit `src/constants/index.js` to modify:
-- `myProjects` - Project showcases
-- `experiences` - Work experience & education
-- `skills` - Technical skills
-- `certifications` - Credentials
+`src/constants/resumeData.js` is the content source of truth — personal details, education, experience, projects, skills, and the decision log behind each project. Section components read from it. The hero's measurement rows are the one exception: they are hardcoded in `src/sections/Hero.jsx`.
 
-### Update Contact Info
-- Email: Modify `CopyEmailButton.jsx`
-- Social links: Update `mySocials` in `constants/index.js`
+**Read [PRODUCT.md](PRODUCT.md) and [DESIGN.md](DESIGN.md) before changing anything user-facing.** PRODUCT.md records what may and may not be claimed on this site, including several figures that were retracted and must not return. DESIGN.md records the visual system and the reasoning behind each rule — it describes what shipped rather than what was intended.
 
-### Styling
-- Global styles: `src/index.css`
-- Tailwind config: `tailwind.config.js`
-- Component-specific: Inline Tailwind classes
+## Build output
 
-## 📊 Performance
+Measured 2026-09-19:
 
-- **Lighthouse Score:** 95+ (Performance, Accessibility, Best Practices, SEO)
-- **Load Time:** <2s on 4G
-- **Bundle Size:** ~200KB (gzipped)
-- **Core Web Vitals:** Optimized
+| Asset | Raw | Gzipped |
+|---|---|---|
+| JS | 353.46 kB | 121.62 kB |
+| CSS | 35.95 kB | 7.49 kB |
+| HTML | 3.69 kB | 1.68 kB |
 
-## 🔧 Development Scripts
+## License
 
-```bash
-npm run dev      # Start dev server (localhost:5173)
-npm run build    # Production build
-npm run preview  # Preview production build
-npm run lint     # Run ESLint
-```
+[MIT](LICENSE).
 
-## 📝 License
+## Contact
 
-MIT License - feel free to use this template for your own portfolio!
-
-## 🤝 Connect
-
-- **Email:** zaid07sk@gmail.com
-- **LinkedIn:** [linkedin.com/in/zaidshaikhscientist](https://www.linkedin.com/in/zaidshaikhscientist/)
-- **GitHub:** [github.com/DiazSk](https://github.com/DiazSk)
-
----
-
-**Built with React + Vite** | **Designed for Data Engineering Roles** | **Optimized for ATS & Recruiter Viewing**
+- **Email:** shaikh.zaid@northeastern.edu
+- **LinkedIn:** [zaidshaikhengineer](https://www.linkedin.com/in/zaidshaikhengineer/)
+- **GitHub:** [DiazSk](https://github.com/DiazSk)
