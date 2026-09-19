@@ -429,7 +429,11 @@ That last row is the one worth guarding. A first pass reached for 36px, 15px and
 
 Everything else ports intact: the field as a whole region with black ink on it, zero radius, no shadow, a micro-label over one poster line, ruled rows instead of boxes, the left-ruled log for the message body, and a square primary button.
 
-Dark-mode clients invert dark palettes on sight. `<meta name="color-scheme" content="dark">` plus `supported-color-schemes` declares the intent and stops Gmail, Apple Mail and Outlook from doing it.
+Dark-mode clients invert dark palettes on sight. `<meta name="color-scheme" content="dark">` plus `supported-color-schemes` declares the intent and stops Gmail, Apple Mail and Outlook from doing it. Confirmed in Gmail on 2026-09-19: the ground, the field band and the hairlines all survive.
+
+**Bare URLs get autolinked.** Gmail rewrote the footer's `zaid-data.vercel.app` into its own blue underlined anchor, overriding the muted mono. Wrapping it in an explicit `<a>` with the intended colour and `text-decoration:none` keeps the treatment. Any future URL in an email needs the same wrapper — a bare string is an invitation.
+
+**Every send carries a plain-text part.** HTML-only mail is both a deliverability penalty and a dead end for anything that does not render HTML. `notificationText()` builds it from the *raw* values, never the escaped ones: entities in a text part read literally as `&amp;`.
 
 ### Named Rules
 

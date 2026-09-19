@@ -10,7 +10,7 @@
  */
 import test from "node:test";
 import assert from "node:assert/strict";
-import { escapeHtml, validate, notificationTemplate } from "./contact.js";
+import { escapeHtml, validate, notificationTemplate, notificationText } from "./contact.js";
 
 const good = { name: "Jane Doe", email: "jane@acme.com", message: "Hello." };
 
@@ -70,4 +70,18 @@ test("the template carries the design system and none of the retired one", () =>
   for (const retired of ["667eea", "764ba2", "80GB", "border-radius"]) {
     assert.ok(!html.includes(retired), `${retired} survived`);
   }
+});
+
+test("the text part carries raw values, not entities", () => {
+  const text = notificationText({
+    name: "Jane & Co",
+    email: "jane@acme.com",
+    message: "Line one\nLine two",
+    receivedAt: "now",
+  });
+  // A text part must not contain HTML entities — they would read literally.
+  assert.ok(!text.includes("&amp;"), "an entity leaked into the text part");
+  assert.ok(text.includes("Jane & Co"));
+  assert.ok(text.includes("Line one\nLine two"), "newlines should survive as newlines");
+  assert.ok(!text.includes("<"), "no markup in the text part");
 });

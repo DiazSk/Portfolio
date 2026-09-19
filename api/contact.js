@@ -157,7 +157,7 @@ export function notificationTemplate({ name, email, message, receivedAt }) {
 
         <tr>
           <td style="background:${C.surface};border-top:1px solid ${C.hairline};padding:22px 32px 0;">
-            <p style="margin:0;font-family:${F.mono};font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:${C.inkMuted};">Sent by the contact form at zaid-data.vercel.app</p>
+            <p style="margin:0;font-family:${F.mono};font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:${C.inkMuted};">Sent by the contact form at <a href="https://zaid-data.vercel.app" style="color:${C.inkMuted};text-decoration:none;">zaid-data.vercel.app</a></p>
           </td>
         </tr>
 
@@ -167,6 +167,28 @@ export function notificationTemplate({ name, email, message, receivedAt }) {
 </table>
 </body>
 </html>`;
+}
+
+/*
+ * The plain-text alternative. An HTML-only email is both a deliverability
+ * penalty and a dead end for anything that does not render HTML, so every
+ * send carries both parts. Takes raw values, not escaped ones — entities in a
+ * text part would show up literally as "&amp;".
+ */
+export function notificationText({ name, email, message, receivedAt }) {
+  return [
+    "NEW CONTACT",
+    name,
+    "",
+    `Email:    ${email}`,
+    `Received: ${receivedAt}`,
+    "",
+    "Message:",
+    message,
+    "",
+    "--",
+    "Sent by the contact form at zaid-data.vercel.app",
+  ].join("\n");
 }
 
 export default async function handler(req, res) {
@@ -181,15 +203,22 @@ export default async function handler(req, res) {
 
   /* Escape first, then turn newlines into breaks — the other order would let a
      crafted message smuggle markup through the entity pass. */
+  const receivedAt = new Date().toLocaleString("en-US", {
+    timeZone: "America/Los_Angeles",
+    dateStyle: "medium",
+    timeStyle: "short",
+  });
+  const raw = {
+    name: name.trim(),
+    email: email.trim(),
+    message: message.trim(),
+    receivedAt,
+  };
   const safe = {
-    name: escapeHtml(name.trim()),
-    email: escapeHtml(email.trim()),
-    message: escapeHtml(message.trim()).replace(/\n/g, "<br>"),
-    receivedAt: new Date().toLocaleString("en-US", {
-      timeZone: "America/Los_Angeles",
-      dateStyle: "medium",
-      timeStyle: "short",
-    }),
+    name: escapeHtml(raw.name),
+    email: escapeHtml(raw.email),
+    message: escapeHtml(raw.message).replace(/\n/g, "<br>"),
+    receivedAt,
   };
 
   try {
@@ -198,8 +227,9 @@ export default async function handler(req, res) {
       to: [TO],
       reply_to: email.trim(),
       /* Newlines out of the subject: a header is one line by definition. */
-      subject: `Portfolio contact — ${name.trim().replace(/\s+/g, " ")}`,
+      subject: `Portfolio contact — ${raw.name.replace(/\s+/g, " ")}`,
       html: notificationTemplate(safe),
+      text: notificationText(raw),
     });
 
     return res.status(200).json({ ok: true });
