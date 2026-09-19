@@ -76,9 +76,11 @@ npm run preview
 Create a `.env.local` file for API routes:
 
 ```bash
-GEMINI_API_KEY=your_gemini_key_here
 RESEND_API_KEY=your_resend_key_here
+CONTACT_TO=where_contact_notifications_should_land
 ```
+
+`CONTACT_TO` is optional and defaults to the published contact address. It exists because Resend's sandbox sender only delivers to the Resend account's own address; set it until a sending domain is verified.
 
 ### Running with API Routes Locally
 

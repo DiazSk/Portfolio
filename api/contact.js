@@ -24,12 +24,21 @@ import { Resend } from "resend";
 let client;
 const mailer = () => (client ??= new Resend(process.env.RESEND_API_KEY));
 
-const TO = "shaikh.zaid@northeastern.edu";
+/* An env var and not a literal: this repo is public, and the address that
+   actually receives mail today is a personal one that should not be sitting in
+   it for scrapers. Set CONTACT_TO in .env.local and in the Vercel project.
 
-/* Resend's sandbox sender. It only delivers to the Resend account's own
-   address, which is exactly the one recipient here, so it works as-is. It has
-   to change to a verified domain before this can mail anyone else — and it
-   cannot change before then, or sending breaks. */
+   The default is the address the site publishes, which is where this should
+   point once a domain is verified — see FROM below for why it cannot today. */
+const TO = process.env.CONTACT_TO ?? "shaikh.zaid@northeastern.edu";
+
+/* Resend's sandbox sender, and a hard limit rather than a detail: it delivers
+   ONLY to the address the Resend account is registered under. That address is
+   not the one the site publishes, so with no domain verified this handler
+   returns 403 for the published address — verified 2026-09-19, with a live
+   key. Verifying a domain at resend.com/domains and changing FROM to it is the
+   prerequisite for mailing anyone else, CONTACT_TO is the stopgap until then,
+   and changing FROM before that breaks sending outright. */
 const FROM = "Portfolio <onboarding@resend.dev>";
 
 const LIMITS = { name: 100, email: 200, message: 5000 };
