@@ -106,7 +106,7 @@ Measured 2026-09-19:
 | Asset | Raw | Gzipped |
 |---|---|---|
 | JS | 353.46 kB | 121.62 kB |
-| CSS | 35.95 kB | 7.49 kB |
+| CSS | 31.70 kB | 6.94 kB |
 | HTML | 3.69 kB | 1.68 kB |
 
 ## License

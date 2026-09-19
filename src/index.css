@@ -1,4 +1,14 @@
-@import "tailwindcss";
+/* Sources declared, not auto-detected. Tailwind v4 otherwise scans every file
+   the repo does not gitignore, and this repo has 26 tracked non-source files:
+   DESIGN.md, PRODUCT.md, eight GSAP SKILL.md docs full of code examples, and
+   .impeccable/design.json, which contains literal CSS. Any word in prose that
+   happens to look like a utility was being compiled into the bundle — writing
+   "flex-1" in a design note shipped `.flex-1` to users. Verified by appending
+   `text-sky-500` to DESIGN.md and watching the class and its theme variable
+   appear in dist. */
+@import "tailwindcss" source(none);
+@source "../index.html";
+@source "./**/*.{js,jsx}";
 
 /* ─── Design tokens ──────────────────────────────────────────── */
 @theme {

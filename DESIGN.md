@@ -454,6 +454,12 @@ GSAP owns only what CSS cannot do, and that is now three things: the scroll-velo
 
 Anything GSAP reveals uses `gsap.set()` for the start state and `to()` for the tween — never `gsap.from()`, and not `fromTo` with `immediateRender: false` either: deferring the start state means a scrubbed timeline leaves everything visible at progress 0 and the section does nothing. `gsap.set()` applies immediately and is undone by `ctx.revert()`, so an interrupted context restores the markup instead of stranding it invisible.
 
+**The Declared-Sources Rule.** `index.css` opens `@import "tailwindcss" source(none)` and then names its sources explicitly. Tailwind v4 otherwise scans every file the repo does not gitignore, and this repo has 26 tracked non-source files — DESIGN.md, PRODUCT.md, eight GSAP `SKILL.md` docs full of code examples, `.impeccable/design.json` which contains literal CSS, and `index.css`'s own comments. Any word in that prose that happens to look like a utility was compiled into the shipped bundle: writing `flex-1` in a design note put `.flex-1` in front of users, and `text-sky-500` pulled in a whole `--color-sky-500` theme variable in a palette that has one accent.
+
+Measured 2026-09-19: **35.95 kB → 31.70 kB** raw, 7.49 → 6.94 gzipped. 14 selectors dropped and not one of them was used by any component — `sticky`, `ring` and `invert` came from comments in the stylesheet describing sticky positioning, focus rings and hover inversion.
+
+The cost is that a new file type carrying class names is invisible until it is declared. Add an `@source` line for it.
+
 **The Absence Rule.** Reduced motion is the *absence* of the animation, never a second code path. `gsap.matchMedia()` reverts what it created when its condition stops matching, and every CSS animation is switched off under `prefers-reduced-motion: reduce`. There is nothing to keep in sync.
 
 ## Do's and Don'ts
@@ -484,4 +490,5 @@ Anything GSAP reveals uses `gsap.set()` for the start state and `to()` for the t
 - **Don't** stack two uppercase display blocks in a row.
 - **Don't** use `gsap.from()` for entrance reveals, and don't add `@gsap/react` — it resolves its own React against React 19 and throws "Invalid hook call".
 - **Don't** write a separate reduced-motion code path; remove the animation instead.
+- **Don't** assume a new source of class names is picked up automatically — sources are declared, not detected. See the Declared-Sources Rule.
 - **Don't** soften any of the above toward restraint. The craft bar is the pinned bold-editorial genre, not linear.app.
