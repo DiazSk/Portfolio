@@ -414,6 +414,23 @@ A 6px filled vermilion square followed by the Label step — mono, 0.75rem, 0.1e
 ### Stat Panel
 One numeral at the Metric step and its caption at the Label step, pinned to the panel's foot with `margin-top: auto`. The scale gap between the two, inside one panel, is the whole device. It has no styles of its own — an earlier pass gave it a private `clamp(2.75rem, 5.5vw, 4.5rem)` and a private caption size, a third metric scale in a system that already had two. The numeral is vermilion because vermilion carries every metric numeral here.
 
+### Transactional Email
+The contact notification (`api/contact.js`) is the one surface rendered outside a browser, and HTML email is not a browser: no custom properties, no flex or grid, no webfonts in Gmail or Outlook, and Outlook desktop still rendering through Word. It is a 600px table of inline styles. Five substitutions are forced by the medium and taken deliberately:
+
+| This system | In email |
+|---|---|
+| Bricolage Grotesque at `wdth 78` | `'Bricolage Grotesque','Arial Narrow','Helvetica Neue',Arial` — Arial Narrow is the honest condensed fallback and ships on both platforms; Apple Mail loads the real face |
+| CSS custom properties | Literal hex in one `C` object, mirroring the frontmatter |
+| `rgba(255,255,255,0.08 / 0.16)` hairlines | Pre-blended solids over the ground: `#1C1D1E` and `#303031` — the Word engine drops `rgba()` |
+| Flex / grid | Nested tables |
+| `clamp()` sizes | Fixed px, but **only on the ramp**: 44px is the bottom of the Headline clamp, and the rest are the Body, Label and Action steps at 16px, 14px and 12px |
+
+That last row is the one worth guarding. A first pass reached for 36px, 15px and 11px — three sizes invented for one email, which is the same mistake the Micro-label and Stat Panel entries above already record. The design hook caught all three.
+
+Everything else ports intact: the field as a whole region with black ink on it, zero radius, no shadow, a micro-label over one poster line, ruled rows instead of boxes, the left-ruled log for the message body, and a square primary button.
+
+Dark-mode clients invert dark palettes on sight. `<meta name="color-scheme" content="dark">` plus `supported-color-schemes` declares the intent and stops Gmail, Apple Mail and Outlook from doing it.
+
 ### Named Rules
 
 **The Fixed-Is-The-Parallax Rule.** Depth on scroll comes from a layer that does not move. `position: fixed` holds the grid at 0× while content runs at 1×, which is exactly what the measured reference (white-desert.com, Awwwards SOTD 11 Sep 2026) achieves by counter-translating its background at 1.00× scroll. Only two things are animated on scroll, both in CSS with no JS: the grid drifts 72px across the whole document, and the hero name lifts 190px over the first viewport — **0.20×**, inside the 0.2–0.3× band the reference sits in. Both live on custom properties in `:root` so the intensity is one number. One moving background layer, not three: the vestibular risk scales with layer count.

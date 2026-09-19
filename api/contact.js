@@ -1,136 +1,203 @@
-// api/contact-resend.js - Alternative using Resend (Modern email API)
-import { Resend } from 'resend';
+/*
+ * Contact notification. One email, to Zaid, when someone writes in.
+ *
+ * There is no auto-reply. There used to be, and it was three problems in one:
+ * it went to whatever address the caller supplied, which made this endpoint an
+ * open relay for mailing strangers from Zaid's domain; it repeated the "80GB"
+ * figure PRODUCT.md retracted on 2026-09-17; and it promised response times
+ * ("Job Opportunities: Within 24 hours") that nothing here can keep. Removing
+ * it deleted all three at once. A portfolio contact form owes no one a receipt.
+ *
+ * The markup is HTML email, so it is tables and inline styles rather than the
+ * stylesheet the site uses — see the Transactional Email section in DESIGN.md
+ * for what the medium costs and what is substituted.
+ *
+ * Nothing calls this yet: the site is `mailto:` and a copy-email button. It is
+ * written to be correct on the day the form lands, which PRODUCT.md records as
+ * a planned capability.
+ */
+import { Resend } from "resend";
 
-// Initialize Resend with your API key
-const resend = new Resend(process.env.RESEND_API_KEY);
+/* Lazily constructed: `new Resend(undefined)` throws, and building it at module
+   scope would make this file unimportable without the key — including from its
+   own test. */
+let client;
+const mailer = () => (client ??= new Resend(process.env.RESEND_API_KEY));
 
-// Use the same templates from above (notificationTemplate and autoReplyTemplate)
-const notificationTemplate = (name, email, message) => `
-<!DOCTYPE html>
-<html>
+const TO = "shaikh.zaid@northeastern.edu";
+
+/* Resend's sandbox sender. It only delivers to the Resend account's own
+   address, which is exactly the one recipient here, so it works as-is. It has
+   to change to a verified domain before this can mail anyone else — and it
+   cannot change before then, or sending breaks. */
+const FROM = "Portfolio <onboarding@resend.dev>";
+
+const LIMITS = { name: 100, email: 200, message: 5000 };
+
+/* The DESIGN.md frontmatter, as literals — email has no custom properties.
+   The two hairlines are the site's 8% and 16% white pre-composited over the
+   ground, because Outlook's Word engine drops rgba(). */
+const C = {
+  surface: "#08090A",
+  ink: "#F7F8F8",
+  inkSecondary: "#B4B9C2",
+  inkMuted: "#8A8F98",
+  field: "#FF3B14",
+  fieldInk: "#0A0A09",
+  fieldInkSecondary: "#2E1409",
+  hairline: "#1C1D1E",
+  hairlineStrong: "#303031",
+};
+
+/* Gmail and Outlook strip webfonts, so the condensed axis that defines this
+   system cannot load. Arial Narrow is the honest fallback — genuinely
+   condensed and present on Windows and macOS. Apple Mail gets the real face. */
+const F = {
+  display: "'Bricolage Grotesque','Arial Narrow','Helvetica Neue',Arial,sans-serif",
+  body: "Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif",
+  mono: "'Azeret Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace",
+};
+
+const LABEL = `font-family:${F.mono};font-size:12px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;`;
+
+export function escapeHtml(value) {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+/* Returns the reason it is invalid, or null. Deliberately not a schema
+   library: three fields do not earn a dependency. */
+export function validate({ name, email, message }) {
+  for (const [field, value] of Object.entries({ name, email, message })) {
+    if (typeof value !== "string" || !value.trim()) return `Missing ${field}`;
+    if (value.length > LIMITS[field]) return `${field} exceeds ${LIMITS[field]} characters`;
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) return "Invalid email";
+  return null;
+}
+
+/*
+ * The site's own silhouettes, ported: a full-bleed field band carrying a micro
+ * label and one poster line, ruled rows for the metadata, a left-ruled log for
+ * the message, and a square primary button. Values arrive escaped.
+ */
+export function notificationTemplate({ name, email, message, receivedAt }) {
+  const rule = (label, value) => `
+          <tr>
+            <td valign="top" width="104" style="width:104px;padding:16px 0;border-bottom:1px solid ${C.hairlineStrong};${LABEL}color:${C.inkMuted};">${label}</td>
+            <td valign="top" style="padding:16px 0;border-bottom:1px solid ${C.hairlineStrong};font-family:${F.body};font-size:14px;line-height:1.5;color:${C.ink};">${value}</td>
+          </tr>`;
+
+  return `<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>New Portfolio Contact</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<!-- The design is dark on purpose. Declaring the scheme stops Gmail, Apple
+     Mail and Outlook from "helpfully" inverting it. -->
+<meta name="color-scheme" content="dark">
+<meta name="supported-color-schemes" content="dark">
+<title>New contact</title>
 </head>
-<body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
-  <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px 10px 0 0; text-align: center;">
-    <h1 style="margin: 0;">🚀 New Portfolio Contact</h1>
-    <p style="margin: 10px 0 0 0; opacity: 0.9;">Data Engineering &amp; Backend SWE Opportunity</p>
-  </div>
-  
-  <div style="background: #f7f7f7; padding: 30px; border-radius: 0 0 10px 10px;">
-    <div style="background: white; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
-      <h3 style="color: #667eea; margin-top: 0;">📋 Contact Information</h3>
-      <p><strong>Name:</strong> ${name}</p>
-      <p><strong>Email:</strong> ${email}</p>
-      <p><strong>Date:</strong> ${new Date().toLocaleString()}</p>
-    </div>
-    
-    <div style="background: white; padding: 20px; border-radius: 8px;">
-      <h3 style="color: #667eea; margin-top: 0;">💬 Message</h3>
-      <div style="background: #f9f9f9; padding: 15px; border-left: 4px solid #667eea; border-radius: 4px;">
-        ${message.replace(/\n/g, '<br>')}
-      </div>
-    </div>
-  </div>
-</body>
-</html>
-`;
+<body style="margin:0;padding:0;background:${C.surface};">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:${C.surface};">
+  <tr>
+    <td align="center" style="padding:32px 16px;">
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="600" style="width:600px;max-width:100%;">
 
-const autoReplyTemplate = (name) => `
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Thank You for Reaching Out</title>
-</head>
-<body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
-  <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px 10px 0 0; text-align: center;">
-    <h1 style="margin: 0;">Thank You for Reaching Out!</h1>
-    <p style="margin: 10px 0 0 0; opacity: 0.9;">Zaid Shaikh - Data Engineer & Backend Systems Engineer</p>
-  </div>
-  
-  <div style="background: #f7f7f7; padding: 30px;">
-    <div style="background: white; padding: 25px; border-radius: 8px;">
-      <p>Dear ${name},</p>
-      
-      <p>Thank you for contacting me through my portfolio. I've received your message and appreciate your interest in my work.</p>
-      
-      <div style="background: #f0f4ff; padding: 15px; border-radius: 8px; margin: 20px 0;">
-        <h3 style="color: #667eea; margin-top: 0;">📅 Expected Response Time:</h3>
-        <ul>
-          <li>Job Opportunities: Within 24 hours</li>
-          <li>Project Collaborations: 24-48 hours</li>
-          <li>General Inquiries: 2-3 business days</li>
-        </ul>
-      </div>
-      
-      <h3 style="color: #667eea;">🚀 Explore My Production Systems:</h3>
+        <tr>
+          <td bgcolor="${C.field}" style="background:${C.field};padding:32px;">
+            <p style="margin:0 0 22px;${LABEL}color:${C.fieldInkSecondary};">New contact</p>
+            <p style="margin:0;font-family:${F.display};font-size:44px;font-weight:800;line-height:0.9;letter-spacing:-0.02em;text-transform:uppercase;color:${C.fieldInk};">${name}</p>
+          </td>
+        </tr>
 
-      <p><strong>Healthcare Data Lakehouse:</strong> 9.6M records processed, 80GB, Azure Medallion Architecture<br>
-      <strong>Chatflow Messaging System:</strong> 21,091 msg/s sustained, zero data loss across 1M messages<br>
-      <strong>NYC Taxi Data Lakehouse:</strong> 2.8M clean records, 96.8% retention, AWS Glue + dbt</p>
-      
-      <div style="margin-top: 25px; padding: 20px; background: #f9f9f9; border-radius: 8px; text-align: center;">
-        <a href="https://github.com/DiazSk" style="color: #667eea; text-decoration: none; margin: 0 10px;">GitHub</a> |
-        <a href="https://linkedin.com/in/zaidshaikhengineer" style="color: #667eea; text-decoration: none; margin: 0 10px;">LinkedIn</a>
-      </div>
-      
-      <p style="margin-top: 25px;">
-        Best regards,<br>
-        <strong>Zaid Shaikh</strong><br>
-        Data Engineer &amp; Backend Systems Engineer
-      </p>
-    </div>
-  </div>
+        <tr>
+          <td style="background:${C.surface};padding:8px 32px 0;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">${rule("Email", `<a href="mailto:${email}" style="color:${C.ink};text-decoration:none;">${email}</a>`)}${rule("Received", receivedAt)}
+            </table>
+          </td>
+        </tr>
+
+        <tr>
+          <td style="background:${C.surface};padding:32px 32px 28px;">
+            <p style="margin:0 0 16px;${LABEL}color:${C.inkMuted};">Message</p>
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td style="padding:2px 0 2px 16px;border-left:1px solid ${C.hairlineStrong};font-family:${F.body};font-size:16px;line-height:1.625;color:${C.inkSecondary};">${message}</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <tr>
+          <td style="background:${C.surface};padding:0 32px 36px;">
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td bgcolor="${C.field}" style="background:${C.field};">
+                  <a href="mailto:${email}" style="display:inline-block;padding:14px 24px;font-family:${F.display};font-size:16px;font-weight:800;letter-spacing:0.005em;text-transform:uppercase;color:${C.fieldInk};text-decoration:none;">Reply</a>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <tr>
+          <td style="background:${C.surface};border-top:1px solid ${C.hairline};padding:22px 32px 0;">
+            <p style="margin:0;font-family:${F.mono};font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:${C.inkMuted};">Sent by the contact form at zaid-data.vercel.app</p>
+          </td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
 </body>
-</html>
-`;
+</html>`;
+}
 
 export default async function handler(req, res) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
+  if (req.method !== "POST") {
+    return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const { name, email, message } = req.body;
+  const { name, email, message } = req.body ?? {};
 
-  // Validate input
-  if (!name || !email || !message) {
-    return res.status(400).json({ error: 'Missing required fields' });
-  }
+  const invalid = validate({ name, email, message });
+  if (invalid) return res.status(400).json({ error: invalid });
+
+  /* Escape first, then turn newlines into breaks — the other order would let a
+     crafted message smuggle markup through the entity pass. */
+  const safe = {
+    name: escapeHtml(name.trim()),
+    email: escapeHtml(email.trim()),
+    message: escapeHtml(message.trim()).replace(/\n/g, "<br>"),
+    receivedAt: new Date().toLocaleString("en-US", {
+      timeZone: "America/Los_Angeles",
+      dateStyle: "medium",
+      timeStyle: "short",
+    }),
+  };
 
   try {
-    // Send notification email to yourself
-    const notificationData = await resend.emails.send({
-      from: 'Portfolio <onboarding@resend.dev>', // Use your verified domain
-      to: ['shaikh.zaid@northeastern.edu'],
-      reply_to: email,
-      subject: `New Portfolio Contact from ${name}`,
-      html: notificationTemplate(name, email, message),
+    await mailer().emails.send({
+      from: FROM,
+      to: [TO],
+      reply_to: email.trim(),
+      /* Newlines out of the subject: a header is one line by definition. */
+      subject: `Portfolio contact — ${name.trim().replace(/\s+/g, " ")}`,
+      html: notificationTemplate(safe),
     });
 
-    // Send auto-reply to the visitor
-    const autoReplyData = await resend.emails.send({
-      from: 'Zaid Shaikh <onboarding@resend.dev>', // Use your verified domain
-      to: [email],
-      reply_to: 'shaikh.zaid@northeastern.edu',
-      subject: 'Thank you for reaching out - Zaid Shaikh',
-      html: autoReplyTemplate(name),
-    });
-
-    console.log('Emails sent:', { notificationData, autoReplyData });
-
-    res.status(200).json({ 
-      success: true, 
-      message: 'Emails sent successfully',
-      data: { notificationData, autoReplyData }
-    });
-
+    return res.status(200).json({ ok: true });
   } catch (error) {
-    console.error('Resend Error:', error);
-    res.status(500).json({ 
-      error: 'Failed to send email', 
-      details: error.message 
-    });
+    /* Logged in full, returned as nothing: the previous version handed the
+       caller `error.message` straight from Resend. */
+    console.error("Resend send failed:", error);
+    return res.status(500).json({ error: "Failed to send message" });
   }
 }

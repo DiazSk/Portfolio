@@ -43,6 +43,10 @@ The first viewport is now the field itself — the name at full screen width, wi
 
 **Contact:** currently `mailto:` and a copy-email button only. **A real contact form is a planned capability** and should re-wire to the existing Resend handler at `api/contact.js`.
 
+The handler was rebuilt on 2026-09-19 and is dormant but correct: one notification email to Zaid, in the site's design system, with every field escaped before it reaches the HTML. **The auto-reply to the visitor was deleted, not restyled.** It was sent to whatever address the caller supplied, which made this public endpoint an open relay for mailing strangers from the site's domain; it repeated the "80GB" figure retracted on 2026-09-17; and it promised response times ("Job Opportunities: Within 24 hours") that nothing backs. Do not reintroduce an auto-reply without solving the relay first.
+
+**Prerequisite before the form ships: rate limiting.** The endpoint sends mail on demand with no throttle. Serverless has no shared memory, so this needs a store (Upstash, Vercel KV) rather than an in-process counter. With the auto-reply gone the residual risk is inbox spam to Zaid rather than abuse aimed at third parties, which is why it is a prerequisite and not an emergency. The sender is also still Resend's sandbox address `onboarding@resend.dev`, which only delivers to the Resend account's own inbox — fine while Zaid is the only recipient, and a blocker for anything else.
+
 **Retired permanently:** the AI Resume Chat. `api/chat.js` has been deleted (2026-09-16): it imported both a deleted `src/lib/buildSystemPrompt.js` and an `openai` package that was never in `package.json`, so it would have failed the Vercel function build. It is not coming back in any form, including a reframed "architecture explorer." Do not reintroduce a conversational AI surface to this site.
 
 **Also retired (prior redesign):** the dark space theme, 3D astronaut, orbiting tech cards, and animated flip words. These are anti-references, not dormant features.
