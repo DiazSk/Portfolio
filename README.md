@@ -17,11 +17,11 @@ Every measured number on the site is carried against the design it replaced, bec
 | Medicare Reimbursement Gap Analyzer | Data Engineering | 9.66M rows queryable in-browser, no backend |
 | NYC Taxi Data Lakehouse | Data Engineering | 2.8M clean records, 96.8% retention |
 | E-Commerce Data Warehouse (Olist) | Analytics Engineering | 90% query latency reduction |
-| Scalable E-Commerce Analytics Platform | Analytics Engineering | 146 automated dbt tests |
-| Real-Time Cryptocurrency Market Analyzer | Systems Engineering | <100ms Kafka-to-browser, exactly-once |
+| E-commerce Funnel Lakehouse | Analytics Engineering | +2.5 pp cart reach on 109.8M events, 95% CI |
+| Real-Time Cryptocurrency Market Analyzer | Systems Engineering | 0 duplicates, 0 missed across 17,969 trades |
 | Chatflow Messaging System | Backend SWE | 21,091 msg/s, zero loss across 1M messages |
 
-The Medicare analyzer has a [live dashboard](https://diazsk.github.io/healthcare-lakehouse-azure/) — DuckDB compiled to WebAssembly over tiered Parquet, so all 9.66M rows are queryable in the browser with no backend and nothing that can expire.
+Two of them are operable, not just described. The Medicare analyzer has a [live dashboard](https://diazsk.github.io/healthcare-lakehouse-azure/) — DuckDB compiled to WebAssembly over tiered Parquet, so all 9.66M rows are queryable in the browser with no backend and nothing that can expire. The funnel lakehouse has [its own dashboard](https://diazsk.github.io/ecommerce-funnel-lakehouse/), whose explorer can put the excluded tracking gap back in and show the analysis reversing.
 
 ## Stack
 

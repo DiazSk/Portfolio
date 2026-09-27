@@ -69,16 +69,19 @@ The handler was rebuilt on 2026-09-19 and is dormant but correct: one notificati
 
 **Confirmed and usable:**
 
-- **A live, interactive dashboard** for the Medicare Reimbursement Gap Analyzer: <https://diazsk.github.io/healthcare-lakehouse-azure/>. DuckDB-WASM over tiered Parquet, so a reader queries all 9.66M rows in their own browser — no backend, no sign-in, nothing that can expire. This is the strongest proof artifact on the site and the only one a reader can operate. Linked from the hero and from the project card.
+- **A live, interactive dashboard** for the Medicare Reimbursement Gap Analyzer: <https://diazsk.github.io/healthcare-lakehouse-azure/>. DuckDB-WASM over tiered Parquet, so a reader queries all 9.66M rows in their own browser — no backend, no sign-in, nothing that can expire. This is the strongest proof artifact on the site. Linked from the hero and from the project card.
+- **A second live dashboard** for the E-commerce Funnel Lakehouse: <https://diazsk.github.io/ecommerce-funnel-lakehouse/>. Static, hand-built SVG charts, and its explorer can put the excluded Nov 14–17 tracking gap *back in* — so a reader can watch every headline result reverse rather than taking the exclusion on trust. Linked from the project card only; the hero keeps one artifact.
 - **Public GitHub repositories** for all six featured projects — browsable source and READMEs.
-- Measured metrics cited in résumé data: 21,091 msg/s sustained (Chatflow), sub-100ms end-to-end latency with exactly-once semantics (Crypto Analyzer), 9.66M CMS rows (Medicare Gap Analyzer), 2.8M records (NYC Taxi), 146 dbt tests, 4.0 GPA.
+- Measured metrics cited in résumé data: 21,091 msg/s sustained (Chatflow), 0 duplicates and 0 missed across 17,969 trades (Crypto Analyzer), 9.66M CMS rows (Medicare Gap Analyzer), +2.5 pp cart reach on 109.8M events with a 95% CI (Funnel Lakehouse), 2.8M records (NYC Taxi), 4.0 GPA.
+
+*Updated 2026-09-27* from the reworked repos. **The "sub-100ms Kafka-to-browser" claim is retired** — the analyzer's own benchmarks now measure p95 exchange-to-client lag at 166 ms, so the old figure is not supported and must not return. The "146 dbt tests" figure belonged to Modern-E-commerce-Analytics-Platform, which was rebuilt and renamed to ecommerce-funnel-lakehouse; it is a different project now and the number no longer describes anything on the site.
 - Credentials: MS CS Northeastern (Dec 2026, 4.0 GPA), Graduate TA for Machine Learning, BE Computer Engineering from St. Francis Institute of Technology, Mumbai (2020 — 2024). **The Oracle Cloud Infrastructure Data Science Professional certification was removed from the site on Zaid's instruction (2026-09-18)**, replaced in the credentials record by the bachelor's degree. The certification is still real; it is simply not shown.
 - Research: co-authored *The Laundering Effect*, formalizing cumulative semantic erosion under iterative LLM paraphrasing across 36,800+ records. **Submitted to COLM 2026 and rejected (confirmed 2026-09-17).** The research contribution is real and stays on the site; the venue is never named. Do not describe it as under review, forthcoming, or published.
 
 **Not confirmed — do not treat as evidence:**
 
 - The architecture PNGs formerly in `public/assets/projects/` were never confirmed as accurate and have been deleted (2026-09-16) along with the rest of the retired space-theme assets — 28MB, of which only the favicon was referenced. They remain in git history if ever needed. The live architecture schematics are now rendered from data, not images.
-- **No screen recordings or GIFs exist**, and no system other than the Medicare Gap Analyzer has a live surface. Do not imply a live feed for the other five.
+- **No screen recordings or GIFs exist.** Two systems now have a live surface: the Medicare Gap Analyzer and the E-commerce Funnel Lakehouse, both static dashboards on GitHub Pages with no backend to expire. Do not imply a live feed for the other four.
 
 **Portrait:** supplied 2026-09-18 and live at `public/assets/portrait.webp` — 900x1350, WebP q82, 43 KB. It replaced a 2.1 MB PNG and an unused 1.2 MB JPEG that were both being deployed. If the file is ever removed the About grid drops that column and the bio widens into it, rather than showing a broken image or a stand-in avatar.
 
@@ -86,7 +89,7 @@ The handler was rebuilt on 2026-09-19 and is dormant but correct: one notificati
 
 **Retracted 2026-09-17**, on Zaid's instruction, after `azure-healthcare-platform/writing/resume-bullets.md` established verified figures for that project: the "80GB raw volume" and "35% Databricks compute cost reduction" claims, and the claim that a Microsoft Fabric + Power BI presentation layer was **built**. No `.pbix` was produced — Power BI Desktop is Windows-only and Zaid works on a Mac; the model was fully specified and a static dashboard shipped as the serving layer instead. Do not reinstate any of the three.
 
-**Resolved 2026-09-19:** the "96.3% dbt test pass rate" is **not to appear on any surface.** Zaid chose the raw count instead — a pass rate invites "so what failed?", where a count does not. The site already did the right thing: the Scalable E-Commerce Analytics Platform carries `146 automated dbt tests` as its primary metric. The README was the one place still publishing 96.3%, and no longer does. The figure stays in resumeData as a record; it is simply never rendered.
+**Resolved 2026-09-19:** the "96.3% dbt test pass rate" is **not to appear on any surface.** Zaid chose the raw count instead — a pass rate invites "so what failed?", where a count does not. The README was the one place still publishing 96.3%, and no longer does. Both figures are now moot in any case: that project was rebuilt and renamed on 2026-09-27, and neither the pass rate nor the 146-test count describes anything on the site.
 
 ## Product Principles
 

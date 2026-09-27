@@ -92,7 +92,7 @@ export function marquee(scope, selector, { speed = 50 } = {}) {
 /**
  * Numerals counting to their real value.
  *
- * Splits into prefix + number + suffix so "<100ms", "9.66M", "90%" and
+ * Splits into prefix + number + suffix so "+2.5pp", "9.66M", "90%" and
  * "21,091" all survive. A digits-only replace fails on grouped numbers — it
  * strips the comma and can no longer match the original string — and corrupts
  * prefixed ones into "<0ms". The authored text is restored exactly on

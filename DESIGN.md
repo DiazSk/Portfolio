@@ -363,7 +363,7 @@ The page's one authored motion moment. A stage list of mono stage names and over
 ### Measurement Rows
 Three full-width ruled rows under "How these were measured", `[2.5rem | number | evidence]` at 768px and stacked below it. The number is the Metric step in vermilion; the evidence column carries whichever form the measurement actually took — a two-bar comparison against the design it replaced (21,091 msg/s against ~500), or the pipeline path as mono stage names joined by hairlines. It replaced a three-column stats row that stated numbers without saying how they were taken, and `MetricStat` was deleted with it. A number on its own is a claim; this is the component that makes it evidence, which is the commitment position 03 in About already makes.
 
-Counters parse prefix, number, and suffix so `21,091`, `<100ms`, and `9.66M` all survive the count-up intact, and the authored value is cached on the element so a re-run cannot read a half-counted "0" as its target.
+Counters parse prefix, number, and suffix so `21,091`, `+2.5pp`, and `9.66M` all survive the count-up intact, and the authored value is cached on the element so a re-run cannot read a half-counted "0" as its target.
 
 ### Gauge
 The proportion primitive: a 3px track at 14% white with a fill that is vermilion for the achieved value and muted ink for the baseline. A rule, not a filled bar — emphasis on the dark ground is a vermilion hairline, never an inverted fill. The track has to stay visible because the interesting fills are short: 2.4% and 7.1%.

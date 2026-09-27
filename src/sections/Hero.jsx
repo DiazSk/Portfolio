@@ -23,11 +23,11 @@ const METRICS = [
     ],
   },
   {
-    value: "<100ms",
-    unit: "end-to-end latency",
-    source: "Crypto Analyzer · exactly-once",
-    gain: "Kafka ingestion to rendered browser UI",
-    path: ["Kafka", "Flink · OHLC windows", "Redis · sub-1ms", "FastAPI · WebSocket", "Browser"],
+    value: "0",
+    unit: "duplicates · 0 missed",
+    source: "Crypto Analyzer · 17,969 trades, verified by trade-ID gap tracking",
+    gain: "Held through a Flink crash, a Kafka restart and a 30s Postgres outage",
+    path: ["Coinbase WS", "Kafka", "Flink · event-time OHLCV", "TimescaleDB + Redis", "Next.js terminal"],
   },
   {
     value: "9.66M",
