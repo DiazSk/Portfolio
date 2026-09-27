@@ -27,6 +27,13 @@ const METRICS = [
     unit: "p95 REST latency",
     source: "Crypto Analyzer · 10 concurrent clients at 1,640 req/s, 0 errors",
     gain: "0 duplicates and 0 missed across 17,969 trades, held through a Flink crash",
+    /* How the candles were checked: rebuilt from the stream, then compared
+       against Coinbase's own published candles minute by minute. The thin
+       pairs disagree and that is reported rather than averaged away. */
+    scale: [
+      { label: "BTC, ETH, SOL, XRP — close price vs Coinbase's own candles", read: "99.5–100%", pct: 100 },
+      { label: "POL and DOGE — thinner books, and mostly on volume", read: "36–60%", pct: 48, dim: true },
+    ],
     path: ["Coinbase WS", "Kafka", "Flink · event-time OHLCV", "TimescaleDB + Redis", "Next.js terminal"],
   },
   {
