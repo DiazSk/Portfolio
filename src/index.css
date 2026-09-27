@@ -802,6 +802,9 @@ body::after {
   display: block;
   height: 100%;
   background: var(--color-field);
+  /* The fill grows from the track's left edge. The inline width stays the
+     target; GSAP scales it from 0 to 1 against that. */
+  transform-origin: left center;
 }
 
 .gauge-dim > i {

@@ -116,6 +116,9 @@ export function countUp(scope, selector, { immediate = false } = {}) {
     els.forEach((el) => {
       if (!el.dataset.countTo) el.dataset.countTo = el.textContent;
       const final = el.dataset.countTo;
+      /* A range carries two numbers, and counting only the first renders
+         "45.2–100%" on the way up. Bail rather than animate half of it. */
+      if ((final.replace(/,/g, "").match(/[\d.]+/g) || []).length > 1) return;
       const parts = final.match(/^([^\d]*)([\d,]+(?:\.\d+)?)(.*)$/);
       if (!parts) return;
       const [, prefix, numStr, suffix] = parts;
@@ -140,6 +143,36 @@ export function countUp(scope, selector, { immediate = false } = {}) {
         onComplete: () => {
           el.textContent = final;
         },
+      });
+    });
+  }, scope);
+  return () => mm.revert();
+}
+
+/**
+ * Fills each gauge from its left edge as it comes into view, so a bar reads
+ * as a measurement being taken rather than a value that was always there.
+ *
+ * scaleX, not width: the inline width is the *target*, set by the component
+ * from the real percentage, and scaling leaves that untouched. Animating
+ * width instead would mean owning the number in two places.
+ *
+ * Duration and ease match countUp exactly, because the reading beside each
+ * bar is counting at the same time and the two have to land together.
+ */
+export function gauges(scope) {
+  const mm = gsap.matchMedia();
+  mm.add(MOTION_OK, (ctx) => {
+    if (ctx.conditions.reduce) return;
+    const bars = scope.current ? [...scope.current.querySelectorAll(".gauge > i")] : [];
+    bars.forEach((bar) => {
+      gsap.set(bar, { scaleX: 0 });
+      gsap.to(bar, {
+        scaleX: 1,
+        duration: 1.2,
+        ease: "power2.out",
+        immediateRender: false,
+        scrollTrigger: scrolled(bar, "top 95%"),
       });
     });
   }, scope);

@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { resumeData } from "../constants/resumeData";
-import { useMotion, countUp, marquee } from "../lib/motion";
+import { useMotion, countUp, marquee, gauges } from "../lib/motion";
 
 const EMAIL = resumeData.personal.email;
 const LIVE = "https://diazsk.github.io/healthcare-lakehouse-azure/";
@@ -71,6 +71,8 @@ const Hero = () => {
   // The counters wait for scroll: the metric row sits past the field.
   useMotion(() => {
     countUp(root, ".metric-value");
+    countUp(root, ".gauge-read");
+    gauges(root);
     marquee(root, ".marquee-track", { speed: 55 });
   }, root);
 
@@ -156,7 +158,7 @@ const Hero = () => {
                         {row.label}
                       </span>
                       <span
-                        className="tabular shrink-0 text-sm"
+                        className="gauge-read tabular shrink-0 text-sm"
                         style={{ color: row.dim ? "var(--color-ink-muted)" : "var(--color-field)" }}
                       >
                         {row.read}
