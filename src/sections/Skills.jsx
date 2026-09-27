@@ -18,7 +18,7 @@ const SKILLS = [
     category: "Cloud & Infrastructure",
     items: [
       "AWS S3", "AWS Glue", "AWS Redshift", "Azure ADLS Gen2",
-      "Azure Databricks", "Vercel", "Terraform", "Docker", "GitHub Actions", "Jenkins",
+      "Azure Databricks", "Unity Catalog", "Vercel", "Terraform", "Docker", "GitHub Actions", "Jenkins",
     ],
   },
   {
@@ -34,7 +34,7 @@ const SKILLS = [
   {
     category: "Observability & Quality",
     items: [
-      "Great Expectations", "dbt Tests", "pytest", "Data Lineage", "Data Quality", "Pre-commit Hooks", "Power BI", "Metabase", "Streamlit"
+      "dbt Tests", "pytest", "JMeter", "marimo", "Data Lineage", "Data Quality", "Pre-commit Hooks", "Power BI", "Great Expectations", "Metabase", "Streamlit"
     ],
   },
 ];
