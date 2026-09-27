@@ -396,7 +396,7 @@ export const resumeData = {
       ],
       outcomeStatement:
         "Took every trade for 8 crypto pairs off Coinbase's live feed with zero duplicates and zero missed across 17,969 trades, verified by trade-ID gap tracking, and kept that record through a Flink crash, a Kafka restart and a 30-second Postgres outage.",
-      primaryMetric: { value: "0", label: "duplicates · 0 missed across 17,969 trades" },
+      primaryMetric: { value: "12.8ms", label: "p95 REST latency · 1,640 req/s · 0 errors" },
       decisionLog: {
         chose: "Effectively-once JDBC sinks with ON CONFLICT, and transactional Kafka only for alerts",
         over: "Exactly-once delivery everywhere",

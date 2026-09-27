@@ -23,10 +23,10 @@ const METRICS = [
     ],
   },
   {
-    value: "0",
-    unit: "duplicates · 0 missed",
-    source: "Crypto Analyzer · 17,969 trades, verified by trade-ID gap tracking",
-    gain: "Held through a Flink crash, a Kafka restart and a 30s Postgres outage",
+    value: "12.8ms",
+    unit: "p95 REST latency",
+    source: "Crypto Analyzer · 10 concurrent clients at 1,640 req/s, 0 errors",
+    gain: "0 duplicates and 0 missed across 17,969 trades, held through a Flink crash",
     path: ["Coinbase WS", "Kafka", "Flink · event-time OHLCV", "TimescaleDB + Redis", "Next.js terminal"],
   },
   {
