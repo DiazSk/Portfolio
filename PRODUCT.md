@@ -69,7 +69,7 @@ The handler was rebuilt on 2026-09-19 and is dormant but correct: one notificati
 
 **Confirmed and usable:**
 
-- **A live, interactive dashboard** for the Medicare Reimbursement Gap Analyzer: <https://diazsk.github.io/healthcare-lakehouse-azure/>. DuckDB-WASM over tiered Parquet, so a reader queries all 9.66M rows in their own browser — no backend, no sign-in, nothing that can expire. This is the strongest proof artifact on the site. Linked from the hero and from the project card.
+- **A live, interactive dashboard** for the Medicare Reimbursement Gap Analyzer: <https://diazsk.github.io/medicare-reimbursement-gap-analyzer/>. DuckDB-WASM over tiered Parquet, so a reader queries all 9.66M rows in their own browser — no backend, no sign-in, nothing that can expire. This is the strongest proof artifact on the site. Linked from the hero and from the project card.
 - **A second live dashboard** for the E-commerce Funnel Lakehouse: <https://diazsk.github.io/ecommerce-funnel-lakehouse/>. Static, hand-built SVG charts, and its explorer can put the excluded Nov 14–17 tracking gap *back in* — so a reader can watch every headline result reverse rather than taking the exclusion on trust. Linked from the project card only; the hero keeps one artifact.
 - **Public GitHub repositories** for all six featured projects — browsable source and READMEs.
 - Measured metrics cited in résumé data: 21,091 msg/s sustained (Chatflow), 12.8 ms p95 REST latency at 1,640 req/s and 0 duplicates / 0 missed across 17,969 trades (Crypto Analyzer), 9.66M CMS rows (Medicare Gap Analyzer), +2.5 pp cart reach on 109.8M events with a 95% CI (Funnel Lakehouse), 2.8M records (NYC Taxi), 4.0 GPA.

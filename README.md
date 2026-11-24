@@ -21,7 +21,7 @@ Every measured number on the site is carried against the design it replaced, bec
 | Real-Time Cryptocurrency Market Analyzer | Systems Engineering | 12.8 ms p95 REST, 0 duplicates across 17,969 trades |
 | Chatflow Messaging System | Backend SWE | 21,091 msg/s, zero loss across 1M messages |
 
-Two of them are operable, not just described. The Medicare analyzer has a [live dashboard](https://diazsk.github.io/healthcare-lakehouse-azure/) — DuckDB compiled to WebAssembly over tiered Parquet, so all 9.66M rows are queryable in the browser with no backend and nothing that can expire. The funnel lakehouse has [its own dashboard](https://diazsk.github.io/ecommerce-funnel-lakehouse/), whose explorer can put the excluded tracking gap back in and show the analysis reversing.
+Two of them are operable, not just described. The Medicare analyzer has a [live dashboard](https://diazsk.github.io/medicare-reimbursement-gap-analyzer/) — DuckDB compiled to WebAssembly over tiered Parquet, so all 9.66M rows are queryable in the browser with no backend and nothing that can expire. The funnel lakehouse has [its own dashboard](https://diazsk.github.io/ecommerce-funnel-lakehouse/), whose explorer can put the excluded tracking gap back in and show the analysis reversing.
 
 ## Stack
 

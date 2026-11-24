@@ -259,8 +259,8 @@ export const resumeData = {
         "Refuted 2 of 5 original hypotheses and reported them as refuted: identified a \"+2,223% premium\" as an 11-provider denominator artifact, and traced a $2.9B site-of-service anomaly to the dataset excluding the OPPS practice-expense component; small cohorts now carry an automatic reliability badge rather than being silently dropped",
         "Eliminated the page's last single point of failure by vendoring a CDN-hosted charting library against its own published hash, taking first paint to zero external requests — the page renders completely from a local file with no network at all",
       ],
-      liveUrl: "https://diazsk.github.io/healthcare-lakehouse-azure/",
-      github: "https://github.com/DiazSk/healthcare-lakehouse-azure",
+      liveUrl: "https://diazsk.github.io/medicare-reimbursement-gap-analyzer/",
+      github: "https://github.com/DiazSk/medicare-reimbursement-gap-analyzer",
     },
     {
       name: "NYC Taxi Data Lakehouse",

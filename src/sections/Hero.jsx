@@ -3,7 +3,7 @@ import { resumeData } from "../constants/resumeData";
 import { useMotion, countUp, marquee, gauges } from "../lib/motion";
 
 const EMAIL = resumeData.personal.email;
-const LIVE = "https://diazsk.github.io/healthcare-lakehouse-azure/";
+const LIVE = "https://diazsk.github.io/medicare-reimbursement-gap-analyzer/";
 
 /*
  * Each measurement carries the thing it was measured against, because a
