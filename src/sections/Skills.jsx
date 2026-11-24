@@ -34,7 +34,7 @@ const SKILLS = [
   {
     category: "Observability & Quality",
     items: [
-      "dbt Tests", "pytest", "JMeter", "marimo", "Data Lineage", "Data Quality", "Pre-commit Hooks", "Power BI", "Great Expectations", "Metabase", "Streamlit"
+      "dbt Tests", "pytest", "JMeter", "marimo", "Data Lineage", "Data Quality", "Pre-commit Hooks", "Great Expectations", "Metabase", "Streamlit"
     ],
   },
 ];

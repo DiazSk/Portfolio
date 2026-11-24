@@ -15,11 +15,14 @@ const METRICS = [
   {
     value: "21,091",
     unit: "msg/s sustained",
-    source: "Chatflow · zero loss across 1M messages",
-    gain: "42× the design it replaced",
+    source: "Chatflow · 99.98% persisted across 1M messages",
+    gain: "5× MySQL write rate from batching",
+    /* Batch-size experiment, local MySQL: effective write rate per batch size.
+       Approximate (the source table marks them ~); 21,091 above is client
+       throughput on EC2, a different measurement. */
     scale: [
-      { label: "Write-through, capped by MySQL's 2–5ms insert latency", read: "~500/s", pct: 2.4, dim: true },
-      { label: "Write-behind, worker threads with adaptive JDBC batching", read: "21,091/s", pct: 100 },
+      { label: "MySQL write rate, 100-row batches", read: "~2,000/s", pct: 20, dim: true },
+      { label: "MySQL write rate, 5,000-row batches", read: "~10,000/s", pct: 100 },
     ],
   },
   {

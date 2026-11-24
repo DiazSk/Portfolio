@@ -200,8 +200,6 @@ export const resumeData = {
     {
       category: "Visualization & BI",
       items: [
-        "Power BI",
-        "Microsoft Fabric",
         "Metabase",
         "marimo",
         "Streamlit",
@@ -248,7 +246,6 @@ export const resumeData = {
         "SQL",
         "Python",
         "marimo",
-        "Power BI",
       ],
       highlights: [
         "Built a Medallion (Bronze/Silver/Gold) lakehouse processing 9.66M CMS Medicare claim rows in PySpark on Delta Lake, producing a 3-dimension star schema plus 5 purpose-built analytical marts; provisioned the Azure footprint (ADLS Gen2, Key Vault, Data Factory, Databricks) with Terraform",
@@ -272,16 +269,16 @@ export const resumeData = {
         { stage: "Model", items: ["dbt · staging + 3 marts"] },
       ],
       outcomeStatement:
-        "Ingested 100GB+ of NYC taxi trip data through serverless Spark on AWS with 96.8% data retention, fully reproducible across environments via Terraform IaC.",
+        "Processed 2.85M NYC yellow-taxi trips through serverless Spark on AWS with 96.8% retained after quality filters, fully reproducible across environments via Terraform IaC.",
       primaryMetric: { value: "2.8M", label: "clean records · 96.8% retention" },
       decisionLog: {
         chose: "AWS Glue (serverless managed Spark) for ETL",
         over: "AWS Athena querying raw S3 Parquet directly with no ETL layer",
-        because: "Athena's $5/TB scan cost compounds across every dbt model run on 100GB+ of raw Parquet; Glue runs deduplication, schema normalization, and null-handling once at ingest, producing the 96.8% retention rate as a durable, guaranteed fact rather than a per-query assumption, at the cost of an explicit ETL step.",
+        because: "Athena's $5/TB scan cost would compound across every dbt model run once the pipeline scales toward the full 100GB+ TLC catalog; Glue runs deduplication, schema normalization, and null-handling once at ingest, producing the 96.8% retention rate as a durable, guaranteed fact rather than a per-query assumption, at the cost of an explicit ETL step.",
       },
       tagline: "Cloud-native lakehouse processing 2.8M+ taxi records on AWS",
       description:
-        "Production-ready data engineering platform implementing a Lakehouse Architecture on AWS. Processes 100GB+ of NYC TLC trip data through serverless PySpark jobs on AWS Glue, with Terraform-managed infrastructure and dbt analytics models.",
+        "Production-ready data engineering platform implementing a Lakehouse Architecture on AWS. Processes NYC TLC yellow-taxi trip data through serverless PySpark jobs on AWS Glue, designed to scale to the full 100GB+ catalog, with Terraform-managed infrastructure and dbt analytics models.",
       technologies: [
         "Terraform",
         "AWS S3",
@@ -295,7 +292,7 @@ export const resumeData = {
       ],
       highlights: [
         "Provisioned AWS cloud infrastructure (S3 data lake, Glue serverless Spark jobs, IAM roles) using Terraform IaC, enabling reproducible deployments across environments",
-        "Processed 100GB+ (Parquet) NYC taxi trip records through PySpark ETL on AWS Glue with quality filters, achieving 96.8% data retention (2.8M → 2.75M clean records) partitioned by year/month",
+        "Processed 2,847,234 NYC taxi trip records (Parquet) through PySpark ETL on AWS Glue with null and quality filters, retaining 96.8% (2,756,432 clean records) partitioned by year/month",
         "Automated daily batch pipeline via Airflow DAG with GlueJobOperator; built dbt analytics layer (staging view + 3 mart tables) with data quality tests on distance, duration, and passenger ranges",
       ],
       github: "https://github.com/DiazSk/nyc-taxi-data-lakehouse",
@@ -441,12 +438,12 @@ export const resumeData = {
         { stage: "Read", items: ["L1 local + Redis L2", "Stampede guard"] },
       ],
       outcomeStatement:
-        "Sustained 21,091 msg/s with zero data loss across 1M messages via write-behind persistence; CQRS isolation prevented write-side failures from starving read queries.",
-      primaryMetric: { value: "21,091", label: "msg/s · zero data loss · 1M messages" },
+        "Sustained 21,091 msg/s with 99.98% persisted across 1M messages via write-behind persistence; CQRS isolation prevented write-side failures from starving read queries.",
+      primaryMetric: { value: "21,091", label: "msg/s · 99.98% persisted · 1M messages" },
       decisionLog: {
         chose: "Write-behind persistence with in-memory batching, adaptively sized 500/2K/3K by queue depth",
-        over: "Write-through synchronous per-message inserts",
-        because: "Write-through coupled consumption speed to MySQL's 2-5ms insert latency, capping throughput at ~500 msg/s; write-behind decoupled them, unlocking 21,091 msg/s from RabbitMQ while accepting a mitigated crash-loss window.",
+        over: "Small fixed batches committed as messages arrive",
+        because: "A batch-size experiment showed per-commit overhead dominating: 100-row batches wrote ~2,000 msg/s and 5,000-row batches ~10,000 msg/s, a 5× gain. Production was capped at 3,000 rows after the OOM killer stopped 5,000-row runs on a t3.small, and write-behind accepted a mitigated crash-loss window in exchange.",
       },
       tagline:
         "High-throughput messaging architecture handling 21,091 msg/s with CQRS read/write separation",
@@ -463,10 +460,10 @@ export const resumeData = {
         "HikariCP",
       ],
       highlights: [
-        "Engineered a write-behind persistence pipeline sustaining throughput of 21,091 msg/s with zero data loss across 1M messages by chaining an in-memory blocking queue to dedicated worker threads with adaptive JDBC batch sizing and multi-value insert rewriting",
+        "Engineered a write-behind persistence pipeline sustaining throughput of 21,091 msg/s with 99.98% persisted across 1M messages by chaining an in-memory blocking queue to dedicated worker threads with adaptive JDBC batch sizing and multi-value insert rewriting",
         "Optimized read-path latency to 13ms at 1M-row scale against a 100ms SLO target by implementing a two-tier caching hierarchy (local memory and Redis with active invalidation) and a mutex-based stampede guard to strictly cap concurrent database queries",
-        "Architected a CQRS-style read/write separation that survived a 60-minute endurance test at full load by partitioning HikariCP into isolated reader and writer pools (writer 10, reader 20) bound to a circuit breaker, preventing write-side failures from starving read queries",
-        "Sustained 10k+ RPS under a 70/30 read/write JMeter mix with zero message loss across 7 EC2 instances, with Redis absorbing roughly 80% of read traffic through the cache-hit fast path and active DEL invalidation issued on each batch commit",
+        "Architected a CQRS-style read/write separation that survived a 60-minute endurance test at full load by partitioning HikariCP into isolated reader and writer pools (a 20-connection read-only reader pool) bound to a circuit breaker, preventing write-side failures from starving read queries",
+        "Sustained 11,021 req/s at 32ms average over a 30-minute JMeter run (70/30 read/write, 19.8M requests) across 7 EC2 instances behind an ALB, with active Redis DEL invalidation issued on each batch commit",
       ],
       github: "https://github.com/DiazSk/chatflow-messaging-system",
     },
