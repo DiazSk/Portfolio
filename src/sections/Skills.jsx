@@ -39,7 +39,7 @@ const SKILLS = [
   },
 ];
 
-/* The standfirst claims these are weighted by what carried the six systems.
+/* The standfirst claims these are weighted by what carried the seven systems.
    That claim has to be true, so the split is computed from those projects'
    own `technologies` lists rather than from source order. */
 const SHIPPED = resumeData.projects.flatMap((p) => p.technologies);
@@ -85,7 +85,7 @@ const Skills = () => {
             className="max-w-xl text-base leading-relaxed md:pb-2"
             style={{ color: "var(--color-field-ink-secondary)" }}
           >
-            Highlighted tools are the ones that actually carried the six systems
+            Highlighted tools are the ones that actually carried the seven systems
             above; the rest of the stack sits alongside them.
           </p>
         </div>

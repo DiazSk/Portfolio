@@ -1,6 +1,6 @@
 # Zaid Shaikh — Portfolio
 
-Portfolio site for Zaid Shaikh, a data engineer in Seattle. Six production-grade builds, each stated against the baseline it beat.
+Portfolio site for Zaid Shaikh, a data engineer in Seattle. Seven production-grade builds, each stated against the baseline it beat.
 
 **Live:** [zaid-data.vercel.app](https://zaid-data.vercel.app)
 

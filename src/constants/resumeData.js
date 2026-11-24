@@ -470,6 +470,53 @@ export const resumeData = {
       ],
       github: "https://github.com/DiazSk/chatflow-messaging-system",
     },
+    {
+      name: "TripMate",
+      category: "Systems Engineering",
+      architecture: [
+        { stage: "Clients", items: ["Next.js web · 3D map", "Expo iPhone app"] },
+        { stage: "API", items: ["52 route handlers · REST + SSE"] },
+        { stage: "Facts", items: ["Forecast · holidays · OSM hours", "Fail-soft fetchers"] },
+        { stage: "Model", items: ["runClaude() · every call traced", "Evidence-id grounding"] },
+        { stage: "Store", items: ["SQLite / Turso · libsql"] },
+      ],
+      outcomeStatement:
+        "Built an AI trip planner for web and iPhone that plans each day against the forecast, public holidays and opening hours for the actual travel dates, traced every model call to find where the time went, and cut median story-script latency from 108s to 41s.",
+      primaryMetric: { value: "41s", label: "median story latency, from 108s · every model call traced" },
+      decisionLog: {
+        chose: "Rendering places, months and sources only from the fetched evidence records the model's ids point at",
+        over: "Asking the model in the prompt to cite its sources",
+        because:
+          "A prompt can ask for honesty but cannot enforce it. A model told to cite will still name a plausible restaurant that was never fetched. So the model returns ids, the page draws names from the records those ids resolve to, and a single id the evidence does not hold replaces the whole answer with an honest \"nothing checked\".",
+      },
+      tagline:
+        "AI trip planner that checks its plan against real forecast, holiday and opening-hours data",
+      description:
+        "A full-stack AI trip planner for the web and iPhone. Tell it where and when you're going and it plans the actual days: times, costs, walking legs and a reason for each stop, checked against the forecast, public holidays and OpenStreetMap opening hours fetched for those dates. Days are laid out on a 3D map, a narrated story mode flies the camera stop by stop, and the Expo app keeps the next stop in the Dynamic Island.",
+      technologies: [
+        "Next.js 16",
+        "React 19",
+        "TypeScript",
+        "Expo / React Native",
+        "SQLite (libsql / Turso)",
+        "Claude API",
+        "MapLibre GL",
+        "CesiumJS",
+        "WebGPU",
+        "Playwright",
+      ],
+      highlights: [
+        "Routed every model call through one dispatcher that writes a trace row on every outcome (success, timeout, malformed reply) across two transports, the Claude CLI and the Anthropic API, with the same contract for callers",
+        "Used those traces to find a background model call the CLI made on 87 of 88 requests, and removed it; a 2,048-token thinking budget then cut median story-script latency from 108s to 41s, with rule-breaks per script measured against the default before shipping",
+        "Made the assistant unable to show an invented place: answers render only from evidence records the model's ids resolve to, and one unknown id replaces the answer with \"nothing checked\"",
+        "Removed a 45s stall between generation and the first plan during an OpenStreetMap Overpass outage by moving enrichment after the hand-off and adding a per-mirror outage detector (45.0s to 0.0s on the measured runs)",
+        "Picked the default map engine by measurement: a Playwright WebGL probe showed MapLibre issuing 3.4x fewer draw calls than Cesium under a drag, p95 frame time 9.8ms vs 25.2ms, with 5.1x fewer requests",
+        "Cut dropped frames in the narrated story mode from 45 to 7 by synthesising in-browser neural speech (Kokoro-82M on WebGPU) during the camera's holds, in a worker that took the worst main-thread stall from 16.9s to 0.84s",
+        "Audited plan quality against a 29-criterion rubric and A/B-tested a rule rewrite on 7 frozen fixtures (composite 0.834 to 0.864), publishing the duplicate-stop regression alongside the gain",
+        "Caught a build that reported success while shipping a chunk no browser could parse, and added a gate that parses every emitted chunk; 2,508 automated tests across web and mobile",
+      ],
+      github: "https://github.com/DiazSk/tripmate",
+    },
   ],
 
   targetRole: {

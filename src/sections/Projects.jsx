@@ -170,7 +170,7 @@ const Projects = () => (
         className="max-w-2xl text-base leading-relaxed"
         style={{ color: "var(--color-ink-secondary)" }}
       >
-        Six production-grade builds, side by side. Open any one for its
+        Seven production-grade builds, side by side. Open any one for its
         architecture and the decision behind it.
       </p>
     </div>
