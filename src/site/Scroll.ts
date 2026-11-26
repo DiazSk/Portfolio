@@ -1,75 +1,57 @@
 import { useEffect } from "react";
-import { advance, push } from "./glide-physics.js";
+import Lenis from "lenis";
+import { shapeWheel, LERP } from "./glide-physics.js";
 
-/* THE PAGE'S ONE SCROLL ENGINE. Every section reads the native scroll position; only this module moves it.
-   The wheel sets a target and the page eases toward it (Lenis's damping, frame-rate independent), with the speed-adaptive
-   limits in glide-physics.js: slow scrolling is untouched, fast scrolling is held to a medium pace. Keys, scrollbar and touch
-   stay native. Any section can steer it (glide.to) or hold it still while a panel or sheet owns the wheel (glide.hold). */
-const clamp = (v: number, a: number, b: number) => Math.max(a, Math.min(b, v));
+/* THE PAGE'S ONE SCROLL ENGINE: Lenis, the library Lando Norris's site runs on. Every section reads the native scroll
+   position; only Lenis moves it. On a fine pointer the wheel is smoothed, shaped first by glide-physics.js so slow
+   scrolling is untouched and fast scrolling is held to a medium pace. Touch, keys and the scrollbar stay native.
+   Sections steer it through `glide`: to() glides to a position, hold pauses the page while a panel or sheet owns the
+   wheel (those panels keep scrolling natively; Lenis is told to leave them alone). */
 const reducedMotion = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
+const OWNS_WHEEL = ".w-panel, .ax-sheet";
 
-/* one scroll for the whole page: every wheel step is eased into the same glide, so nothing scrolls differently */
+let lenis: Lenis | null = null;
+
 export const glide = {
-  to: (y: number) => window.scrollTo({
-    top: y,
-    behavior: "smooth"
-  }),
-  hold: false
+  to: (y: number) => {
+    if (lenis) lenis.scrollTo(y, { lerp: LERP });
+    else window.scrollTo({ top: y, behavior: "smooth" });
+  },
+  set hold(on: boolean) {
+    if (!lenis) return;
+    if (on) lenis.stop();
+    else lenis.start();
+  },
+  get hold() {
+    return !!lenis?.isStopped;
+  },
 };
 
-  /* the page-wide glide: the wheel moves a target, the page eases toward it every frame (Lenis-style) */
 export function useGlide() {
   useEffect(() => {
-    if (reducedMotion() || !window.matchMedia("(pointer: fine)").matches) return;
-    const s = { cur: window.scrollY, v: 0, target: window.scrollY };
-    let raf = 0,
-      last = 0,
-      mode: "wheel" | "to" = "wheel";
-    const max = () => document.documentElement.scrollHeight - window.innerHeight;
-    /* one frame of the glide, at the real frame time */
-    const tick = (now: number) => {
-      const dt = last ? Math.min(0.05, (now - last) / 1000) : 1 / 60;
-      last = now;
-      const moving = advance(s, dt, window.innerHeight, mode);
-      window.scrollTo(0, s.cur);
-      raf = moving ? requestAnimationFrame(tick) : 0;
-      if (!raf) last = 0;
-    };
-    const wheel = (e: WheelEvent) => {
-      if (e.ctrlKey) return;
-      if (glide.hold) {
-        /* a panel is open: it scrolls natively and contains its overscroll; everywhere else the page holds */
-        if (!(e.target as Element).closest?.(".w-panel, .ax-sheet")) e.preventDefault();
-        return;
-      }
-      e.preventDefault();
-      const d = e.deltaMode === 1 ? e.deltaY * 32 : e.deltaMode === 2 ? e.deltaY * window.innerHeight : e.deltaY;
-      mode = "wheel";
-      push(s, d, window.innerHeight, max());
-      if (!raf) raf = requestAnimationFrame(tick);
-    };
-    const onScroll = () => {
-      if (!raf) { s.target = s.cur = window.scrollY; s.v = 0; }
-    };
-    glide.to = (y: number) => {
-      mode = "to";
-      s.target = clamp(y, 0, max());
-      if (!raf) raf = requestAnimationFrame(tick);
-    };
-    window.addEventListener("wheel", wheel, {
-      passive: false
+    if (reducedMotion() || !matchMedia("(pointer: fine)").matches) return;
+    const l = new Lenis({
+      lerp: LERP,
+      smoothWheel: true,
+      /* panels and sheets scroll themselves, even while the page is held */
+      prevent: node => !!node.closest?.(OWNS_WHEEL),
+      /* shape each wheel step before Lenis applies it: soften flicks, keep the target close */
+      virtualScroll: data => {
+        if (data.event.type.includes("wheel")) {
+          data.deltaY = shapeWheel(data.deltaY, l.targetScroll - l.animatedScroll, window.innerHeight);
+        }
+        return true;
+      },
     });
-    window.addEventListener("scroll", onScroll, {
-      passive: true
+    lenis = l;
+    let raf = requestAnimationFrame(function frame(t) {
+      l.raf(t);
+      raf = requestAnimationFrame(frame);
     });
     return () => {
       cancelAnimationFrame(raf);
-      window.removeEventListener("wheel", wheel);
-      window.removeEventListener("scroll", onScroll);
-      glide.to = (y: number) => window.scrollTo({
-        top: y,
-        behavior: "smooth"
-      });
+      l.destroy();
+      lenis = null;
     };
   }, []);
 }
