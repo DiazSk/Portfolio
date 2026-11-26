@@ -1,5 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { PROJECTS, type Project } from "./W1Data";
+import { nearScreen } from "./ProofKit";
 import "./W1Work.css";
 import { glide } from "./Scroll";
 type Pt = [number, number];
@@ -699,8 +700,10 @@ const Journey = ({
       y: NaN,
       z: NaN
     };
+    const inView = nearScreen(r0);
     const loop = (now: number) => {
       raf = requestAnimationFrame(loop);
+      if (!inView.state.on && openRef.current === null) return;
       const g = geo.current!;
       const vw = st.clientWidth,
         vh = st.clientHeight;
@@ -783,7 +786,7 @@ const Journey = ({
       if (!reduced) ridePackets(p, pk.current, Math.max(0, s - 1800), Math.min(s, g.L), now / 1000, 200);
     };
     raf = requestAnimationFrame(loop);
-    return () => cancelAnimationFrame(raf);
+    return () => { cancelAnimationFrame(raf); inView.stop(); };
   }, [ver]);
 
   /* move the page so the chosen poster sits under the camera */

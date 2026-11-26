@@ -1,4 +1,5 @@
 import { useEffect, useRef, type CSSProperties } from "react";
+import { nearScreen } from "./ProofKit";
 import "./Intertitle.css";
 
 /* INTERTITLE: a silent-film title card between two sections. One sentence, alone, in the serif italic; its words
@@ -11,15 +12,17 @@ export const Intertitle = ({ lines, tone }: Props) => {
     const el = ref.current; if (!el) return;
     if (matchMedia("(prefers-reduced-motion: reduce)").matches) { el.style.setProperty("--p", "1"); return; }
     let raf = 0;
+    const near = nearScreen(el);
     const tick = () => {
       raf = requestAnimationFrame(tick);
+      if (!near.state.on) return;
       const r = el.getBoundingClientRect(), vh = innerHeight;
       if (r.bottom < -vh * .2 || r.top > vh * 1.2) return;
       /* 0 as the card enters at the bottom, 1 once its centre reaches the middle of the screen */
       el.style.setProperty("--p", Math.max(0, Math.min(1, (vh - r.top) / (vh / 2 + r.height / 2))).toFixed(4));
     };
     raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
+    return () => { cancelAnimationFrame(raf); near.stop(); };
   }, []);
   const words = lines.map(l => l.split(" "));
   const total = words.flat().length;

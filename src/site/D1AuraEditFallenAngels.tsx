@@ -1,14 +1,15 @@
 import { useEffect, useRef, useState } from "react";
+import { nearScreen } from "./ProofKit";
 import "./D1AuraEditFallenAngels.css";
 import { Nav } from "./Nav";
-const wanderer = "/assets/site/54c201dbd2b4b97cff3596082d27269b1233ea0cdcbcb40709a26c5cec01435d.jpg";
-const greatWave = "/assets/site/0dbe48be276704022abe4fb3143dc8581cafca06b7087c602532afb6c9641ff6.jpg";
-const albatross = "/assets/site/cdbcf20dad39d8489238607cdc500b0ee8746b18827cad0c486baf497a5ba4d1.jpg";
-const turnerStorm = "/assets/site/cc8b082b2891ecfb5105c9dd61e82a2508755eea7888f892d581fa0177e7c657.jpg";
-const monkSea = "/assets/site/d52cd9d7c249123b44e5b42a9be57e888440d2051b6a5f7619474edc16ac1b1e.jpg";
-const paradiso31 = "/assets/site/a1de2f18559f540bc9a50ea86cf6dae6784e4f3c8a4718a75ac69dfd4e327c13.jpg";
-const paradiso28 = "/assets/site/3bd220d4302fbb7889e75bccd214991d0f32b6af94dfcc5a5d5cabc244769860.jpg";
-const nike = "/assets/site/429292ae44a6c152f2854c010034d032dcc1657e7df1c596e133f33097eeb057.jpg";
+const wanderer = "/assets/site/54c201dbd2b4b97cff3596082d27269b1233ea0cdcbcb40709a26c5cec01435d.webp";
+const greatWave = "/assets/site/0dbe48be276704022abe4fb3143dc8581cafca06b7087c602532afb6c9641ff6.webp";
+const albatross = "/assets/site/cdbcf20dad39d8489238607cdc500b0ee8746b18827cad0c486baf497a5ba4d1.webp";
+const turnerStorm = "/assets/site/cc8b082b2891ecfb5105c9dd61e82a2508755eea7888f892d581fa0177e7c657.webp";
+const monkSea = "/assets/site/d52cd9d7c249123b44e5b42a9be57e888440d2051b6a5f7619474edc16ac1b1e.webp";
+const paradiso31 = "/assets/site/a1de2f18559f540bc9a50ea86cf6dae6784e4f3c8a4718a75ac69dfd4e327c13.webp";
+const paradiso28 = "/assets/site/3bd220d4302fbb7889e75bccd214991d0f32b6af94dfcc5a5d5cabc244769860.webp";
+const nike = "/assets/site/429292ae44a6c152f2854c010034d032dcc1657e7df1c596e133f33097eeb057.webp";
 const dataUrl = "/assets/site/c48814d9d67a095878241ce9d26e8733abf13e8df7188eaad6d69535ed7055b6.webp";
 const photoUrl = "/assets/site/d186c6239103fffd146f041d0af58e5cb4fb484743b3663cf7404e53273de76f.webp";
 
@@ -178,10 +179,13 @@ export const D1AuraEditFallenAngels = () => {
       }
       if (Math.random() < 0.25) glFrames = 3;
     };
+    const near = nearScreen(h);
     const tick = (now: number) => {
       raf = requestAnimationFrame(tick);
       const dt = Math.min(50, now - lastNow);
       lastNow = now;
+      /* the art keeps cutting only while the hero is anywhere near the screen; far below, it holds its frame */
+      if (!near.state.on && !h.querySelector(".na-ov")) return;
       if (document.hidden || h.querySelector(".na-ov")) {
         /* frozen for the whole menu, closing included, so the strips land on exactly the frame they left */
         if (frozen) {
@@ -300,6 +304,7 @@ export const D1AuraEditFallenAngels = () => {
     return () => {
       dead = true;
       cancelAnimationFrame(raf);
+      near.stop();
       h.removeEventListener("pointerdown", skip);
       window.removeEventListener("keydown", skip);
       h.removeEventListener("pointermove", onMove);

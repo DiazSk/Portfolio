@@ -1,5 +1,6 @@
 import { useEffect, useRef, type CSSProperties } from "react";
 import { BeyondHead, BeyondNote, ROWS } from "./Beyond";
+import { nearScreen } from "./ProofKit";
 import "./Beyond.css";
 import "./BeyondGit.css";
 
@@ -42,8 +43,10 @@ export const BeyondGit = () => {
     const el = graph.current; if (!el) return;
     const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
     let raf = 0;
+    const near = nearScreen(el);
     const tick = () => {
       raf = requestAnimationFrame(tick);
+      if (!near.state.on) return;
       const r = el.getBoundingClientRect(), vh = innerHeight;
       if (r.bottom < -vh * .2 || r.top > vh * 1.2) return;
       /* the graph is read as it passes the lower third of the screen: everything above that line is drawn */
@@ -51,7 +54,7 @@ export const BeyondGit = () => {
       el.style.setProperty("--p", p.toFixed(4));
     };
     raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
+    return () => { cancelAnimationFrame(raf); near.stop(); };
   }, []);
   const n = COMMITS.length;
   return (

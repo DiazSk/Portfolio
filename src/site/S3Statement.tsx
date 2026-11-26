@@ -1,4 +1,5 @@
 import { useEffect, useRef, type CSSProperties } from "react";
+import { nearScreen } from "./ProofKit";
 import "./S3Statement.css";
 const EMAIL = "shaikh.zaid@northeastern.edu";
 const DASH = "https://diazsk.github.io/medicare-reimbursement-gap-analyzer/";
@@ -76,7 +77,8 @@ export const Statement = () => {
       meter.textContent = String(Math.round(p * 100)).padStart(3, "0");
       el.classList.toggle("end", sm > 0.84);
     };
-    const on = () => read();
+    const near = nearScreen(el);
+    const on = () => { if (near.state.on) read(); };
     read();
     raf = requestAnimationFrame(loop);
     window.addEventListener("scroll", on, {
@@ -85,6 +87,7 @@ export const Statement = () => {
     window.addEventListener("resize", on);
     return () => {
       cancelAnimationFrame(raf);
+      near.stop();
       window.removeEventListener("scroll", on);
       window.removeEventListener("resize", on);
     };

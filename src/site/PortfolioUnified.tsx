@@ -21,7 +21,7 @@ export const PortfolioUnified = () => {
       <Statement />
       <Intertitle tone="paper" lines={["Claims are easy.", "Here's what was measured."]} />
       <ProofPositions />
-      <Work layout="wrap" siuPhoto="/assets/site/25a95b185d3ccc533f42b8546444da5c7494660b961baf7d7a54c626a94fe0f4.jpg" />
+      <Work layout="wrap" siuPhoto="/assets/site/25a95b185d3ccc533f42b8546444da5c7494660b961baf7d7a54c626a94fe0f4.webp" />
       <WK7StackSwissAxis />
       <BeyondGit />
       <OffSwiss />

@@ -58,42 +58,42 @@ const POSTERS: {
   title: "GTA",
   sub: "Wanted level",
   tone: "ink",
-  img: "/assets/site/d1ceac6a78df07cc5fe42d77e881bfdff1dce58cda857ba54fb4a5eb90ff1a20.jpg",
+  img: "/assets/site/d1ceac6a78df07cc5fe42d77e881bfdff1dce58cda857ba54fb4a5eb90ff1a20.webp",
   at: "50% 30%"
 }, {
   id: "rdr",
   title: "RDR 2",
   sub: "Frontier",
   tone: "mustard",
-  img: "/assets/site/95d3957055bbf205a5a1556ab3ee82268e5a89160f71077894474167305e3aac.jpg",
+  img: "/assets/site/95d3957055bbf205a5a1556ab3ee82268e5a89160f71077894474167305e3aac.webp",
   at: "50% 42%"
 }, {
   id: "got",
   title: "Ghost of Tsushima",
   sub: "Blade at sunset",
   tone: "paper",
-  img: "/assets/site/46da5023cce12a55dc86ddb523326a7f85f361a796586929f0be7afbf5535319.jpg",
+  img: "/assets/site/46da5023cce12a55dc86ddb523326a7f85f361a796586929f0be7afbf5535319.webp",
   at: "48% 40%"
 }, {
   id: "pubg",
   title: "PUBG",
   sub: "Drop zone",
   tone: "blue",
-  img: "/assets/site/183921c04d22ad814233403ea4bb68ae6f3ad57dea1e7c2a02a6059ea20dc3fd.jpg",
+  img: "/assets/site/183921c04d22ad814233403ea4bb68ae6f3ad57dea1e7c2a02a6059ea20dc3fd.webp",
   at: "38% 28%"
 }, {
   id: "cod",
   title: "Call of Duty",
   sub: "Sights up",
   tone: "hot",
-  img: "/assets/site/0a2c2192259592c117f1013a06495feed9c7ac19282f63d44fbba954c90e3c36.jpg",
+  img: "/assets/site/0a2c2192259592c117f1013a06495feed9c7ac19282f63d44fbba954c90e3c36.webp",
   at: "50% 32%"
 }, {
   id: "mc",
   title: "Minecraft",
   sub: "Block by block",
   tone: "green",
-  img: "/assets/site/373c0d7dd79d0efd55b3915b3a3602fb662c46083b9de8031622c3795088c890.jpg",
+  img: "/assets/site/373c0d7dd79d0efd55b3915b3a3602fb662c46083b9de8031622c3795088c890.webp",
   at: "34% 48%"
 }];
 export const OffGames = () => <ul className="gp" aria-label="Games I've played">

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { LAYERS, SHORT, TOOLS, pad2, plural, tool } from "./KitData";
+import { nearScreen } from "./ProofKit";
 import "./WK7StackSwissAxis.css";
 import { glide } from "./Scroll";
 
@@ -56,7 +57,7 @@ export const WK7StackSwissAxis = () => {
     /* on the assembled page Work's glide drives the wheel for every section; this one only reads the scroll */
     void wheel;
 
-    let blocks: { n: HTMLElement; top: number; h: number; kind: string }[] = [];
+    let blocks: { n: HTMLElement; top: number; h: number; kind: string; last?: string }[] = [];
     let vh = innerHeight;
     const measure = () => {
       vh = innerHeight;
@@ -65,7 +66,8 @@ export const WK7StackSwissAxis = () => {
     measure();
     const ro = new ResizeObserver(measure); ro.observe(el);
     const count = el.querySelector<HTMLElement>(".ax-count");
-    let last = -1;
+    let last = -1, lastO = "";
+    const near = nearScreen(el);
 
     const tick = () => {
       if (performance.now() - wheeling < 900) {
@@ -75,25 +77,28 @@ export const WK7StackSwissAxis = () => {
       } else { y = target = scrollY; }
       /* measured live every frame: on a long page the sections above keep settling (images, fonts, pinned stages),
          so positions cached at load drift and every animation fires early */
+      if (!near.state.on) { raf = requestAnimationFrame(tick); return; } /* far off screen: no DOM work at all */
       vh = innerHeight;
-      const R0 = el.getBoundingClientRect();
-      if (R0.bottom < -vh || R0.top > vh * 2) { raf = requestAnimationFrame(tick); return; } /* off screen: nothing to do */
-      let now = 0;
-      for (const b of blocks) {
-        const rr = b.n.getBoundingClientRect(), top = rr.top;
-        b.h = rr.height;
-        const p = b.kind === "intro" ? clamp(-top / (b.h - vh)) : b.kind === "outro" ? clamp((vh - top) / b.h) : clamp((vh - top) / (vh + b.h));
-        b.n.style.setProperty("--p", p.toFixed(4));
-        if (b.kind === "intro" && count) count.textContent = pad2(Math.round(p * 21));
-        if (b.kind === "layer" && top < vh * .7) now = Number(b.n.dataset.i) + 1;
-      }
+      /* every read first, then every write: interleaving them forced a full style and layout pass per block per frame */
       const R = el.getBoundingClientRect();
-      el.style.setProperty("--o", clamp(-R.top / Math.max(1, R.height - vh)).toFixed(4));
+      const rects = blocks.map(b => b.n.getBoundingClientRect());
+      let now = 0;
+      blocks.forEach((b, k) => {
+        const top = rects[k].top;
+        b.h = rects[k].height;
+        const p = b.kind === "intro" ? clamp(-top / (b.h - vh)) : b.kind === "outro" ? clamp((vh - top) / b.h) : clamp((vh - top) / (vh + b.h));
+        const v = p.toFixed(4);
+        if (b.last !== v) { b.last = v; b.n.style.setProperty("--p", v); } /* unchanged (off-screen blocks sit at 0 or 1): skip the restyle */
+        if (b.kind === "intro" && count) { const c = pad2(Math.round(p * 21)); if (count.textContent !== c) count.textContent = c; }
+        if (b.kind === "layer" && top < vh * .7) now = Number(b.n.dataset.i) + 1;
+      });
+      const o = clamp(-R.top / Math.max(1, R.height - vh)).toFixed(4);
+      if (o !== lastO) { lastO = o; el.style.setProperty("--o", o); }
       if (now !== last) { last = now; setAt(now); }
       raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
-    return () => { cancelAnimationFrame(raf); ro.disconnect(); removeEventListener("wheel", wheel); };
+    return () => { cancelAnimationFrame(raf); ro.disconnect(); near.stop(); removeEventListener("wheel", wheel); };
   }, []);
 
   useEffect(() => {

@@ -8,13 +8,13 @@ import "./K1ContactTheFinalCut.css";
    freeze frame: the email split edge to edge at name scale (Michael Bay Studio, Kevin Hipke). Hold to copy. */
 const A = "/assets/site/";
 const ART = [
-  A + "54c201dbd2b4b97cff3596082d27269b1233ea0cdcbcb40709a26c5cec01435d.jpg",
-  A + "0dbe48be276704022abe4fb3143dc8581cafca06b7087c602532afb6c9641ff6.jpg",
-  A + "cc8b082b2891ecfb5105c9dd61e82a2508755eea7888f892d581fa0177e7c657.jpg",
-  A + "a1de2f18559f540bc9a50ea86cf6dae6784e4f3c8a4718a75ac69dfd4e327c13.jpg",
-  A + "d52cd9d7c249123b44e5b42a9be57e888440d2051b6a5f7619474edc16ac1b1e.jpg",
-  A + "429292ae44a6c152f2854c010034d032dcc1657e7df1c596e133f33097eeb057.jpg",
-  A + "cdbcf20dad39d8489238607cdc500b0ee8746b18827cad0c486baf497a5ba4d1.jpg",
+  A + "54c201dbd2b4b97cff3596082d27269b1233ea0cdcbcb40709a26c5cec01435d.webp",
+  A + "0dbe48be276704022abe4fb3143dc8581cafca06b7087c602532afb6c9641ff6.webp",
+  A + "cc8b082b2891ecfb5105c9dd61e82a2508755eea7888f892d581fa0177e7c657.webp",
+  A + "a1de2f18559f540bc9a50ea86cf6dae6784e4f3c8a4718a75ac69dfd4e327c13.webp",
+  A + "d52cd9d7c249123b44e5b42a9be57e888440d2051b6a5f7619474edc16ac1b1e.webp",
+  A + "429292ae44a6c152f2854c010034d032dcc1657e7df1c596e133f33097eeb057.webp",
+  A + "cdbcf20dad39d8489238607cdc500b0ee8746b18827cad0c486baf497a5ba4d1.webp",
 ];
 const WORDS = ["Seven", "systems.", "Every", "repo", "public.", "Your", "move."];
 const FRAME = 170;
