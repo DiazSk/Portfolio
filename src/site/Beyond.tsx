@@ -25,12 +25,12 @@ export const ROWS: Row[] = [
       },
       paths: {
         photo: "/assets/site/kitchen-directions.webp",
-        alt: "Eight earlier directions for the same Home screen, A to H: an editorial page, a dark night kitchen, two fridge-door boards, two retro appliance panels, a toybox and a magnet board.",
-        caption: "A–H · the directions I explored first: Morning Market, Night Kitchen, Fridge Door, Fridge Door 2.0, Appliance, Toybox, Magnet Board, Appliance (principled)",
+        alt: "Five earlier directions for the same Home screen: an editorial page, a fridge-door board, a retro appliance panel, a magnet board and a refined appliance panel.",
+        caption: "Five of the eight directions I explored first · A Morning Market · D Fridge Door 2.0 · E Appliance · G Magnet Board · H Appliance (principled)",
       },
       facts: ["8 Home directions explored", "63 revisions on the one I chose", "13 screens redesigned · 3 new", "4 viewports × day and night"],
       chose: "Calm Wall: one quiet Home that answers \"what's next?\" at a glance, with the clock, today, tonight's dinner and the family's lists each in its own card",
-      over: "Seven louder directions I designed first, from an editorial page and a night kitchen to fridge doors, a toybox and retro appliance panels",
+      over: "Seven louder directions I designed first, from an editorial page to fridge doors, a magnet board and retro appliance panels",
       because: "The tablet hangs on a kitchen wall. It is read from 2–3 m and touched with wet or messy hands, so the clock and the next thing due have to carry across the room, and every control needs a 48 px target with space around it.",
       did: [
         "Explored eight Home directions side by side on one MagicPath canvas, then took Calm Wall through 63 revisions and a phone version.",

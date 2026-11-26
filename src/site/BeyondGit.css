@@ -104,7 +104,7 @@
 .gg-case-shot{display:grid;gap:14px}
 .gg-case figure{margin:0}
 .gg-case img{display:block;width:100%;height:auto;aspect-ratio:16/10;border:1px solid #f3eadb33}
-.gg-case-paths img{aspect-ratio:1592/498}
+.gg-case-paths img{aspect-ratio:1592/195}
 .gg-case-paths figcaption{line-height:1.6}
 .gg-case figcaption{margin-top:8px;font:500 var(--t-xs)/1.4 "Martian Mono",monospace;letter-spacing:.06em;color:#f3eadb99}
 .gg-case-facts{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
