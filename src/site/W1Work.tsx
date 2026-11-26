@@ -123,7 +123,7 @@ const SiuFigure = ({
 }: {
   photo?: string;
 }) => <figure className="w-figbox">
-    <img className={`w-fig ${photo ? "w-photo" : "w-gif"}`} src={photo ?? "/assets/site/771d49a422d936f28200d54081d1aaf259eb2e5fccdc1c7c8caf075dce1bbe6c.webp"} alt="Cristiano Ronaldo's SIU celebration" draggable={false} />
+    <img loading="lazy" decoding="async" className={`w-fig ${photo ? "w-photo" : "w-gif"}`} src={photo ?? "/assets/site/771d49a422d936f28200d54081d1aaf259eb2e5fccdc1c7c8caf075dce1bbe6c.webp"} alt="Cristiano Ronaldo's SIU celebration" draggable={false} />
     {!photo && <figcaption className="w-fig-cr">Video: Real Madrid C.F. · CC BY 3.0 · Wikimedia Commons</figcaption>}
   </figure>;
 
@@ -361,7 +361,7 @@ const Panel = ({
         <h3 id="w-pn-h" className="w-pn-h">{p.name}</h3>
         <p className="w-pn-tag">{p.tagline}</p>
         <figure className="w-pn-fig">
-          <img src={photoOf(p, i, 1200)} alt="" />
+          <img src={photoOf(p, i, 1200)} alt="" decoding="async" />
           <figcaption>{p.photo ? p.short : "Mockup photo · project images to come"}</figcaption>
         </figure>
         <div className="w-pn-met"><b>{p.metric.value}</b><span>{p.metric.label}</span></div>

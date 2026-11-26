@@ -170,7 +170,7 @@ export const WK7StackSwissAxis = () => {
                         style={{ "--j": j, "--x": `${sl.x}%`, "--y": `${sl.y}%`, "--r": `${sl.r}deg`, "--fx": `${side * (280 + j * 70)}px`, "--fy": `${(j - 1.5) * 150}px`,
                           "--fr": `${side * 140}deg`, "--ex": `${-side * (200 + j * 50)}px` } as CSSProperties}>
                         <span className="ax-stk-b" />
-                        <span className="ax-stk-f">{t.logos.length ? t.logos.map(src => <img key={src} src={src} alt="" draggable={false} />) : <b>{t.sym}</b>}</span>
+                        <span className="ax-stk-f">{t.logos.length ? t.logos.map(src => <img key={src} src={src} alt="" draggable={false} loading="lazy" decoding="async" />) : <b>{t.sym}</b>}</span>
                       </span>
                     );
                   })}
@@ -223,7 +223,7 @@ export const WK7StackSwissAxis = () => {
                   {l.tools.map(tool).map(t => (
                     <li key={t.name}>
                       <button type="button" className={open === t.name ? "on" : ""} aria-pressed={open === t.name} onClick={() => setOpen(o => (o === t.name ? null : t.name))}>
-                        <span className={`ax-logo sm${t.logos.length > 1 ? " two" : ""}`}>{t.logos.length ? t.logos.map(src => <img key={src} src={src} alt="" draggable={false} />) : <b>{t.sym}</b>}</span>
+                        <span className={`ax-logo sm${t.logos.length > 1 ? " two" : ""}`}>{t.logos.length ? t.logos.map(src => <img key={src} src={src} alt="" draggable={false} loading="lazy" decoding="async" />) : <b>{t.sym}</b>}</span>
                         <span>{t.name}<sup>{t.used.length}</sup></span>
                       </button>
                       {open === t.name && <p className="ax-sheet-b">{t.used.map(u => SHORT[u]).join(" · ")}</p>}

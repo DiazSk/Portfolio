@@ -285,22 +285,36 @@ export const D1AuraEditFallenAngels = () => {
     h.addEventListener("pointermove", onMove);
     h.addEventListener("pointerleave", onLeave);
 
-    /* preload everything, black until then, at most 1.2s */
     let dead = false;
-    const loads = [...ART, photoUrl].map(src => new Promise<void>(res => {
+    const startTick = () => {
+      if (dead || raf) return;
+      lastNow = performance.now();
+      raf = requestAnimationFrame(tick);
+    };
+    const preload = (srcs: string[]) => srcs.map(src => new Promise<void>(res => {
       const im = new Image();
       im.onload = im.onerror = () => res();
       im.src = src;
     }));
-    Promise.race([Promise.all(loads), new Promise(res => window.setTimeout(res, 1200))]).then(() => {
-      if (dead) return;
-      if (phase === "wait") {
-        phase = "cold";
-        coldAt = clk;
-      }
-      lastNow = performance.now();
-      raf = requestAnimationFrame(tick);
-    });
+    /* phones open on the portrait: no cold open to wait through, so the largest paint lands at once. The art still
+       cuts in behind it, fetched only after the page has loaded so it never competes with the portrait. */
+    if (matchMedia("(max-width: 760px)").matches) {
+      land(true);
+      startTick();
+      const later = () => window.setTimeout(() => preload(ART), 1500);
+      if (document.readyState === "complete") later();
+      else window.addEventListener("load", later, { once: true });
+    } else {
+      /* desktop: preload everything, black until then, at most 1.2s, then the cold open */
+      Promise.race([Promise.all(preload([...ART, photoUrl])), new Promise(res => window.setTimeout(res, 1200))]).then(() => {
+        if (dead) return;
+        if (phase === "wait") {
+          phase = "cold";
+          coldAt = clk;
+        }
+        startTick();
+      });
+    }
     return () => {
       dead = true;
       cancelAnimationFrame(raf);
@@ -335,7 +349,7 @@ export const D1AuraEditFallenAngels = () => {
         </div>
         <div className="f-fig">
           <img src={photoUrl} alt="Portrait of Zaid Shaikh in dark sunglasses and a black t-shirt" width={1500} height={1350} />
-          <div className="f-data" aria-hidden="true"><img src={dataUrl} alt="" width={1500} height={1350} /></div>
+          <div className="f-data" aria-hidden="true"><img src={dataUrl} alt="" width={1500} height={1350} fetchPriority="low" decoding="async" /></div>
           <div className="ae-vf" aria-hidden="true"><i className="tl" /><i className="tr" /><i className="bl" /><i className="br" /></div>
         </div>
         <div className="f-melt" />

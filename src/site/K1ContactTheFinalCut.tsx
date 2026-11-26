@@ -92,7 +92,7 @@ export const K1ContactTheFinalCut = () => {
     <div className="kx">
       <section ref={root} id="contact" className={`k1 ${phase}${hold.state !== "idle" ? " " + hold.state : ""}`} aria-label="Contact">
         <div className="k1-field" aria-hidden>
-          <img className="k1-art" src={phase === "cut" ? ART[i % ART.length] : ART[0]} alt="" />
+          <img className="k1-art" loading="lazy" decoding="async" src={phase === "cut" ? ART[i % ART.length] : ART[0]} alt="" />
           <div className="k1-vig" />
         </div>
 
