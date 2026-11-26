@@ -2,7 +2,6 @@
 :root{--u-ink:#0a0a09;--u-paper:#f3eadb;--u-hot:#ff4a2a}
 /* one section-number style everywhere: the number in the red, then the name */
 .uni .ax-num,.uni .sw-sec,.uni .bd-num,.uni .k1-num,.uni .ps-top b{font-weight:600;color:var(--u-hot);margin-right:.5em}
-.uni .ax-num,.uni .sw-sec{color:#c5170c} /* these two sit on paper: the deeper red reads 5.0:1 there */
 /* one type scale: every section's small/mid text snaps to these seven steps; display sizes stay per section */
 :root{--t-xs:9.5px;--t-sm:10.5px;--t-md:13px;--t-body:clamp(15px,1.2vw,18px);--t-lede:clamp(18px,1.6vw,26px);
   --t-h4:clamp(22px,2.2vw,34px);--t-h3:clamp(28px,3.2vw,52px);

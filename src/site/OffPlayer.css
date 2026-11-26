@@ -47,7 +47,7 @@
 
 .mp{position:relative}
 .mp-side{grid-column:8 / 12;align-self:end;display:flex;flex-direction:column;gap:10px;padding-top:16px;border-top:2px solid #0a0a09}
-.mp-side small{font:500 var(--t-sm)/1 "Martian Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:#c5170c}
+.mp-side small{font:500 var(--t-sm)/1 "Martian Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:#ff4a2a}
 .mp-side b{font:900 var(--t-h3)/.95 "Archivo",sans-serif;letter-spacing:-.03em}
 .mp-side span{font:400 italic var(--t-lede)/1.25 "Instrument Serif",serif;max-width:26ch}
 @media (max-width:760px){
