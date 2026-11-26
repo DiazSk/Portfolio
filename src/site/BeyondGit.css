@@ -64,7 +64,7 @@
 
 /* the log as a git client's table: graph | commit | what it proves. Wide screens fill with meaning, not air. */
 .gg-heads,.gg-c{grid-template-columns:64px minmax(0,1fr) minmax(0,1fr)}
-.gg-heads{display:grid;column-gap:clamp(12px,2vw,28px);padding:0 0 10px;font:500 var(--t-xs)/1 "Martian Mono",monospace;letter-spacing:.16em;text-transform:uppercase;color:#f3eadb66}
+.gg-heads{display:grid;column-gap:clamp(12px,2vw,28px);padding:0 0 10px;font:500 var(--t-xs)/1 "Martian Mono",monospace;letter-spacing:.16em;text-transform:uppercase;color:#f3eadb8c} /* paper at 55%: 5.4:1 on ink (40% read 3.3:1) */
 .gg-main .gg-msg,.gg-note{grid-column:2 / -1}
 .gg-proof{grid-column:3;align-self:center;margin:0;flex-direction:column;align-items:flex-start;gap:12px;opacity:var(--k);transform:translateX(calc((1 - var(--k)) * 24px))}
 .gg-role{font-size:clamp(30px,3.4vw,58px)}
@@ -87,24 +87,40 @@
 .gg-who{grid-column:3;align-self:center;font:500 var(--t-xs)/1 "Martian Mono",monospace;letter-spacing:.16em;text-transform:uppercase;color:#f3eadb59;opacity:var(--k)}
 @media (max-width:860px){.gg-who{display:none}.gg-main .gg-msg{grid-column:2}}
 
-/* the case card under a commit (Kitchen): opens in place, ink on ink with paper rules, one heat */
-.gg-case{margin:16px 0 0;max-width:72ch;border-top:1px solid #f3eadb33}
-.gg-case summary{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;cursor:pointer;list-style:none;font:600 var(--t-xs)/1.3 "Martian Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--hot)}
+/* the case card under a commit (Kitchen): its own grid row, opening in place; ink on ink with paper rules, one heat */
+.gg-case{grid-column:2 / -1;grid-row:2;margin:18px 0 0;border-top:1px solid #f3eadb33;opacity:var(--k)}
+.gg-br .gg-g{grid-row:1 / span 2}
+.gg-br .gg-body,.gg-br .gg-proof{grid-row:1}
+.gg-case summary{display:flex;align-items:center;gap:12px;padding:14px 0;cursor:pointer;list-style:none;font:600 var(--t-xs)/1.3 "Martian Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--hot)}
 .gg-case summary::-webkit-details-marker{display:none}
-.gg-case summary span{font-size:var(--t-md);transition:transform .2s}
-.gg-case[open] summary span{transform:rotate(45deg)}
+.gg-case summary i{margin-left:auto;font-style:normal;font-size:var(--t-md);line-height:1;transition:transform .2s}
+.gg-case[open] summary i{transform:rotate(45deg)}
+.gg-case-x,.gg-case[open] .gg-case-o{display:none}
+.gg-case[open] .gg-case-x{display:inline}
+.gg-case summary:hover{color:var(--paper)}
 .gg-case summary:focus-visible{outline:2px solid var(--hot);outline-offset:4px}
-.gg-case-in{display:grid;gap:18px;padding:4px 0 8px}
+/* open: the screen and its facts on the left, the decision on the right */
+.gg-case-in{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(20px,3vw,48px);align-items:start;padding:6px 0 8px}
+.gg-case-shot{display:grid;gap:14px}
 .gg-case figure{margin:0}
 .gg-case img{display:block;width:100%;height:auto;aspect-ratio:16/10;border:1px solid #f3eadb33}
-.gg-case figcaption{margin-top:6px;font:500 var(--t-xs)/1.4 "Martian Mono",monospace;color:#f3eadb80}
+.gg-case figcaption{margin-top:8px;font:500 var(--t-xs)/1.4 "Martian Mono",monospace;letter-spacing:.06em;color:#f3eadb99}
 .gg-case-facts{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
 .gg-case-facts li{padding:5px 9px;font:600 var(--t-xs)/1.3 "Martian Mono",monospace;letter-spacing:.06em;color:var(--paper);box-shadow:inset 0 0 0 1px #f3eadb4d}
-.gg-case-dec{display:grid;gap:10px;margin:0}
-.gg-case-dec div{display:grid;grid-template-columns:7.5em minmax(0,1fr);gap:12px}
-.gg-case-dec dt{font:600 var(--t-xs)/1.7 "Martian Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--hot)}
+.gg-case-txt{display:grid;gap:20px}
+.gg-case-dec{display:grid;margin:0;border-top:2px solid var(--paper)}
+.gg-case-dec div{display:grid;grid-template-columns:6.5em minmax(0,1fr);gap:14px;padding:12px 0;border-bottom:1px solid #f3eadb1f}
+.gg-case-dec dt{font:600 var(--t-xs)/1.9 "Martian Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--hot)}
 .gg-case-dec dd{margin:0;font:400 var(--t-md)/1.5 "Archivo",sans-serif;color:var(--paper)}
-.gg-case-did{margin:0;padding-left:1.1em;display:grid;gap:8px;font:400 var(--t-md)/1.5 "Archivo",sans-serif;color:#f3eadbcc}
-.gg-case-tech{margin:0;font:500 var(--t-xs)/1.6 "Martian Mono",monospace;color:#f3eadb80}
-@media (max-width:760px){.gg-case-dec div{grid-template-columns:1fr;gap:2px}}
-@media (prefers-reduced-motion:reduce){.gg-case summary span{transition:none}}
+.gg-case-did{margin:0;padding:0;list-style:none;display:grid;gap:10px;color:#f3eadbcc}
+.gg-case-did li{position:relative;padding-left:16px}
+.gg-case-did li::before{content:"";position:absolute;left:0;top:.62em;width:6px;height:6px;background:var(--hot)}
+.gg-case-tech{margin:0;font:500 var(--t-xs)/1.6 "Martian Mono",monospace;letter-spacing:.04em;color:#f3eadb99}
+@media (max-width:1100px){.gg-case-in{grid-template-columns:1fr}}
+@media (max-width:860px){
+  .gg-case{grid-column:2;grid-row:3}
+  .gg-br .gg-g{grid-row:1 / span 3}
+  .gg-br .gg-proof{grid-row:2}
+}
+@media (max-width:760px){.gg-case-dec div{grid-template-columns:1fr;gap:4px}}
+@media (prefers-reduced-motion:reduce){.gg-case summary i{transition:none}}

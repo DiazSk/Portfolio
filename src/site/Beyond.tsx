@@ -14,7 +14,7 @@ export const ROWS: Row[] = [
   { role: "Product engineering", via: "Chatflow · TripMate", href: "https://github.com/DiazSk/chatflow-messaging-system", status: "Shipped",
     line: "Two products shipped end to end: a messaging system that handles 21,091 msg/s, and an AI planner in Next.js." },
   { role: "UI/UX & product design", via: "Kitchen", status: "Shipping",
-    line: "Redesigning my uncle's family kitchen-tablet app: every screen so far, from UX rules I wrote for wet hands and 2–3 m glances, plus three new features. Still in progress.",
+    line: "Redesigning a family's kitchen-tablet app: every screen so far, from UX rules I wrote for wet hands and 2–3 m glances, plus three new features. Still in progress.",
     case: {
       photo: "/assets/site/kitchen-daycare.webp",
       alt: "Kitchen's Daycare screen on the wall tablet: a week of meals, a flagged peanut dish with a one-tap swap, the daycare shopping list and a 9:00 clock. Demo data.",
@@ -80,7 +80,7 @@ export const BeyondHead = ({ tag }: { tag: string }) => <>
   <header className="bd-top"><span><b className="bd-num">03</b> Beyond the pipeline</span><span>{tag}</span></header>
   <div className="bd-intro">
     <h2 id="bd-h">Beyond the <em>pipeline.</em></h2>
-    <p>Data engineering is the job I'm going for first. I also build the products around the data: TripMate was my first product built with Claude Code, and since then I've been shipping apps end to end and designing them too, most recently a redesign of every screen of my uncle's family kitchen app.</p>
+    <p>Data engineering is the job I'm going for first. I also build the products around the data: TripMate was my first product built with Claude Code, and since then I've been shipping apps end to end and designing them too, most recently a redesign of every screen of a family's kitchen app.</p>
   </div>
 </>;
 export const BeyondNote = () => <p className="bd-note">You're looking at the latest one: this site, designed in MagicPath and built with Claude Code.</p>;

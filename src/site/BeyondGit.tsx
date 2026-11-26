@@ -41,17 +41,21 @@ const COMMITS: Commit[] = [
    needs no state; the screenshot loads only when it is opened */
 const CaseCard = ({ k, name }: { k: Case; name: string }) => (
   <details className="gg-case">
-    <summary>Open the case <span aria-hidden>+</span></summary>
+    <summary><span className="gg-case-o">Open the case</span><span className="gg-case-x">Close the case</span><i aria-hidden>+</i></summary>
     <div className="gg-case-in">
-      <figure><img src={k.photo} alt={k.alt} loading="lazy" decoding="async" width={1280} height={800} /><figcaption>{name} · demo data</figcaption></figure>
-      <ul className="gg-case-facts">{k.facts.map(f => <li key={f}>{f}</li>)}</ul>
-      <dl className="gg-case-dec">
-        <div><dt>Chose</dt><dd>{k.chose}</dd></div>
-        <div><dt>Over</dt><dd>{k.over}</dd></div>
-        <div><dt>Because</dt><dd>{k.because}</dd></div>
-      </dl>
-      <ul className="gg-case-did">{k.did.map(d => <li key={d}>{d}</li>)}</ul>
-      <p className="gg-case-tech">{k.tech}</p>
+      <div className="gg-case-shot">
+        <figure><img src={k.photo} alt={k.alt} loading="lazy" decoding="async" width={1280} height={800} /><figcaption>{name} · demo data</figcaption></figure>
+        <ul className="gg-case-facts">{k.facts.map(f => <li key={f}>{f}</li>)}</ul>
+      </div>
+      <div className="gg-case-txt">
+        <dl className="gg-case-dec">
+          <div><dt>Chose</dt><dd>{k.chose}</dd></div>
+          <div><dt>Over</dt><dd>{k.over}</dd></div>
+          <div><dt>Because</dt><dd>{k.because}</dd></div>
+          <div><dt>Did</dt><dd><ul className="gg-case-did">{k.did.map(d => <li key={d}>{d}</li>)}</ul></dd></div>
+        </dl>
+        <p className="gg-case-tech">{k.tech}</p>
+      </div>
     </div>
   </details>
 );
@@ -118,9 +122,10 @@ export const BeyondGit = () => {
                   {c.staged && <span className="gg-pill staged">staged</span>}
                 </p>
                 <p className="gg-line">{c.line}</p>
-                {c.case && <CaseCard k={c.case} name={c.subject} />}
               </div>
               <p className="gg-proof"><span className="gg-role">{c.role}</span><span className="gg-st">{c.status}</span></p>
+              {/* its own row under the commit, so the proof stays beside (or, on phones, right under) its commit */}
+              {c.case && <CaseCard k={c.case} name={c.subject} />}
             </li>
           );
         })}
