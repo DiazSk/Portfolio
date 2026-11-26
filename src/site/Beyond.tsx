@@ -6,7 +6,9 @@ import "./Beyond.css";
    still being learned. Every line is from Zaid or from the project data; nothing is claimed without a build. */
 export type Status = "Shipped" | "Shipping" | "Learning";
 /* a commit can carry a short case study, for builds whose repo the reader can't open */
-export type Case = { photo: string; alt: string; facts: string[]; chose: string; over: string; because: string; did: string[]; tech: string };
+/* shot: the screen it became; paths: the directions explored on the way there (both on demo data, names changed) */
+export type Shot = { photo: string; alt: string; caption: string };
+export type Case = { shot: Shot; paths?: Shot; facts: string[]; chose: string; over: string; because: string; did: string[]; tech: string };
 export type Row = { role: string; via: string; href?: string; line: string; status: Status; case?: Case };
 export const ROWS: Row[] = [
   { role: "AI / LLM engineering", via: "TripMate", href: "https://github.com/DiazSk/tripmate", status: "Shipped",
@@ -14,20 +16,29 @@ export const ROWS: Row[] = [
   { role: "Product engineering", via: "Chatflow · TripMate", href: "https://github.com/DiazSk/chatflow-messaging-system", status: "Shipped",
     line: "Two products shipped end to end: a messaging system that handles 21,091 msg/s, and an AI planner in Next.js." },
   { role: "UI/UX & product design", via: "Kitchen", status: "Shipping",
-    line: "Redesigning a family's kitchen-tablet app: every screen so far, from UX rules I wrote for wet hands and 2–3 m glances, plus three new features. Still in progress.",
+    line: "Designing a family's kitchen-tablet app: eight Home directions explored side by side on a MagicPath canvas, one carried through 63 revisions, then every screen rebuilt from UX rules I wrote for wet hands and 2–3 m glances. Still in progress.",
     case: {
-      photo: "/assets/site/kitchen-daycare.webp",
-      alt: "Kitchen's Daycare screen on the wall tablet: a week of meals, a flagged peanut dish with a one-tap swap, the daycare shopping list and a 9:00 clock. Demo data.",
-      facts: ["13 screens redesigned · 3 new", "122 files in one pull request", "4 viewports × day and night", "Private repo · a family's app"],
-      chose: "Two zones: a Glance view with no controls for reading across the room, and a Touch board for arm's length",
-      over: "One screen that tries to serve both distances",
-      because: "The tablet hangs on a kitchen wall. It is read from 2–3 m, touched with wet or messy hands, and used by two kids who can't read yet. A 96 px clock and the next thing due have to carry across the room, while the full board needs 48 px targets and space, so Glance shows only the time, the day, what's next and any running timer.",
+      shot: {
+        photo: "/assets/site/kitchen-home.webp",
+        alt: "Kitchen's Calm Wall home screen on the wall tablet: a large 5:40 clock and greeting, today's events, tonight's dinner, shopping, reminders, lunchboxes and family notes, with labelled tabs along the bottom. Demo data, names changed.",
+        caption: "Calm Wall · the Home it became",
+      },
+      paths: {
+        photo: "/assets/site/kitchen-directions.webp",
+        alt: "Eight earlier directions for the same Home screen, A to H: an editorial page, a dark night kitchen, two fridge-door boards, two retro appliance panels, a toybox and a magnet board.",
+        caption: "A–H · the directions I explored first: Morning Market, Night Kitchen, Fridge Door, Fridge Door 2.0, Appliance, Toybox, Magnet Board, Appliance (principled)",
+      },
+      facts: ["8 Home directions explored", "63 revisions on the one I chose", "13 screens redesigned · 3 new", "4 viewports × day and night"],
+      chose: "Calm Wall: one quiet Home that answers \"what's next?\" at a glance, with the clock, today, tonight's dinner and the family's lists each in its own card",
+      over: "Seven louder directions I designed first, from an editorial page and a night kitchen to fridge doors, a toybox and retro appliance panels",
+      because: "The tablet hangs on a kitchen wall. It is read from 2–3 m and touched with wet or messy hands, so the clock and the next thing due have to carry across the room, and every control needs a 48 px target with space around it.",
       did: [
-        "Wrote the UX rules before the screens: a six-step type scale from 14 to 96 px, 48 px minimum targets (96 px for the kids), one job per colour, 4.5:1 contrast, and a 5-second Undo on every check-off, timer stop and star.",
-        "Redesigned every screen in one pull request and added school lunches, a Morning board that turns Home into each kid's countdown on school mornings, and a Family board.",
-        "Checked every route at four viewports from 1280×800 down to 360×780 in day and night themes; 97 tests, tsc and lint pass, with sign-in untouched and every database change additive.",
+        "Explored eight Home directions side by side on one MagicPath canvas, then took Calm Wall through 63 revisions and a phone version.",
+        "Wrote the UX rules before the screens: a six-step type scale from 14 to 96 px, 48 px minimum targets, one job per colour, 4.5:1 contrast, and a 5-second Undo on every check-off, timer stop and star.",
+        "Split the wall into two zones: a Glance view with no controls for reading across the room, and the Touch board for arm's length.",
+        "Rebuilt every screen in code in one pull request, adding school lunches, a Morning board and a Family board, then checked every route at four viewports in day and night themes.",
       ],
-      tech: "Next.js · React · TypeScript · Tailwind CSS · Framer Motion · Postgres · MagicPath · Claude Code",
+      tech: "MagicPath · Claude Code · Next.js · React · TypeScript · Tailwind CSS · Framer Motion · Postgres",
     } },
   { role: "Design engineering", via: "This site", status: "Shipping",
     line: "Explored through dozens of directions in MagicPath, then built into one system with Claude Code." },

@@ -44,8 +44,9 @@ const CaseCard = ({ k, name }: { k: Case; name: string }) => (
     <summary><span className="gg-case-o">Open the case</span><span className="gg-case-x">Close the case</span><i aria-hidden>+</i></summary>
     <div className="gg-case-in">
       <div className="gg-case-shot">
-        <figure><img src={k.photo} alt={k.alt} loading="lazy" decoding="async" width={1280} height={800} /><figcaption>{name} · demo data</figcaption></figure>
+        <figure><img src={k.shot.photo} alt={k.shot.alt} loading="lazy" decoding="async" width={1600} height={1000} /><figcaption>{k.shot.caption} · {name} · demo data, names changed</figcaption></figure>
         <ul className="gg-case-facts">{k.facts.map(f => <li key={f}>{f}</li>)}</ul>
+        {k.paths && <figure className="gg-case-paths"><img src={k.paths.photo} alt={k.paths.alt} loading="lazy" decoding="async" width={1592} height={498} /><figcaption>{k.paths.caption}</figcaption></figure>}
       </div>
       <div className="gg-case-txt">
         <dl className="gg-case-dec">
