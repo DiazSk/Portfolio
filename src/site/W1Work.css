@@ -270,7 +270,9 @@
 /* ---------- the SIU figure: an outline that draws itself as the line wraps it (--d), standing in for "seven" ---------- */
 .w-frame.fig{padding:.06em .2em .04em .2em}
 .w-figbox{margin:0;position:relative}
-.w-fig{display:block;height:2.2em;width:auto}
+/* 1.7em, not 2.2em: in the wrap layout the photo sits beside poster 03, and the camera's zoom onto that poster
+   blew a 2.2em photo up to 871px, past the visible stage, cropping it; at 1.7em it peaks near 670px and stays whole */
+.w-fig{display:block;height:1.7em;width:auto}
 .w-gif{aspect-ratio:4/5;object-fit:cover;background:var(--ink);user-select:none}
 .w-photo{aspect-ratio:3/4;object-fit:cover;background:var(--ink);user-select:none}
 .w-fig-cr{position:absolute;left:0;top:100%;margin-top:.5em;width:max-content;max-width:16em;font:500 .045em/1.3 "Archivo",sans-serif;letter-spacing:.02em;text-transform:none;color:var(--ink);opacity:.55}
