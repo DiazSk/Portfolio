@@ -1,9 +1,9 @@
 import { useMemo } from "react";
 
-/* mockup photography from Unsplash (free licence) until Zaid's own photos arrive; the SIU still is his pick */
+/* mockup photography from Unsplash (free licence) until Zaid's own photos arrive; the Cristiano still (No. 7, finger raised) is his pick */
 const U = (id: string) => (w: number) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=72`;
 export const PH = {
-  siu: (() => "/assets/site/25a95b185d3ccc533f42b8546444da5c7494660b961baf7d7a54c626a94fe0f4.webp") as (w: number) => string,
+  siu: (() => "/assets/site/754cead64b23886a0fe912aae78111c8b6f1f8c2f943d3197870c2f446c22c57.webp") as (w: number) => string,
   seattle: U("photo-1502175353174-a7a70e73b362"),
   la: U("photo-1580655653885-65763b2597d0"),
   vegas: U("photo-1581351721010-8cf859cb14a4"),
