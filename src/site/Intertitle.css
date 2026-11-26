@@ -4,6 +4,7 @@
 .itl-card{margin:0;max-width:21ch;font:400 italic clamp(40px,6.2vw,112px)/1.02 "Instrument Serif",serif;letter-spacing:-.015em;text-align:center}
 .itl-line{display:block;text-wrap:balance}
 .itl-line.l1{color:#ff4a2a}
+.itl-paper .itl-line.l1{color:#c5170c} /* on paper the bright red reads 2.8:1; this one 5.0:1 */
 /* each word surfaces in turn: faint until its moment, then full, settling up a few pixels */
 .itl-w{--k:clamp(0, (var(--p) * 1.25 - var(--i) / var(--n)) * var(--n) / 2.2, 1);
   display:inline-block;white-space:pre;opacity:calc(.12 + .88 * var(--k));transform:translateY(calc((1 - var(--k)) * .18em));filter:blur(calc((1 - var(--k)) * 4px))}
