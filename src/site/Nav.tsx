@@ -255,7 +255,7 @@ export const Nav = ({
       <span className="na-mark" role="img" aria-label="ZS">ZS</span>
       <div className="na-right">
         <span className="na-clock f-mono"><span className="na-sea">Seattle </span>{clock} PT</span>
-        <button ref={btn} type="button" className="na-btn" aria-expanded={isOpen} onClick={isOpen ? close : open}>
+        <button ref={btn} type="button" className="na-btn" aria-label={isOpen ? "Close menu" : "Menu"} aria-expanded={isOpen} onClick={isOpen ? close : open}>
           <svg viewBox="0 0 18 14" width="18" height="14" aria-hidden="true">
             {isOpen ? <path d="M2 1l14 12M16 1L2 13" stroke="currentColor" strokeWidth="2.4" fill="none" /> : <path d="M0 3h18M0 11h18" stroke="currentColor" strokeWidth="2.4" fill="none" />}
           </svg>

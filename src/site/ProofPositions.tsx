@@ -111,7 +111,8 @@ export const ProofPositions = () => {
             </h3>
             <div className="ps-foot">
               <p className="ps-receipt"><small>{pad2(i + 1)} · Receipt · {c.tag}</small>{c.receipt}</p>
-              <p className="ps-metric" aria-label={`${c.m.to}${c.m.suf}: ${c.m.label}`}>
+              <p className="ps-metric">
+                <span className="u-sr">{`${c.m.to}${c.m.suf}: ${c.m.label}`}</span>
                 <b aria-hidden="true"><span className="ps-n">{c.m.to}</span>{c.m.suf.startsWith("/") ? <><i className="ps-sl">/</i>{c.m.suf.slice(1)}</> : c.m.suf}</b>
                 <small aria-hidden="true">{c.m.label}</small>
               </p>

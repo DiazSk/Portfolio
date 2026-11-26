@@ -855,16 +855,16 @@ const Journey = ({
           <p className="w-sub">Seven systems, every repo public. The line runs through each one; open any poster for the decision behind it.</p>
           {PROJECTS.map((p, i) => <button key={p.name} type="button" className={`w-post v${i % 3}${open === i ? " cur" : ""}`} onClick={() => show(i)} onFocus={e => {
           if (e.currentTarget.matches(":focus-visible")) goTo(i);
-        }} aria-label={`${p.name}. ${p.metric.value} ${p.metric.label}. Open the details.`}>
+        }}>
             
               <span className="w-p-img">
                 <img src={photoOf(p, i)} alt="" loading="lazy" />
-                {!p.photo && <em className="w-p-mock">Mockup photo</em>}
+                {!p.photo && <em className="w-p-mock" aria-hidden="true">Mockup photo</em>}
               </span>
               <span className="w-p-body">
                 <span className="w-p-top"><b>P·{pad2(i + 1)}</b><span>{p.category}</span></span>
                 <span className="w-p-title">{p.short.split(" ").map((wd, k) => <span key={k}>{wd}</span>)}</span>
-                <span className="w-p-story">
+                <span className="w-p-story" aria-hidden="true">{/* the panel spells the decision out; here it would bury the name */}
                   <span className="w-p-k">Chose</span>
                   <span className="w-p-chose">{p.decision.chose}</span>
                   <span className="w-p-k o">Over</span>
@@ -880,8 +880,9 @@ const Journey = ({
         <div className="w-strip">
           <span className="w-hud" aria-hidden="true">FOLLOW::THE DATA</span>
           <nav className="w-rail" aria-label="Projects">
-            {PROJECTS.map((p, i) => <button key={p.name} type="button" className="w-tick" onClick={() => goTo(i)} aria-label={`${p.short}, ${p.metric.value} ${p.metric.label}`}>
-                <i>{pad2(i + 1)}</i><b>{p.short.slice(0, 3).toUpperCase()}</b><span>{p.short}</span><em>{p.metric.value}</em>
+            {PROJECTS.map((p, i) => <button key={p.name} type="button" className="w-tick" onClick={() => goTo(i)}>
+                {/* named by its visible text, plus the full project for screen readers (a <small>: .w-tick hides its spans) */}
+                <i>{pad2(i + 1)}</i><b>{p.short.slice(0, 3).toUpperCase()}</b><span>{p.short}</span><em>{p.metric.value}</em><small className="u-sr">, {p.short}, {p.metric.value} {p.metric.label}</small>
               </button>)}
           </nav>
           <i className="w-rail-t" aria-hidden="true"><b className="w-rail-f" /></i>

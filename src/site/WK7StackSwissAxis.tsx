@@ -197,7 +197,7 @@ export const WK7StackSwissAxis = () => {
 
       {/* 3 · the close: the line converges, the wordmark ghosts into the corners */}
       <div className="ax-outro" data-sc="outro">
-        <p className="ax-close" aria-label="Every one shipped."><span aria-hidden>Eve<span className="ax-kern">r</span>y one</span><span aria-hidden><em>shipped.</em></span></p>
+        <p className="ax-close"><i className="u-sr">Every one shipped.</i><span aria-hidden>Eve<span className="ax-kern">r</span>y one</span><span aria-hidden><em>shipped.</em></span></p>
         <p className="ax-ghost" aria-hidden><span>Twenty</span><span>one</span></p>
         <button type="button" className="ax-again" onClick={openSheet}><span>See the whole kit on one sheet</span><b>⊞</b></button>
         <p className="ax-note">Superscript = builds shipped with the tool · grouped by layer, not alphabet · click a tool for its builds</p>

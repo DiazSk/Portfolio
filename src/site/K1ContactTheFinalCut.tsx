@@ -114,8 +114,7 @@ export const K1ContactTheFinalCut = () => {
 
           <button type="button" className={`k1-mail${aim ? " aim" : ""}`} {...hold.handlers}
             onPointerMove={e => { if (e.pointerType !== "mouse") return; const r = e.currentTarget.getBoundingClientRect(); aimAt.current = { x: e.clientX - r.left, y: e.clientY - r.top }; if (!aim) setAim(true); }}
-            onPointerLeave={() => { hold.handlers.onPointerLeave(); setAim(false); }}
-            aria-label={`Email address ${EMAIL}. Click, or press Enter, to copy it.`}>
+            onPointerLeave={() => { hold.handlers.onPointerLeave(); setAim(false); }}>
             <span className="k1-l1">{USER}@</span>
             <span className="k1-l2">{HOST}<span ref={liq} className="k1-liq" aria-hidden>{HOST}</span></span>
             <span className="k1-kbd kx-mono">{hold.state === "idle" ? "Press Enter to copy" : bubble}</span>

@@ -73,8 +73,8 @@
 /* ---------- 3 · outro: converge, then ghost into the corners ---------- */
 .ax-outro{position:relative;min-height:90vh;display:flex;flex-direction:column;justify-content:center;padding:0 4vw;overflow:hidden}
 .ax-close{margin:0;display:flex;flex-direction:column;font-weight:900;font-size:clamp(72px,12vw,210px);line-height:.84;letter-spacing:-.06em}
-.ax-close span:first-child{transform:translateX(calc((1 - min(1,var(--p) * 1.25)) * -30vw))}
-.ax-close span:last-child{align-self:flex-end;transform:translateX(calc((1 - min(1,var(--p) * 1.25)) * 30vw))}
+.ax-close > span:first-of-type{transform:translateX(calc((1 - min(1,var(--p) * 1.25)) * -30vw))}
+.ax-close > span:last-of-type{align-self:flex-end;transform:translateX(calc((1 - min(1,var(--p) * 1.25)) * 30vw))}
 .ax-close em{font:400 italic 1.05em/1 "Instrument Serif",serif;letter-spacing:-.03em;color:var(--red)}
 .ax-ghost{position:absolute;left:0;right:0;bottom:-.18em;margin:0;display:flex;justify-content:space-between;padding:0 2vw;pointer-events:none;
   font-weight:900;font-size:clamp(80px,15vw,260px);line-height:1;letter-spacing:-.06em;color:transparent;-webkit-text-stroke:1px rgba(10,10,9,.16)}
