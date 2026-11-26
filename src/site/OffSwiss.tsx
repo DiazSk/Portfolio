@@ -82,15 +82,37 @@ const PANELS: {
 }];
 export const OffSwiss = () => {
   const root = useRef<HTMLElement>(null);
-  useScrub(root);
+  /* the scroll moves ~27 elements: write their transforms directly. Writing --p on the section made every element
+     inside it (posters, player, lists) restyle on every frame, which is what stuttered */
+  const moving = useRef<{ track: HTMLElement; rule: HTMLElement; panels: { parts: [HTMLElement, number][]; posters: HTMLElement[] }[] } | null>(null);
+  useScrub(root, p => {
+    const el = root.current;
+    if (!el) return;
+    const m = moving.current ??= {
+      track: el.querySelector<HTMLElement>(".sw-track")!,
+      rule: el.querySelector<HTMLElement>(".sw-rule i")!,
+      panels: [...el.querySelectorAll<HTMLElement>(".sw-panel")].map(panel => ({
+        /* [element, vw it travels per panel]: the number drifts slow, the word runs fast, the body barely moves */
+        parts: [[".sw-num", 18], [".sw-word", -26], [".sw-body", 6]].map(([s, k]) => [panel.querySelector<HTMLElement>(s as string)!, k as number]),
+        posters: [...panel.querySelectorAll<HTMLElement>(".gp-t")]
+      }))
+    };
+    const flat = matchMedia("(max-width: 760px)").matches; /* phones stack the panels; the CSS owns them there */
+    const at = p * (m.panels.length - 1);
+    m.track.style.transform = flat ? "" : `translate3d(${-at * 100}vw,0,0)`;
+    m.rule.style.transform = `scaleX(${p})`;
+    m.panels.forEach(({ parts, posters }, i) => {
+      const off = Math.max(-1.5, Math.min(1.5, at - i)); /* past 1.5 a panel is off screen either way */
+      for (const [e, k] of parts) e.style.transform = flat ? "" : `translate3d(${off * k}vw,0,0)`;
+      posters.forEach((e, k) => { e.style.transform = flat ? "" : `translate3d(0,${off * (k - 2.5) * 6}svh,0)`; });
+    });
+  }, false);
   return <section ref={root} id="off-the-clock" className="sw" aria-label="Off the clock" style={{
     "--n": PANELS.length
   } as CSSProperties}>
       <div className="sw-stage">
         <div className="sw-track">
-          {PANELS.map((p, i) => <article key={p.id} className={`sw-panel p${p.id}`} style={{
-          "--i": i
-        } as CSSProperties}>
+          {PANELS.map(p => <article key={p.id} className={`sw-panel p${p.id}`}>
               <header className="sw-head"><span>{p.id}</span><span>{p.label}</span><span><b className="sw-sec">04</b> Off the clock</span></header>
               <span className="sw-num" aria-hidden="true">{p.id}</span>
               <h3 className="sw-word">{p.word}</h3>

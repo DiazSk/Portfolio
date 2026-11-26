@@ -14,7 +14,7 @@ export function nearScreen(el: Element) {
 
 /* while a tall section scrolls past its pinned stage, write its progress (0 → 1) to --p every frame;
    it reads the page position, so it rides the same eased glide as the rest of the page */
-export const useScrub = (ref: RefObject<HTMLElement | null>, on?: (p: number) => void) => {
+export const useScrub = (ref: RefObject<HTMLElement | null>, on?: (p: number) => void, writeVar = true) => {
   const cb = useRef(on);
   cb.current = on;
   useEffect(() => {
@@ -31,7 +31,7 @@ export const useScrub = (ref: RefObject<HTMLElement | null>, on?: (p: number) =>
       const p = still || phone.matches ? 1 : clamp01(span > 0 ? -r.top / span : 1);
       if (Math.abs(p - last) > 1e-4) {
         last = p;
-        el.style.setProperty("--p", p.toFixed(4));
+        if (writeVar) el.style.setProperty("--p", p.toFixed(4));
         cb.current?.(p);
       }
       raf = requestAnimationFrame(tick);

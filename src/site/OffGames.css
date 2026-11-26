@@ -2,8 +2,7 @@
 .gp{grid-column:1 / -1;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:clamp(8px,1vw,16px);margin:0;padding:0;list-style:none}
 .gp-t{--bg:#0a0a09; --fg:#f3eadb; --ac:#ff4a2a;
   position:relative;aspect-ratio:3/4.4;max-height:54svh;box-sizing:border-box;display:grid;grid-template-rows:auto minmax(0,1fr) auto;
-  background:var(--bg);color:var(--fg);overflow:hidden;
-  transform:translateY(calc(var(--off,0) * (var(--k) - 2.5) * 6svh))}
+  background:var(--bg);color:var(--fg);overflow:hidden} /* the drift is written by OffSwiss.tsx */
 /* the print: a halftone screen and a registration rule */
 /* the print: a halftone screen over the whole sheet */
 .gp-t::before{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;opacity:.16;mix-blend-mode:overlay;
