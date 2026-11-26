@@ -5,16 +5,32 @@ import "./Beyond.css";
    "proven by" names the build that earns it, and the status is honest about which are shipped and which are
    still being learned. Every line is from Zaid or from the project data; nothing is claimed without a build. */
 export type Status = "Shipped" | "Shipping" | "Learning";
-export type Row = { role: string; via: string; href?: string; line: string; status: Status };
+/* a commit can carry a short case study, for builds whose repo the reader can't open */
+export type Case = { photo: string; alt: string; facts: string[]; chose: string; over: string; because: string; did: string[]; tech: string };
+export type Row = { role: string; via: string; href?: string; line: string; status: Status; case?: Case };
 export const ROWS: Row[] = [
   { role: "AI / LLM engineering", via: "TripMate", href: "https://github.com/DiazSk/tripmate", status: "Shipped",
     line: "An AI trip planner that checks its plan against real forecast, holiday and opening-hours data, with every model call traced." },
   { role: "Product engineering", via: "Chatflow · TripMate", href: "https://github.com/DiazSk/chatflow-messaging-system", status: "Shipped",
     line: "Two products shipped end to end: a messaging system that handles 21,091 msg/s, and an AI planner in Next.js." },
+  { role: "UI/UX & product design", via: "Kitchen", status: "Shipping",
+    line: "Redesigning my uncle's family kitchen-tablet app: every screen so far, from UX rules I wrote for wet hands and 2–3 m glances, plus three new features. Still in progress.",
+    case: {
+      photo: "/assets/site/kitchen-daycare.webp",
+      alt: "Kitchen's Daycare screen on the wall tablet: a week of meals, a flagged peanut dish with a one-tap swap, the daycare shopping list and a 9:00 clock. Demo data.",
+      facts: ["13 screens redesigned · 3 new", "122 files in one pull request", "4 viewports × day and night", "Private repo · a family's app"],
+      chose: "Two zones: a Glance view with no controls for reading across the room, and a Touch board for arm's length",
+      over: "One screen that tries to serve both distances",
+      because: "The tablet hangs on a kitchen wall. It is read from 2–3 m, touched with wet or messy hands, and used by two kids who can't read yet. A 96 px clock and the next thing due have to carry across the room, while the full board needs 48 px targets and space, so Glance shows only the time, the day, what's next and any running timer.",
+      did: [
+        "Wrote the UX rules before the screens: a six-step type scale from 14 to 96 px, 48 px minimum targets (96 px for the kids), one job per colour, 4.5:1 contrast, and a 5-second Undo on every check-off, timer stop and star.",
+        "Redesigned every screen in one pull request and added school lunches, a Morning board that turns Home into each kid's countdown on school mornings, and a Family board.",
+        "Checked every route at four viewports from 1280×800 down to 360×780 in day and night themes; 97 tests, tsc and lint pass, with sign-in untouched and every database change additive.",
+      ],
+      tech: "Next.js · React · TypeScript · Tailwind CSS · Framer Motion · Postgres · MagicPath · Claude Code",
+    } },
   { role: "Design engineering", via: "This site", status: "Shipping",
     line: "Explored through dozens of directions in MagicPath, then built into one system with Claude Code." },
-  { role: "UI/UX & product design", via: "Figma · MagicPath", status: "Learning",
-    line: "Learning to design like a UI/UX designer, practising on my own products." },
 ];
 
 const GLYPHS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -64,7 +80,7 @@ export const BeyondHead = ({ tag }: { tag: string }) => <>
   <header className="bd-top"><span><b className="bd-num">03</b> Beyond the pipeline</span><span>{tag}</span></header>
   <div className="bd-intro">
     <h2 id="bd-h">Beyond the <em>pipeline.</em></h2>
-    <p>Data engineering is the job I'm going for first. I also build the products around the data: TripMate was my first product built with Claude Code, and since then I've been shipping apps end to end and learning to design them.</p>
+    <p>Data engineering is the job I'm going for first. I also build the products around the data: TripMate was my first product built with Claude Code, and since then I've been shipping apps end to end and designing them too, most recently a redesign of every screen of my uncle's family kitchen app.</p>
   </div>
 </>;
 export const BeyondNote = () => <p className="bd-note">You're looking at the latest one: this site, designed in MagicPath and built with Claude Code.</p>;

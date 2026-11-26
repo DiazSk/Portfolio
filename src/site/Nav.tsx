@@ -8,7 +8,7 @@ const ITEMS: { n: string; w: string; em: number; s: string; to: string; fallback
   n: "01",
   w: "Measured",
   em: 6.2,
-  s: "120M+ records · 0 trades missed",
+  s: "120M+ records · 0 of 17,969 trades missed",
   to: "proof"
 }, {
   n: "02",

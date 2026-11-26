@@ -1,5 +1,5 @@
 import { useEffect, useRef, type CSSProperties } from "react";
-import { BeyondHead, BeyondNote, ROWS } from "./Beyond";
+import { BeyondHead, BeyondNote, ROWS, type Case } from "./Beyond";
 import { nearScreen } from "./ProofKit";
 import "./Beyond.css";
 import "./BeyondGit.css";
@@ -20,22 +20,41 @@ const KIND: Record<string, [string, string]> = {
   "AI / LLM engineering": ["feat", "ai"],
   "Product engineering": ["feat", "product"],
   "Design engineering": ["wip", "design"],
-  "UI/UX & product design": ["learn", "ui-ux"],
+  "UI/UX & product design": ["feat", "ui-ux"],
 };
 
 type Commit =
   | { lane: "main"; subject: string; pill?: string }
   | { lane: "fork" }
-  | { lane: "beyond"; type: string; scope: string; subject: string; role: string; status: string; line: string; href?: string; pill?: string; staged?: boolean };
+  | { lane: "beyond"; type: string; scope: string; subject: string; role: string; status: string; line: string; href?: string; pill?: string; staged?: boolean; case?: Case };
 
 const COMMITS: Commit[] = [
   ...MAIN.map((s, i): Commit => ({ lane: "main", subject: s, pill: i === MAIN.length - 1 ? "main" : undefined })),
   { lane: "fork" },
-  ...ROWS.map((r): Commit => ({
-    lane: "beyond", type: KIND[r.role][0], scope: KIND[r.role][1], subject: r.via, role: r.role, status: r.status, line: r.line, href: r.href,
-    pill: r.status === "Shipping" ? "HEAD → beyond" : undefined, staged: r.status === "Learning",
+  ...ROWS.map((r, k): Commit => ({
+    lane: "beyond", type: KIND[r.role][0], scope: KIND[r.role][1], subject: r.via, role: r.role, status: r.status, line: r.line, href: r.href, case: r.case,
+    pill: k === ROWS.length - 1 ? "HEAD → beyond" : undefined, staged: r.status === "Learning",
   })),
 ];
+
+/* a build whose repo is private gets its case on the page instead: native <details>, so it opens by keyboard and
+   needs no state; the screenshot loads only when it is opened */
+const CaseCard = ({ k, name }: { k: Case; name: string }) => (
+  <details className="gg-case">
+    <summary>Open the case <span aria-hidden>+</span></summary>
+    <div className="gg-case-in">
+      <figure><img src={k.photo} alt={k.alt} loading="lazy" decoding="async" width={1280} height={800} /><figcaption>{name} · demo data</figcaption></figure>
+      <ul className="gg-case-facts">{k.facts.map(f => <li key={f}>{f}</li>)}</ul>
+      <dl className="gg-case-dec">
+        <div><dt>Chose</dt><dd>{k.chose}</dd></div>
+        <div><dt>Over</dt><dd>{k.over}</dd></div>
+        <div><dt>Because</dt><dd>{k.because}</dd></div>
+      </dl>
+      <ul className="gg-case-did">{k.did.map(d => <li key={d}>{d}</li>)}</ul>
+      <p className="gg-case-tech">{k.tech}</p>
+    </div>
+  </details>
+);
 
 export const BeyondGit = () => {
   const graph = useRef<HTMLOListElement>(null);
@@ -49,9 +68,19 @@ export const BeyondGit = () => {
       if (!near.state.on) return;
       const r = el.getBoundingClientRect(), vh = innerHeight;
       if (r.bottom < -vh * .2 || r.top > vh * 1.2) return;
-      /* the graph is read as it passes the lower third of the screen: everything above that line is drawn */
-      const p = still ? 1 : Math.max(0, Math.min(1, (vh * .78 - r.top) / r.height));
-      el.style.setProperty("--p", p.toFixed(4));
+      /* the graph is read as it passes the lower third of the screen: everything above that line is drawn. Progress
+         is counted in rows, from each row's real position, so an opened case card (a much taller row) is drawn as
+         soon as its top crosses the line instead of when a uniform-height guess says it should be */
+      let v = n;
+      if (!still) {
+        const y = vh * .78, rows = el.children;
+        for (let j = 0; j < rows.length; j++) {
+          const q = rows[j].getBoundingClientRect();
+          if (q.top > y) { v = j; break; }
+          if (q.bottom > y) { v = j + Math.min(1, (y - q.top) / Math.min(q.height, 140)); break; }
+        }
+      }
+      el.style.setProperty("--p", (v / n).toFixed(4));
     };
     raf = requestAnimationFrame(tick);
     return () => { cancelAnimationFrame(raf); near.stop(); };
@@ -89,6 +118,7 @@ export const BeyondGit = () => {
                   {c.staged && <span className="gg-pill staged">staged</span>}
                 </p>
                 <p className="gg-line">{c.line}</p>
+                {c.case && <CaseCard k={c.case} name={c.subject} />}
               </div>
               <p className="gg-proof"><span className="gg-role">{c.role}</span><span className="gg-st">{c.status}</span></p>
             </li>
