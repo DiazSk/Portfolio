@@ -1,0 +1,58 @@
+/* ---------- the turntable ---------- */
+.mp{grid-column:1 / -1;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:inherit;align-items:start;gap:clamp(10px,1.4vw,24px)}
+.tt{grid-column:1 / 8;justify-self:start;width:min(100%,58svh);border-radius:16px;padding:10px;background:linear-gradient(#2b2b29,#161615);
+  box-shadow:0 2px 0 #ffffff14 inset,0 -2px 0 #0008 inset,0 30px 60px #0006,0 6px 14px #0004;font-family:"Martian Mono",ui-monospace,monospace;color:#e9e6df}
+.tt-deck{position:relative;aspect-ratio:1.22;border-radius:10px;background:radial-gradient(120% 90% at 30% 20%,#232321,#0a0a09);box-shadow:inset 0 1px #ffffff10,inset 0 -1px #000}
+.tt-screw{position:absolute;width:7px;height:7px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#6a6a66,#1a1a19);box-shadow:inset 0 0 0 1px #0008}
+.tt-screw.sc0{left:10px;top:10px}.tt-screw.sc1{right:10px;top:10px}.tt-screw.sc2{left:10px;bottom:10px}.tt-screw.sc3{right:10px;bottom:10px}
+
+/* platter and record */
+.tt-platter{position:absolute;left:5%;top:7%;width:72%;aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle,#2a2a28 0 69%,#0c0c0b 70% 100%);box-shadow:0 10px 24px #000a,0 0 0 3px #3a3a37}
+.tt-disc{position:absolute;inset:3%;border-radius:50%;background:#111 center/cover;overflow:hidden;
+  animation:tt-spin 1.8s linear infinite;animation-play-state:paused;filter:grayscale(.35) contrast(1.05) brightness(.82)}
+.tt.on .tt-disc{animation-play-state:running}
+@keyframes tt-spin{to{transform:rotate(1turn)}}
+.tt-grooves{position:absolute;inset:0;border-radius:50%;
+  background:repeating-radial-gradient(circle,#0000 0 2px,#00000038 2px 3px),radial-gradient(circle,#0000 0 30%,#0006 31% 33%,#0000 34% 94%,#000c 96%)}
+.tt-label{position:absolute;left:50%;top:50%;width:34%;aspect-ratio:1;margin:-17% 0 0 -17%;border-radius:50%;background:#c2416f;
+  box-shadow:inset 0 0 0 2px #0003;display:grid;place-items:center}
+.tt-label i{width:7%;aspect-ratio:1;border-radius:50%;background:#e9e6df;box-shadow:0 0 0 2px #0004}
+/* the light stays still while the record turns under it */
+.tt-sheen{position:absolute;inset:3%;border-radius:50%;pointer-events:none;
+  background:conic-gradient(from 20deg,#fff0 0 40deg,#ffffff22 60deg,#fff0 85deg 200deg,#ffffff1a 225deg,#fff0 250deg)}
+
+/* the tonearm: rests off the record, drops on when it plays */
+.tt-arm{position:absolute;right:7%;top:7%;width:12%;height:78%;transform-origin:50% 7%;transform:rotate(-4deg);transition:transform 1s var(--u-io)}
+.tt.on .tt-arm{transform:rotate(22deg)}
+.tt-base{position:absolute;left:50%;top:0;width:70%;aspect-ratio:1;margin-left:-35%;border-radius:50%;background:radial-gradient(circle at 40% 35%,#9b9b96,#3b3b38 60%,#1a1a19);box-shadow:0 6px 14px #000a}
+.tt-rod{position:absolute;left:50%;top:5%;width:5px;height:80%;margin-left:-2.5px;border-radius:3px;background:linear-gradient(90deg,#8a8a85,#e2e2dc,#7a7a75);box-shadow:2px 4px 6px #0008}
+.tt-head{position:absolute;left:50%;bottom:4%;width:16px;height:26px;margin-left:-10px;border-radius:3px;background:linear-gradient(#cfcfca,#7c7c77);transform:rotate(18deg);box-shadow:2px 4px 8px #000a}
+.tt-speed{position:absolute;right:6%;bottom:7%;font-size:var(--t-xs);letter-spacing:.14em;color:#8c887f}
+
+/* the readout */
+.tt-info{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);margin-top:10px;border-radius:8px;background:#0a0a09;box-shadow:inset 0 1px #ffffff0d}
+.tt-now{padding:12px 14px;border-right:1px solid #ffffff14;min-width:0}
+.tt-side{padding:12px 14px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.tt-row{display:flex;justify-content:space-between;gap:10px;margin:0 0 10px;font-size:var(--t-sm);letter-spacing:.08em}
+.tt-row b{font-weight:600;color:#fff}
+.tt-live{display:inline-flex;align-items:center;gap:6px;color:#8c887f}
+.tt-live i{width:6px;height:6px;border-radius:50%;background:#55534e}
+.tt.on .tt-live i{background:#ff4a2a;box-shadow:0 0 8px #ff4a2a;animation:tt-blink 1.2s steps(2) infinite}
+@keyframes tt-blink{50%{opacity:.25}}
+.tt-title{display:block;font:700 var(--t-body)/1.15 "Archivo",sans-serif;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tt-sub{display:block;margin-top:3px;font:400 var(--t-md)/1.3 "Archivo",sans-serif;color:#a29e95;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tt-side p{margin:0;display:flex;flex-direction:column;gap:2px;font-size:var(--t-sm);letter-spacing:.08em;color:#8c887f}
+.tt-side b{font-weight:600;font-size:var(--t-md);color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-variant-numeric:tabular-nums}
+
+.mp{position:relative}
+.mp-side{grid-column:8 / 12;align-self:end;display:flex;flex-direction:column;gap:10px;padding-top:16px;border-top:2px solid #0a0a09}
+.mp-side small{font:500 var(--t-sm)/1 "Martian Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:#ff4a2a}
+.mp-side b{font:900 var(--t-h3)/.95 "Archivo",sans-serif;letter-spacing:-.03em}
+.mp-side span{font:400 italic var(--t-lede)/1.25 "Instrument Serif",serif;max-width:26ch}
+@media (max-width:760px){
+  .mp{display:flex;flex-direction:column;align-items:stretch}
+  .tt{width:100%}
+  .tt-info{grid-template-columns:1fr}
+  .tt-now{border-right:0;border-bottom:1px solid #ffffff14}
+}

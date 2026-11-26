@@ -1,14 +1,8 @@
 import { useEffect } from "react";
-import Navbar from "./sections/Navbar";
-import Hero from "./sections/Hero";
-import About from "./sections/About";
-import Projects from "./sections/Projects";
-import Skills from "./sections/Skills";
-import Contact from "./sections/Contact";
+import { PortfolioUnified } from "./site/PortfolioUnified";
 
-/* Sections are imported eagerly on purpose. Lazy-splitting them cost ~20kB of
-   a 300kB bundle and broke deep links: #projects could not resolve on load
-   because the section had not mounted yet. */
+/* The whole site is one page, designed and verified on the MagicPath canvas
+   ("Portfolio · Unified") and ported as-is into src/site/. */
 const App = () => {
   /* A hash in the URL resolves before layout settles, so the browser lands
      short of the target. Re-run the jump once after first paint. */
@@ -20,24 +14,7 @@ const App = () => {
     });
   }, []);
 
-  return (
-    <>
-      <Navbar />
-      {/* Hero sits outside <main> for the same reason Contact does: its field
-          region is full-bleed and the max-w-7xl clamp would cage it. */}
-      <Hero />
-      {/* About's panel grid is full-bleed too — panels that stop at 1280px
-          are cards, not panels. */}
-      <About />
-      {/* No width clamp on main: the project track is full-bleed and each
-          section applies its own container. */}
-      <main>
-        <Projects />
-        <Skills />
-      </main>
-      <Contact />
-    </>
-  );
+  return <PortfolioUnified />;
 };
 
 export default App;

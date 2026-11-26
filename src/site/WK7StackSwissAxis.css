@@ -1,0 +1,267 @@
+
+/* paper, ink, one red; one grotesk flush left; one axis */
+.ax{--paper:#f3eadb;--ink:#0a0a09;--red:#ff4a2a;--hair:rgba(10,10,9,.14);--p:0;--o:0;
+  position:relative;width:100%;color:var(--ink);background:var(--paper);font-family:"Archivo",sans-serif;font-variation-settings:"wdth" 100;-webkit-font-smoothing:antialiased;overflow:clip}
+.ax *{box-sizing:border-box}
+.ax-c,.ax-split dt,.ax-note,.ax-mark i{font:500 var(--t-sm)/1.45 "Martian Mono",monospace;letter-spacing:.08em;text-transform:uppercase}
+
+/* ---------- 1 · intro: the 21 splits along the axis ---------- */
+.ax-intro{height:190vh}
+.ax-stage{position:sticky;top:0;height:100vh;overflow:hidden}
+.ax-stage::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--ink);transform:scaleY(calc(.15 + var(--p) * .85));transform-origin:top}
+.ax-c{position:absolute;margin:0;z-index:3}
+.ax-c.tl{top:28px;left:32px}.ax-c.tr{top:28px;right:32px;text-align:right}
+.ax-c.bl{bottom:28px;left:32px}.ax-c.br{bottom:28px;right:32px;text-align:right}
+.ax-count{font:800 var(--t-lede)/1 "Archivo",sans-serif;color:var(--red)}
+.ax-d{position:absolute;top:50%;font-weight:900;font-size:min(86vh,54vw);line-height:.72;letter-spacing:-.08em;will-change:transform}
+.ax-d.two{right:50%;margin-right:-.04em;transform:translate(calc(var(--p) * -42vw),-50%) rotate(calc(var(--p) * -9deg))}
+.ax-d.one{left:50%;margin-left:.02em;transform:translate(calc(var(--p) * 42vw),-50%) rotate(calc(var(--p) * 9deg));color:transparent;-webkit-text-stroke:2px var(--ink)}
+.ax-title{position:absolute;left:50%;top:50%;width:min(36vw,560px);margin:0;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;text-align:center;
+  font-weight:800;font-size:var(--t-h3);line-height:.95;letter-spacing:-.04em;z-index:2}
+.ax-title span{--t:clamp(0,(var(--p) - .46 - var(--k) * .1) * 6,1);opacity:var(--t);transform:translateY(calc((1 - var(--t)) * 40px));display:block}
+.ax-title em{font:400 italic 1.08em/1 "Instrument Serif",serif;letter-spacing:-.02em;color:var(--red)}
+.ax-sq{position:absolute;left:50%;top:calc(50% + clamp(90px,14vh,150px));width:clamp(44px,6vw,90px);aspect-ratio:1;background:var(--red);z-index:2;
+  transform:translate(-50%,0) scale(clamp(0,(var(--p) - .62) * 4,1)) rotate(calc(var(--p) * 180deg))}
+.ax-split{position:absolute;left:50%;bottom:clamp(70px,11vh,110px);transform:translateX(-50%);margin:0;display:flex;gap:48px;z-index:2;
+  opacity:clamp(0,(var(--p) - .8) * 6,1)}
+.ax-split div{border-top:1px solid var(--ink);padding-top:8px;min-width:150px}
+.ax-split dd{margin:4px 0 0;font:800 46px/.85 "Archivo",sans-serif;letter-spacing:-.05em}
+.ax-split div:first-child dd{color:var(--red)}
+
+/* ---------- 2 · layers on the axis ---------- */
+.ax-layers{position:relative;padding:12vh 0 4vh}
+.ax-axis{position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--hair)}
+.ax-axis::before{content:"";position:absolute;inset:0;background:var(--ink);transform:scaleY(var(--o));transform-origin:top}
+.ax-mark{position:sticky;top:calc(50vh - 48px);display:grid;place-items:center;width:96px;height:96px;margin-left:-48px;z-index:4}
+.ax-mark::before{content:"";position:absolute;inset:0;background:var(--red);transform:rotate(calc(var(--o) * 540deg))}
+.ax-mark b{position:relative;font:900 34px/1 "Archivo",sans-serif;letter-spacing:-.04em;color:var(--paper)}
+.ax-mark i{position:absolute;bottom:-22px;font-style:normal;white-space:nowrap}
+
+.ax-layer{position:relative;min-height:78vh;display:grid;grid-template-columns:1fr 1fr;column-gap:180px;align-items:center;padding:0 4vw}
+.ax-layer.r .ax-head{order:2}.ax-layer.r .ax-tools{order:1}
+/* the heading drifts against the scroll; the big index rides slower still (parallax in two depths) */
+.ax-head{position:relative;transform:translateY(calc((var(--p) - .5) * -70px))}
+.ax-layer.l .ax-head{text-align:right}
+.ax-big{position:absolute;top:50%;font-weight:900;font-size:clamp(160px,22vw,360px);line-height:.7;letter-spacing:-.08em;color:transparent;-webkit-text-stroke:1.5px rgba(10,10,9,.22);
+  transform:translateY(calc(-50% + (var(--p) - .5) * 160px));z-index:0;pointer-events:none}
+.ax-layer.l .ax-big{right:-.04em}.ax-layer.r .ax-big{left:-.04em}
+.ax-head h3{position:relative;margin:0;font-weight:800;font-size:clamp(40px,5vw,84px);line-height:.9;letter-spacing:-.045em;
+  --t:clamp(0,(var(--p) - .12) * 4,1);clip-path:inset(0 0 calc((1 - var(--t)) * 100%) 0)}
+.ax-head p{position:relative;margin:16px 0 0;font:400 italic 20px/1.25 "Instrument Serif",serif;color:rgba(10,10,9,.65)}
+.ax-layer.l .ax-head p{margin-left:auto;max-width:28ch}
+
+/* the tools fly out from the axis, one after another, tied to the scroll */
+.ax-tools{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px}
+.ax-layer.r .ax-tools{align-items:flex-end}
+.ax-tools li{--t:clamp(0,(var(--p) - .18 - var(--j) * .06) * 4.5,1);opacity:var(--t);
+  transform:translateX(calc((1 - var(--t)) * var(--dir) * 140px)) rotate(calc((1 - var(--t)) * var(--dir) * -4deg))}
+.ax-layer.r .ax-tools li{text-align:right}
+.ax-tools button{display:inline-flex;align-items:center;gap:14px;padding:4px 0;border:0;background:none;color:inherit;cursor:pointer;text-align:inherit}
+.ax-layer.r .ax-tools button{flex-direction:row-reverse}
+.ax-tools button:focus-visible{outline:2px solid var(--red);outline-offset:4px}
+.ax-logo{flex:none;display:flex;gap:3px;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:#fff;box-shadow:inset 0 0 0 1px var(--hair);transition:transform var(--u-d2) var(--u-out)}
+.ax-logo img{width:58%;height:58%;object-fit:contain}
+.ax-logo img + img{width:36%}
+.ax-logo b{font:800 var(--t-md)/1 "Martian Mono",monospace}
+.ax-name{font-weight:800;font-size:var(--t-h3);line-height:1;letter-spacing:-.04em;transition:color var(--u-d1)}
+.ax-name sup{font:500 var(--t-md)/1 "Martian Mono",monospace;letter-spacing:0;color:var(--red);margin-left:4px;vertical-align:super}
+.ax-tools button:hover .ax-name,.ax-tools button.on .ax-name{color:var(--red)}
+.ax-tools button:hover .ax-logo,.ax-tools button.on .ax-logo{transform:rotate(-12deg) scale(1.08)}
+.ax-builds{margin:2px 0 8px 58px;font:500 var(--t-sm)/1.4 "Martian Mono",monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--red)}
+.ax-layer.r .ax-builds{margin:2px 58px 8px 0}
+
+/* ---------- 3 · outro: converge, then ghost into the corners ---------- */
+.ax-outro{position:relative;min-height:90vh;display:flex;flex-direction:column;justify-content:center;padding:0 4vw;overflow:hidden}
+.ax-close{margin:0;display:flex;flex-direction:column;font-weight:900;font-size:clamp(72px,12vw,210px);line-height:.84;letter-spacing:-.06em}
+.ax-close span:first-child{transform:translateX(calc((1 - min(1,var(--p) * 1.25)) * -30vw))}
+.ax-close span:last-child{align-self:flex-end;transform:translateX(calc((1 - min(1,var(--p) * 1.25)) * 30vw))}
+.ax-close em{font:400 italic 1.05em/1 "Instrument Serif",serif;letter-spacing:-.03em;color:var(--red)}
+.ax-ghost{position:absolute;left:0;right:0;bottom:-.18em;margin:0;display:flex;justify-content:space-between;padding:0 2vw;pointer-events:none;
+  font-weight:900;font-size:clamp(80px,15vw,260px);line-height:1;letter-spacing:-.06em;color:transparent;-webkit-text-stroke:1px rgba(10,10,9,.16)}
+.ax-note{position:absolute;left:4vw;right:4vw;top:6vh;margin:0;padding-top:10px;border-top:1px solid var(--ink)}
+
+/* ---------- reduced motion: the finished poster, no scrubbing ---------- */
+.ax.still{--p:1;--o:1}
+.ax.still .ax-intro{height:100vh}
+.ax.still .ax-d.two{transform:translate(-42vw,-50%) rotate(-9deg)}
+.ax.still .ax-d.one{transform:translate(42vw,-50%) rotate(9deg)}
+.ax.still .ax-tools li,.ax.still .ax-head,.ax.still .ax-big,.ax.still .ax-close span{transform:none;opacity:1}
+.ax.still .ax-big{transform:translateY(-50%)}
+.ax.still .ax-head h3{clip-path:none}
+
+/* ---------- phone: the axis moves to the left edge ---------- */
+@media (max-width:820px){
+  .ax-c.tr,.ax-c.br{display:none}
+  .ax-title{width:80vw;font-size:clamp(30px,9vw,48px)}
+  .ax-d{font-size:62vw}
+  .ax-split{gap:20px}.ax-split div{min-width:120px}.ax-split dd{font-size:36px}
+  .ax-axis{left:22px}
+  .ax-mark{width:44px;height:44px;margin-left:-22px;top:calc(50vh - 22px)}
+  .ax-mark b{font-size:var(--t-body)}.ax-mark i{display:none}
+  .ax-layer{grid-template-columns:1fr;row-gap:28px;min-height:0;padding:10vh 16px 10vh 56px}
+  .ax-layer.r .ax-head,.ax-layer.r .ax-tools{order:0}
+  .ax-layer.l .ax-head{text-align:left}.ax-layer.l .ax-head p{margin-left:0}
+  .ax-layer.r .ax-tools{align-items:flex-start}
+  .ax-layer.r .ax-tools li{text-align:left}
+  .ax-layer.r .ax-tools button{flex-direction:row}
+  .ax-layer.r .ax-builds{margin:2px 0 8px 58px}
+  .ax-big{font-size:46vw}.ax-layer.l .ax-big,.ax-layer.r .ax-big{left:auto;right:-.04em}
+  .ax-tools li{transform:translateX(calc((1 - var(--t)) * -60px))}
+}
+
+/* ---------- see all 21 at once ---------- */
+.ax-skip{left:32px;bottom:88px;padding:0;border:0;background:none;color:var(--ink);cursor:pointer;text-align:left;border-bottom:1px solid var(--ink)}
+.ax-skip b{color:var(--red);margin-left:4px}
+.ax-skip:hover{color:var(--red);border-color:var(--red)}
+.ax-again{position:relative;z-index:2;align-self:flex-start;display:inline-flex;align-items:center;gap:14px;margin-top:6vh;padding:16px 22px;border:2px solid var(--ink);background:none;color:var(--ink);cursor:pointer;
+  font:800 var(--t-lede)/1 "Archivo",sans-serif;letter-spacing:-.02em;transition:background var(--u-d1),color var(--u-d1)}
+.ax-again b{color:var(--red);font-size:1.2em;transition:transform var(--u-d2) var(--u-out)}
+.ax-again:hover{background:var(--ink);color:var(--paper)}
+.ax-again:hover b{transform:rotate(90deg)}
+/* floating square on the axis line's colour: always one click from the whole kit */
+.ax-all{position:fixed;right:24px;bottom:24px;z-index:40;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;width:76px;height:76px;border:0;background:var(--red);color:var(--paper);cursor:pointer;
+  font:600 var(--t-sm)/1 "Martian Mono",monospace;letter-spacing:.1em;text-transform:uppercase;transform:scale(0) rotate(-90deg);transition:transform var(--u-d2) var(--u-out)}
+.ax-all b{font:400 24px/1 "Archivo",sans-serif}
+.ax-all.show{transform:none}
+.ax-all:hover{transform:rotate(90deg)}
+.ax-all:hover span{display:inline-block;transform:rotate(-90deg)}
+.ax-all:focus-visible,.ax-again:focus-visible,.ax-skip:focus-visible,.ax-close-btn:focus-visible{outline:2px solid var(--red);outline-offset:4px}
+
+.ax-sheet{position:fixed;inset:0;z-index:50;overflow:auto;background:var(--paper);padding:clamp(20px,3vw,40px) clamp(16px,3vw,48px) 48px;animation:ax-sheet-in .55s var(--u-out)}
+@keyframes ax-sheet-in{from{clip-path:inset(0 50% 0 50%)}to{clip-path:inset(0 0 0 0)}}
+.ax-sheet::before{content:"";position:fixed;left:50%;top:0;bottom:0;width:1px;background:var(--hair);pointer-events:none}
+.ax-sheet-top{position:relative;display:grid;grid-template-columns:1fr auto;align-items:end;gap:10px 24px;padding-bottom:18px;border-bottom:6px solid var(--ink)}
+.ax-sheet-top h2{margin:0;font-weight:800;font-size:clamp(40px,5vw,84px);line-height:.9;letter-spacing:-.045em}
+.ax-sheet-top h2 b{color:var(--red)}
+.ax-sheet-top h2 em{font:400 italic 1.05em/1 "Instrument Serif",serif;letter-spacing:-.02em}
+.ax-sheet-top p{grid-column:1;margin:0;font:500 var(--t-sm)/1.4 "Martian Mono",monospace;letter-spacing:.08em;text-transform:uppercase}
+.ax-close-btn{grid-column:2;grid-row:1 / 3;align-self:start;display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border:2px solid var(--ink);background:var(--ink);color:var(--paper);cursor:pointer;
+  font:600 var(--t-sm)/1 "Martian Mono",monospace;letter-spacing:.1em;text-transform:uppercase}
+.ax-close-btn kbd{font:inherit;padding:3px 5px;border:1px solid rgba(239,235,226,.4)}
+.ax-close-btn:hover{background:var(--red);border-color:var(--red)}
+.ax-sheet-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:0 clamp(12px,1.6vw,24px);margin-top:22px}
+.ax-sheet-col{animation:ax-col .6s var(--u-out) both;animation-delay:calc(.18s + var(--c) * 60ms)}
+@keyframes ax-col{from{opacity:0;transform:translateY(24px)}}
+.ax-sheet-col h3{display:flex;align-items:baseline;gap:8px;margin:0 0 6px;padding-bottom:10px;border-bottom:1px solid var(--ink);font-weight:800;font-size:var(--t-body);line-height:1.05;letter-spacing:-.02em}
+.ax-sheet-col h3 i{font:500 var(--t-sm)/1 "Martian Mono",monospace;font-style:normal;color:var(--red)}
+.ax-sheet-col h3 b{margin-left:auto;font-size:1.6em;letter-spacing:-.05em;color:var(--red)}
+.ax-sheet-col ul{margin:0;padding:0;list-style:none}
+.ax-sheet-col li{border-bottom:1px solid var(--hair)}
+.ax-sheet-col li button{display:flex;align-items:center;gap:10px;width:100%;padding:10px 0;border:0;background:none;color:inherit;cursor:pointer;text-align:left;font-weight:700;font-size:clamp(14px,1.1vw,17px);letter-spacing:-.02em}
+.ax-sheet-col li button:hover,.ax-sheet-col li button.on{color:var(--red)}
+.ax-sheet-col li button:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+.ax-sheet-col sup{font:500 var(--t-sm)/1 "Martian Mono",monospace;color:var(--red);margin-left:3px}
+.ax-logo.sm{width:32px;height:32px}
+.ax-sheet-b{margin:-4px 0 10px 42px;font:500 var(--t-sm)/1.4 "Martian Mono",monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--red)}
+@media (max-width:1100px){.ax-sheet-grid{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:28px}}
+@media (max-width:640px){
+  .ax-sheet-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ax-sheet-top{grid-template-columns:1fr}.ax-close-btn{grid-column:1;grid-row:auto;justify-self:start}
+  .ax-skip{left:16px;bottom:80px}
+  .ax-all{width:60px;height:60px;right:16px;bottom:16px}
+}
+@media (prefers-reduced-motion:reduce){.ax-sheet,.ax-sheet-col{animation:none}.ax-all{transition:none}}
+
+/* two marks (AWS · Azure) get a pill instead of a cramped circle */
+.ax-logo.two{width:auto;padding:0 12px;border-radius:999px;gap:8px}
+.ax-logo.two img,.ax-logo.two img + img{width:26px;height:26px}
+.ax-logo.sm.two{padding:0 9px;gap:6px}
+.ax-logo.sm.two img,.ax-logo.sm.two img + img{width:19px;height:19px}
+
+
+/* =================== poster stickers (WK7 palette: paper, ink, one red) =================== */
+.ax{--f1:var(--red)}
+/* big red shapes drifting behind each layer */
+.ax-shape{position:absolute;z-index:0;pointer-events:none;background:var(--red);
+  transform:translateY(calc((var(--p) - .5) * -260px)) rotate(calc(var(--p) * 60deg))}
+.ax-layer.l .ax-shape{left:-8vw}.ax-layer.r .ax-shape{right:-8vw}
+.ax-shape.sh0{top:6%;width:30vw;aspect-ratio:1;border-radius:50%}
+.ax-shape.sh1{top:12%;width:26vw;aspect-ratio:1;border-radius:100% 0 0 0}
+.ax-shape.sh2{top:4%;width:22vw;height:40vw;border-radius:999px}
+.ax-layer > *:not(.ax-shape){position:relative;z-index:1}
+
+/* the collage: cut-out stickers, sized by builds, flying in and out with the scroll */
+.ax-collage{position:relative;height:clamp(220px,30vh,320px);margin-bottom:12px}
+.ax-layer.l .ax-collage{margin-left:auto;width:min(100%,460px)}
+.ax-layer.r .ax-collage{width:min(100%,460px)}
+.ax-stk{--s:96px;position:absolute;left:var(--x);top:var(--y);width:var(--s);height:var(--s);
+  --t:clamp(0,(var(--p) - .1 - var(--j) * .05) * 4,1);--e:clamp(0,(var(--p) - .74 - var(--j) * .04) * 4.5,1);
+  opacity:calc(var(--t) * (1 - var(--e)));
+  transform:translate(calc((1 - var(--t)) * var(--fx) + var(--e) * var(--ex)),calc((1 - var(--t)) * var(--fy) - var(--e) * 180px))
+    rotate(calc(var(--r) + (1 - var(--t)) * var(--fr) + var(--e) * 75deg)) scale(calc(.35 + var(--t) * .65 - var(--e) * .3));
+  transition:filter var(--u-d1)}
+.ax-stk.s{--s:clamp(64px,6vw,84px)}.ax-stk.m{--s:clamp(88px,8vw,116px)}.ax-stk.l{--s:clamp(112px,10.5vw,150px)}
+.ax-stk-b,.ax-stk-f{position:absolute;inset:0;border-radius:inherit}
+.ax-stk-b{transform:translate(9px,9px);background:var(--f1);mix-blend-mode:multiply}
+.ax-stk.ink .ax-stk-b{background:var(--ink)}
+.ax-stk-f{display:flex;align-items:center;justify-content:center;gap:8%;background:#fff;box-shadow:inset 0 0 0 1.5px var(--ink)}
+.ax-stk-f img{width:52%;height:52%;object-fit:contain}
+.ax-stk-f img + img{width:36%}
+.ax-stk-f img:first-child:not(:only-child){width:36%}
+.ax-stk-f b{font:900 var(--t-lede)/1 "Archivo",sans-serif;letter-spacing:-.04em}
+/* the shapes */
+.ax-stk.circle{border-radius:50%}
+.ax-stk.square{border-radius:4px}
+.ax-stk.arch{border-radius:999px 999px 4px 4px}
+.ax-stk.quarter{border-radius:100% 4px 4px 4px}
+.ax-stk.pill{width:calc(var(--s) * 1.5);border-radius:999px}
+.ax-stk.diamond .ax-stk-b,.ax-stk.diamond .ax-stk-f{transform:rotate(45deg) scale(.78);border-radius:6px}
+.ax-stk.diamond .ax-stk-b{transform:translate(9px,9px) rotate(45deg) scale(.78)}
+.ax-stk.diamond .ax-stk-f img,.ax-stk.diamond .ax-stk-f b{transform:rotate(-45deg)}
+.ax-stk.on{filter:drop-shadow(0 0 0 var(--f1)) drop-shadow(0 10px 24px rgba(197,23,12,.45))}
+.ax-stk.on .ax-stk-f{box-shadow:inset 0 0 0 3px var(--f1)}
+/* the names: a red tick instead of a second logo */
+.ax-dot{flex:none;width:12px;height:12px;background:var(--f1);transform:rotate(45deg);transition:transform var(--u-d2) var(--u-out)}
+.ax-tools button:hover .ax-dot,.ax-tools button.on .ax-dot{transform:rotate(225deg) scale(1.3)}
+.ax-builds{margin-left:26px}.ax-layer.r .ax-builds{margin:2px 26px 8px 0}
+
+.ax.still .ax-stk{opacity:1;transform:rotate(var(--r))}
+@media (max-width:820px){
+  .ax-collage{height:200px;width:100% !important}
+  .ax-stk.s{--s:56px}.ax-stk.m{--s:72px}.ax-stk.l{--s:92px}
+  .ax-shape{display:none}
+}
+
+/* All 21 hover: the square no longer spins (it made the label unreadable); it lifts and only the glyph turns */
+.ax-all:hover{transform:translateY(-4px)}
+.ax-all:hover span{display:inline;transform:none}
+.ax-all b{display:inline-block;transition:transform var(--u-d2) var(--u-out)}
+.ax-all:hover b{transform:rotate(90deg)}
+.ax-all:hover{background:var(--ink);color:var(--paper)}
+
+/* ---------- the sheet's motion: a panel that rises over a dimmed page, and sinks back ---------- */
+.ax-scrim{position:fixed;inset:0;z-index:49;background:rgba(10,10,9,.55);animation:ax-scrim .45s var(--u-out) both}
+.ax-scrim.out{animation:ax-scrim .4s var(--u-out) reverse both}
+@keyframes ax-scrim{from{opacity:0}}
+.ax-sheet{top:clamp(12px,3vh,28px);border-top:6px solid var(--red);box-shadow:0 -30px 60px -30px rgba(0,0,0,.45);
+  animation:ax-rise .62s var(--u-out) both}
+.ax-sheet.out{animation:ax-sink .42s var(--u-in) both}
+@keyframes ax-rise{from{transform:translateY(100%)}to{transform:none}}
+@keyframes ax-sink{from{transform:none}to{transform:translateY(100%)}}
+.ax-sheet::before{position:absolute;top:0;bottom:auto;height:100%}
+.ax-sheet-col{animation-delay:calc(.28s + var(--c) * 55ms)}
+.ax-sheet.out .ax-sheet-col{animation:none}
+@media (prefers-reduced-motion:reduce){.ax-scrim,.ax-sheet,.ax-sheet.out{animation:none}}
+.ax-sheet{overscroll-behavior:contain}
+.ax-scrim{touch-action:none;overscroll-behavior:contain}
+/* the sheet no longer carries the axis line */
+.ax-sheet::before{content:none;display:none}
+
+/* outlined type cannot run tight: negative tracking made the letter outlines cross */
+.ax-ghost{font-size:clamp(72px,13vw,230px);letter-spacing:.01em;bottom:-.16em}
+
+/* "Every one" (each tool), not "everyone": the tight tracking was closing the word gap */
+.ax-close{word-spacing:.18em;letter-spacing:-.03em}
+
+/* Archivo 900 sets r and y touching even at zero tracking; open just that pair (≈ +0.025em of air) */
+.ax-kern{margin-right:.055em}
+.ax-close span.ax-kern{transform:none !important;align-self:auto !important;display:inline}
+/* the ghost wordmark is sized by width, the outro by height: on wide, short screens it rose into the button.
+   Reserve the wordmark's visible height under the content so the two can never meet. */
+.ax-outro{padding-top:8vh;padding-bottom:calc(clamp(72px,13vw,230px) * .78)}
+.ax-again{background:var(--paper)}
+/* the marker is a square turned 45°, so its corner reaches ~20px under the box: hang the count clear of the corner,
+   on a paper chip so the axis line doesn't run through it */
+.ax-mark i{bottom:-46px;padding:3px 7px;background:var(--paper);color:var(--ink);font-weight:600}
+/* outlined numerals show every crossing stroke: open the tracking so 0 and 4 / 0 and 6 never touch */
+.ax-big{letter-spacing:.01em}

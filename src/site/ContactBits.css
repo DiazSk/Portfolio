@@ -1,0 +1,27 @@
+
+.kx{--ink:#0a0a09;--cream:#f3eadb;--hot:#ff4a2a;--red-deep:#5c0703;--red:#9b0f07;--red-hot:#c5170c;
+  width:100%;font-family:"Archivo",sans-serif;-webkit-font-smoothing:antialiased;color:var(--cream);background:var(--ink)}
+.kx *,.kx *::before,.kx *::after{box-sizing:border-box}
+.kx a,.kx button{color:inherit;font:inherit}
+.kx :focus-visible{outline:2px solid var(--cream);outline-offset:4px}
+.kx-mono{font:500 var(--t-sm)/1.3 "Martian Mono",monospace;letter-spacing:.14em;text-transform:uppercase}
+.kx-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+.kx-ring{display:block;width:100%;height:100%;overflow:visible}
+.kx-ring circle{fill:none;stroke-width:2;vector-effect:non-scaling-stroke}
+.kx-ring-t{stroke:rgba(243,234,219,.28)}
+.kx-ring-f{stroke:var(--cream)}
+
+.kx-foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px;padding:18px 4vw;background:var(--ink);
+  border-top:1px solid rgba(243,234,219,.12);font:400 var(--t-sm)/1.3 "Martian Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:rgba(243,234,219,.55)}
+.kx-foot a{text-decoration:none}
+.kx-foot a:hover{color:var(--cream)}
+
+/* the links row every direction shares */
+.kx .kx-link{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font:500 var(--t-sm)/1 "Martian Mono",monospace;letter-spacing:.14em;text-transform:uppercase;
+  padding:12px 2px;border-bottom:1px solid rgba(243,234,219,.35);transition:border-color var(--u-d1),color var(--u-d1)}
+.kx-link:hover{border-color:var(--cream)}
+.kx .kx-cv{display:inline-flex;align-items:center;gap:12px;padding:16px 24px;border-radius:999px;background:var(--cream);color:var(--ink) !important;text-decoration:none;
+  font:800 var(--t-body)/1 "Archivo",sans-serif;letter-spacing:.04em;text-transform:uppercase;transition:transform var(--u-d1) var(--u-out),background var(--u-d1)}
+.kx-cv small{font:500 var(--t-xs)/1 "Martian Mono",monospace;letter-spacing:.14em;opacity:.6}
+.kx-cv:hover{transform:translateY(-2px) rotate(-1.5deg);background:#fff}

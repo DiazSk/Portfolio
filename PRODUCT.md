@@ -22,6 +22,8 @@ A personal portfolio site that converts a cold link into a real conversation abo
 
 **Data Engineer first.** When Data Engineering and Backend SWE evaluation criteria conflict, the site resolves in favor of Data Engineering: pipelines, lakehouses, orchestration, and data modeling lead. Backend and distributed-systems work (Chatflow, Crypto Analyzer) stays on the site as supporting evidence of systems depth at scale — it is never the lead claim.
 
+**Second track (2026-11-25): AI, product and design engineering.** Zaid also builds and designs products with Claude Code, Figma and MagicPath, and wants offers in those fields too, so it is a first-class chapter (03 Beyond the pipeline), not a passion. The rule is his: *the only proof is the projects.* A role is claimed only where a project proves it: AI / LLM engineering (TripMate), product engineering (Chatflow, TripMate), design engineering (this site). UI/UX and product design have no case study yet and are marked **Learning**, never claimed. Data Engineering still leads: it is `main`, and the second track branches off it.
+
 The differentiating claim is **decision quality, not tool inventory**. Hundreds of candidates list Airflow, Kafka, dbt, and Terraform. The defensible position is showing *why* an architecture was chosen — exactly-once semantics under network partition, dual-path storage (Redis hot path vs. TimescaleDB time-series), Medallion layering driven by 14 conflicting source schemas. The claim a neighboring candidate cannot copy: measured throughput and latency numbers attached to a reader-inspectable repo and a stated trade-off.
 
 ## Operating Context
@@ -33,15 +35,15 @@ The differentiating claim is **decision quality, not tool inventory**. Hundreds 
 
 ## Capabilities and Constraints
 
-**Current surfaces:** single-page site — Hero, About, Projects (grouped Data Engineering & Analytics / Systems Engineering), Skills, Contact — with a fixed nav and anchor scroll.
+**Current surfaces:** a single page in `src/site/`, ported 2026-11-25 from the MagicPath canvas design "Portfolio · Unified": Hero (red field, the Slice menu) → Statement → intertitle → 01 Measured → 02 Work (the line + the Stack) → 03 Beyond the pipeline → 04 Off the clock → 05 Contact. There is no About section; the story lives in Off the clock's first panel.
 
-**Content source of truth:** `src/constants/resumeData.js` holds personal details, education, experience, projects, and skills. Section components read from it. Hero metrics are currently hardcoded in `src/sections/Hero.jsx`, separate from resumeData. As of 2026-09-18 that row sits **below the fold**, under the field viewport: the first viewport carries four blocks, and the one number left in it is the 9.66M inside the live-dashboard link, stated in a sentence rather than broken out. The metrics are still at rest and still the loudest row on the page, which is what "never hidden behind an interaction" requires — but a reader who never scrolls now sees no measured number. That trade was made deliberately; reversing it means putting the row back in the first viewport, not adding a fourth number somewhere else.
+**Content source of truth:** the data files in `src/site/`: `W1Data.ts` (projects), `ProofKit.ts` and `ProofPositions.tsx` (the four Measured positions), `KitData.ts` (the 21 tools), `OffPassions.ts` (life off the clock, in Zaid's own words only), and `ROWS` in `Beyond.tsx` (the second track). `src/constants/resumeData.js` was retired with the old sections; it remains in git history.
 
-The measurement rows state each number against the baseline it beat, and every figure is lifted from the decision logs in resumeData: ~2,000 msg/s at 100-row batches vs ~10,000 at 5,000-row batches, the 3.7 MB first tier vs the 52 MB detail tier. **Retracted 2026-11-23:** "42x the design it replaced" and its "~500 msg/s write-through" baseline. A search of every Chatflow repo, branch and course document found no write-through run, so the baseline was never measured. The replacement is the batch-size experiment in the CS6650 A4 submission, copied into chatflow's ARCHITECTURE.md so it is public. Do not reinstate 42x. One figure is derived rather than quoted: the experience section's "120M+ records", a deliberately conservative floor under the sum of the per-project counts (109.8M + 9.66M + 2.8M + 1.6M + 1M ≈ 125M); it is not rendered as a metric anywhere, only as résumé prose. Drop it if that bothers you.
+The measurement rows state each number against the baseline it beat, and every figure is lifted from the decision logs in resumeData: ~2,000 msg/s at 100-row batches vs ~10,000 at 5,000-row batches, the 3.7 MB first tier vs the 52 MB detail tier. **Retracted 2026-11-23:** "42x the design it replaced" and its "~500 msg/s write-through" baseline. A search of every Chatflow repo, branch and course document found no write-through run, so the baseline was never measured. The replacement is the batch-size experiment in the CS6650 A4 submission, copied into chatflow's ARCHITECTURE.md so it is public. Do not reinstate 42x. One figure is derived rather than quoted: the experience section's "120M+ records", a deliberately conservative floor under the sum of the per-project counts (109.8M + 9.66M + 2.8M + 1.6M + 1M ≈ 125M).
 
-The first viewport is now the field itself — the name at full screen width, with role, location, availability, email and the live-dashboard link as small mono readings on the bottom edge. Everything a 5–10 second skim needs is still there; it is arranged as a frame instead of a stack.
+**Open decision: "120M+".** That derived floor is now rendered as a giant metric in 01 Measured and in the menu caption. Keep it, relabel it, or replace it with a measured per-project number: Zaid's call.
 
-**Contact:** currently `mailto:` and a copy-email button only. **A real contact form is a planned capability** and should re-wire to the existing Resend handler at `api/contact.js`.
+**Contact:** copy-email (click on desktop, tap on phones), `mailto:`, LinkedIn, GitHub, and a résumé download. **The résumé PDF is still pending from Zaid**; the button points at `/Zaid-Shaikh-Resume.pdf`, which does not exist yet. **A real contact form is a planned capability** and should re-wire to the existing Resend handler at `api/contact.js`.
 
 The handler was rebuilt on 2026-09-19 and is dormant but correct: one notification email to Zaid, in the site's design system, with every field escaped before it reaches the HTML. **The auto-reply to the visitor was deleted, not restyled.** It was sent to whatever address the caller supplied, which made this public endpoint an open relay for mailing strangers from the site's domain; it repeated the "80GB" figure retracted on 2026-09-17; and it promised response times ("Job Opportunities: Within 24 hours") that nothing backs. Do not reintroduce an auto-reply without solving the relay first.
 
@@ -55,15 +57,16 @@ The handler was rebuilt on 2026-09-19 and is dormant but correct: one notificati
 
 **No social preview image.** `index.html` declares no `og:image` or `twitter:image`, so shared links render without a thumbnail. Open decision, not an oversight to fix silently.
 
-**Open / undecided:** production domain; whether project architecture diagrams are republished (see Evidence); whether a résumé PDF is downloadable from the site.
+**Open / undecided:** production domain; the 120M+ metric (above); real photography to replace every "Mockup" image (project posters, Off the clock panels, hero cuts); whether `api/contact.js` stays now that the new Contact has no form.
+
+**Architecture schematics** (the `ArchitectureDiagram` component and the `architecture` arrays) were retired with the old Projects section and are not rendered.
 
 ## Brand Commitments
 
 - Name and identity: **Zaid Shaikh**, Seattle, WA. Wordmark is currently the plain text "Zaid."
 - Voice: declarative and specific. States what was built and what it measured; no aspiration language, no superlatives, no "passionate about." First person, past tense, numbers over adjectives.
 - Real links only: GitHub `DiazSk`, LinkedIn `zaidshaikhengineer`, email `shaikh.zaid@northeastern.edu`.
-- **Standing preference: bold editorial, pinned from references (2026-09-17).** This replaces the earlier "category standard / linear.app" preference, which Zaid found boring. He supplied Dribbble references (Orbix Studio, Yucale Studio, CREATIQ, LAIN) and asked for premium, techy, bold, playful, strong, with modern motion and real typography pairings. His reasoning: he practises software engineering as well as data engineering, so demonstrated interface craft is legitimate signal.
-  The world: near-black ground, **one signal vermilion `#FF3B14` held as a field** (whole regions, never scattered accents), **Bricolage Grotesque** at poster scale, **Azeret Mono** on every measurement, Inter for prose only. Vermilion was chosen against the competitive landscape, not by taste — teal-on-navy is brittanychiang's signature and the most-cloned engineer portfolio, violet is Linear's brand and the AI-generated cluster Zaid named as his failure mode. **Black type on the field, never white:** white measures 3.57:1 there and fails AA.
+- **Visual world (2026-11-25, supersedes the vermilion/Bricolage "Signal Field").** One ink `#0a0a09`, one paper `#f3eadb`, one red `#ff4a2a`; the hero's red field only on the bookends (Hero, Contact). Archivo (`wdth 62` display / `100` text), Instrument Serif italic for the one human word, Martian Mono for anything measured. Five numbered chapters, each with its own signature object. DESIGN.md is the full system.
 
 ## Evidence on Hand
 
@@ -93,9 +96,7 @@ The handler was rebuilt on 2026-09-19 and is dormant but correct: one notificati
 
 ## Product Principles
 
-About's three stat panels restate facts already stated elsewhere on the site — the 4.0 GPA from the credentials record, the 36,800+ records from the research entry, and the 2-of-5 refuted hypotheses from position 04. They are a second rendering of the same facts, so they must not drift from their sources.
-
-**These are rendered on the site.** The About section's "How I work" band shows four of these as first-person stances, sourced from `resumeData.positions`. The two must not drift: if a principle changes here, change it there, and every stance must stay traceable to real work rather than becoming a slogan.
+**The four positions are rendered on the site** as 01 Measured (`src/site/ProofPositions.tsx`), each with one measured number. If a principle changes here, change it there; every position must stay traceable to real work rather than becoming a slogan.
 
 1. **Decisions over tools.** Any surface that lists technologies without the reasoning behind one of them is doing the same thing every other candidate's site does. Lead with the choice and the trade-off; the stack list is a footnote.
 2. **Two layers, one page.** Every project presents a plain-English outcome plus one large metric at rest, and architectural depth on demand. As of 2026-09-18 the second layer arrives by the panel swapping faces rather than expanding: an expanded card measured 1192px against a 946px viewport and could not live inside the pinned horizontal track. Both layers are still one click apart and still on one page. Neither audience should have to read past content written for the other.

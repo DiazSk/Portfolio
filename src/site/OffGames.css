@@ -1,0 +1,43 @@
+/* ---------- retro Swiss game posters ---------- */
+.gp{grid-column:1 / -1;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:clamp(8px,1vw,16px);margin:0;padding:0;list-style:none}
+.gp-t{--bg:#0a0a09; --fg:#f3eadb; --ac:#ff4a2a;
+  position:relative;aspect-ratio:3/4.4;max-height:54svh;box-sizing:border-box;display:grid;grid-template-rows:auto minmax(0,1fr) auto;
+  background:var(--bg);color:var(--fg);overflow:hidden;
+  transform:translateY(calc(var(--off,0) * (var(--k) - 2.5) * 6svh))}
+/* the print: a halftone screen and a registration rule */
+/* the print: a halftone screen over the whole sheet */
+.gp-t::before{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;opacity:.16;mix-blend-mode:overlay;
+  background:radial-gradient(circle,#000 1px,transparent 1.4px) 0 0/5px 5px}
+.gp-head{display:flex;justify-content:space-between;align-items:center;padding:9px 10px;border-bottom:2px solid var(--fg)}
+.gp-img{position:relative;overflow:hidden;background:#000}
+.gp-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:contrast(1.06) saturate(.92);transition:transform 1s var(--u-out)}
+.gp-t:hover .gp-img img{transform:scale(1.07)}
+.gp-foot{display:flex;flex-direction:column;padding:9px 10px 11px;border-top:2px solid var(--fg)}
+.t-ink{--bg:#0a0a09; --fg:#f3eadb; --ac:#ff4a2a}
+.t-mustard{--bg:#ff4a2a; --fg:#0a0a09; --ac:#f3eadb}
+.t-paper{--bg:#f3eadb; --fg:#0a0a09; --ac:#ff4a2a}
+.t-blue{--bg:#0a0a09; --fg:#f3eadb; --ac:#ff4a2a}
+.t-hot{--bg:#ff4a2a; --fg:#0a0a09; --ac:#f3eadb}
+.t-green{--bg:#f3eadb; --fg:#0a0a09; --ac:#ff4a2a}
+.gp-n{font:500 var(--t-sm)/1 "Martian Mono",monospace;letter-spacing:.12em}
+.gp-ic{width:22px;height:22px;overflow:visible;transition:transform var(--u-d2) var(--u-out)}
+.gp-t:hover .gp-ic{transform:scale(1.2) rotate(-10deg)}
+.gp-ic .f{fill:var(--fg)}
+.gp-ic .o{fill:none;stroke:var(--fg);stroke-width:3}
+.gp-ic .bg{fill:var(--bg)}
+.gp-ic .sun{fill:var(--ac)}
+.gp-ic .h{fill:var(--ac)}
+.gp-ic .h2{fill:#6fbf5f}
+.gp-ic .dirt{fill:#8b5a2b}
+.gp-ic .dirt2{fill:#5e3b1c}
+.gp-ic .s{stroke:var(--fg);stroke-width:2}
+.gp-ic .thick{stroke-width:5}
+.gp-ic .ring{fill:none;stroke:var(--fg);stroke-width:5}
+.gp-ic .ring.thin{stroke-width:2.5}
+.gp-ic .dot{fill:var(--ac)}
+.gp-sub{font:500 var(--t-xs)/1.2 "Martian Mono",monospace;letter-spacing:.12em;text-transform:uppercase;opacity:.8}
+.gp-title{margin-top:4px;font:900 clamp(18px,min(1.9vw,3.4svh),34px)/.92 "Archivo",sans-serif;letter-spacing:-.04em;text-transform:uppercase}
+@media (max-width:760px){
+  .gp{grid-template-columns:1fr 1fr}
+  .gp-t{max-height:none;transform:none}
+}

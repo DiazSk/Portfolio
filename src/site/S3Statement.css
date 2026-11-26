@@ -1,0 +1,70 @@
+
+/* ---------- S3 · STATEMENT, INK FILL: S1's ink, cream and hot red; the stage pins and the scroll writes the line ---------- */
+.s3-page{background:#0a0a09;overflow-x:clip}
+.s3{
+  --ink:#0a0a09; --cream:#f3eadb; --cream-2:#d9c7b4; --hot:#ff4a2a; --red-hot:#c5170c;
+  --out:var(--u-out); --p:0;
+  position:relative;height:220svh;color:var(--cream);font-family:"Archivo",sans-serif;-webkit-font-smoothing:antialiased;
+}
+.s3 *{box-sizing:border-box}
+.s3-stage{position:sticky;top:0;height:100svh;min-height:600px;overflow:hidden;isolation:isolate;
+  display:flex;flex-direction:column;justify-content:center;padding:0 clamp(72px,8vw,128px) 0 clamp(20px,5vw,80px); /* right side clears the meter */
+  background:var(--ink)}
+
+/* the line: three phrases of condensed caps, each word a hollow outline until the scroll fills it */
+.s3-say{margin:0;display:flex;flex-direction:column;
+  font-size:min(8.4vw,19svh);font-weight:900;font-variation-settings:"wdth" 62,"wght" 900;line-height:.86;letter-spacing:-.012em;text-transform:uppercase}
+.s3-ln{display:block;white-space:nowrap;transform:translate3d(var(--dx,0),0,0);will-change:transform}
+/* S1's stagger: first line left, second centred, third right */
+.s3-ln{width:max-content;max-width:100%}
+.s3-ln:nth-child(2){margin-left:auto;margin-right:auto}
+.s3-ln:nth-child(3){margin-left:auto}
+.s3-w{position:relative;display:inline-block;margin-right:.2em}
+.s3-w:last-child{margin-right:0}
+.s3-w .o{color:transparent;-webkit-text-stroke:1.5px rgba(243,234,219,.28)}
+.s3-w .f{position:absolute;inset:0;color:var(--cream);clip-path:inset(-12% calc((1 - var(--q,0)) * 100%) -12% 0)}
+/* the italic pair fills hot red, as in S1 */
+.s3-w.em{font-family:"Instrument Serif",serif;font-style:italic;font-weight:400;font-variation-settings:normal;text-transform:none;letter-spacing:-.02em;font-size:1.1em;line-height:.78;vertical-align:baseline}
+.s3-w.em .o{-webkit-text-stroke:1px rgba(255,74,42,.45)}
+.s3-w.em .f{color:var(--hot)}
+
+/* reading meter on the right edge: a hairline that fills, and the percent */
+.s3-meter{position:absolute;right:clamp(20px,3vw,48px);top:50%;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;gap:12px}
+.s3-meter i{position:relative;display:block;width:1px;height:38svh;background:rgba(243,234,219,.22)}
+.s3-meter b{position:absolute;inset:0;background:var(--hot);transform-origin:50% 0;transform:scaleY(min(1,calc(var(--p) / .82)))}
+.s3-pc{font-family:"Martian Mono",ui-monospace,monospace;font-size:var(--t-sm);letter-spacing:.12em;color:var(--cream);font-variant-numeric:tabular-nums}
+
+/* the landing: once the line is written, the readings and the asks rise along the bottom edge */
+.s3-land{position:absolute;left:clamp(20px,5vw,80px);right:clamp(20px,5vw,80px);bottom:clamp(24px,5svh,48px);
+  display:flex;justify-content:space-between;align-items:flex-end;gap:24px 48px;flex-wrap:wrap;padding-top:20px;border-top:1px solid rgba(243,234,219,.14);
+  opacity:0;transform:translateY(24px);pointer-events:none;transition:opacity var(--u-d2) var(--out),transform .9s var(--out)}
+.s3.end .s3-land{opacity:1;transform:none;pointer-events:auto}
+.s3-read{display:grid;grid-template-columns:repeat(4,auto);gap:0 clamp(20px,3vw,44px);margin:0}
+.s3-read dt{font-family:"Martian Mono",ui-monospace,monospace;font-size:var(--t-sm);letter-spacing:.14em;text-transform:uppercase;color:var(--cream-2)}
+.s3-read dd{margin:8px 0 0;font-size:var(--t-body);font-weight:800;font-variation-settings:"wdth" 62,"wght" 800;text-transform:uppercase}
+.s3-act{display:flex;align-items:center;gap:26px;flex-wrap:wrap}
+.s3-btn{display:inline-flex;align-items:center;height:50px;padding:0 24px;background:var(--cream);color:var(--ink);text-decoration:none;
+  font-size:var(--t-body);font-weight:800;font-variation-settings:"wdth" 62,"wght" 800;letter-spacing:.05em;text-transform:uppercase;transition:background var(--u-d1) var(--out),color var(--u-d1)}
+.s3-btn:hover{background:var(--hot)}
+.s3-link{display:inline-flex;align-items:center;gap:10px;color:var(--cream);text-decoration:none;font-family:"Martian Mono",ui-monospace,monospace;font-size:var(--t-sm);letter-spacing:.08em;text-transform:uppercase;
+  padding:6px 0;background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat;transition:background-size var(--u-d2) var(--out)}
+.s3-link:hover{background-size:100% 1px;color:var(--hot)}
+.s3-btn:focus-visible,.s3-link:focus-visible{outline:2px solid var(--cream);outline-offset:4px}
+
+@media (max-width:760px){
+  .s3{height:240svh}
+  .s3-stage{justify-content:flex-start;padding:110px 20px 0}
+  /* sized so the longest phrase (SHIPS WITH THE number) fits 375px, as in S1 */
+  .s3-say{font-size:9.5vw;gap:.1em}
+  .s3-ln:nth-child(2),.s3-ln:nth-child(3){margin:0}
+  .s3-w .o{-webkit-text-stroke-width:1px}
+  .s3-meter{display:none}
+  .s3-land{flex-direction:column;align-items:flex-start;left:20px;right:20px;bottom:24px}
+  .s3-read{grid-template-columns:1fr 1fr;gap:14px 16px;width:100%}
+}
+/* reduced motion: no pin, the line is simply written */
+@media (prefers-reduced-motion:reduce){
+  .s3{height:auto}
+  .s3-stage{position:relative;padding-top:120px;padding-bottom:220px}
+  .s3-land{transition:none}
+}

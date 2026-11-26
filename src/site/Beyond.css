@@ -1,0 +1,59 @@
+.bd{--ink:#0a0a09;--paper:#f3eadb;--hot:#ff4a2a;--tile:#262522;--rule:#f3eadb22;
+  position:relative;background:var(--ink);color:var(--paper);font-family:"Archivo",sans-serif;padding:clamp(72px,12svh,140px) clamp(20px,4vw,64px) clamp(80px,14svh,160px)}
+.bd-top{display:flex;justify-content:space-between;gap:16px;padding-bottom:12px;border-bottom:2px solid var(--paper);
+  font:500 var(--t-sm)/1 "Martian Mono",monospace;letter-spacing:.14em;text-transform:uppercase}
+.bd-top span:last-child{color:#f3eadb88}
+
+.bd-intro{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(24px,5vw,80px);align-items:end;margin:clamp(48px,9svh,110px) 0 clamp(40px,7svh,80px)}
+.bd-intro h2{margin:0;font-weight:900;font-variation-settings:"wdth" 62;font-size:clamp(64px,9.5vw,170px);line-height:.82;letter-spacing:-.02em;word-spacing:.12em;text-transform:uppercase}
+.bd-intro h2 em{display:block;font:400 italic 1.04em/.95 "Instrument Serif",serif;letter-spacing:-.02em;word-spacing:0;text-transform:none;color:var(--hot)}
+.bd-intro p{margin:0;max-width:44ch;font:400 var(--t-body)/1.55 "Archivo",sans-serif;color:#f3eadbc7}
+
+/* the board */
+.bd-board{border-top:2px solid var(--paper)}
+.bd-row{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1.35fr) max-content;gap:clamp(16px,2.4vw,40px);align-items:start;padding:clamp(18px,2.6svh,28px) 0;border-bottom:1px solid var(--rule)}
+.bd-cols{padding:12px 0;font:500 var(--t-xs)/1 "Martian Mono",monospace;letter-spacing:.16em;text-transform:uppercase;color:#f3eadb88}
+
+/* split-flap tiles */
+.bd-flap{display:inline-flex;flex-wrap:wrap;gap:3px 2px;font:600 clamp(14px,1.45vw,23px)/1 "Martian Mono",monospace}
+.bd-flap i{position:relative;display:inline-grid;place-items:center;min-width:1.05em;height:1.5em;padding:0 .08em;font-style:normal;background:var(--tile);color:var(--paper);border-radius:2px;
+  box-shadow:inset 0 1px 0 #ffffff0d,inset 0 -1px 0 #00000080}
+.bd-flap i::after{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:#0a0a09cc}
+.bd-flap i.sp{min-width:.5em;background:none;box-shadow:none}
+.bd-flap i.sp::after{display:none}
+
+.bd-via a,.bd-via b{display:inline-block;font-weight:800;font-size:clamp(18px,1.7vw,28px);line-height:1.1;color:var(--paper);text-decoration:none}
+.bd-via a{border-bottom:2px solid var(--hot);transition:color var(--u-d1)}
+.bd-via a:hover{color:var(--hot)}
+.bd-via a:focus-visible{outline:2px solid var(--hot);outline-offset:4px}
+.bd-via a i{font-style:normal;color:var(--hot)}
+.bd-via small{display:block;margin-top:8px;max-width:52ch;font:400 var(--t-md)/1.5 "Archivo",sans-serif;color:#f3eadba6}
+
+.bd-status{justify-self:end}
+.s-shipped .bd-status .bd-flap i:not(.sp){background:var(--paper);color:var(--ink)}
+.s-shipping .bd-status .bd-flap i:not(.sp){background:var(--hot);color:var(--ink)}
+.s-learning .bd-status .bd-flap i:not(.sp){background:none;color:var(--hot);box-shadow:inset 0 0 0 1px var(--hot)}
+.s-learning .bd-status .bd-flap i::after{background:#ff4a2a55}
+
+.bd-note{margin:clamp(28px,5svh,48px) 0 0;font:400 italic var(--t-lede)/1.3 "Instrument Serif",serif;color:var(--paper)}
+
+@media (max-width:860px){
+  .bd-intro{grid-template-columns:1fr}
+  .bd-row{grid-template-columns:1fr auto;row-gap:12px}
+  .bd-cols span:nth-child(2){display:none}
+  .bd-role{grid-column:1}.bd-status{grid-column:2;grid-row:1}
+  .bd-via{grid-column:1 / -1}
+  .bd-flap{font-size:13px}
+}
+/* a status is one word on one line; tiles get a hairline so they read as flaps, not spaced text */
+.bd-status .bd-flap{flex-wrap:nowrap}
+.bd-flap i{border:1px solid #f3eadb14}
+.bd-flap i.sp{border:0}
+.bd-word{display:inline-flex;gap:2px;white-space:nowrap}
+/* one grid for the whole board: rows share its column lines (subgrid), so a longer status never shifts a row */
+.bd-board{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1.35fr) max-content;column-gap:clamp(16px,2.4vw,40px)}
+.bd-row{grid-column:1 / -1;grid-template-columns:subgrid;column-gap:inherit}
+@media (max-width:860px){
+  .bd-board{grid-template-columns:minmax(0,1fr) max-content}
+  .bd-row{grid-template-columns:subgrid}
+}

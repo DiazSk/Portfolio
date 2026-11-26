@@ -1,496 +1,122 @@
 ---
 name: Zaid Shaikh — Portfolio
-description: Near-black ground, one signal vermilion held as a field, condensed poster type.
+description: One ink, one paper, one red; condensed poster type; a page told in five chapters, each with its own signature object.
 colors:
-  surface: "#08090A"
-  surface-raised: "#0F1011"
-  surface-overlay: "#16181A"
-  surface-hover: "#111315"
-  border: "rgba(255, 255, 255, 0.08)"
-  border-strong: "rgba(255, 255, 255, 0.16)"
-  ink: "#F7F8F8"
-  ink-secondary: "#B4B9C2"
-  ink-muted: "#8A8F98"
-  field: "#FF3B14"
-  field-ink: "#0A0A09"
-  field-ink-secondary: "#2E1409"
+  ink: "#0a0a09"
+  paper: "#f3eadb"
+  hot: "#ff4a2a"
+  field-red-hot: "#c5170c"
+  field-red: "#9b0f07"
+  field-red-deep: "#5c0703"
+  hairline-on-paper: "#0a0a0926"
+  hairline-on-ink: "#f3eadb22"
 typography:
   display:
-    fontFamily: "Bricolage Grotesque, Inter, sans-serif"
-    fontSize: "clamp(3.25rem, 13vw, 11rem)"
-    fontWeight: 800
-    lineHeight: 0.85
-    letterSpacing: "-0.02em"
-    fontVariation: "\"wdth\" 78"
-  headline:
-    fontFamily: "Bricolage Grotesque, Inter, sans-serif"
-    fontSize: "clamp(2.75rem, 8vw, 6.5rem)"
-    fontWeight: 800
-    lineHeight: 0.86
-    letterSpacing: "-0.02em"
-    fontVariation: "\"wdth\" 78"
-  hero-name:
-    fontFamily: "Bricolage Grotesque, Inter, sans-serif"
-    fontSize: "min(26.72cqw, 62vh)"
-    fontWeight: 800
-    lineHeight: 0.82
-    letterSpacing: "-0.035em"
-    fontVariation: "\"wdth\" 78"
-    fontFeature: "font-optical-sizing: none"
-  footer-wordmark:
-    fontFamily: "Bricolage Grotesque, Inter, sans-serif"
-    fontSize: "19.98cqw"
-    fontWeight: 800
-    lineHeight: 1
-    letterSpacing: "-0.012em"
+    fontFamily: "Archivo, sans-serif"
+    fontWeight: 900
+    fontVariation: "\"wdth\" 62"
+    textTransform: uppercase
+    note: "every headline, giant numeral and chapter word; sizes are per section, never on the shared scale"
+  text:
+    fontFamily: "Archivo, sans-serif"
+    fontWeight: "400–800"
     fontVariation: "\"wdth\" 100"
-    fontFeature: "font-optical-sizing: none"
-  marquee:
-    fontFamily: "Bricolage Grotesque, Inter, sans-serif"
-    fontSize: "clamp(2rem, 5.5vw, 4.5rem)"
-    fontWeight: 800
-    lineHeight: 1
-    letterSpacing: "-0.02em"
-    fontVariation: "\"wdth\" 78"
-  metric:
-    fontFamily: "Bricolage Grotesque, Inter, sans-serif"
-    fontSize: "clamp(2.5rem, 4.5vw, 4rem)"
-    fontWeight: 800
-    lineHeight: 0.9
-    letterSpacing: "-0.04em"
-    fontVariation: "\"wdth\" 78"
-  metric-card:
-    fontFamily: "Bricolage Grotesque, sans-serif"
-    fontSize: "clamp(2.25rem, 3.4vw, 3rem)"
-    fontWeight: 800
-    lineHeight: 0.9
-    letterSpacing: "-0.04em"
-    fontVariation: "wdth 78"
-  title:
-    fontFamily: "Bricolage Grotesque, Inter, sans-serif"
-    fontSize: "1.5rem"
-    fontWeight: 800
-    lineHeight: 1
-    letterSpacing: "-0.02em"
-    fontVariation: "\"wdth\" 78"
-  body:
-    fontFamily: "Inter, sans-serif"
-    fontSize: "1rem"
+  accent:
+    fontFamily: "Instrument Serif, serif"
+    fontStyle: italic
     fontWeight: 400
-    lineHeight: 1.625
-    letterSpacing: "normal"
-  body-small:
-    fontFamily: "Inter, sans-serif"
-    fontSize: "0.875rem"
-    fontWeight: 400
-    lineHeight: 1.5
-    letterSpacing: "normal"
-  label:
-    fontFamily: "Azeret Mono, ui-monospace, monospace"
-    fontSize: "0.75rem"
-    fontWeight: 500
-    lineHeight: 1.4
-    letterSpacing: "0.1em"
-  action:
-    fontFamily: "Bricolage Grotesque, Inter, sans-serif"
-    fontSize: "1rem"
-    fontWeight: 800
-    lineHeight: 1
-    letterSpacing: "0.005em"
-    fontVariation: "\"wdth\" 82"
+    note: "the one italic word in a headline, intertitles, proof lines; usually in hot"
+  mono:
+    fontFamily: "Martian Mono, monospace"
+    fontWeight: "500–600"
+    textTransform: uppercase
+    letterSpacing: "0.08em–0.16em"
+    note: "labels, measurements, chapter bars, commit messages, captions"
+scale:
+  t-xs: "9.5px (11px on phones)"
+  t-sm: "10.5px (12px on phones)"
+  t-md: "13px"
+  t-body: "clamp(15px, 1.2vw, 18px)"
+  t-lede: "clamp(18px, 1.6vw, 26px)"
+  t-h4: "clamp(22px, 2.2vw, 34px)"
+  t-h3: "clamp(28px, 3.2vw, 52px)"
+motion:
+  u-out: "cubic-bezier(.16, 1, .3, 1)   — enter"
+  u-io: "cubic-bezier(.77, 0, .18, 1)   — travel"
+  u-in: "cubic-bezier(.7, 0, .84, 0)    — exit"
+  u-d1: "0.28s — touch"
+  u-d2: "0.6s — reveal"
 rounded:
   none: "0"
-  ring: "0.375rem"
-spacing:
-  gutter-sm: "1.25rem"
-  gutter-md: "2.5rem"
-  gutter-lg: "4rem"
-  card-pad: "1.5rem"
-  section-y: "6rem"
-  section-y-md: "8rem"
-components:
-  button-primary:
-    backgroundColor: "{colors.field}"
-    textColor: "{colors.field-ink}"
-    typography: "{typography.action}"
-    rounded: "{rounded.none}"
-    padding: "0.875rem 1.5rem"
-  button-primary-hover:
-    backgroundColor: "{colors.ink}"
-    textColor: "{colors.field-ink}"
-  button-ghost:
-    backgroundColor: "transparent"
-    textColor: "{colors.ink}"
-    typography: "{typography.action}"
-    rounded: "{rounded.none}"
-    padding: "0.875rem 1.5rem"
-  button-ghost-hover:
-    backgroundColor: "{colors.surface-overlay}"
-    textColor: "{colors.ink}"
-  button-on-field:
-    backgroundColor: "{colors.field-ink}"
-    textColor: "{colors.field}"
-    typography: "{typography.label}"
-    padding: "0.625rem 1.25rem"
-  card:
-    backgroundColor: "{colors.surface-raised}"
-    textColor: "{colors.ink-secondary}"
-    rounded: "{rounded.none}"
-    padding: "{spacing.card-pad}"
-  card-hover:
-    backgroundColor: "{colors.surface-hover}"
-  tech-pill:
-    backgroundColor: "transparent"
-    textColor: "{colors.ink-secondary}"
-    typography: "{typography.label}"
-    rounded: "{rounded.none}"
-    padding: "0.125rem 0.5rem"
-  tech-pill-on-field:
-    backgroundColor: "transparent"
-    textColor: "{colors.field-ink}"
-    typography: "{typography.label}"
-    rounded: "{rounded.none}"
-    padding: "0.125rem 0.5rem"
-  nav-link:
-    backgroundColor: "transparent"
-    textColor: "{colors.ink-muted}"
-    typography: "{typography.action}"
-    rounded: "{rounded.none}"
-    height: "2.75rem"
-  nav-link-hover:
-    textColor: "{colors.ink}"
-  track-nav:
-    backgroundColor: "transparent"
-    textColor: "{colors.ink-muted}"
-    rounded: "{rounded.none}"
-    size: "28px"
-  track-nav-hover:
-    backgroundColor: "transparent"
-    textColor: "{colors.ink}"
-    rounded: "{rounded.none}"
-    size: "28px"
-  field-surface:
-    backgroundColor: "{colors.field}"
-    textColor: "{colors.field-ink}"
-    rounded: "{rounded.none}"
-    padding: "6rem 1.25rem"
 ---
 
 # Design System: Zaid Shaikh — Portfolio
 
+The site lives in `src/site/`. It was designed and verified on the MagicPath canvas ("Portfolio · Unified") and ported as-is; `src/site/Unified.css` holds the shared tokens and every phone correction.
+
 ## Overview
 
-**Creative North Star: "The Signal Field"**
+**North star: one system, five chapters, one signature object each.** The page reads as a sequence of chapters that share one palette, three faces, one type scale and one motion language, but each chapter owns an idea nothing else on the page uses. Energy comes from that contrast, not from louder effects.
 
-A near-black ground interrupted by whole regions of one signal vermilion, with condensed poster type doing the talking. The system exists to prove interface craft by a data engineer, so every measured number is treated as the loudest element on its surface: display face, poster scale, field colour. Density is editorial rather than dashboard — long vertical rhythm, wide gutters, a single hairline where most systems would put a box.
-
-The world is pinned, not rolled. It comes from bold-editorial references (Orbix Studio, Yucale Studio, CREATIQ, LAIN) and that genre is the craft bar: where a rule below reads as unusually forceful, it is holding the line against softening back toward restraint. PRODUCT.md records this as a standing brand commitment that replaced an earlier "category standard / linear.app" preference. The prior implementation of that preference — restrained near-black surfaces, an amber accent, Inter as the only face, rounded cards, inset lit edges, ambient shadows — is retired wholesale, not evolved.
-
-Two anti-references are explicit and confirmed: teal-on-navy (the most-cloned engineer portfolio) and violet-glow (the AI-generated cluster). Vermilion was chosen against that competitive landscape, not by taste. Restraint itself is the third anti-reference: an earlier build of *this* world scattered the vermilion as accents (1.0% of the first viewport, 12.9% of the page) and the finish review returned a rebuild directive. The shipped build holds it as regions — 11.8% of the first viewport, 28.7% of the page.
-
-**Key Characteristics:**
-- One signal colour, held as whole surfaces rather than as trim
-- Black ink on the field, never white — white fails contrast there
-- Condensed variable-width display type at poster scale
-- Three faces, three jobs, no overlap
-- Hard edges: zero radius, no shadow, no lit edge
-- Two type steps only — poster and section head, nothing in between
-- Motion is entrance-in-CSS, authored-moments-in-GSAP, and absent under reduced motion
+| Order | Surface | Chapter | Signature object |
+|---|---|---|---|
+| Hero | red field | — | Aura-edit cold open; cut-out portrait; the Slice menu |
+| Statement | ink | — | "Every pipeline I build ships with the *number* that *decided* it", scroll-written |
+| Intertitle | paper | — | "Claims are easy. / Here's what was measured." |
+| 01 Measured | ink | Measured | Four positions, each with one giant counting number |
+| 02 Work | paper | Work | The line: seven project posters on one ride, plus the detail panel |
+| (Work, cont.) | paper | Work · the kit | The Swiss axis: 21 tools in six layers, sticker collages, the all-21 sheet |
+| 03 Beyond | ink | Beyond the pipeline | `git log --graph`: data engineering is `main`, the second track branches off it |
+| 04 Off the clock | paper | Off the clock | Swiss poster grid of panels; game posters; live Last.fm turntable |
+| 05 Contact | red field | Contact | The Final Cut: the email as a liquid-fill copy target, the slate, the credits footer |
 
 ## Colors
 
-A monochrome near-black ramp carrying all structure, plus exactly one chromatic voice that never appears in small doses.
-
-### Primary
-- **Signal Vermilion** (`{colors.field}`): The field. It is applied to whole regions, never to trim: the whole first viewport, the full-bleed display-scale marquee band that closes it, the entire Stack section, the footer, and two panels inside the About grid (Availability and the first of the three readings). It also carries every metric numeral, the focus ring, the selection highlight, and card hover borders — those are the only sub-region uses, and they are type or a hairline, never a filled chip on a dark surface.
-- **Field Ink** (`{colors.field-ink}`): The only full-strength text tone permitted on the field (5.55:1). Also the background of the on-field button, inverting the region.
-- **Field Ink Secondary** (`{colors.field-ink-secondary}`): The single legal de-emphasis tone on the field (4.83:1) — on-field links at rest, the long-tail stack list, on-field pill borders. A solid colour precisely so it is not an alpha composite. It is a real `@theme` token as of 2026-09-18; before that it was the literal `#2E1409` repeated in seven places across three components and the stylesheet, which is why the on-field caption inside a field panel had to be reasoned out rather than looked up.
-
-### Neutral
-- **Ground** (`{colors.surface}`): The page. A fixed radial wash of `rgba(255,255,255,0.035)` sits above it as its own compositing layer, giving a single top-of-page light source without repainting the body.
-- **Raised** (`{colors.surface-raised}`): Card interiors.
-- **Overlay** (`{colors.surface-overlay}`): Schematic nodes, ghost-button hover, default role chips.
-- **Hover Ground** (`{colors.surface-hover}`): Card background on hover — a one-step lift, paired with the border going vermilion.
-- **Hairline** (`{colors.border}`) / **Hairline Strong** (`{colors.border-strong}`): Structure is drawn with rules, not boxes: section tops, the metric row's dividers, the decision log's left rule, pill and card outlines.
-- **Ink** (`{colors.ink}`) / **Ink Secondary** (`{colors.ink-secondary}`) / **Ink Muted** (`{colors.ink-muted}`): Headings and emphatic labels; prose and schematic items; labels, captions and nav at rest.
-
-### Named Rules
-
-**The Regions, Not Accents Rule.** Vermilion is applied as a whole surface. Three regions carry it and a fourth would be welcome; a *fifth vermilion detail* would not. Audit test: if the signal colour's coverage on the first viewport falls near 1% and reads as trim, the world has been reverted. The shipped build measures 11.8% first-viewport and 28.7% page-wide, and those are the floor, not a ceiling.
-
-*Measurement note (2026-09-18):* counting pixels within tolerance of `#FF3B14` on a 1293×946 capture does not reproduce 11.8% — it reads **8.29%** for the build that figure was recorded against, so the two methods are not comparable and only like-for-like deltas mean anything. Under that method the four-block hero measured **8.74%**. The field hero that replaced it measures roughly **83%** — the first viewport *is* the region. Re-measure with the same script before trusting any future number.
-
-**The Black-On-Field Rule.** Nothing on the field is ever white — white measures 3.57:1 there. Every on-field tone is a *solid* colour, never alpha: `rgba(10,10,9,0.72)` composites to 4.01:1 and fails AA for body text, and `rgba(10,9,8,0.38)` composites to ~2.2:1, under the 3:1 a UI boundary needs. Exactly two on-field tones are legal.
-
-**The One Voice Rule.** There is no secondary or tertiary accent, and adding one is a change of world rather than an extension of it. Everything that is not the field is a step on the near-black neutral ramp.
+- **One ink, one paper, one red.** `ink` and `paper` are the only surfaces; `hot` is the only accent. Nothing else enters, including in images' frames, posters and badges.
+- **The red field is reserved for the bookends.** The hero and Contact use the field (`field-red-hot` → `field-red` → `field-red-deep` radial, public-domain art screened over it). No middle chapter uses it.
+- **Surfaces alternate so chapters read.** Two neighbours never share a surface without something between them. Where they would (Statement and Measured are both ink), an intertitle sits between them on the *opposite* surface.
+- **Section numbers are hot.** Every chapter label is `NN Name` with the number in `hot`, matching the menu exactly.
 
 ## Typography
 
-**Display Font:** Bricolage Grotesque (variable `opsz 12..96`, `wdth 75..100`, `wght 300..800`; falls back to Inter)
-**Body Font:** Inter (variable `opsz 14..32`, `wght 400..600`)
-**Label/Mono Font:** Azeret Mono (400 / 500 / 600)
-
-**Character:** Condensed, heavy, tightly tracked poster type against plain workhorse prose, with a mono face reserved for anything that is a measurement. The pairing reads as a printed editorial spread rather than a product UI.
-
-### Hierarchy
-- **Display** (800, `clamp(3.25rem, 13vw, 11rem)`, line-height 0.85, `wdth 78`, tracking -0.02em): The name in the first viewport. Balanced wrap. One per page region at most.
-- **Hero name** (Display, `min(26.72cqw, 62vh)` with `wdth 78`, tracking -0.035em, `font-optical-sizing: none`, uppercase, `nowrap`, line-height 0.82): The name filling the width of the field viewport. The face renders "ZAID SHAIKH" at 3.7324 em-widths under those settings, so `100 / 3.7324 = 26.79cqw` is edge to edge. It is set to **26.603cqw** so both sides carry the same air: at 26.72 the Z's left side bearing left a 6px gap while the H sat flush, because the -0.035em tracking applies after the final glyph too and ate the right bearing. Solving `3.7263F + 2(0.01632F) = container` balances them, and because both terms are em-relative the gaps stay equal at every width — measured 0px asymmetry at 1293, 1024 and 768, and 1px at 1376 from sub-pixel rounding. The `vh` term only binds on short, wide windows.
-- **Footer wordmark** (Display, but `19.98cqw` with `wdth 100`, tracking -0.012em, `font-optical-sizing: none`, `nowrap`): The name set once on the field band, sized to fill the container so both ends meet the hairline above the meta row. Container units, not `vw` — the hairline's width stops at `max-w-7xl` and a `vw` size does not, so the two scales crossed past ~1294px and the line wrapped. Optical sizing is pinned because the `opsz` axis widens the face below ~120px, which no single multiplier can absorb.
-- **Headline** (800, `clamp(2.75rem, 8vw, 6.5rem)`, line-height 0.86, `wdth 78`, uppercase): Section heads. The second and last step of the scale.
-- **Metric** (800, `clamp(2.5rem, 4.5vw, 4rem)` in the hero and `clamp(2.25rem, 3.4vw, 3rem)` on cards, tracking -0.04em, tabular figures, field colour): Measured numbers. They rank above prose and below the section head.
-- **Title** (800, 1.5rem rising to 1.875rem–2.25rem, uppercase, `wdth 78`): Project and stack-group names.
-- **Body** (400, 1rem, line-height ~1.6, Inter): Prose only, capped at `max-w-2xl`; the About credo runs to `26ch` and the hero claim to `13–18ch`.
-- **Label** (500, 0.75rem, tracking 0.1em, uppercase, Azeret Mono): Metric labels and context, tech pills, schematic stage names, tabular metadata, group counts.
-- **Marquee** (800, `clamp(2rem, 5.5vw, 4.5rem)`, line-height 1, `wdth 78`, tracking -0.02em, uppercase, field-ink): The running stack inside a field band. It sits between Headline and Title and belongs to the band alone — nothing else on the page uses this step.
-- **Action** (800, 1rem, uppercase, `wdth 82`, Bricolage): Buttons. Nav links use `wdth 85` at 0.875rem/600.
-
-### Named Rules
-
-**The Condensed Axis Rule.** Display type sets `font-variation-settings: "wdth" 78` (82 for actions, 85 for nav). The condensed axis *is* the genre. An earlier build loaded the width axis and then pinned it to 100, rendering a wide neutral grotesque; the review scored that as contradicting the genre. Never ship Bricolage at default width.
-
-**The Two-Step Scale Rule.** The ramp has two large steps — the poster h1 and the section head — and nothing between them. A single poster moment over a page of small heads was scored as a failure; section heads must stay at display scale.
-
-**The Measurement-Only Mono Rule.** Azeret Mono appears only where something is measured or enumerated: metric labels and context, tech pills, schematic stage names, tabular metadata. Monospace worn as a costume to signal "technical" is a refused pattern. Inter is prose only and is explicitly *not* the display voice.
-
-**The No Kicker Rule.** No category label, eyebrow, or role tag sits above a heading. The project cards' `RoleTag` was deleted and its component removed for exactly this reason; the group heading above the grid carries the category instead.
-
-**The Alternating Case Rule.** Section heads are uppercase; the About credo is display scale but deliberately lowercase, so two stacked caps blocks do not read as one long shout.
+- **Three faces, three jobs.** Archivo for everything structural, Instrument Serif italic for the one human word, Martian Mono for anything measured or labelled. No fourth face.
+- **Two Archivo widths only.** `wdth 62` for display, `wdth 100` for text.
+- **Display sizes belong to their section.** The shared scale (`--t-*`) covers small and mid text only; giant numerals and chapter words are tuned per section and never snapped to it.
+- **Compressed type needs air.** Uppercase `wdth 62` at display size swallows spaces and outlines cross: set `word-spacing` ≈ `.12–.2em` on multi-word display lines, and open tracking (≥ `.01em`) on outlined numerals.
+- **Fractions set like Work's 7/7.** The slash is a small serif italic with even optical space either side; balance it by eye, not by equal margins.
 
 ## Layout
 
-A single centred column at `max-w-7xl` with a three-step gutter (1.25rem / 2.5rem / 4rem at `sm` and `lg`) and a vertical rhythm of 6rem rising to 8rem per section. Sections are separated by a top hairline, not by a change of background — except the two field regions, which are separated by being a different colour entirely.
+- **Chapters are numbered 01–05 in page order and the menu matches.** Adding a chapter renumbers everything after it, including the menu strips, section labels and the Contact footer index.
+- **Phones (≤760px) get their own corrections in one place** (`Unified.css`): pinned scroll stages unpin where the pin only created empty space (the Statement), giant words are sized to fit 375px, the menu becomes an icon-only hamburger, and every tap target is at least 44px.
+- **Two-column tables share one grid.** Rows that line up across a table (the Beyond log) use a shared grid or subgrid, so a longer cell never shifts a row.
 
-The first viewport is one gesture and carries no column at all. The whole screen is the field region, and the name is set to the exact width of it — one line, `field-ink` on vermilion, `min(26.72cqw, 62vh)`. Everything that is not the name sits on an edge: a hairline above a two-column mono block holding role, location, availability, the email, the live-dashboard link and the degree. `Hero` therefore renders outside `<main>`, as `Contact` does, because the `max-w-7xl` clamp would cage the field.
+## Motion
 
-Below the field the ground picks the page back up: the one-sentence claim, then the measurement rows, then a thin marquee band. The two field regions are separated by ground rather than touching, which is the same fix the Stack/footer boundary needed. Projects are no longer a grid at all — see Project Track.
-
-The composition comes from looking at the references rather than measuring them. Every award-winning first viewport that could be captured statically makes one edge-to-edge move: white-desert.com sets ANTARCTICA against the viewport edges, warmnfuzzy.tv floods the screen with a single saturated colour, aspensearch.com divides it into full-bleed colour panels, noho.ink splits it down the middle. None centres a padded column. An earlier version of this hero did, and that — not its information budget — was why it did not hold a reader. The metadata block sits *below* the name, which keeps the No Kicker Rule intact.
-
-Scroll behaviour lives on `html` (not `body`, where the browser ignores it for document scrolling) with `scroll-padding-top: 5rem` to clear the 64px fixed header.
-
-### Named Rules
-
-**The Two-Face Rule.** A project panel does not grow to show its detail; it trades faces. The old card expanded downward and measured **1192px against a 946px viewport**, which a pinned panel cannot show at all, so opening swaps the summary out and the architecture in inside one fixed box. The container stays 704px wide, which is what the schematic needs — the retired grid had to claim a whole row on open because at half width the container was 518px and five stages crushed together. The hidden face carries `inert`, so nothing behind is reachable by keyboard.
-
-**The Container-Query Rule.** The architecture schematic reflows on its own width, never the viewport's — `container-type: inline-size` plus `@container (min-width: 34rem)` flips it from vertical to horizontal. A 1400px viewport still only gives this card 518px, so a media query would be measuring the wrong box.
-
-## Elevation & Depth
-
-There are no shadows in this system. Depth is a three-step tonal ramp (ground, raised, overlay) plus hairline rules, and nothing else. Two atmospheric elements sit over the ground, both fixed compositing layers of their own so the body is not repainted on every frame:
-
-1. A **radial white wash at 3.5%**, which establishes a single top-of-page light source.
-2. A **hairline grid** — 1px rules at 6% white on a 5.5rem module, whole page. It is the same move the rest of the system makes, structure drawn with rules rather than boxes, extended to the ground itself. Rendered, a grid line measures `rgb(26,27,28)`; the worst text tone over one (`ink-muted`) holds 5.31:1 and the field link 4.84:1.
-
-A third atmospheric layer would be one too many.
-
-### Named Rules
-
-**The No Shadow, No Lit Edge Rule.** No `box-shadow`, no inset highlight, no ambient glow, anywhere. Rounded, lit, shadowed surfaces were the retired world's vocabulary; reintroducing any of them is reverting the world, not refining it.
-
-## Shapes
-
-Hard-edged blocks and hairline rules. `border-radius: 0` on cards, buttons, pills, and role chips; borders are 1px at 8% or 16% white. Emphasis on a dark ground is a vermilion hairline, never an inverted fill. The only radius in the system is `{rounded.ring}` (0.375rem) on the global focus ring, where it softens the outline around small targets.
-
-Recurring silhouettes: the full-bleed field band (edge to edge, overflow hidden, one line of display type); the ruled row (siblings divided by 1px, never boxed); and the left-ruled log (a 1px left border with 1rem of inset standing in for a list marker).
+- **One scroll engine.** `src/site/Scroll.ts` owns the page: a Lenis-style wheel glide on fine pointers, native scrolling elsewhere. Sections only *read* scroll position; `glide.hold` pauses the page while a sheet or panel owns the wheel.
+- **Scroll-driven values are measured live**, every frame, with `getBoundingClientRect`; offsets are never cached. Loops are gated off-screen.
+- **Never put a CSS transition on a scroll-driven value.** It lags behind the scroll (and freezes in throttled previews).
+- **Three curves, two durations.** Enter `u-out`, travel `u-io`, exit `u-in`; `u-d1` for touch feedback, `u-d2` for reveals. Long authored moves (the menu slide, the odometer) keep their length but use the same curves.
+- **Menu navigation never scroll-travels.** The page jumps under the closing Slice, the cover dissolves, and tall scroll-driven sections glide a short way in so their first lines write on arrival.
+- **Reduced motion is honoured everywhere**: scroll reveals resolve to their end state and pins release.
 
 ## Components
 
-### Buttons
-- **Shape:** Square (`{rounded.none}`), no shadow.
-- **Primary:** Field background, field-ink label, uppercase Bricolage at `wdth 82`, 0.875rem/1.5rem padding.
-- **Hover / Focus:** Primary inverts to white ink ground on hover (colour transition, 150ms); focus uses the global vermilion ring at 2px with 2px offset.
-- **Ghost:** Transparent with a strong hairline, ink label; hover fills to the overlay tone and keeps its border.
-- **On Field:** Where a button sits inside a vermilion region it inverts — field-ink ground, vermilion label, Azeret Mono at 0.06em tracking — and its focus ring is field-ink, not vermilion, because vermilion on vermilion is invisible. **It hovers to the same white ground and near-black label as every other primary button**, which means setting the label explicitly: the resting label is vermilion, and letting that inherit onto white would invent a third treatment. A white button *fill* on the field is not a breach of the Black-On-Field Rule, which governs ink and borders drawn on vermilion, not a surface laid over it; the pair measures 4.75:1 as a boundary.
-
-### Chips
-- **Style:** Tech pills are transparent with a strong hairline and secondary ink, Azeret Mono at 0.75rem, square. On the field they keep the transparent ground but take a solid `{colors.field-ink-secondary}` border and field-ink text.
-- **State:** A pill is metadata, never a control, but it does answer the pointer: 150ms to full ink on the dark ground, and on the field it takes the **same hover as every primary button there** — white ground, near-black label — because a second on-field hover treatment earns nothing. It inverted to a field-ink fill with a vermilion label until 2026-09-18.
-
-The skill pills also **grow on hover**, `scale: 1.06` over 150ms — the same grow/shrink the stack rows and the project panels run, at the scale a 22px chip can carry. 6% of a 158px pill is 9.5px, under 5px a side, which fits inside the `gap-1.5` so a growing pill never touches its neighbour.
-
-Two details there are not style choices but consequences of GSAP owning these elements. The stack reveal animates the pills, so every one of them carries `transform: translate(0px, 0px)` *and* `scale: none` as inline styles written by script. So the rule needs `!important` — an author `!important` is the only declaration that outranks a normal inline one — and it uses the individual `scale` property rather than `transform`, which composes with GSAP's matrix instead of replacing it, so a pill still sits where the reveal put it while it grows. **Anything else that wants to style an element GSAP animates has the same two problems.** The rule sits inside `prefers-reduced-motion: no-preference` rather than merely dropping its transition, so under reduced motion the pill does not jump to a new size with nothing in between. The accent role chip (vermilion fill, field ink) exists but is used only where a filled emphasis is the point.
-- **Entrance:** In the Stack section the pills belong to that section's GSAP timeline (see Stack Timeline) rather than to a CSS reveal of their own; they rise 14px on a 0.07s stagger as their row resolves. A short-lived `.chip-in` CSS reveal was removed when the timeline took over — two systems animating the same pills is one too many.
-
-### Contact
-The close animates on entry rather than arriving flat. The "Open to the right opportunity." headline rises out of a clipping wrapper on `.rise-in`, which reuses the hero's own `word-rise` keyframe on a `view()` timeline instead of a load-time delay; the lede follows on `.on-scroll`, and the Index and Contact columns take `r1` and `r2` so they begin 12% and 24% later. In the field band the wordmark rises the same way, and the meta row under it follows.
-
-Both masks clip with `overflow: clip` and the footer itself carries no overflow at all — see the Clip-Not-Hidden Rule, which this section is the reason for.
-
-### Project Track
-**One band, all six.** The section ran as two bands per category for a while; it is a single queue again, in resumeData's own order, which already leads with Data Engineering — the tie-break PRODUCT.md asks for. The two group names stay legible as a legend beside the controls, and each panel repeats its own category on its micro-label, so the grouping survives without splitting the track.
-
-The proportions come from rauno.me, measured rather than eyeballed: his horizontal strips are **655px tall inside a 1200px container with `overflow-x: clip`**, items of non-uniform width (655 square, 916, 1414, 2356), and the next card peeking past the edge — the page keeps its rhythm above and below rather than being taken over. Panels here are `min(86vw, 40rem)` by `min(620px, 74vh)` — 640×620 at 1293px wide — and the band pins at `center center` so it sits mid-viewport while it travels, rather than at the top with the screen half empty.
-
-The track is padded left by `max(0px, (100vw - 80rem) / 2) + c-space` so the first card's edge lines up with the heading column and the last runs off the right. Putting that padding on the track and not the wrapper keeps the travel distance as plain `track.scrollWidth - innerWidth`. GSAP translates `x` by exactly that, with `ease: "none"` — any other ease and scroll position stops agreeing with panel position.
-
-**A band only pins if it overhangs by more than 160px**, so a track with a trivial overhang stays a native row rather than holding the page for a stutter. That guard existed because a two-project band overhung by only 58px; merged, all six panels sit at `min(86vw, 40rem)` and the track overhangs by 2576px, so the guard never fires — it stays as a floor for any future band.
-
-The wrapper uses `overflow: clip`, not `hidden`, and the distinction is load-bearing: `hidden` still creates a scrollport, so focusing an off-screen panel let the browser reveal it by setting the wrapper's `scrollLeft` — 2646px of it, on top of the track's transform — which left the track doubly offset and the pin desynced for every later scroll. `clip` creates no scrollport, so that cannot happen.
-
-**Grow and shrink.** A panel is at full size while it is wholly on screen and scales down to `0.84` as either edge leaves, with opacity riding along to a floor of `0.72`. Inside the panel, the face lags the box carrying it by up to 10px against the direction of travel — small enough to stay inside the panel's own 40px padding, so nothing ever crosses a separator.
-
-The size change carries the effect and the dim only supports it. The first pass had it the other way round — opacity `0.62` with a 3% scale on the contents — and it was invisible in use, because opacity only reaches its floor once a panel is *entirely* off screen, so the only part of the range anyone ever saw was a sliver at the edge.
-
-Scale never exceeds 1. Panels butt edge to edge, so anything above 1 has them overlapping, and the later panel in the DOM paints over its neighbour. Below 1 the gaps that open between panels are invisible — panel and page are the same `{colors.surface}` — so the strip reads as cards separating and closing up rather than as a broken rule.
-
-The rule is "wholly on screen", not "biggest at the centre of the viewport", because the first panel rests at the **left** edge and is never centred at any point in the travel; a centre-weighted rule shrank the two panels that are actually being read at rest.
-
-Both are computed on the track tween's `onUpdate` rather than through a second layer of ScrollTriggers. `containerAnimation` would do the same job; reading the positions the pin has already produced is a third of the code and cannot drift out of sync with it. It reads **layout** geometry, though, never `getBoundingClientRect()` on the panels: that returns the transformed box, so once the panels scale, the function is reading its own output back in. Panels are contiguous flex items, so their untransformed offsets are the track's padding plus a running sum of `offsetWidth`, measured once and again on refresh — verified as zero drift across repeated samples at one scroll position.
-
-Because `onUpdate` fires after the `matchMedia` callback has returned, the styles it writes are **not** recorded by the context and would survive its revert — every panel frozen small and dim the moment the window crosses 768px. The teardown clears them by hand. Any future per-frame writer in this file has the same obligation.
-
-Below 768px, and under reduced motion, `matchMedia` never runs the pin and the track stays what CSS makes it: a natively swipeable row with `scroll-snap`. That is the fallback, not a second code path.
-
-**Controls.** A 28px square prev/next pair sits with the band's label, above the panels in both DOM and reading order. Pinned, they step the *page* by one panel width, which the 1:1 mapping turns into one panel of travel; unpinned, the track is a real scroller and takes the step directly. They disable at each end, driven by GSAP's progress when pinned and by the track's own scroll ratio when not — the same value that drives the progress rule.
-
-**Keyboard.** Focus follows the same path: focusing anything inside a panel scrolls the page so that panel lines up with the heading column, `instant` rather than `smooth` because during a Tab run smooth scrolls queue up and fight. Two earlier attempts at this failed from inside the motion module — `scrollBy` in a native `focusin` handler was undone by the browser's own adjustment, and a frame-deferred one never fired. Doing it in the component, through the path the buttons had already proven, is what made the difference.
-
-Verified with real `Tab` presses rather than programmatic focus: Next → Medicare → NYC Taxi → E-Commerce, every focused panel on screen, and every one of the six panels' toggles reachable in order.
-
-### Cards / Containers
-- **Corner Style:** Square.
-- **Background:** Raised surface on the ground.
-- **Shadow Strategy:** None — see Elevation & Depth.
-- **Border:** 1px strong hairline, which goes vermilion on hover as the background lifts one step.
-- **Internal Padding:** `{spacing.card-pad}` (1.5rem).
-
-### Navigation
-A fixed full-width header, 64px tall, on an opaque `{colors.surface}` ground with a bottom hairline. It was 72% translucent with `backdrop-blur-md` until the hero became a field region — over vermilion a translucent dark bar turns muddy brown, and a solid chrome bar reads as deliberate and holds its contrast on every section. Links are uppercase Bricolage at `wdth 85`, muted ink at rest, full ink on hover, each with a 2.75rem minimum height. The wordmark is plain text "Zaid" with a muted period. The mobile menu is *opaque* on purpose: over a 72% translucent header the poster headline bleeds through an open menu.
-
-### Architecture Schematic
-The page's one authored motion moment. A stage list of mono stage names and overlay-toned item boxes, connected by 1px edges. When a card opens, nodes settle in and edges extend stage by stage at a 90ms stagger; it replays on every open and never on page load. It is fully legible with the animation absent, and two items in one stage means a real branch in the architecture, not a layout convenience.
-
-### Measurement Rows
-Three full-width ruled rows under "How these were measured", `[2.5rem | number | evidence]` at 768px and stacked below it. The number is the Metric step in vermilion; the evidence column carries whichever form the measurement actually took — a two-bar comparison against the design it replaced (21,091 msg/s against ~500), the pipeline path as mono stage names joined by hairlines, or **both**, which the crypto row uses: the path says what was built, the bars say how it was checked against ground truth. A row carrying only a path leaves the column visibly short beside its neighbours. It replaced a three-column stats row that stated numbers without saying how they were taken, and `MetricStat` was deleted with it. A number on its own is a claim; this is the component that makes it evidence, which is the commitment position 03 in About already makes.
-
-Counters parse prefix, number, and suffix so `21,091`, `+2.5pp`, and `9.66M` all survive the count-up intact, and the authored value is cached on the element so a re-run cannot read a half-counted "0" as its target. **A reading holding two numbers is left alone** — `99.5–100%` counted as a single value renders `45.2–100%` on the way up, so `countUp` bails when it finds a second number rather than animating half a range. The guard sits in the shared function, so every caller inherits it.
-
-### Gauge
-The proportion primitive: a 3px track at 14% white with a fill that is vermilion for the achieved value and muted ink for the baseline. A rule, not a filled bar — emphasis on the dark ground is a vermilion hairline, never an inverted fill. The track has to stay visible because the interesting fills are short: 2.4% and 7.1%.
-
-**A gauge fills as it arrives.** Each bar scales from its left edge to its measured width as it enters view, and the reading beside it counts up over the same 1.2s on the same `power2.out`, so the pair reads as a measurement being taken rather than a value that was always sitting there. `scaleX`, never `width`: the inline width is the *target*, written by the component from the real percentage, and scaling leaves that single source alone. Animating width would mean owning the number in two places.
-
-### Panel Grid
-About is a hard modular grid of full-bleed panels that butt edge to edge, the structure `aspensearch.com` is built on: `label | statement`, then `bio | portrait | availability`, then three stat panels, then the four credentials and the four stances — **each one its own panel**, not a list inside a panel. Seven rows, eighteen panels.
-
-The spans alternate deliberately so no two rows read as the same module: the records run `2+1` then `1+2`, the stances run `1+2` then `2+1`, and the tone alternates raised/surface across both so the checker never settles into a pattern. Aspen's grid never repeats a row either. `.panel-min` puts a 13rem floor under the record and stance panels so a short one does not sit squat beside a tall one, while the row still grows to whatever its tallest panel needs; the floor is off below 768px.
-
-Two panels in the grid are field regions rather than tone steps: Availability, which spans rows 2–3 of the right-hand column, and the **first** of the three readings, flush to the left viewport edge in row 3. They bookend that band with two dark panels between them. The middle reading was tried first and reads worse — vermilion, dark, vermilion alternates, and the single panel caught between them looks like a hole rather than air. A reading and not a credential because vermilion already carries every metric numeral in this system, so a field panel *inverts* that pair (`field-ink` numeral, `field-ink-secondary` caption) instead of inventing a rule; the eight record and stance panels are a uniform family, and colouring one of them would have nothing behind it.
-
-The readings therefore precede Availability **in source order**, which the desktop grid does not care about — `grid-template-areas` places every panel by name. The single mobile column follows the DOM, and with Availability first the two field panels butted into one unbroken 510px block of vermilion at 375px. Any future field panel has to be checked in the collapsed column as well as in the grid.
-
-The whole section is one continuous grid; the positions band used to sit below it in a separate `max-w-7xl` container, which broke the run of panels.
-
-Each panel carries exactly one thing, is named by a micro-label rather than a heading, and the portrait panel exists only when `public/assets/portrait.webp` does. An empty panel there read as a black rectangle rather than as air, so `.about-grid.no-portrait` drops the column and the bio widens into it instead. The hairlines between panels are the grid's own 1px gaps showing the container through, so there are no doubled rules where panels meet. `About` renders outside `<main>` for the same reason Hero and Contact do: panels that stop at 1280px are cards, not panels.
-
-The structure is Aspen's; the palette and the type are this system's — they set a light neutral grotesk on white and mint, this sets heavy condensed Bricolage on near-black and vermilion. Their panels also carry halftone photography, which this site has no assets for.
-
-### Panel Reveal
-The second half of how the grid moves, and the part measured across Aspen's whole 11,180px page rather than one section: **45 elements animate**, and the repeated pattern is a scroll-linked rise and fade — `translateY(33px)` with `opacity: 0` easing to none and 1 as the element enters. At any one scroll position neighbours sit at different progress; one sample read 0.138, 0.505, 0.746 and 0.926 simultaneously. That stagger is what reads as each block moving independently, and it is the thing a single shared reveal does not give you.
-
-Here it is three literal ranges — `entry 5% cover 22% / 34% / 46%` — cycled across the panels, so panels sharing a row finish at different times. The ranges are literal on purpose: `entry 0% cover calc(20% + var(--r) * 7%)` computed to `entry cover 20%`, a malformed range that never activated its timeline, and with `both` fill that pinned every panel at the from keyframe and rendered the whole section invisible. Behind `@supports (animation-timeline: view())` and `prefers-reduced-motion: no-preference`, so an engine without view timelines shows the panels outright and reduced motion is the absence of the animation.
-
-Label panels are deliberately excluded: they hold the sticky labels, and the two devices should not compete in the same panel.
-
-### Stack Timeline
-One GSAP timeline scrubbed by the Stack section's own scroll progress (`start: top 85%`, `end: bottom bottom`, `scrub: 0.6`). The end matters: at `bottom 70%` progress only reached 1 once the section's top had left the viewport, so the last row could never be read at the same time as the first. Ending at `bottom bottom` completes the timeline exactly when the whole section is on screen.
-
-The section is sized to make that possible. At `section-spacing` with 24px row padding and a 36px category head it measured **1121px against a 946px viewport**; it is **792px** now — `py-16 md:py-20`, `py-4` rows, a 30px head, and the lede beside the heading rather than under it, which alone was worth ~84px. Below roughly 860px of viewport height the six rows still will not share a screen; the next cuts would be `py-3` rows and `md:py-14`. Each row resolves in turn: its hairline draws left to right (`scaleX 0 → 1`, which is why the rule is a real element and not a `border-top` — a border cannot be drawn on), the category head slides in from `x: -28`, its pills stagger up 14px at 0.07s apart, and the plain-text tail fades last. Scrolling back up unwinds it.
-
-**The rows grow and shrink too**, on the same rule the project track runs and one axis over: a row is at full size while it is wholly on screen and scales down to `0.9` as either edge leaves, so rows swell in across the bottom of the viewport and fall back as they leave the top. It settles correctly against the constraint above — with the whole 793px section inside a 946px viewport every row is wholly on screen, so all six sit at full size together.
-
-**No dim here, unlike the track.** This is a field region, and fading a row composites `{colors.field-ink}` toward vermilion: at the track's 0.72 floor the body text measures **4.08:1**, under AA. Scale changes no contrast at all, so size carries the whole effect on the field.
-
-Like the track it reads **layout** geometry and never `getBoundingClientRect()` on a row, which returns the transformed box and would have the function reading its own output back in. The rows are contiguous block siblings, so a running sum of `offsetHeight` off the list container is exact, and the container is never transformed. The teardown clears the inline transforms by hand for the same reason the track's does — `onUpdate` fires after the `matchMedia` callback has returned, so its writes are outside the context and survive the revert.
-
-Measured across the section: 0 of 30 pills visible before the trigger, 7 at 30% progress, 20 at 60%, 28 at 100%, all 30 past the end. Under `prefers-reduced-motion: reduce` the `matchMedia` branch never runs, so no start state is ever written and the section simply renders.
-
-### Sticky Label
-How the grid moves on scroll, and worth stating precisely because the obvious guess is wrong. Aspen transforms nothing: sampling their page across four scroll positions found one rotating graphic and **twelve `position: sticky` elements pinned at `top: 60px`**. A label column pins under the header while the content column beside it scrolls past, and that differential is the entire effect. Here the About, Credentials and How-I-work labels pin at `top: 5.5rem`, clearing the 64px header.
-
-Sticky is not animation. It needs no `@supports` branch, no reduced-motion gate, and it carries none of the vestibular load that moving several layers at different speeds would. Below 768px the rule is off and the labels become plain section headers.
-
-### Micro-label
-A 6px filled vermilion square followed by the Label step — mono, 0.75rem, 0.1em, uppercase. It names a panel without spending a heading on it, and inverts to field-ink inside a field panel. It is the Label step and not a size of its own: a first pass set 0.6875rem here, a second micro size one pixel off the one the system already had.
-
-### Stat Panel
-One numeral at the Metric step and its caption at the Label step, pinned to the panel's foot with `margin-top: auto`. The scale gap between the two, inside one panel, is the whole device. It has no styles of its own — an earlier pass gave it a private `clamp(2.75rem, 5.5vw, 4.5rem)` and a private caption size, a third metric scale in a system that already had two. The numeral is vermilion because vermilion carries every metric numeral here.
-
-### Transactional Email
-The contact notification (`api/contact.js`) is the one surface rendered outside a browser, and HTML email is not a browser: no custom properties, no flex or grid, no webfonts in Gmail or Outlook, and Outlook desktop still rendering through Word. It is a 600px table of inline styles. Five substitutions are forced by the medium and taken deliberately:
-
-| This system | In email |
-|---|---|
-| Bricolage Grotesque at `wdth 78` | `'Bricolage Grotesque','Arial Narrow','Helvetica Neue',Arial` — Arial Narrow is the honest condensed fallback and ships on both platforms; Apple Mail loads the real face |
-| CSS custom properties | Literal hex in one `C` object, mirroring the frontmatter |
-| `rgba(255,255,255,0.08 / 0.16)` hairlines | Pre-blended solids over the ground: `#1C1D1E` and `#303031` — the Word engine drops `rgba()` |
-| Flex / grid | Nested tables |
-| `clamp()` sizes | Fixed px, but **only on the ramp**: 44px is the bottom of the Headline clamp, and the rest are the Body, Label and Action steps at 16px, 14px and 12px |
-
-That last row is the one worth guarding. A first pass reached for 36px, 15px and 11px — three sizes invented for one email, which is the same mistake the Micro-label and Stat Panel entries above already record. The design hook caught all three.
-
-Everything else ports intact: the field as a whole region with black ink on it, zero radius, no shadow, a micro-label over one poster line, ruled rows instead of boxes, the left-ruled log for the message body, and a square primary button.
-
-Dark-mode clients invert dark palettes on sight. `<meta name="color-scheme" content="dark">` plus `supported-color-schemes` declares the intent and stops Gmail, Apple Mail and Outlook from doing it. Confirmed in Gmail on 2026-09-19: the ground, the field band and the hairlines all survive.
-
-**Bare URLs get autolinked.** Gmail rewrote the footer's `zaid-data.vercel.app` into its own blue underlined anchor, overriding the muted mono. Wrapping it in an explicit `<a>` with the intended colour and `text-decoration:none` keeps the treatment. Any future URL in an email needs the same wrapper — a bare string is an invitation.
-
-**Every send carries a plain-text part.** HTML-only mail is both a deliverability penalty and a dead end for anything that does not render HTML. `notificationText()` builds it from the *raw* values, never the escaped ones: entities in a text part read literally as `&amp;`.
-
-### Named Rules
-
-**The Fixed-Is-The-Parallax Rule.** Depth on scroll comes from a layer that does not move. `position: fixed` holds the grid at 0× while content runs at 1×, which is exactly what the measured reference (white-desert.com, Awwwards SOTD 11 Sep 2026) achieves by counter-translating its background at 1.00× scroll. Only two things are animated on scroll, both in CSS with no JS: the grid drifts 72px across the whole document, and the hero name lifts 190px over the first viewport — **0.20×**, inside the 0.2–0.3× band the reference sits in. Both live on custom properties in `:root` so the intensity is one number. One moving background layer, not three: the vestibular risk scales with layer count.
-
-**The Clip-Not-Hidden Rule.** `overflow: hidden` creates a scrollport; `overflow: clip` does not. That distinction has broken three separate things on this page, so it is a rule rather than a note:
-
-- A `view()` timeline resolves against the element's nearest scrollport. `overflow: hidden` on the footer made the footer that scrollport, and every reveal inside it silently never ran. Same again one level down, where the mask wrapper that makes a headline "rise from below" was itself clipping with `hidden` — a masked rise and a `view()` timeline cannot coexist through `hidden`. Same again on `.field-band`, which is why the footer wordmark sat still.
-- On the pinned project track, `hidden` let the browser reveal an off-screen panel by setting the wrapper's `scrollLeft`, on top of the track's transform, desyncing the pin.
-
-Use `clip` wherever the intent is masking. Reserve `hidden` for something that is genuinely meant to scroll.
-
-**The Reachable-Range Rule.** Scroll-driven reveals end on `entry 100%`, not on a `cover` percentage. A `cover`-based range needs the element to travel a share of the viewport *plus* its own height, which an element in the last section can never do — the page runs out of scroll first. The footer's reveals were written `entry 5% cover 22%` and left its content invisible on a phone. `entry 0% entry 100%` completes exactly when the element is fully on screen, which is reachable wherever it sits. Stagger by moving the *start* (`entry 12%`, `entry 24%`), never the end.
-
-**The CSS-Entrance Rule.** Entrance reveals are CSS animations, not GSAP. `gsap.from()` applies its start state immediately, so an interrupted tween can leave text permanently invisible — StrictMode's double-invoked effects orphaned a staggered word at `translateY(110%)` exactly that way. A CSS animation cannot be orphaned.
-
-GSAP owns only what CSS cannot do, and that is now four things: the scroll-velocity marquee, the counters, the Stack section's scrubbed timeline, and the gauge fills. The fourth was added at Zaid's request (2026-09-27) and earns the exception on the same grounds as the third: a bar and the number beside it have to land together, and a CSS animation cannot be synchronised with a GSAP counter. The third was added at Zaid's request (2026-09-18) and is a real widening of this rule, recorded rather than smuggled. It earns the exception: a single sequence whose progress *is* the section's scroll progress cannot be built from `view()` timelines, because each element's CSS timeline starts from its own position and they cannot be sequenced against one another.
-
-Anything GSAP reveals uses `gsap.set()` for the start state and `to()` for the tween — never `gsap.from()`, and not `fromTo` with `immediateRender: false` either: deferring the start state means a scrubbed timeline leaves everything visible at progress 0 and the section does nothing. `gsap.set()` applies immediately and is undone by `ctx.revert()`, so an interrupted context restores the markup instead of stranding it invisible.
-
-**The Declared-Sources Rule.** `index.css` opens `@import "tailwindcss" source(none)` and then names its sources explicitly. Tailwind v4 otherwise scans every file the repo does not gitignore, and this repo has 26 tracked non-source files — DESIGN.md, PRODUCT.md, eight GSAP `SKILL.md` docs full of code examples, `.impeccable/design.json` which contains literal CSS, and `index.css`'s own comments. Any word in that prose that happens to look like a utility was compiled into the shipped bundle: writing `flex-1` in a design note put `.flex-1` in front of users, and `text-sky-500` pulled in a whole `--color-sky-500` theme variable in a palette that has one accent.
-
-Measured 2026-09-19: **35.95 kB → 31.70 kB** raw, 7.49 → 6.94 gzipped. 14 selectors dropped and not one of them was used by any component — `sticky`, `ring` and `invert` came from comments in the stylesheet describing sticky positioning, focus rings and hover inversion.
-
-The cost is that a new file type carrying class names is invisible until it is declared. Add an `@source` line for it.
-
-**The Absence Rule.** Reduced motion is the *absence* of the animation, never a second code path. `gsap.matchMedia()` reverts what it created when its condition stops matching, and every CSS animation is switched off under `prefers-reduced-motion: reduce`. There is nothing to keep in sync.
+- **Nav · The Slice.** The menu splits the portrait into one strip per chapter; a hovered strip flips to the x-ray face. On phones the strips slide 58% (a portrait sliver stays in every row) and every sliver shows the x-ray, since phones cannot hover.
+- **Intertitle.** One sentence in Instrument Serif italic, words surfacing as it reaches the middle of the screen; second line in `hot`. Used only where neighbours would share a surface, on the opposite surface.
+- **Beyond git graph.** Graph | Commit | Proves table. `main` (paper lane) carries the data-engineering builds as `feat(data):` commits; `beyond` (hot lane) carries one conventional commit per role, with a status stamp: Shipped (paper), Shipping (hot), Learning (hot outline, staged, hollow dashed commit). No invented hashes or dates.
+- **Contact copy.** Desktop: a hover slate ("Click to copy" → timecode while holding → "Copied ✓") and the outlined host filling like liquid. Touch: a visible "Tap to copy" chip under the address that confirms in place.
 
 ## Do's and Don'ts
 
-### Do:
-- **Do** apply vermilion as a whole region — a full-bleed band, a whole section, the footer — and keep first-viewport coverage near 11.8% and page coverage near 28.7%.
-- **Do** use only `{colors.field-ink}` (5.55:1) and `{colors.field-ink-secondary}` (4.83:1) on the field, as solid colours.
-- **Do** set `"wdth" 78` on display and heading type, 82 on actions, 85 on nav.
-- **Do** restrict Azeret Mono to measurements: metric labels and context, tech pills, schematic stage names, tabular metadata.
-- **Do** keep section heads at display scale (`clamp(2.75rem, 8vw, 6.5rem)`), uppercase.
-- **Do** draw structure with 1px hairlines and the three-step tonal ramp.
-- **Do** keep every text tone at 4.5:1 or better against its worst-case surface, and every UI boundary at 3:1 or better.
-- **Do** keep every interactive target at 24×24 CSS pixels or larger (WCAG 2.2 SC 2.5.8) — nav links and inline links carry explicit minimum heights for this reason.
-- **Do** keep the global `:focus-visible` ring, and override it to field-ink inside a field region.
-- **Do** keep `inert` on collapsed disclosure content so hidden panels stay out of the tab order and the accessibility tree.
-- **Do** reflow the schematic on its own width with a container query, not a media query.
-- **Do** put entrance reveals in CSS and leave GSAP the marquee and the counters.
+**Do**
+- Claim a role or a number only where a project proves it; mark the rest "Learning".
+- Keep tech logos in their original brand colours.
+- Make selection click-only: hovering never changes what is selected.
+- Ground any new section in a named moodboard reference, and check it does not repeat Work's content.
 
-### Don't:
-- **Don't** scatter vermilion as accents, trim, or small badges on the dark ground. That produced a rebuild directive once already.
-- **Don't** put white text on the field (3.57:1), and don't use any alpha-composited tone there.
-- **Don't** add a second accent hue, and never teal-on-navy or violet-glow.
-- **Don't** reintroduce border radius on cards, buttons, or pills, and don't reintroduce inset lit edges or ambient shadows.
-- **Don't** render Bricolage at default width (`wdth 100`) — that is a wide neutral grotesque and contradicts the genre.
-- **Don't** use Inter or Bricolage for a measurement, and don't use Azeret Mono as a costume for "technical" prose.
-- **Don't** place a kicker, eyebrow, or category label above any heading; the group heading carries the category.
-- **Don't** flatten the scale into one poster moment over a page of small heads.
-- **Don't** stack two uppercase display blocks in a row.
-- **Don't** use `gsap.from()` for entrance reveals, and don't add `@gsap/react` — it resolves its own React against React 19 and throws "Invalid hook call".
-- **Don't** write a separate reduced-motion code path; remove the animation instead.
-- **Don't** assume a new source of class names is picked up automatically — sources are declared, not detected. See the Declared-Sources Rule.
-- **Don't** soften any of the above toward restraint. The craft bar is the pinned bold-editorial genre, not linear.app.
+**Don't**
+- Reintroduce the AI Resume Chat, the dark space theme, the 3D astronaut, animated flip words, or the retired vermilion/Bricolage "Signal Field" system.
+- Reprise the Slice in Contact, or use the red field in a middle chapter.
+- Use chapter breakers that read as literal chapter cards or that borrow a neighbour's vocabulary (the marquee and Swiss-poster breakers were both rejected); breaks are intertitles.
+- Add a fourth face, a second accent colour, rounded corners or drop shadows on UI.

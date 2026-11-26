@@ -1,0 +1,88 @@
+/* the command line that heads the graph */
+.gg-cmd{margin:0 0 clamp(20px,3svh,32px);font:500 var(--t-sm)/1 "Martian Mono",monospace;letter-spacing:.06em;color:#f3eadb99}
+.gg-cmd b{color:var(--hot);margin-right:.6em}
+
+/* the log: a graph column (two lanes: main at 16px, beyond at 48px) beside each commit */
+.gg-log{--p:0;margin:0;padding:0;list-style:none;border-top:2px solid var(--paper)}
+.gg-c{--k:clamp(0, var(--p) * var(--n) - var(--i), 1);display:grid;grid-template-columns:64px minmax(0,1fr);column-gap:clamp(12px,2vw,28px);align-items:start;padding:10px 0}
+.gg-g{position:relative;align-self:stretch;margin:-10px 0}
+.gg-br .gg-g{margin:-18px 0 -26px}
+.gg-g i{position:absolute;top:0;bottom:0;width:3px;transform-origin:top;transform:scaleY(var(--k))}
+.gg-g .l0{left:14.5px;background:var(--paper)}
+.gg-g .l1{left:46.5px;background:var(--hot)}
+.gg-main.first .l0{top:22px}
+.gg-g b{position:absolute;width:14px;height:14px;border-radius:50%;box-sizing:border-box;transform:scale(var(--k))}
+.gg-g .d0{left:9px;top:15px;background:var(--paper)}
+.gg-g .d1{left:39px;top:25px;width:18px;height:18px;background:var(--hot);box-shadow:0 0 0 4px var(--ink)}
+
+/* the fork: main runs straight on; beyond curves off it */
+.gg-fork{padding:0}
+.gg-fork .gg-g{margin:0;height:64px}
+.gg-fork svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.gg-fork path{fill:none;stroke:var(--hot);stroke-width:3;vector-effect:non-scaling-stroke;stroke-dasharray:1;stroke-dashoffset:calc(1 - var(--k))}
+.gg-note{align-self:center;font:500 var(--t-xs)/1 "Martian Mono",monospace;letter-spacing:.08em;color:var(--hot);opacity:var(--k)}
+
+/* commit messages */
+.gg-msg{margin:0;font:500 var(--t-md)/1.7 "Martian Mono",monospace;color:#f3eadbb3;opacity:calc(.15 + .85 * var(--k))}
+.gg-type{color:#f3eadb80}
+.gg-type em{font-style:normal}
+.gg-br .gg-msg{font-size:var(--t-body);color:var(--paper)}
+.gg-br .gg-type{color:var(--hot)}
+.gg-br .gg-msg a,.gg-br .gg-msg b{font:800 var(--t-lede)/1.2 "Archivo",sans-serif;color:var(--paper);text-decoration:none}
+.gg-br .gg-msg a{text-decoration:underline;text-decoration-color:var(--hot);text-decoration-thickness:2px;text-underline-offset:5px}
+.gg-br .gg-msg a:hover{color:var(--hot)}
+.gg-br .gg-msg a:focus-visible{outline:2px solid var(--hot);outline-offset:4px}
+.gg-br .gg-msg a i{font-style:normal;color:var(--hot)}
+
+/* branch and status pills */
+.gg-pill{display:inline-block;margin-left:12px;padding:3px 8px;vertical-align:.15em;font:600 var(--t-xs)/1.3 "Martian Mono",monospace;letter-spacing:.1em;white-space:nowrap}
+.gg-pill.main{color:var(--paper);box-shadow:inset 0 0 0 1px var(--paper)}
+.gg-pill.head{background:var(--hot);color:var(--ink)}
+.gg-pill.staged{color:var(--hot);outline:1px dashed var(--hot);outline-offset:-1px}
+
+/* a branch commit's body: the role it proves, its status, the proof */
+.gg-br{padding:18px 0 26px}
+.gg-body{opacity:var(--k);transform:translateY(calc((1 - var(--k)) * 12px))}
+.gg-proof{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin:10px 0 0}
+.gg-role{font-weight:900;font-variation-settings:"wdth" 62;font-size:var(--t-h3);line-height:.9;letter-spacing:-.01em;word-spacing:.14em;text-transform:uppercase}
+.gg-st{padding:5px 8px;font:600 var(--t-xs)/1 "Martian Mono",monospace;letter-spacing:.16em;text-transform:uppercase}
+.gg-br.s-shipped .gg-st{background:var(--paper);color:var(--ink)}
+.gg-br.s-shipping .gg-st{background:var(--hot);color:var(--ink)}
+.gg-br.s-learning .gg-st{color:var(--hot);box-shadow:inset 0 0 0 1px var(--hot)}
+.gg-line{margin:10px 0 0;max-width:60ch;font:400 var(--t-md)/1.5 "Archivo",sans-serif;color:#f3eadba6}
+
+/* the staged commit: hollow, on a dashed lane that stops at it */
+.gg-br.staged .l1{bottom:auto;height:34px;background:repeating-linear-gradient(180deg,var(--hot) 0 6px,transparent 6px 11px)}
+.gg-br.staged .d1{background:var(--ink);border:3px dashed var(--hot)}
+
+@media (max-width:760px){
+  .gg-c{grid-template-columns:56px minmax(0,1fr)}
+  .gg-msg{font-size:var(--t-sm)}
+  .gg-cmd{font-size:var(--t-xs)}
+}
+@media (prefers-reduced-motion:reduce){.gg-c{--k:1}}
+
+/* the log as a git client's table: graph | commit | what it proves. Wide screens fill with meaning, not air. */
+.gg-heads,.gg-c{grid-template-columns:64px minmax(0,1fr) minmax(0,1fr)}
+.gg-heads{display:grid;column-gap:clamp(12px,2vw,28px);padding:0 0 10px;font:500 var(--t-xs)/1 "Martian Mono",monospace;letter-spacing:.16em;text-transform:uppercase;color:#f3eadb66}
+.gg-main .gg-msg,.gg-note{grid-column:2 / -1}
+.gg-proof{grid-column:3;align-self:center;margin:0;flex-direction:column;align-items:flex-start;gap:12px;opacity:var(--k);transform:translateX(calc((1 - var(--k)) * 24px))}
+.gg-role{font-size:clamp(30px,3.4vw,58px)}
+.gg-br{border-top:1px solid #f3eadb14}
+@media (max-width:860px){
+  .gg-heads{display:none}
+  .gg-c{grid-template-columns:56px minmax(0,1fr)}
+  .gg-proof{grid-column:2;grid-row:2;flex-direction:row;align-items:center;margin-top:12px}
+  .gg-br .gg-g{grid-row:1 / span 2}
+  .gg-role{font-size:var(--t-h4)}
+}
+
+/* main's commits: present, but tight, so the eye reaches the fork fast */
+.gg-main{padding:5px 0}
+.gg-main .gg-g{margin:-5px 0}
+.gg-main .gg-msg{grid-column:2;font-size:var(--t-sm);line-height:2.3}
+.gg-main .gg-msg b{font:700 var(--t-body)/1 "Archivo",sans-serif;color:var(--paper)}
+.gg-g .d0{top:10px}
+.gg-main.first .l0{top:17px}
+.gg-who{grid-column:3;align-self:center;font:500 var(--t-xs)/1 "Martian Mono",monospace;letter-spacing:.16em;text-transform:uppercase;color:#f3eadb59;opacity:var(--k)}
+@media (max-width:860px){.gg-who{display:none}.gg-main .gg-msg{grid-column:2}}

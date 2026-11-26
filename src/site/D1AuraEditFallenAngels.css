@@ -1,0 +1,82 @@
+.f-root{
+  --ink:#0a0a09; --void:#050505; --cream:#f3eadb; --cream-2:#d9c7b4; --lime:#ff4a2a; --x:#f3eadb; --olive:#1f2318;
+  --red-deep:#5c0703; --red:#9b0f07; --red-hot:#c5170c;
+  --mono:"Martian Mono",ui-monospace,monospace; --disp:"Archivo",sans-serif; --serif:"Instrument Serif",serif;
+  --ease:var(--u-out);
+  --noise:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  width:100%; color:var(--cream); font-family:var(--disp); -webkit-font-smoothing:antialiased; overflow-x:clip;
+  background:var(--bg,#0a0a09);
+}
+.f-root *{box-sizing:border-box}
+.f-mono{font-family:var(--mono);font-size:var(--t-sm);letter-spacing:.08em;text-transform:uppercase;font-variation-settings:"wdth" 62;line-height:1.6}
+
+/* ---------- hero: the red field, the edit behind him, the portrait on top ---------- */
+.f-hero{position:relative;z-index:60;height:100svh;min-height:640px;overflow:clip;isolation:isolate;cursor:default;
+  background:radial-gradient(70% 60% at 50% 38%,var(--red-hot) 0%,var(--red) 38%,var(--red-deep) 100%)}
+.f-hero::after{content:"";position:absolute;inset:0;z-index:9;pointer-events:none;opacity:.14;mix-blend-mode:overlay;background-image:var(--noise)}
+
+/* screen-reader name only */
+.f-name{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;opacity:0;pointer-events:none}
+
+/* cropped so only the curve of the shoulders meets the bottom edge */
+.f-fig{position:absolute;z-index:2;left:50%;--fh:min(126svh,140vw);height:var(--fh);bottom:calc(var(--fh) * -0.271);aspect-ratio:1500/1350;transform:translateX(-50%);pointer-events:none}
+.f-fig img{position:absolute;inset:0;width:100%;height:100%;display:block;user-select:none;-webkit-user-drag:none}
+.f-melt{position:absolute;z-index:3;left:0;right:0;bottom:0;height:24svh;pointer-events:none;background:linear-gradient(to bottom,transparent,rgba(10,10,9,.8) 60%,var(--ink))}
+
+/* a still: base plate, red + cyan copies for the RGB split, three glitch slices */
+.ae-st{position:absolute;inset:0;will-change:transform}
+.ae-st i{position:absolute;inset:0;display:block;background-size:cover;background-repeat:no-repeat;filter:grayscale(1) contrast(1.35) brightness(.95)}
+.ae-ch{position:absolute;inset:0;display:none;mix-blend-mode:screen;isolation:isolate}
+.ae-ch::after{content:"";position:absolute;inset:0;mix-blend-mode:multiply;background:#f00}
+.ae-ch.c::after{background:#0ff}
+.ae-ch.r{transform:translateX(-10px)}
+.ae-ch.c{transform:translateX(10px)}
+.ae-st.rgb .ae-ch{display:block}
+.ae-st.rgb .ae-b{opacity:0}
+.ae-sl{position:absolute;inset:0;display:none}
+.ae-st.gl .ae-sl{display:block}
+
+/* the photo dump behind him, duotoned into the red */
+/* gold: the art is toned gold and screened over the red, so its light areas glow gold and its lines stay red */
+.ae-bg{position:absolute;inset:0;z-index:1;pointer-events:none;mix-blend-mode:screen;opacity:.45;overflow:clip}
+.ae-bg .ae-st i{filter:grayscale(1) contrast(2.4) brightness(.62) sepia(1) saturate(3.2) hue-rotate(4deg)}
+.ae-fx{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:clip}
+.ae-fx i{position:absolute;inset:0;display:block}
+.ae-fl{background:#fff;opacity:0}
+.ae-scan{background:repeating-linear-gradient(0deg,rgba(0,0,0,.9) 0 1px,transparent 1px 3px);opacity:.04}
+.ae-fx .ae-gr{inset:-60px;background-image:var(--noise);opacity:.3;mix-blend-mode:overlay}
+.ae-vig{background:radial-gradient(120% 95% at 50% 40%,transparent 42%,rgba(40,0,0,.55) 74%,rgba(5,0,0,.92) 100%)}
+
+/* the viewfinder that snaps round his head on a freeze frame */
+.ae-vf{position:absolute;left:35.3%;top:12.6%;width:29.3%;height:41.5%;opacity:0;transform:scale(1.06);transition:opacity var(--u-d1) var(--u-out),transform var(--u-d2) var(--u-out)}
+.ae-vf.on{opacity:1;transform:none}
+.ae-vf i{position:absolute;width:clamp(14px,2.2vw,26px);height:clamp(14px,2.2vw,26px);border:0 solid rgba(243,234,219,.8)}
+.ae-vf .tl{left:0;top:0;border-top-width:1.5px;border-left-width:1.5px}
+.ae-vf .tr{right:0;top:0;border-top-width:1.5px;border-right-width:1.5px}
+.ae-vf .bl{left:0;bottom:0;border-bottom-width:1.5px;border-left-width:1.5px}
+.ae-vf .br{right:0;bottom:0;border-bottom-width:1.5px;border-right-width:1.5px}
+
+/* the cold open: full bleed, above everything until the drop */
+.ae-cut{position:absolute;inset:0;z-index:20;background:var(--void);overflow:clip;pointer-events:none}
+.ae-cut::after{content:"";position:absolute;inset:0;opacity:.22;mix-blend-mode:overlay;background-image:var(--noise)}
+.ae-cut.gone{display:none}
+.ae-cut .ae-st{visibility:hidden}
+.ae-cut .ae-st.on{visibility:visible}
+.ae-cut .ae-st i{filter:grayscale(1) contrast(1.6) brightness(.9)}
+.ae-wf{position:absolute;inset:0;display:block;background:#fff;opacity:0}
+
+.f-skip{position:absolute;z-index:21;left:50%;bottom:16px;transform:translateX(-50%);background:none;border:1px solid rgba(243,234,219,.3);color:var(--cream-2);padding:7px 11px;cursor:pointer;transition:opacity var(--u-d2)}
+.f-skip:focus-visible{outline:2px solid var(--x);outline-offset:4px}
+.f-hero.done .f-skip{opacity:0;pointer-events:none}
+
+@media (prefers-reduced-motion:reduce){
+  .ae-cut,.ae-vf,.f-skip{display:none}
+}
+@media (max-width:700px){
+  .f-fig{--fh:74svh}
+  .f-skip{bottom:auto;top:56px}
+}
+
+/* the menu clones the figure and shows this layer on the hovered row */
+.f-data{position:absolute;inset:0;visibility:hidden}
+

@@ -1,0 +1,110 @@
+/* the unified system, page level */
+:root{--u-ink:#0a0a09;--u-paper:#f3eadb;--u-hot:#ff4a2a}
+/* one section-number style everywhere: the number in the red, then the name */
+.uni .ax-num,.uni .sw-sec,.uni .bd-num,.uni .k1-num,.uni .ps-top b{font-weight:600;color:var(--u-hot);margin-right:.5em}
+/* one type scale: every section's small/mid text snaps to these seven steps; display sizes stay per section */
+:root{--t-xs:9.5px;--t-sm:10.5px;--t-md:13px;--t-body:clamp(15px,1.2vw,18px);--t-lede:clamp(18px,1.6vw,26px);
+  --t-h4:clamp(22px,2.2vw,34px);--t-h3:clamp(28px,3.2vw,52px);
+/* one motion language: three curves (enter, travel, exit) and two durations (touch, reveal) */
+  --u-out:cubic-bezier(.16,1,.3,1);--u-io:cubic-bezier(.77,0,.18,1);--u-in:cubic-bezier(.7,0,.84,0);--u-d1:.28s;--u-d2:.6s}
+
+/* ---------- PHONES: one place for every small-screen correction ---------- */
+@media (max-width:760px){
+  /* 3 · labels read at arm's length: the two smallest steps of the scale grow, every label follows */
+  :root{--t-xs:11px;--t-sm:12px}
+
+  /* 1 · Work: the one-column grid grew to its widest content (855px); hold it to the screen */
+  .uni .w-world,.uni .w-words{grid-template-columns:minmax(0,1fr)}
+  .uni .w-post,.uni .w-sub{min-width:0}
+  .uni .w-post .w-p-img{width:100%;height:auto !important}
+
+  /* 2 · every tap target at least 44px: rows grow where they can, inline links get an invisible hit area */
+  .uni .ax-tools button,.uni .k1-col a,.uni .w-rw-set a,.uni .f-skip,.uni .k1-replay{min-height:44px}
+  .uni .kx .kx-link,.uni .s3-link,.uni .w-rw-core > a{min-height:44px;display:inline-flex;align-items:center}
+  .uni .ax-skip::after,.uni .gg-msg a::after{content:"";position:absolute;inset:-14px -6px}
+  .uni .gg-msg a{position:relative}
+
+  /* 4 · the Stack: a shorter split intro and tighter layers (about four screens saved) */
+  .uni .ax-intro{height:120vh}
+  .uni .ax-layer{padding:6vh 16px 6vh 56px}
+
+  /* 5 · the Statement sits in the middle of its screen, not the top third */
+  .uni .s3-stage{justify-content:center;padding-top:72px}
+}
+
+/* the touch copy cue only exists where there is no hover */
+.k1-touch{display:none}
+@media (hover:none),(max-width:760px){
+  .uni .k1-touch{display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:8px 12px;background:#0a0a09;color:#f3eadb;
+    font:600 var(--t-xs)/1 "Martian Mono",monospace;letter-spacing:.16em;text-transform:uppercase}
+  .uni .k1-touch::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--u-hot)}
+  .uni .k1-touch.done{background:var(--u-hot);color:#0a0a09}
+  .uni .k1-touch.done::before{background:#0a0a09}
+}
+
+/* ---------- PHONES, round 2: Zaid's device review ---------- */
+@media (max-width:760px){
+  /* menu: two-line hamburger, no label; the Slice keeps a sliver of the portrait in every row */
+  .uni .na-lbl{display:none}
+  .uni .na-btn{min-width:44px;width:44px;padding:0;gap:0}
+  .uni .na-ov{--slide:58%;--slide-h:58%}
+  .uni .na-w{font-size:min(10vw,calc(50vw / var(--em)))}
+  .uni .na-row[data-s=l] .na-link{padding-left:44%}
+  .uni .na-row[data-s=r] .na-link{padding-right:44%}
+  .uni .na-s{white-space:normal}
+  .uni .na-copy{left:auto;right:16px}
+
+  /* statement: unpinned on phones; the line is simply written, the facts sit right under it */
+  .uni .s3{height:auto}
+  .uni .s3-stage{position:relative;height:auto;min-height:0;padding:96px 20px 56px;justify-content:flex-start}
+  .uni .s3-w{--q:1 !important}
+  .uni .s3-ln{--dx:0px !important}
+  .uni .s3-land{position:relative;left:auto;right:auto;bottom:auto;margin-top:40px;opacity:1;transform:none;pointer-events:auto}
+
+  /* work: a bigger photo in the opening line, compact cards, no rail line */
+  .uni .w-fig{height:auto;width:56vw}
+  .uni .w-stage{padding-left:20px}
+  .uni .w-stage::before,.uni .w-post::before{display:none}
+  .uni .w-p-img{aspect-ratio:16/10}
+  .uni .w-p-title{font-size:10.5vw}
+  .uni .w-p-met b{font-size:12vw}
+  .uni .w-pn-bx{display:none}
+  .uni .w-pn-back{height:44px;padding:0 14px;white-space:nowrap}
+  .uni .w-pn-ix{white-space:nowrap}
+  .uni .w-pn-nav button{width:44px;height:44px}
+
+  /* stack: the intro's labels stacked with air; the axis diamond fits whole; the ghost wordmark fits */
+  .uni .ax-split{bottom:168px}
+  .uni .ax-skip{bottom:116px}
+  .uni .ax-c.bl{bottom:40px}
+  .uni .ax-axis{left:30px}
+  .uni .ax-mark{width:32px;height:32px;margin-left:-16px;top:calc(50vh - 16px)}
+  .uni .ax-mark b{font-size:11px}
+  .uni .ax-ghost{font-size:14vw}
+
+  /* beyond: the chapter bar never wraps; the graph keeps its 64px lanes so the fork draws true */
+  .uni .bd-top span{white-space:nowrap}
+  .uni .bd-top span:last-child{display:none}
+  .uni .gg-c{grid-template-columns:64px minmax(0,1fr)}
+
+  /* off the clock: every passion word fits the screen; travel photos share the width */
+  .uni .sw-word,.uni .p03 .sw-word,.uni .p05 .sw-word{font-size:16vw}
+  .uni .p02 .sw-body{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .uni .p02 .sw-body > *{grid-column:auto;width:100%}
+  .uni .p02 .c-wide,.uni .p02 .sw-places{grid-column:1 / -1}
+  .uni .p02 .c-sq{height:44vw}
+
+  /* contact: the address fits the screen */
+  .uni .k1-l1,.uni .k1-l2{font-size:12.5vw}
+}
+@media (max-width:760px){
+  /* the opening panel's name stays the big one; the travel photos sit together, above the list */
+  .uni .p00 .sw-word{font-size:30vw}
+  .uni .p02 .sw-body > *{grid-row:auto}
+  .uni .p02 .sw-places{order:9}
+}
+/* phones can't hover: every menu row shows its strip of the portrait as the x-ray face, not only the hovered one */
+@media (hover:none),(max-width:760px){
+  .uni .na-on .na-snap .f-fig > .f-data{opacity:1}
+  .uni .na-on .na-snap .f-fig > img{filter:brightness(.35)}
+}

@@ -1,0 +1,142 @@
+.k1{position:relative;min-height:100svh;overflow:clip;isolation:isolate;
+  background:radial-gradient(70% 60% at 50% 38%,var(--red-hot) 0%,var(--red) 38%,var(--red-deep) 100%)}
+.k1-field,.k1-art,.k1-vig{position:absolute;inset:0;width:100%;height:100%}
+.k1-field{z-index:0;pointer-events:none}
+/* the hero's gold-toned art layer, screened over the red */
+.k1-art{object-fit:cover;filter:grayscale(1) contrast(1.25) sepia(1) saturate(2.4) hue-rotate(-14deg);mix-blend-mode:screen;opacity:.13;transition:opacity var(--u-d2)}
+.k1.cut .k1-art{opacity:.62;transition:none}
+.k1-vig{background:radial-gradient(120% 95% at 50% 40%,transparent 42%,rgba(40,0,0,.55) 74%,rgba(5,0,0,.92) 100%)}
+
+/* the cut: one word per frame, hard */
+.k1-cut{position:absolute;inset:0;z-index:3;display:grid;place-items:center;pointer-events:none}
+.k1-cut span{font-weight:900;font-variation-settings:"wdth" 62;font-size:clamp(90px,24vw,400px);line-height:.8;letter-spacing:-.03em;text-transform:uppercase;color:var(--cream);animation:k1-hit .17s steps(1) both}
+.k1-cut i{position:absolute;right:4vw;bottom:4vh;font-style:normal;color:rgba(243,234,219,.7)}
+@keyframes k1-hit{0%{transform:scale(1.06)}50%{transform:scale(1)}}
+.k1.cut .k1-frame{opacity:0}
+
+.k1-frame{position:relative;z-index:2;display:flex;flex-direction:column;min-height:100svh;padding:clamp(24px,4vh,44px) 4vw clamp(28px,5vh,56px);transition:opacity var(--u-d1)}
+.k1.freeze .k1-frame{animation:k1-in .9s var(--u-out) both}
+@keyframes k1-in{from{opacity:0;transform:scale(1.035)}to{opacity:1;transform:none}}
+
+.k1-top{display:flex;align-items:center;gap:24px;color:rgba(243,234,219,.75)}
+.k1-reel{margin-right:auto}
+.k1-reel::before{content:"";display:inline-block;width:7px;height:7px;margin-right:10px;border-radius:50%;background:var(--cream);vertical-align:1px;animation:k1-rec 1.2s steps(1) infinite}
+@keyframes k1-rec{50%{opacity:0}}
+.k1-replay{background:none;border:0;padding:8px 0;cursor:pointer;font:inherit;letter-spacing:inherit;text-transform:inherit;color:inherit}
+.k1-replay:hover{color:var(--cream)}
+
+.k1-avail{margin:auto 0 clamp(14px,2.4vh,28px);max-width:36ch;font:400 var(--t-h4)/1.08 "Instrument Serif",serif;color:var(--cream)}
+.k1-avail em{font-style:italic;color:#ffd9c9}
+
+/* the freeze frame: the address, split to both edges */
+.k1-mail{position:relative;display:block;width:100%;padding:0;margin:0;border:0;background:none;cursor:none;text-align:left;touch-action:none;user-select:none;-webkit-user-select:none}
+.k1-l1,.k1-l2{display:block;font-weight:900;font-variation-settings:"wdth" 62;font-size:clamp(46px,11.6vw,196px);line-height:.82;letter-spacing:-.025em;text-transform:uppercase;white-space:nowrap;color:var(--cream);transition:color var(--u-d1)}
+.k1-l2{text-align:right}
+.k1-mail:hover .k1-l1,.k1-mail:hover .k1-l2{color:#fff}
+.k1.done .k1-mail{animation:k1-flash .9s steps(1)}
+@keyframes k1-flash{0%,30%,60%{filter:invert(1)}15%,45%,100%{filter:none}}
+.k1-kbd{position:absolute;left:0;bottom:-26px;opacity:0;color:rgba(243,234,219,.8)}
+.k1-mail:focus-visible .k1-kbd{opacity:1}
+.k1-mail:focus-visible{outline-offset:10px}
+
+.k1-cursor{position:absolute;width:92px;height:92px;margin:-46px 0 0 -46px;pointer-events:none;display:grid;place-items:center}
+.k1-cursor .kx-ring{position:absolute;inset:0}
+.k1-cursor b{position:absolute;top:calc(100% + 8px);white-space:nowrap;font-weight:600;color:var(--cream)}
+.k1.done .k1-cursor .kx-ring{animation:k1-pop .5s var(--u-out)}
+@keyframes k1-pop{50%{transform:scale(1.35)}}
+
+.k1-row{display:flex;flex-wrap:wrap;align-items:center;gap:20px 36px;margin-top:clamp(28px,5vh,56px)}
+.k1-links{display:flex;flex-wrap:wrap;gap:4px 28px}
+
+@media (hover:none){.k1-mail{cursor:pointer}}
+@media (max-width:760px){
+  .k1-frame{padding:20px 16px 32px}
+  .k1-reel{display:none}
+  .k1-top{justify-content:space-between}
+  .k1-l1,.k1-l2{font-size:clamp(34px,13vw,96px)}
+  .k1-l2{text-align:left}
+}
+@media (prefers-reduced-motion:reduce){.k1-frame,.k1-reel::before,.k1.done .k1-mail{animation:none !important}}
+
+/* ---------- v3 typography on v1 colours ---------- */
+.k1-cut i{font-family:"Martian Mono",monospace;font-size:var(--t-md);font-weight:600;color:rgba(243,234,219,.75)}
+.k1-avail{font-style:italic;color:var(--cream)}
+.k1-avail em{font-style:normal;color:#ffd9c9}
+/* the title card: the user solid, the host an outlined credit that fills on hover */
+.k1-l2{color:transparent;-webkit-text-stroke:1.5px var(--cream)}
+.k1-mail:hover .k1-l2{color:var(--cream)}
+
+/* ---------- end credits (the footer) ---------- */
+.k1-credits{display:grid;grid-template-columns:1.3fr 1fr .9fr 1.2fr;gap:40px 4vw;padding:clamp(48px,8vh,80px) 4vw 24px;background:var(--ink);color:var(--cream);border-top:3px solid var(--hot)}
+.k1-up{display:flex;gap:18px;align-items:flex-start;text-decoration:none;align-self:start}
+.k1-up b{display:grid;place-items:center;flex:none;width:64px;height:64px;border-radius:50%;background:var(--hot);color:var(--ink);font:900 30px/1 "Archivo",sans-serif;transition:transform var(--u-d2) var(--u-out)}
+.k1-up span{display:flex;flex-direction:column;gap:8px;font-weight:900;font-variation-settings:"wdth" 62;font-size:var(--t-h3);line-height:.86;text-transform:uppercase;letter-spacing:-.02em}
+.k1-up small{font:400 italic var(--t-body)/1.2 "Instrument Serif",serif;text-transform:none;letter-spacing:0;color:rgba(243,234,219,.6)}
+.k1-up:hover b{transform:translateY(-6px)}
+.k1-col{display:flex;flex-direction:column;gap:10px}
+.k1-col h3{margin:0 0 6px;padding-bottom:10px;border-bottom:1px solid rgba(243,234,219,.18);font:500 var(--t-sm)/1 "Martian Mono",monospace;letter-spacing:.18em;text-transform:uppercase;color:rgba(243,234,219,.5)}
+.k1-col a{display:flex;gap:12px;text-decoration:none;font:600 var(--t-body)/1.2 "Archivo",sans-serif;transition:color var(--u-d1),transform var(--u-d1)}
+.k1-col a i{font:500 var(--t-sm)/1.5 "Martian Mono",monospace;font-style:normal;color:var(--hot)}
+.k1-col a:hover{color:#ffb39f;transform:translateX(4px)}
+.k1-now{margin:0;font:500 var(--t-sm)/1.4 "Martian Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:rgba(243,234,219,.7)}
+.k1-now b{font:600 var(--t-lede)/1 "Martian Mono",monospace;letter-spacing:.02em;font-variant-numeric:tabular-nums;color:var(--cream);margin-right:6px}
+.k1-open{margin:0;display:flex;align-items:center;gap:10px;font:500 var(--t-sm)/1.4 "Martian Mono",monospace;letter-spacing:.1em;text-transform:uppercase}
+.k1-open i{width:8px;height:8px;border-radius:50%;background:#7dff9a;flex:none}
+.k1-end{grid-column:1 / -1;display:flex;justify-content:space-between;align-items:flex-end;gap:16px;margin-top:clamp(24px,5vh,56px);padding-top:16px;border-top:1px solid rgba(243,234,219,.12);
+  font:400 var(--t-sm)/1 "Martian Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:rgba(243,234,219,.5)}
+.k1-end em{font:400 italic clamp(64px,9vw,140px)/.75 "Instrument Serif",serif;letter-spacing:-.02em;text-transform:none;color:var(--cream)}
+@media (max-width:900px){.k1-credits{grid-template-columns:1fr 1fr}.k1-up{grid-column:1 / -1}}
+@media (max-width:520px){.k1-credits{grid-template-columns:1fr;padding:40px 16px 20px}}
+.k1-colo{margin:0;max-width:30ch;font:400 var(--t-body)/1.45 "Archivo",sans-serif;color:rgba(243,234,219,.75)}
+.k1-colo b{font-weight:900;font-variation-settings:"wdth" 62;letter-spacing:.01em;color:var(--cream)}
+.k1-colo i{font:400 italic var(--t-body)/1 "Instrument Serif",serif;color:var(--cream)}
+.k1-colo .mm{font:500 var(--t-md)/1 "Martian Mono",monospace;color:var(--cream)}
+
+
+/* ---------- hold-to-copy: a cursor with an info bubble; the outlined host fills with rising liquid ---------- */
+.k1-mail{cursor:pointer}
+.k1-mail.aim{cursor:none}
+/* the cursor: a small dot, and a solid bubble beside it, legible on cream type and red alike */
+/* the liquid: a solid copy of the host, clipped by a moving waterline (set per frame) */
+.k1-l2{position:relative}
+.k1-liq{position:absolute;inset:0;display:block;text-align:right;color:var(--cream);-webkit-text-stroke:0;clip-path:polygon(0 102%,100% 102%,100% 100%,0 100%);pointer-events:none;
+  background:linear-gradient(100deg,var(--cream) 42%,#fff 50%,var(--cream) 58%) no-repeat;background-size:300% 100%;background-position:100% 0;
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+/* full: a single sheen runs across the filled letters */
+.k1.done .k1-liq{animation:k1-sheen 1s var(--u-out) .15s both}
+@keyframes k1-sheen{from{background-position:100% 0}to{background-position:0% 0}}
+.k1.done .k1-mail,.k1.error .k1-mail{animation:none !important;filter:none}
+.k1-mail:hover .k1-l2{color:transparent}
+@media (hover:none){.k1-tip{display:none}}
+@media (max-width:760px){.k1-liq{text-align:left}}
+@media (prefers-reduced-motion:reduce){.k1.done .k1-liq{animation:none}}
+/* footer: the colophon is gone; three columns */
+.k1-credits{grid-template-columns:1.3fr 1fr 1fr}
+
+/* ---------- the slate: a burn-in label in the reel's own vocabulary (the REC dot, the timecode, a hard cut) ---------- */
+.k1-tip{position:absolute;left:0;top:0;z-index:4;pointer-events:none;will-change:transform}
+/* the cursor: a viewfinder crosshair */
+.k1-cross{position:absolute;left:-9px;top:-9px;width:18px;height:18px}
+.k1-cross::before,.k1-cross::after{content:"";position:absolute;background:var(--cream);box-shadow:0 0 0 1px rgba(10,10,9,.55)}
+.k1-cross::before{left:8px;top:0;width:2px;height:18px}
+.k1-cross::after{left:0;top:8px;width:18px;height:2px}
+.k1-slate{position:absolute;left:16px;top:16px;display:flex;align-items:center;gap:9px;white-space:nowrap;padding:8px 11px;border-radius:2px;
+  background:rgba(10,10,9,.88);color:var(--cream);border:1px solid rgba(243,234,219,.22);
+  font:500 var(--t-sm)/1 "Martian Mono",monospace;letter-spacing:.14em;text-transform:uppercase}
+.k1-slate b{font-weight:500}
+.k1-rec{width:7px;height:7px;border-radius:50%;background:var(--hot);animation:k1-rec 1.2s steps(1) infinite}
+.k1-tip.holding .k1-rec{animation-duration:.4s}
+.k1-slate em{font:600 var(--t-md)/1 "Martian Mono",monospace;font-variant-numeric:tabular-nums;font-style:normal;letter-spacing:.04em;color:var(--cream)}
+/* copied: one hard cut, a white frame, then the cream slate */
+.k1-tip.done .k1-slate{background:var(--cream);color:var(--ink);border-color:var(--cream);animation:k1-cutflash .26s steps(1)}
+.k1-tip.done .k1-rec{background:var(--ink);animation:none}
+.k1-tip.done .k1-slate b{font-weight:700}
+@keyframes k1-cutflash{0%{background:#fff;color:var(--ink)}40%{background:var(--ink);color:var(--cream)}70%{background:#fff}}
+.k1-tip.error .k1-slate{background:var(--hot)}
+@media (hover:none){.k1-tip{display:none}}
+@media (prefers-reduced-motion:reduce){.k1-rec,.k1-tip.done .k1-slate{animation:none}}
+/* the confirmation reads exactly "Copied ✓"; an ink edge keeps the cream slate off the cream-filled letters */
+.k1-tip.done .k1-slate{text-transform:none;letter-spacing:.04em;font-size:var(--t-md);border-color:var(--ink);box-shadow:0 0 0 1px var(--ink)}
+
+/* the @ hangs below the baseline; give the outlined host a breath of air so its caps never touch it */
+.k1-l2{margin-top:.09em}
