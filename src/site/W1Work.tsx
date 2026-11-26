@@ -1,6 +1,16 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { PROJECTS, type Project } from "./W1Data";
 import { nearScreen } from "./ProofKit";
+
+/* set a custom property only when its value changes; an unchanged write still invalidates the element's style */
+const seen = new WeakMap<HTMLElement | SVGElement, Record<string, string>>();
+const setVar = (el: HTMLElement | SVGElement, k: string, v: string) => {
+  const m = seen.get(el) ?? {};
+  if (m[k] === v) return;
+  m[k] = v;
+  seen.set(el, m);
+  el.style.setProperty(k, v);
+};
 import "./W1Work.css";
 import { glide } from "./Scroll";
 type Pt = [number, number];
@@ -751,9 +761,9 @@ const Journey = ({
       const tx = ax - cx * Z,
         ty = vh / 2 - cy * Z;
       w.style.transform = `translate3d(${tx.toFixed(2)}px,${ty.toFixed(2)}px,0) scale(${Z.toFixed(4)})`;
+      /* --bx/--by are registered non-inheriting (W1Work.css), so moving the dot grid restyles the stage alone */
       st.style.setProperty("--bx", `${(tx * 0.5).toFixed(1)}px`);
       st.style.setProperty("--by", `${(ty * 0.5).toFixed(1)}px`);
-      st.style.setProperty("--o", o.toFixed(3));
       ovRef.current = o;
       p.style.strokeDashoffset = (g.L - Math.min(s, g.L)).toFixed(1);
       tp.setAttribute("cx", t.x.toFixed(1));
@@ -761,8 +771,9 @@ const Journey = ({
       tp.style.opacity = String(1 - o);
 
       /* a letter rises the moment the pen passes its ink */
-      g.chars.forEach(c => c.el.style.setProperty("--c", clamp((s - c.L + 30) / 70, 0, 1).toFixed(3)));
-      g.figs.forEach(f => f.el.style.setProperty("--d", clamp((s - f.a + 60) / (f.b - f.a), 0, 1).toFixed(3)));
+      /* only write what changed: a restyle per letter per frame, settled or not, was most of Work's frame */
+      g.chars.forEach(c => setVar(c.el, "--c", clamp((s - c.L + 30) / 70, 0, 1).toFixed(3)));
+      g.figs.forEach(f => setVar(f.el, "--d", clamp((s - f.a + 60) / (f.b - f.a), 0, 1).toFixed(3)));
       let best = 0,
         near = Infinity;
       els.forEach((el, i) => {
@@ -773,8 +784,8 @@ const Journey = ({
           best = i;
         }
         const f = Math.max(smooth(clamp(1 - d / (q.w * 0.95), 0, 1)), o);
-        el.style.setProperty("--f", f.toFixed(3));
-        el.style.setProperty("--r", Math.max(clamp((s - q.enter + q.w * 0.5) / (q.w * 0.45), 0, 1), o).toFixed(3));
+        setVar(el, "--f", f.toFixed(3));
+        setVar(el, "--r", Math.max(clamp((s - q.enter + q.w * 0.5) / (q.w * 0.45), 0, 1), o).toFixed(3));
         el.classList.toggle("lit", f > 0.7);
       });
       const inPlane = near < g.posts[best].w * 1.2 || s > g.posts[0].enter - 200;
@@ -782,7 +793,8 @@ const Journey = ({
       st.classList.toggle("ov", o > 0.6);
       fill.style.transform = `scaleX(${clamp((s - g.posts[0].enter) / Math.max(1, g.Lp - g.posts[0].enter), 0, 1).toFixed(4)})`;
       ticks.forEach((tk, i) => tk.classList.toggle("on", inPlane && i === best && o < 0.5));
-      hud.textContent = o > 0.5 ? `LINE::WHOLE · ${PROJECTS.length} SYSTEMS · SCALE::1:${(1 / Z).toFixed(2)}` : inPlane ? `LINE::P·${pad2(best + 1)}/${pad2(PROJECTS.length)} · ${PROJECTS[best].category}` : `FOLLOW::THE DATA · ZOOM::${Z.toFixed(2)}×`;
+      const hudText = o > 0.5 ? `LINE::WHOLE · ${PROJECTS.length} SYSTEMS · SCALE::1:${(1 / Z).toFixed(2)}` : inPlane ? `LINE::P·${pad2(best + 1)}/${pad2(PROJECTS.length)} · ${PROJECTS[best].category}` : `FOLLOW::THE DATA · ZOOM::${Z.toFixed(2)}×`;
+      if (hud.textContent !== hudText) hud.textContent = hudText;
       if (!reduced) ridePackets(p, pk.current, Math.max(0, s - 1800), Math.min(s, g.L), now / 1000, 200);
     };
     raf = requestAnimationFrame(loop);
@@ -924,7 +936,9 @@ const RepoWall = () => {
     let last = window.scrollY,
       boost = 0,
       raf = 0;
-    const rows = () => el.getAnimations({
+    /* found once: getAnimations({ subtree }) forces a full style pass, and this ran on every scroll frame */
+    let found: Animation[] | null = null;
+    const rows = () => found?.length ? found : found = el.getAnimations({
       subtree: true
     }).filter(a => (a as CSSAnimation).animationName === "w-rw-run");
     const tick = () => {

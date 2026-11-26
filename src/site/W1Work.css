@@ -9,6 +9,9 @@
 .w1 *{box-sizing:border-box}
 .w-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 
+/* the stage's dot grid follows the camera; non-inheriting, so moving it never restyles what sits inside the stage */
+@property --bx{syntax:"<length>";inherits:false;initial-value:0px}
+@property --by{syntax:"<length>";inherits:false;initial-value:0px}
 .w-run{position:relative}
 .w-stage{position:sticky;top:0;height:100svh;min-height:620px;overflow:hidden;
   background:radial-gradient(circle at 1px 1px,rgba(10,10,9,.13) 1px,transparent 1.5px) var(--bx,0) var(--by,0)/30px 30px,var(--cream)}

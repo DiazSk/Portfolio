@@ -93,7 +93,8 @@ export const WK7StackSwissAxis = () => {
         if (b.kind === "layer" && top < vh * .7) now = Number(b.n.dataset.i) + 1;
       });
       const o = clamp(-R.top / Math.max(1, R.height - vh)).toFixed(4);
-      if (o !== lastO) { lastO = o; el.style.setProperty("--o", o); }
+      /* --o goes only to the axis (and the mark inside it), its only readers: on the section it restyled all of Stack every frame */
+      if (o !== lastO) { lastO = o; el.querySelector<HTMLElement>(".ax-axis")?.style.setProperty("--o", o); }
       if (now !== last) { last = now; setAt(now); }
       raf = requestAnimationFrame(tick);
     };
