@@ -34,3 +34,9 @@ coverage/
 
 # graft's local graph cache — regenerable, not committed (run `graft build`).
 /graft/
+
+.impeccable/
+
+# Local design working files (moodboard, prototypes, art sources) and the Codex rules copy; nothing in the build reads them.
+/design/
+/AGENTS.md
